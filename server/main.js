@@ -6,7 +6,6 @@ const webpackConfig = require('../config/webpack.config')
 const project = require('../config/project.config')
 const compress = require('compression')
 const bodyParser = require('body-parser');
-const DockerRunner = require('./runDocker.js');
 const app = express()
 
 // Apply gzip compression
@@ -36,7 +35,6 @@ if (project.env === 'development') {
   app.use(require('webpack-hot-middleware')(compiler, {
     path: '/__webpack_hmr'
   }))
-
   // Serve static assets from ~/public since Webpack is unaware of
   // these files. This middleware doesn't need to be enabled outside
   // of development since this directory will be copied into ~/dist
@@ -74,10 +72,10 @@ if (project.env === 'development') {
       .then((results) => {
         console.log(results)
         res.json(results)
-        
+
       })
 
-    
+
   })
 
   // Serving ~/dist by default. Ideally these files should be served by
