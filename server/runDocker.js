@@ -11,16 +11,21 @@ function createDocker () {
 
 createDocker.prototype.runCommand = function (userCode, testCode, scenario) {
 
-    // const userCodeEdited = userCode.replace(/'/gm, '"');
+   	//const userCodeEdited = userCode.replace(/'/gm, '"');
 
-    
-    commands = ['touch userCode.js', `node -p '2*2'`, 'exit'].join(' && ');
+    const runUserCodeCommand = `node -p  '${userCode}' && exit`;
+    //console.log(runUserCodeCommand);
+//     commands = [`node -p 'var testFunc = function(num){
+// 	return num * 2;
+// }
+
+// testFunc(5);'`, 'exit'].join(' && ');
 
 
     const stdoutStream = new streamBuffers.WritableStreamBuffer();
 
     const finishedPromise = new Bluebird((resolve, reject) => {
-        this.docker.run('node:5-slim', ['bash', '-c', commands], stdoutStream, function(err, data, container) {
+        this.docker.run('node:5-slim', ['bash', '-c', runUserCodeCommand], stdoutStream, function(err, data, container) {
             if (err) return reject(err);
 
             const results = stdoutStream.getContentsAsString('utf8');
