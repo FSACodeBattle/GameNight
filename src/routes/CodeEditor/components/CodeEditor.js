@@ -19,9 +19,14 @@ export class CodeEditor extends React.Component {
   handleSubmit(){
     console.log('handleSubmit works if this shows your code', this.state.code);
     axios.post('/hello', {code: this.state.code})
-    .then(function(response){
+    .then(response => {
+
+      //this.setState({code: response.data});
+      console.log("response from running code: ", response.data );
       console.log('saved successfully');
-    });
+
+    })
+    
   }
   render() {
     var options = {
