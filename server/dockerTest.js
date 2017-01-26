@@ -1,9 +1,5 @@
-
-const DockerRunner = require('./runDocker.js');
-
+const DockerRunner = require('./runDocker');
 const docker = new DockerRunner();
-
-
 
 var testCode = `function combine(arrToCombine){
 
