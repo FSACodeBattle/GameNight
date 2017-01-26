@@ -3,10 +3,10 @@ import { browserHistory, Router } from 'react-router'
 import { Provider } from 'react-redux'
 
 class AppContainer extends Component {
-  static propTypes = {
-    routes : PropTypes.array.isRequired,
-    store  : PropTypes.object.isRequired
-  }
+  // static propTypes = {
+  //   routes : PropTypes.array.isRequired,
+  //   store  : PropTypes.object.isRequired
+  // }
 
   shouldComponentUpdate () {
     return false

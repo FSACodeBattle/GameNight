@@ -6,7 +6,7 @@ const webpackConfig = require('../config/webpack.config')
 const project = require('../config/project.config')
 const compress = require('compression')
 const bodyParser = require('body-parser');
-
+const DockerRunner = require('./runDocker.js');
 const app = express()
 
 // Apply gzip compression
@@ -67,8 +67,16 @@ if (project.env === 'development') {
 //   )
 
   app.post('/hello', function(req, res, next){
-    console.log(req.body.code);
-    res.send(req.body.code);
+
+    const docker = new DockerRunner();
+    var codeToRun = `${req.body.code}`;
+    docker.runCommand(codeToRun)
+      .then((results) => {
+        console.log(results)
+        res.json(results)
+        
+      })
+
     
   })
 
