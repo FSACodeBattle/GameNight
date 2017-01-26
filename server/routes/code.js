@@ -1,11 +1,15 @@
-const DockerRunner = require('./runDocker.js');
+const createDocker = require('../runDocker');
 const router = require('express').Router();
 
 router.post('/', (req, res, next) => {
-  const docker = new DockerRunner();
+  console.log("I'm here");
+  const docker = new createDocker();
   const codeToRun = `${req.body.code}`;
   docker.runCommand(codeToRun)
-    .then(results => res.json(JSON.stringify(results)))
+    .then(results => {
+      const resultString = JSON.stringify(results);
+      res.send(resultString);
+  })
 })
 
 module.exports = router;
