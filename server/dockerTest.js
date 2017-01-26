@@ -27,4 +27,3 @@ pascalsTriangle(4)`;
 
 docker.runCommand(testCode)
     .then((results) => console.log('this is the output:', results))
-

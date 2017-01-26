@@ -6,7 +6,6 @@ const webpackConfig = require('../config/webpack.config')
 const project = require('../config/project.config')
 const compress = require('compression')
 const bodyParser = require('body-parser');
-const DockerRunner = require('./runDocker.js');
 const app = express()
 
 // Apply gzip compression
@@ -15,6 +14,7 @@ app.use(compress())
 // Use BodyParser
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
+app.use('/api', require('./routes/'));
 
 
 // ------------------------------------
@@ -36,7 +36,6 @@ if (project.env === 'development') {
   app.use(require('webpack-hot-middleware')(compiler, {
     path: '/__webpack_hmr'
   }))
-
   // Serve static assets from ~/public since Webpack is unaware of
   // these files. This middleware doesn't need to be enabled outside
   // of development since this directory will be copied into ~/dist
@@ -65,20 +64,6 @@ if (project.env === 'development') {
 //     'server such as nginx to serve your static files. See the "deployment" ' +
 //     'section in the README for more information on deployment strategies.'
 //   )
-
-  app.post('/hello', function(req, res, next){
-
-    const docker = new DockerRunner();
-    var codeToRun = `${req.body.code}`;
-    docker.runCommand(codeToRun)
-      .then((results) => {
-        console.log(results)
-        res.json(results)
-        
-      })
-
-    
-  })
 
   // Serving ~/dist by default. Ideally these files should be served by
   // the web server and not the app server, but this helps to demo the
