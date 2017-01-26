@@ -19,7 +19,7 @@ export class CodeEditor extends React.Component {
   }
   handleSubmit(){
     console.log('handleSubmit works if this shows your code', this.state.code);
-    axios.post('/hello', {code: this.state.code})
+    axios.post('/api/code', {code: this.state.code})
     .then(response => {
 
       //this.setState({code: response.data});
@@ -27,7 +27,7 @@ export class CodeEditor extends React.Component {
       console.log('saved successfully');
 
     })
-    
+
   }
   render() {
     var options = {
