@@ -5,11 +5,17 @@ const webpack = require('webpack')
 const webpackConfig = require('../config/webpack.config')
 const project = require('../config/project.config')
 const compress = require('compression')
+const bodyParser = require('body-parser');
 
 const app = express()
 
 // Apply gzip compression
 app.use(compress())
+
+// Use BodyParser
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+
 
 // ------------------------------------
 // Apply Webpack HMR Middleware
@@ -40,25 +46,31 @@ if (project.env === 'development') {
   // This rewrites all routes requests to the root /index.html file
   // (ignoring file requests). If you want to implement universal
   // rendering, you'll want to remove this middleware.
-  app.use('*', function (req, res, next) {
-    const filename = path.join(compiler.outputPath, 'index.html')
-    compiler.outputFileSystem.readFile(filename, (err, result) => {
-      if (err) {
-        return next(err)
-      }
-      res.set('content-type', 'text/html')
-      res.send(result)
-      res.end()
-    })
+//   app.use('*', function (req, res, next) {
+//     const filename = path.join(compiler.outputPath, 'index.html')
+//     compiler.outputFileSystem.readFile(filename, (err, result) => {
+//       if (err) {
+//         return next(err)
+//       }
+//       res.set('content-type', 'text/html')
+//       res.send(result)
+//       res.end()
+//     })
+//   })
+// } else {
+//   debug(
+//     'Server is being run outside of live development mode, meaning it will ' +
+//     'only serve the compiled application bundle in ~/dist. Generally you ' +
+//     'do not need an application server for this and can instead use a web ' +
+//     'server such as nginx to serve your static files. See the "deployment" ' +
+//     'section in the README for more information on deployment strategies.'
+//   )
+
+  app.post('/hello', function(req, res, next){
+    console.log(req.body.code);
+    res.send(req.body.code);
+    
   })
-} else {
-  debug(
-    'Server is being run outside of live development mode, meaning it will ' +
-    'only serve the compiled application bundle in ~/dist. Generally you ' +
-    'do not need an application server for this and can instead use a web ' +
-    'server such as nginx to serve your static files. See the "deployment" ' +
-    'section in the README for more information on deployment strategies.'
-  )
 
   // Serving ~/dist by default. Ideally these files should be served by
   // the web server and not the app server, but this helps to demo the
