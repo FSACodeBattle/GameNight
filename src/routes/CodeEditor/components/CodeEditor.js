@@ -30,7 +30,8 @@ export class CodeEditor extends React.Component {
   }
   render() {
     var options = {
-         lineNumbers: true,
+      mode: "javascript",
+      lineNumbers: true
     };
     return (
       <div>
