@@ -1,6 +1,7 @@
 import React from 'react'
 import CodeMirror from 'react-codemirror'
 import axios from 'axios'
+require('codemirror/mode/javascript/javascript');
 
 export class CodeEditor extends React.Component {
   constructor(){
@@ -36,7 +37,9 @@ export class CodeEditor extends React.Component {
     return (
       <div>
         <h1>{this.state.code}</h1>
-        <CodeMirror value={this.state.code} onChange={this.updateCode} options={options} />
+        <div style={{height: 'auto', width: '100%', 'textAlign': 'left'}}>
+          <CodeMirror  value={this.state.code} onChange={this.updateCode} options={options}/>
+        </div>
         <button onClick={this.handleSubmit}>SUBMIT</button>
       </div>
     );
