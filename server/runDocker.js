@@ -14,13 +14,6 @@ createDocker.prototype.runCommand = function (userCode, testCode, scenario) {
    	//const userCodeEdited = userCode.replace(/'/gm, '"');
 
     const runUserCodeCommand = `node -p  '${userCode}' && exit`;
-    //console.log(runUserCodeCommand);
-//     commands = [`node -p 'var testFunc = function(num){
-// 	return num * 2;
-// }
-
-// testFunc(5);'`, 'exit'].join(' && ');
-
 
     const stdoutStream = new streamBuffers.WritableStreamBuffer();
 
