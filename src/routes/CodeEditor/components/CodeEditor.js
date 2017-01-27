@@ -38,7 +38,7 @@ export class CodeEditor extends React.Component {
     return (
       <div>
         <h1>{this.state.code}</h1>
-        <div style={{height: 'auto', width: '100%', 'text-align': 'left'}}>
+        <div style={{height: 'auto', width: '100%', 'textAlign': 'left'}}>
           <CodeMirror  value={this.state.code} onChange={this.updateCode} options={options}/>
         </div>
         <button onClick={this.handleSubmit}>SUBMIT</button>
