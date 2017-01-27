@@ -7,7 +7,8 @@ export class CodeEditor extends React.Component {
   constructor(){
     super();
     this.state = {
-      code: 'ENTER CODE'
+      code: 'ENTER CODE',
+      results: ''
     }
     this.updateCode = this.updateCode.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +23,7 @@ export class CodeEditor extends React.Component {
     axios.post('/api/code', {code: this.state.code})
     .then(response => {
 
-      //this.setState({code: response.data});
+      this.setState({results: response.data});
       console.log("response from running code: ", response.data );
       console.log('saved successfully');
 
@@ -37,11 +38,13 @@ export class CodeEditor extends React.Component {
     };
     return (
       <div>
-        <h1>{this.state.code}</h1>
+        <h1>Enter Code</h1>
         <div style={{height: 'auto', width: '100%', 'textAlign': 'left'}}>
           <CodeMirror  value={this.state.code} onChange={this.updateCode} options={options}/>
         </div>
         <button onClick={this.handleSubmit}>SUBMIT</button>
+        <h2>Your answer</h2>
+        <h3>{this.state.results}</h3>
       </div>
     );
   }
