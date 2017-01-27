@@ -33,13 +33,12 @@ export class CodeEditor extends React.Component {
   render() {
     var options = {
       mode: "javascript",
-         lineNumbers: true,
-         
+      lineNumbers: true
     };
     return (
       <div>
         <h1>Enter Code</h1>
-        <div style={{height: 'auto', width: '100%', 'textAlign': 'left'}}>
+        <div>
           <CodeMirror  value={this.state.code} onChange={this.updateCode} options={options}/>
         </div>
         <button onClick={this.handleSubmit}>SUBMIT</button>
