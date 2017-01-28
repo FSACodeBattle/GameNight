@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { injectReducer } from '../../store/reducers'
 
 export default (store) => ({
@@ -22,3 +23,11 @@ export default (store) => ({
     }, 'battlePage')
   }
 })
+=======
+import BattlePageContainer from './containers/BattlePageContainer'
+
+// Sync route definition
+export default {
+  component : BattlePageContainer
+}
+>>>>>>> f4bba47cfcd5c215240e12716a91555ba0831b30
