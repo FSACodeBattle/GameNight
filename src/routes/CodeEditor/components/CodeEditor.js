@@ -7,7 +7,7 @@ export class CodeEditor extends React.Component {
   constructor(){
     super();
     this.state = {
-      code: 'ENTER CODE',
+      code: '',
       results: ''
     }
     this.updateCode = this.updateCode.bind(this);
@@ -43,7 +43,9 @@ export class CodeEditor extends React.Component {
         </div>
         <button onClick={this.handleSubmit}>SUBMIT</button>
         <h2>Your answer</h2>
-        <h3>{this.state.results}</h3>
+        <form>
+          <textarea rows="10" cols="100" value={this.state.results}></textarea>
+        </form>
       </div>
     );
   }
