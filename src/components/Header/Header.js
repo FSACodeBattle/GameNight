@@ -13,6 +13,13 @@ export const Header = () => (
       Code Editor
     </Link>
       {' · '}
+    <Link to='/counter' activeClassName='route--active'>
+      Counter
+    </Link>
+    {' · '}
+    <Link to='/battlePage' activeClassName='route--active'>
+      Battle Page
+    </Link>
   </div>
 )
 
