@@ -5,6 +5,7 @@ import CoreLayout from '../layouts/CoreLayout'
 import Home from './Home/components/HomeView';
 import CounterRoute from './Counter/containers/CounterContainer';
 import CodeEditor from './CodeEditor/components/CodeEditor';
+import BattlePage from './BattlePage/components/Problem';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -14,6 +15,7 @@ export const createRoutes = (store) => (
         <Route path="/" component={CoreLayout} >
           <Route path="code_editor" component={CodeEditor} />
           <Route path="counter" component={CounterRoute} />
+          <Route path="battlePage" component={BattlePage} />
           <IndexRoute component={Home}/>
         </Route>
 )
