@@ -16,16 +16,3 @@ export const injectReducer = (store, { key, reducer }) => {
 }
 
 export default makeRootReducer
-
-
-
-
-//WORKING FIXED ROUTE
-// import { combineReducers } from 'redux'
-// import locationReducer from './location'
-
-// const rootReducer = combineReducers({
-//     location: locationReducer
-// })
-
-// export default rootReducer
