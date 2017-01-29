@@ -1,4 +1,4 @@
-'use'
+'use strict';
 import React from 'react'
 import {  Link } from 'react-router'
 import './Header.scss'
@@ -9,14 +9,12 @@ export const Header = () => (
       Home
     </Link>
       {' · '}
-      <Link to='/code_editor' activeClassName='route--active'>
-        Code Editor
-      </Link>
+    <Link to='/code_editor' activeClassName='route--active'>
+      Code Editor
+    </Link>
       {' · '}
   </div>
 )
 
 export default Header
-      // <Link to='/counter' activeClassName='route--active'>
-      //   Counter
-      // </Link>
+

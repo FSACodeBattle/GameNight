@@ -1,10 +1,10 @@
-import React from 'react'
-import CodeMirror from 'react-codemirror'
-import axios from 'axios'
+import React, { Component } from 'react';
+import CodeMirror from 'react-codemirror';
+import axios from 'axios';
 require('codemirror/mode/javascript/javascript');
 
-export class CodeEditor extends React.Component {
-  constructor(){
+class CodeEditor extends Component {
+  constructor() {
     super();
     this.state = {
       code: '',
@@ -18,16 +18,14 @@ export class CodeEditor extends React.Component {
       code: newCode
     });
   }
-  handleSubmit(){
+  handleSubmit() {
     console.log('handleSubmit works if this shows your code', this.state.code);
     axios.post('/api/code', {code: this.state.code})
     .then(response => {
       this.setState({results: response.data});
       console.log("response from running code: ", response.data );
       console.log('saved successfully');
-
     })
-
   }
   render() {
     var options = {
@@ -38,11 +36,11 @@ export class CodeEditor extends React.Component {
       <div>
         <h1>Enter Code</h1>
         <div>
-            <CodeMirror
-              value={this.state.code}
-              onChange={this.updateCode}
-              options={options}
-            />
+          <CodeMirror
+            value={this.state.code}
+            onChange={this.updateCode}
+            options={options}
+          />
         </div>
         <button onClick={this.handleSubmit}>SUBMIT</button>
         <h2>Your Answer</h2>
