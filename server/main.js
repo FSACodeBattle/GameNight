@@ -11,6 +11,9 @@ const app = express()
 // Apply gzip compression
 app.use(compress())
 
+//Logging Middleware
+app.use(require('volleyball'));
+
 // Use BodyParser
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());

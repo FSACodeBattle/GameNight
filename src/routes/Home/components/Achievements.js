@@ -9,7 +9,6 @@ export const Achievements = () => (
   	<img src="https://i.imgur.com/sfTPAyO.png" />
   	<img src="https://i.imgur.com/m0J9HTy.png" />
   	<img src="https://i.imgur.com/0NdPfeT.png" />
-
   </div>
 )
 

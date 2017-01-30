@@ -1,38 +1,20 @@
-// We only need to import the modules necessary for initial render
-import CoreLayout from '../layouts/CoreLayout'
-import Home from './Home'
-import CounterRoute from './Counter'
-import CodeEditor from './CodeEditor'
-import BattlePage from './BattlePage'
+import React, { Component } from 'react';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { Provider, connect } from 'react-redux';
+import CoreLayout from '../layouts/CoreLayout';
+import Home from './Home/components/HomeView';
+import CounterRoute from './Counter/containers/CounterContainer';
+import CodeEditor from './CodeEditor/components/CodeEditor';
+import BattlePage from './BattlePage/components/Problem';
 
-/*  Note: Instead of using JSX, we recommend using react-router
-    PlainRoute objects to build route definitions.   */
-
-export const createRoutes = (store) => ([{
-  path        : '/',
-  component   : CoreLayout,
-  indexRoute  : Home,
-  childRoutes : [
-    CounterRoute(store)
-  ]
-}, {
-  path        : '/code_editor',
-  component   : CoreLayout,
-  indexRoute  : CodeEditor,
-  childRoutes : [
-    CounterRoute(store),
-  ]
-},
-
-{
-  path        : '/battlePage',
-  component   : CoreLayout,
-  indexRoute  : BattlePage,
-  childRoutes : [
-    CounterRoute(store),
-  ]
-}
-])
+export const createRoutes = (store) => (
+  <Route path="/" component={CoreLayout} >
+    <Route path="code_editor" component={CodeEditor} />
+    <Route path="counter" component={CounterRoute} />
+    <Route path="battlePage" component={BattlePage} />
+    <IndexRoute component={Home}/>
+  </Route>
+)
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically
     using getChildRoutes with the following signature:
@@ -53,3 +35,37 @@ export const createRoutes = (store) => ([{
 */
 
 export default createRoutes
+
+// import Home from './Home'
+// import CounterRoute from './Counter'
+// import CodeEditor from './CodeEditor'
+// import BattlePage from './BattlePage'
+
+// /*  Note: Instead of using JSX, we recommend using react-router
+//     PlainRoute objects to build route definitions.   */
+
+// export const createRoutes = (store) => ([{
+//   path        : '/',
+//   component   : CoreLayout,
+//   indexRoute  : Home,
+//   childRoutes : [
+//     CounterRoute(store)
+//   ]
+// }, {
+//   path        : '/code_editor',
+//   component   : CoreLayout,
+//   indexRoute  : CodeEditor,
+//   childRoutes : [
+//     CounterRoute(store),
+//   ]
+// },
+
+// {
+//   path        : '/battlePage',
+//   component   : CoreLayout,
+//   indexRoute  : BattlePage,
+//   childRoutes : [
+//     CounterRoute(store),
+//   ]
+// }
+// ])
