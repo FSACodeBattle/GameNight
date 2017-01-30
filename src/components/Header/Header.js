@@ -1,18 +1,20 @@
 'use strict';
 import React from 'react'
-import {  Link } from 'react-router'
+import { IndexLink, Link } from 'react-router'
 import './Header.scss'
 
 export const Header = () => (
   <div>
-    <Link to="/">
+    <h1>1v1 Code</h1>
+    <div className='container text-right'>
+    <IndexLink to='/' activeClassName='route--active' style={{textAlign: 'left'}}>
       Home
-    </Link>
-      {' · '}
+    </IndexLink>
+    {' · '}
     <Link to='/code_editor' activeClassName='route--active'>
       Code Editor
     </Link>
-      {' · '}
+    {' · '}
     <Link to='/counter' activeClassName='route--active'>
       Counter
     </Link>
@@ -20,8 +22,9 @@ export const Header = () => (
     <Link to='/battlePage' activeClassName='route--active'>
       Battle Page
     </Link>
+    </div>
+
   </div>
 )
 
 export default Header
-

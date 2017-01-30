@@ -5,7 +5,7 @@ import CoreLayout from '../layouts/CoreLayout';
 import Home from './Home/components/HomeView';
 import CounterRoute from './Counter/containers/CounterContainer';
 import CodeEditor from './CodeEditor/components/CodeEditor';
-import BattlePage from './BattlePage/components/Problem';
+import BattlePage from './BattlePage/containers/BattlePageContainer';
 
 export const createRoutes = (store) => (
   <Route path="/" component={CoreLayout} >
