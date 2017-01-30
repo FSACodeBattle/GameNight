@@ -17,31 +17,33 @@ const User = db.define('users', {
 	}
 })
 
-const Fight = db.define('fights', {
-  name: {
-    type: Sequelize.STRING,
-  },
-  email: {
-    type: Sequelize.STRING,
-    validate: {
-      isEmail: true,
-      notEmpty: true,
-    	}
-	}
-})
-
 const Question = db.define('questions', {
   name: {
     type: Sequelize.STRING,
   },
   tests: {
-  	type: Sequelize.TEXT
+    type: Sequelize.TEXT
+  }
+})
+
+const Fight = db.define('fights', {
+  number: {
+    type: Sequelize.STRING,
   }
 })
 
 
 //Relationships
 
-Fight.hasMany(Question);
+// User.hasMany(Fight, {as: 'Fights'});
+// Fight.belongsToMany(User, {through: 'FightHistory'});
 
-module.exports = db;
+// Fight.hasMany(Question, {as: 'Questions'});
+// Question.belongsToMany(Fight, {through: })
+
+module.exports = {
+  db,
+  User,
+  Question,
+  Fight
+};
