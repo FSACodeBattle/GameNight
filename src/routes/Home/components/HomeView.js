@@ -8,9 +8,9 @@ import Leaderboard from './Leaderboard'
 export const HomeView = () => (
   <div>
     <h4>Welcome!</h4>
-      <MatchHistory />
-      <Achievements />
-      <Leaderboard />
+    	<MatchHistory />
+    	<Achievements />
+    	<Leaderboard />
   </div>
 )
 
