@@ -4771,6 +4771,10 @@ react-codemirror@^0.3.0:
     codemirror "^5.18.2"
     lodash.debounce "^4.0.8"
 
+react-countdown-clock@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-countdown-clock/-/react-countdown-clock-1.0.9.tgz#cef8f38aca132b498a9e0afdedd576c64445e53b"
+
 react-dom@^15.0.0:
   version "15.4.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.4.1.tgz#d54c913261aaedb17adc20410d029dcc18a1344a"
