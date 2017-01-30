@@ -1,19 +1,20 @@
-import React, { Component, PropTypes } from 'react'
-import { browserHistory, Router } from 'react-router'
-import { Provider } from 'react-redux'
+import React, { Component } from 'react'
+import { browserHistory, Router, Route, IndexRoute } from 'react-router'
+import { Provider, connect } from 'react-redux';
+import CoreLayout from '../layouts/CoreLayout';
+import Home from '../routes/Home';
+import CodeEditor from '../routes/CodeEditor';
+
 
 class AppContainer extends Component {
-  // static propTypes = {
-  //   routes : PropTypes.array.isRequired,
-  //   store  : PropTypes.object.isRequired
-  // }
-
-  shouldComponentUpdate () {
-    return false
+  constructor(props){
+    super(props);
   }
-
+  shouldComponentUpdate() {
+    return false;
+  }
   render () {
-    const { routes, store } = this.props
+    const { store, routes } = this.props;
 
     return (
       <Provider store={store}>
@@ -21,8 +22,9 @@ class AppContainer extends Component {
           <Router history={browserHistory} children={routes} />
         </div>
       </Provider>
-    )
+    );
   }
 }
 
-export default AppContainer
+export default AppContainer;
+

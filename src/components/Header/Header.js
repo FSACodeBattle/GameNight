@@ -1,4 +1,4 @@
-
+'use strict';
 import React from 'react'
 import { IndexLink, Link } from 'react-router'
 import './Header.scss'
@@ -28,26 +28,3 @@ export const Header = () => (
 )
 
 export default Header
-
-// return (
-//     <header>
-//       <h1 className="logo">Build-A-Box</h1>
-
-//       <div className="menu">
-//         <span style={{marginRight: 7}}>{user.toUpperCase()}</span>
-//         <Link to='/cart'>
-//           <span>MY CART</span>
-//         </Link> 
-//         <Link to="/login">
-//           <span>LOGIN</span>
-//         </Link>
-//         <Link to="/whoami">
-//           <span>LOGOUT</span>
-//          </Link>
-//         <Link to="/signup">
-//           <span>SIGN UP</span>
-//         </Link> 
-//       </div>
-//       <div className="clear"></div>
-//     </header>
-//   );
