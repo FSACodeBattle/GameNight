@@ -18,7 +18,7 @@ createDocker.prototype.runCommand = function (userCode, testCode, scenario) {
     const stdoutStream = new streamBuffers.WritableStreamBuffer();
 
     const finishedPromise = new Bluebird((resolve, reject) => {
-        this.docker.run('node:5-slim', ['bash', '-c', runUserCodeCommand], stdoutStream, function(err, data, container) {
+        this.docker.run('mocha-chai-node', ['bash', '-c', runUserCodeCommand], stdoutStream, function(err, data, container) {
             if (err) return reject(err);
 
             const results = stdoutStream.getContentsAsString('utf8');
