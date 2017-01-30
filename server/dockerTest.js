@@ -25,5 +25,7 @@ function pascalsTriangle(n) {
 pascalsTriangle(4)`;
 
 
+console.log("\"");
+
 docker.runCommand(testCode)
     .then((results) => console.log('this is the output:', results))
