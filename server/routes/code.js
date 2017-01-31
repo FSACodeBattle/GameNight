@@ -5,6 +5,7 @@ router.post('/', (req, res, next) => {
   console.log("I'm here");
   const docker = new createDocker();
   const codeToRun = `${req.body.code}`;
+  console.log(req.body.timeRemaining)
   const testToRun = `
 describe("isFizz", function(){
   describe("6 must be Fizz", function(){

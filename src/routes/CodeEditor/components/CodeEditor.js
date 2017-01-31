@@ -8,24 +8,55 @@ class CodeEditor extends Component {
     super();
     this.state = {
       code: '',
-      results: ''
+      results: '',
+      timeRemaining: 60,
+      prevTime: null
     }
     this.updateCode = this.updateCode.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentDidMount(){
+    this.tick();
+  }
+
+  componentDidUpdate(){
+    this.tick();
+  }
+
+  tick(){
+    setTimeout(() => {
+      // console.log(this.state.timeRemaining);
+      var currentTime = Date.now();
+      var dt = this.state.prevTime ? (currentTime - this.state.prevTime) : 0;
+      var timeRemaining = Math.max(this.state.timeRemaining - dt/1000, 0);
+      this.setState({
+        timeRemaining: timeRemaining,
+        prevTime: currentTime
+      });
+    }, 1000);
+  }
+
+
   updateCode(newCode) {
     this.setState ({
       code: newCode
     });
   }
+
+  //handleSubmit would take number of seconds elapsed for the score
   handleSubmit() {
     console.log('handleSubmit works if this shows your code', this.state.code);
-    axios.post('/api/code', {code: this.state.code})
+    axios.post('/api/code', {
+      code: this.state.code, 
+      timeRemaining: this.state.timeRemaining
+    })
     .then(response => {
       this.setState({results: response.data});
       console.log("response from running code: ", response.data );
       console.log('saved successfully');
     })
+
   }
   render() {
     var options = {
