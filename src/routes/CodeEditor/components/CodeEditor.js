@@ -32,6 +32,7 @@ class CodeEditor extends Component {
       mode: "javascript",
       lineNumbers: true
     };
+    
     return (
       <div>
         <h1>Enter Code</h1>
