@@ -7,6 +7,8 @@ const project = require('../config/project.config')
 const compress = require('compression')
 const bodyParser = require('body-parser');
 const app = express()
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
 // Apply gzip compression
 app.use(compress())
@@ -17,6 +19,13 @@ app.use(require('volleyball'));
 // Use BodyParser
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
+
+let connectedSockets = [];
+io.on('connection', function(socket) {
+
+})
+
+//API
 app.use('/api', require('./routes/'));
 
 
