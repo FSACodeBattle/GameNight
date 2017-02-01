@@ -9,8 +9,8 @@ export const HomeView = () => (
   <div>
     <h4>Welcome!</h4>
     	<MatchHistory />
-    	<Achievements />
     	<Leaderboard />
+      <Achievements />
   </div>
 )
 

@@ -2,3 +2,35 @@
   font-weight: bold;
   text-decoration: underline;
 }
+.navbar.navbar-default{
+  max-width: 100%;
+  background-color: #303133
+}
+
+#nav-login {
+  float: right!important;
+}
+
+.navbar a {
+  color: #777;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    color: #777;
+  }
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: #444;
+}
+
+.route:active {
+  font-weight: bold;
+  text-decoration: underline;
+  color: white
+}
+
+
+.navbar-form.navbar-left.search {
+  float: right !important;
+}
