@@ -9,9 +9,9 @@ import BattlePage from './BattlePage/containers/BattlePageContainer';
 
 export const createRoutes = (store) => (
   <Route path="/" component={CoreLayout} >
-    <Route path="code_editor" component={CodeEditor} />
-    <Route path="counter" component={CounterRoute} />
-    <Route path="battlePage" component={BattlePage} />
+    <Route path="/code_editor" component={CodeEditor} />
+    <Route path="/counter" component={CounterRoute} />
+    <Route path="/battlePage" component={BattlePage} />
     <IndexRoute component={Home}/>
   </Route>
 )
