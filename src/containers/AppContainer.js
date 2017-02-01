@@ -14,6 +14,7 @@ class AppContainer extends Component {
     return false;
   }
   render () {
+    //console.log("this is io", socket);
     const { store, routes } = this.props;
 
     return (
