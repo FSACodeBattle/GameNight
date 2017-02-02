@@ -2,7 +2,7 @@ const createDocker = require('../runDocker');
 const router = require('express').Router();
 
 router.post('/', (req, res, next) => {
-  console.log("I'm here");
+  // console.log("I'm here");
   const docker = new createDocker();
   const codeToRun = `${req.body.code}`;
   console.log(req.body.timeElapsed)
@@ -39,8 +39,14 @@ router.post('/', (req, res, next) => {
     })
     `]
 
+  // use playerProgress scoreboard to keep track of which
+  // question each player is on
 
-  docker.runCommand(codeToRun, testsToRun[0])
+  const playerProgress = req.body.playerProgress;
+  const playerNumber = req.body.playerNumber;
+  const currentQuestionNumber = playerProgress[playerNumber - 1]
+
+  docker.runCommand(codeToRun, testsToRun[currentQuestionNumber])
     .then(results => {
       const resultString = JSON.stringify(results);
       res.send(resultString);

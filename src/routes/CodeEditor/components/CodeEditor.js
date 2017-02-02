@@ -18,7 +18,8 @@ class CodeEditor extends Component {
       timeElapsed: 0,
       startingTime: null,
       playerProgress: [0, 0],
-      playerNumber: 0
+      playerNumber: 0,
+      numberOfQuestions: 2
     }
     this.updateCode = this.updateCode.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -64,32 +65,26 @@ class CodeEditor extends Component {
   }
 
   handleSubmit() {
-    console.log('handleSubmit works if this shows your code', this.state.code);
+    // console.log('handleSubmit works if this shows your code', this.state.code);
     const startingTime = this.state.startingTime;
     const playerNumber = this.state.playerNumber;
-    
+    const playerProgress = this.state.playerProgress;
+
     axios.post('/api/code', {
       code: this.state.code, 
-      timeElapsed: (Date.now() - startingTime)/1000
-      // pass in playerNumber
-      // pass in playerProgress to get where you are in tests
-
+      timeElapsed: (Date.now() - startingTime)/1000,
       // use playerNumber in playerProgress array
       // to figure out where you are in tests
-
+      playerNumber: this.state.playerNumber,
+      playerProgress: this.state.playerProgress
     })
     .then(response => {
       this.setState({results: response.data});
-      console.log("response from running code: ", response.data );
-      console.log('saved successfully');
-
-      // if response.data is correct, then emit question is passed to server
-      // console.log(response.data.indexOf('failing'))
-
+      // console.log("response from running code: ", response.data );
+      // console.log('saved successfully');
 
       if(response.data.indexOf('failing') === -1){
         console.log('emitting correct response from front-end')
-        // console.log(this.state.playerNumber);
         socket.emit('correct response', {
           playerNumber: this.state.playerNumber,
           playerProgress: this.state.playerProgress
@@ -99,11 +94,13 @@ class CodeEditor extends Component {
             playerProgress: playerProgress
           })
         })
-        // want to move onto next question if you got a right answer
-        // use player progress for advancing the bar as well as
-        // selecting the next question?
 
-        // or is this just a db call in code.js in server/routes?
+        // check if game is won
+
+        // console.log(playerProgress[playerNumber -1],this.state.numberOfQuestions - 1);
+        if (playerProgress[playerNumber - 1] === this.state.numberOfQuestions - 1){
+          console.log(playerNumber + " won!");
+        }
 
         // want to leave game if you solved final question correctly
         // socket.on('disconnect', function(){
