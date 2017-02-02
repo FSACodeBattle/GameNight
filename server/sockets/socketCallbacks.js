@@ -1,6 +1,6 @@
 const hello = function (data) {
     console.log(data);
-  };
+}
 
 
 const onUserCodeSubmit = function(data) {
@@ -15,4 +15,14 @@ const joinGameLobby = function(data){
 	this.join(data);
 }
 
-module.exports = {hello, onUserCodeSubmit, joinGameLobby}
+
+const updatePlayerProgress = function(data){
+	console.log('receiving correct response on back-end')
+  	data.playerProgress[data.playerNumber - 1]++;
+  	console.log(data.playerProgress);
+ 	this.emit('update progress', data.playerProgress); 	
+}
+
+
+
+module.exports = {hello, onUserCodeSubmit, joinMainLobby, joinGameLobby, updatePlayerProgress}

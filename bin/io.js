@@ -26,6 +26,10 @@ module.exports = function(server) {
 		})
 		socket.on('my other event', socketCallbacks.hello);
 		var currentClients = io.sockets.adapter.rooms["MainLobby"];
+		console.log(currentClients);
+
+		socket.on('correct response', socketCallbacks.updatePlayerProgress);
+
 		console.log("currentClients", currentClients);
 		let playerProgress = [0, 0];
 		socket.on('correct response', (data) => {
