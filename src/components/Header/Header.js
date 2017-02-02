@@ -4,6 +4,8 @@ import { IndexLink, Link } from 'react-router'
 import './Header.scss'
 
 export const Header = () => (
+
+
   <div>
     <h1>1v1 Code</h1>
     <div className='container text-right'>
@@ -26,8 +28,12 @@ export const Header = () => (
     <Link to="/joinGame/sdfsfffffff" activeClassName='route--active'>
     This is actually just a broken button
     </Link>
-    </div>
+    {' · '}
+    <Link to="/invite" activeClassName="route--active">
+    Invite
+    </Link>
 
+  </div>
   </div>
 )
 
