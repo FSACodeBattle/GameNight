@@ -6,6 +6,7 @@ const webpackConfig = require('../config/webpack.config')
 const project = require('../config/project.config')
 const compress = require('compression')
 const bodyParser = require('body-parser');
+
 const history = require('connect-history-api-fallback');
 const app = express();
 
