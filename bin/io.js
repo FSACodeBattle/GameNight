@@ -11,6 +11,7 @@ module.exports = function(server) {
 		socket.emit('news', {
 			hello: 'world'
 		});
+		io.emit('reload');
 		socket.on('my other event', socketCallbacks.hello);
 		socket.on('joinGameLobby', socketCallbacks.joinGameLobby)
 		var name = "MainLobby";
@@ -21,7 +22,10 @@ module.exports = function(server) {
   			playerProgress[data.playerNumber - 1]++;
  			socket.emit('update progress', playerProgress);
   		});
+
+		socket.on('disconnect', () => socketCallbacks.reloadLobby(io))
 	});
+
 
 	return io;
 }

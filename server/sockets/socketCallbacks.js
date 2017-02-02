@@ -15,4 +15,8 @@ const joinGameLobby = function(data){
 	socket.join()
 }
 
-module.exports = {hello, onUserCodeSubmit, joinMainLobby, joinGameLobby}
+const reloadLobby = function(io) {
+  io.emit('reload');
+}
+
+module.exports = { hello, onUserCodeSubmit, joinMainLobby, joinGameLobby, reloadLobby }

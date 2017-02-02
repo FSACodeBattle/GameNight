@@ -3,10 +3,6 @@ import CodeMirror from 'react-codemirror';
 import axios from 'axios';
 require('codemirror/mode/javascript/javascript');
 
-import io from 'socket.io-client'
-let socket = io(`http://localhost`)
-
-
 class CodeEditor extends Component {
   constructor() {
     super();
@@ -26,7 +22,7 @@ class CodeEditor extends Component {
 
   componentDidMount(){
     // this.tick();
-    
+
     // update playerNumber here using sockets
     // this is dummy code for now
     const startingTime = Date.now();
@@ -67,7 +63,7 @@ class CodeEditor extends Component {
     console.log('handleSubmit works if this shows your code', this.state.code);
     const startingTime = this.state.startingTime;
     axios.post('/api/code', {
-      code: this.state.code, 
+      code: this.state.code,
       timeElapsed: (Date.now() - startingTime)/1000
     })
     .then(response => {
@@ -96,7 +92,7 @@ class CodeEditor extends Component {
       mode: "javascript",
       lineNumbers: true
     };
-    
+
     return (
       <div>
         <h1>{this.state.playerProgress.join('-')}</h1>

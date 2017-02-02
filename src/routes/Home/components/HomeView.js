@@ -4,10 +4,12 @@ import './HomeView.scss'
 import MatchHistory from './MatchHistory'
 import Achievements from './Achievements'
 import Leaderboard from './Leaderboard'
+import MainLobbyContainer from '../../MainLobbyList/containers/MainLobbyContainer'
 
 export const HomeView = () => (
   <div>
     <h4>Welcome!</h4>
+      <MainLobbyContainer />
     	<MatchHistory />
     	<Achievements />
     	<Leaderboard />
