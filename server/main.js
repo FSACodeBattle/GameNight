@@ -6,6 +6,7 @@ const webpackConfig = require('../config/webpack.config')
 const project = require('../config/project.config')
 const compress = require('compression')
 const bodyParser = require('body-parser');
+
 const history = require('connect-history-api-fallback');
 const app = express();
 
@@ -19,9 +20,13 @@ app.use(require('volleyball'));
 // Use BodyParser
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-app.use(history());
+
+
+//API
+
 app.use('/api', require('./routes/'));
 app.use('/join', require('./routes/join.js'));
+app.use(history());
 
 
 // ------------------------------------

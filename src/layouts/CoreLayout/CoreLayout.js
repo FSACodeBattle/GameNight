@@ -4,9 +4,9 @@ import './CoreLayout.scss'
 import '../../styles/core.scss'
 
 export const CoreLayout = ({ children }) => (
-  <div className='container text-center'>
+  <div className="container-fluid text-center corelay">
     <Header />
-    <div className='core-layout__viewport'>
+    <div className="container-fluid core-layout__viewport">
       {children}
     </div>
   </div>
@@ -15,5 +15,6 @@ export const CoreLayout = ({ children }) => (
 CoreLayout.propTypes = {
   children : React.PropTypes.element.isRequired
 }
+
 
 export default CoreLayout

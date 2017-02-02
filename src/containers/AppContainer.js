@@ -16,10 +16,9 @@ class AppContainer extends Component {
   render () {
     //console.log("this is io", socket);
     const { store, routes } = this.props;
-
     return (
       <Provider store={store}>
-        <div style={{ height: '100%' }}>
+        <div>
           <Router history={browserHistory} children={routes} />
         </div>
       </Provider>
