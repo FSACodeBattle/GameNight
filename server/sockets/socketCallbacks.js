@@ -7,12 +7,12 @@ const onUserCodeSubmit = function(data) {
 	return data;
 }
 
-const joinMainLobby = function(data) {
-	socket.join('Main Lobby');
-}
 
 const joinGameLobby = function(data){
-	socket.join()
+	console.log("this is inside data joinGameLobby", data);
+	//console.log("this is inside joinGameLobby",io.sockets.adapter.rooms);
+	//console.log("this is this", this);
+	this.join(data);
 }
 
-module.exports = {hello, onUserCodeSubmit, joinMainLobby, joinGameLobby}
+module.exports = {hello, onUserCodeSubmit, joinGameLobby}
