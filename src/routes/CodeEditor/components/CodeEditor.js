@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CodeMirror from 'react-codemirror';
 import axios from 'axios';
 require('codemirror/mode/javascript/javascript');
+require('codemirror/theme/solarized.css')
 
 class CodeEditor extends Component {
   constructor() {

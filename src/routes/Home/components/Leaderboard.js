@@ -5,9 +5,8 @@ import './leaderboard.scss';
 
 export const Leaderboard = () => (
 
-  	<div className="row-fluid">
-  		<div className="col-xs-6 col-md-6 col-lg-6">
-  			<h2> Leaderboard </h2>
+  		<div className="col-xs-12 col-md-6 col-lg-6" id="leaderboardComponent">
+  			<h2> Leader board </h2>
   			<div className="table-responsive">
 				  <table className="table">
 				    <thead>
@@ -52,7 +51,6 @@ export const Leaderboard = () => (
 				    </tbody>
 				  </table>
   			</div>
-  		</div>
   	</div>
 )
 

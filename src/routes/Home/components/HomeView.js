@@ -6,11 +6,17 @@ import Achievements from './Achievements'
 import Leaderboard from './Leaderboard'
 
 export const HomeView = () => (
-  <div>
+  <div id="homeViewContainer">
     <h4>Welcome!</h4>
-    	<MatchHistory />
-    	<Leaderboard />
-      <Achievements />
+    <div className="container-fluid">
+      <div className="row">
+    	   <MatchHistory />
+    	   <Leaderboard />
+      </div>
+      <div className="row">
+        <Achievements />
+      </div>
+    </div>
   </div>
 )
 

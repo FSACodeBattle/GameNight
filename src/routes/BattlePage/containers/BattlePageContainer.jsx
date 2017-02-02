@@ -5,12 +5,14 @@ import CountdownClock from '../components/CountdownClock'
 import CodeEditor from '../../CodeEditor/components/CodeEditor'
 
 export const BattlePage = () => (
-	<div className="container-fluid-battlepage">
-		<CountdownClock />
+	<div>
+		<div className="row-fluid-clock">
+      <CountdownClock />
+    </div>
     <div className="container-fluid-row-battle">
       <div className="row-fluid-battlepage">
         <div className="col-xs-4">
-            <Problem />
+          <Problem />
         </div>
         <div className="col-xs-8">
           <CodeEditor />

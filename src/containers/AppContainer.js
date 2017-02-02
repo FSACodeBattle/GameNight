@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { hashHistory, Router, Route, IndexRoute } from 'react-router'
+import { browserHistory, Router, Route, IndexRoute } from 'react-router'
 import { Provider, connect } from 'react-redux';
 import CoreLayout from '../layouts/CoreLayout';
 import Home from '../routes/Home';
@@ -17,8 +17,8 @@ class AppContainer extends Component {
     const { store, routes } = this.props;
     return (
       <Provider store={store}>
-        <div style={{ height: '100%' }}>
-          <Router history={hashHistory} children={routes} />
+        <div>
+          <Router history={browserHistory} children={routes} />
         </div>
       </Provider>
     );
