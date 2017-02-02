@@ -21,6 +21,9 @@ const Question = db.define('questions', {
   name: {
     type: Sequelize.STRING,
   },
+  questionText: {
+    type: Sequelize.TEXT
+  },
   tests: {
     type: Sequelize.TEXT
   }

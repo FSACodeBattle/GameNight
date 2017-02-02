@@ -6,6 +6,7 @@ const webpackConfig = require('../config/webpack.config')
 const project = require('../config/project.config')
 const compress = require('compression')
 const bodyParser = require('body-parser');
+const history = require('connect-history-api-fallback');
 const app = express();
 
 
@@ -18,6 +19,7 @@ app.use(require('volleyball'));
 // Use BodyParser
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.use(history());
 app.use('/api', require('./routes/'));
 app.use('/join', require('./routes/join.js'));
 
@@ -41,6 +43,7 @@ if (project.env === 'development') {
   app.use(require('webpack-hot-middleware')(compiler, {
     path: '/__webpack_hmr'
   }))
+
   // Serve static assets from ~/public since Webpack is unaware of
   // these files. This middleware doesn't need to be enabled outside
   // of development since this directory will be copied into ~/dist
