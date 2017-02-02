@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const io = require('../../bin/io');
 const socketCallbacks = require('../sockets/socketCallbacks');
+
 function makeid()
 {
     var text = "";
@@ -15,7 +16,7 @@ function makeid()
 router.get('/:invCode', (req, res, next) =>{
 
 	const ioObj = io();
-	console.log(ioObj.sockets);
+	//console.log("this is the ioObj.id", ioObj.id);
 	const gameRoomId = req.params.invCode;
 	console.log("new game room", ioObj.sockets.adapter.rooms);
 	console.log(req.params.invCode);

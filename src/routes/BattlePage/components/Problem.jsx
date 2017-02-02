@@ -10,7 +10,6 @@ const questionArray = question.split("\n");
 export const Problem = () => (
   <div className="container-fluid-problem">
   	<h2> Problem </h2>
-
   	{
   	 	questionArray && questionArray.map((questionLine, i) => (
   	 		<p key={i} style={{textAlign: 'left'}}>{questionLine}</p>

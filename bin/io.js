@@ -11,11 +11,28 @@ module.exports = function(server) {
 		socket.emit('news', {
 			hello: 'world'
 		});
+
 		io.emit('reload');
+
+		socket.on('joinGameLobby', (data) => {
+			if(io.sockets.adapter.rooms[data] === undefined){
+				socket.join(data);
+			}
+
+			else{
+				if(io.sockets.adapter.rooms[data].length < 2) socket.join(data);
+				else {
+					socket.emit('game is full', 'The game lobby is already full');
+				}
+			}
+
+		})
+
 		socket.on('my other event', socketCallbacks.hello);
-		socket.on('joinGameLobby', socketCallbacks.joinGameLobby)
-		var name = "MainLobby";
 		var currentClients = io.sockets.adapter.rooms["MainLobby"];
+
+		socket.on('correct response', socketCallbacks.updatePlayerProgress);
+
 		let playerProgress = [0, 0];
 		socket.on('correct response', (data) => {
   			console.log('receiving correct response on back-end')
@@ -25,7 +42,6 @@ module.exports = function(server) {
 
 		socket.on('disconnect', () => socketCallbacks.reloadLobby(io))
 	});
-
 
 	return io;
 }
