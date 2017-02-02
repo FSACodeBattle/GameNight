@@ -3,8 +3,8 @@ import CodeMirror from 'react-codemirror';
 import axios from 'axios';
 require('codemirror/mode/javascript/javascript');
 
-import io from 'socket.io-client'
-let socket = io(`http://localhost`)
+// import io from 'socket.io-client'
+// let socket = io(`http://localhost`)
 
 
 class CodeEditor extends Component {
@@ -66,9 +66,17 @@ class CodeEditor extends Component {
   handleSubmit() {
     console.log('handleSubmit works if this shows your code', this.state.code);
     const startingTime = this.state.startingTime;
+    const playerNumber = this.state.playerNumber;
+    
     axios.post('/api/code', {
       code: this.state.code, 
       timeElapsed: (Date.now() - startingTime)/1000
+      // pass in playerNumber
+      // pass in playerProgress to get where you are in tests
+
+      // use playerNumber in playerProgress array
+      // to figure out where you are in tests
+
     })
     .then(response => {
       this.setState({results: response.data});
@@ -82,7 +90,10 @@ class CodeEditor extends Component {
       if(response.data.indexOf('failing') === -1){
         console.log('emitting correct response from front-end')
         // console.log(this.state.playerNumber);
-        socket.emit('correct response', {playerNumber: this.state.playerNumber});
+        socket.emit('correct response', {
+          playerNumber: this.state.playerNumber,
+          playerProgress: this.state.playerProgress
+        });
         socket.on('update progress', (playerProgress) => {
           this.setState({
             playerProgress: playerProgress

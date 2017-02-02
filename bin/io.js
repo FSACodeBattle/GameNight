@@ -16,12 +16,8 @@ module.exports = function(server) {
 		var name = "MainLobby";
 		var currentClients = io.sockets.adapter.rooms["MainLobby"];
 		console.log(currentClients);
-		let playerProgress = [0, 0];
-		socket.on('correct response', (data) => {
-  			console.log('receiving correct response on back-end')
-  			playerProgress[data.playerNumber - 1]++;
- 			socket.emit('update progress', playerProgress); 	
-  		});
+
+		socket.on('correct response', socketCallbacks.updatePlayerProgress);
 	});
 	console.log("this is inside the io return");
 	return io;
