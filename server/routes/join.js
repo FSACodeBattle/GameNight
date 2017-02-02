@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const io = require('../../bin/io');
 const socketCallbacks = require('../sockets/socketCallbacks');
-console.log("this is io",io);
 function makeid()
 {
     var text = "";
