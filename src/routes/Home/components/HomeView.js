@@ -4,14 +4,16 @@ import './HomeView.scss'
 import MatchHistory from './MatchHistory'
 import Achievements from './Achievements'
 import Leaderboard from './Leaderboard'
+import MainLobbyContainer from '../../MainLobbyList/containers/MainLobbyContainer'
 
 export const HomeView = () => (
   <div id="homeViewContainer">
     <h4>Welcome!</h4>
     <div className="container-fluid">
       <div className="row">
-    	   <MatchHistory />
-    	   <Leaderboard />
+        <MainLobbyContainer />
+    	  <MatchHistory />
+    	  <Leaderboard />
       </div>
       <div className="row">
         <Achievements />

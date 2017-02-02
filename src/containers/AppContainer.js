@@ -4,6 +4,7 @@ import { Provider, connect } from 'react-redux';
 import CoreLayout from '../layouts/CoreLayout';
 import Home from '../routes/Home';
 import CodeEditor from '../routes/CodeEditor';
+import { fetchClients } from '../store/client';
 
 
 class AppContainer extends Component {
@@ -14,8 +15,12 @@ class AppContainer extends Component {
     return false;
   }
   render () {
-    //console.log("this is io", socket);
     const { store, routes } = this.props;
+
+    socket.on('reload', () => {
+      store.dispatch(fetchClients())
+    });
+
     return (
       <Provider store={store}>
         <div>
@@ -27,4 +32,3 @@ class AppContainer extends Component {
 }
 
 export default AppContainer;
-

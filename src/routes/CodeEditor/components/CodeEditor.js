@@ -3,7 +3,6 @@ import CodeMirror from 'react-codemirror';
 import axios from 'axios';
 require('codemirror/mode/javascript/javascript');
 
-
 class CodeEditor extends Component {
   constructor() {
     super();
@@ -24,7 +23,7 @@ class CodeEditor extends Component {
 
   componentDidMount(){
     // this.tick();
-    
+
     // update playerNumber here using sockets
     // this is dummy code for now
     const startingTime = Date.now();
@@ -68,7 +67,7 @@ class CodeEditor extends Component {
     const playerProgress = this.state.playerProgress;
 
     axios.post('/api/code', {
-      code: this.state.code, 
+      code: this.state.code,
       timeElapsed: (Date.now() - startingTime)/1000,
       // use playerNumber in playerProgress array
       // to figure out where you are in tests
@@ -101,7 +100,7 @@ class CodeEditor extends Component {
 
         // want to leave game if you solved final question correctly
         // socket.on('disconnect', function(){
-        //   console.log('socket id ' + socket.id + ' has disconnected. : ('); 
+        //   console.log('socket id ' + socket.id + ' has disconnected. : (');
         // })
       }
 
@@ -113,7 +112,7 @@ class CodeEditor extends Component {
       mode: "javascript",
       lineNumbers: true
     };
-    
+
     return (
       <div>
         <h1>{this.state.playerProgress.join('-')}</h1>
