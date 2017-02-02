@@ -24,4 +24,4 @@ const updatePlayerProgress = function(data){
  	this.emit('update progress', data.playerProgress);
 }
 
-module.exports = {hello, onUserCodeSubmit, joinMainLobby, joinGameLobby, updatePlayerProgress}
+module.exports = {hello, onUserCodeSubmit, joinGameLobby, updatePlayerProgress}
