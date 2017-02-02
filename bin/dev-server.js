@@ -13,4 +13,4 @@ io.on('connection', function (socket) {
   socket.on('my other event', function (data) {
     console.log(data);
   });
-});
+ });
