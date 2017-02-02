@@ -76,7 +76,10 @@ class CodeEditor extends Component {
       console.log('saved successfully');
 
       // if response.data is correct, then emit question is passed to server
-      if(response.data.slice(0, 39) === "bash: line 21: babel: command not found"){
+      // console.log(response.data.indexOf('failing'))
+
+
+      if(response.data.indexOf('failing') === -1){
         console.log('emitting correct response from front-end')
         // console.log(this.state.playerNumber);
         socket.emit('correct response', {playerNumber: this.state.playerNumber});
@@ -85,7 +88,12 @@ class CodeEditor extends Component {
             playerProgress: playerProgress
           })
         })
-        // console.log(this.state.playerProgress);
+        // want to move onto next question if you got a right answer
+
+        // want to leave game if you solved final question correctly
+        // socket.on('disconnect', function(){
+        //   console.log('socket id ' + socket.id + ' has disconnected. : ('); 
+        // })
       }
 
     })
