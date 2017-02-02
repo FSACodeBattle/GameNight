@@ -7,12 +7,18 @@ import Leaderboard from './Leaderboard'
 import MainLobbyContainer from '../../MainLobbyList/containers/MainLobbyContainer'
 
 export const HomeView = () => (
-  <div>
+  <div id="homeViewContainer">
     <h4>Welcome!</h4>
-      <MainLobbyContainer />
-    	<MatchHistory />
-    	<Achievements />
-    	<Leaderboard />
+    <div className="container-fluid">
+      <div className="row">
+        <MainLobbyContainer />
+    	  <MatchHistory />
+    	  <Leaderboard />
+      </div>
+      <div className="row">
+        <Achievements />
+      </div>
+    </div>
   </div>
 )
 
