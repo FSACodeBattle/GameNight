@@ -20,10 +20,6 @@ app.use(require('volleyball'));
 // Use BodyParser
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-
-
-//API
-
 app.use('/api', require('./routes/'));
 app.use('/join', require('./routes/join.js'));
 app.use(history());

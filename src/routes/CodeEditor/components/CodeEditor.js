@@ -3,9 +3,6 @@ import CodeMirror from 'react-codemirror';
 import axios from 'axios';
 require('codemirror/mode/javascript/javascript');
 
-// import io from 'socket.io-client'
-// let socket = io(`http://localhost`)
-
 
 class CodeEditor extends Component {
   constructor() {

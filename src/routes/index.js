@@ -6,15 +6,21 @@ import Home from './Home/components/HomeView';
 import CounterRoute from './Counter/containers/CounterContainer';
 import CodeEditor from './CodeEditor/components/CodeEditor';
 import BattlePage from './BattlePage/containers/BattlePageContainer';
+import InvitePage from './InvitePage/components/InvitePage';
 
 
 function onJoinEnter(nextRouterState){
-  console.log(nextRouterState.params.invId);
+  //console.log(nextRouterState.params.invId);
+  const lobbyID = nextRouterState.params.invId;
+  console.log("this is client side socket",socket);
+  socket.emit('joinGameLobby', lobbyID);
+
 
 }
 
 export const createRoutes = (store) => (
   <Route path="/" component={CoreLayout} >
+    <Route path="invite" component={InvitePage} />
     <Route path="code_editor" component={CodeEditor} />
     <Route path="counter" component={CounterRoute} />
     <Route path="battlePage" component={BattlePage} />

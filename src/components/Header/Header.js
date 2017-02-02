@@ -4,6 +4,7 @@ import { IndexLink, Link } from 'react-router'
 import './Header.scss'
 
 export const Header = () => (
+
   <nav className="navbar navbar-default">
     <div className="container-fluid">
       <div className="navbar-header">
@@ -11,8 +12,9 @@ export const Header = () => (
       </div>
       <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul className="nav navbar-nav">
-          <li><Link to="battlePage"><a href="#" />Battle Page</Link></li>
-          <li><Link to="code_editor"><a href="#" />Code Editor</Link></li>
+          <li><Link to="battlePage">Battle Page</Link></li>
+          <li><Link to="code_editor">Code Editor</Link></li>
+          <li><Link to="/invite" activeClassName="route--active">Invite</Link></li>
         </ul>
         <form className="navbar-form navbar-left search" id="login">
           <div className="form-group">
@@ -26,3 +28,4 @@ export const Header = () => (
 );
 
 export default Header;
+
