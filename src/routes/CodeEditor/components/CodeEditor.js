@@ -89,6 +89,10 @@ class CodeEditor extends Component {
           })
         })
         // want to move onto next question if you got a right answer
+        // use player progress for advancing the bar as well as
+        // selecting the next question?
+
+        // or is this just a db call in code.js in server/routes?
 
         // want to leave game if you solved final question correctly
         // socket.on('disconnect', function(){
