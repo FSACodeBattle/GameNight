@@ -16,8 +16,9 @@ function makeid()
 router.get('/:invCode', (req, res, next) =>{
 
 	const ioObj = io();
-	//io.socket.on('')
-	console.log("ioObj",ioObj);
+	console.log(ioObj.sockets);
+	const gameRoomId = req.params.invCode;
+	console.log("new game room", ioObj.sockets.adapter.rooms);
 	console.log(req.params.invCode);
 	res.send(200);
 

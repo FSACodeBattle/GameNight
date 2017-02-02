@@ -22,6 +22,10 @@ export const Header = () => (
     <Link to='/battlePage' activeClassName='route--active'>
       Battle Page
     </Link>
+    {' · '}
+    <Link to="/joinGame/sdfsfffffff" activeClassName='route--active'>
+    This is actually just a broken button
+    </Link>
     </div>
 
   </div>

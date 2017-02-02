@@ -7,11 +7,18 @@ import CounterRoute from './Counter/containers/CounterContainer';
 import CodeEditor from './CodeEditor/components/CodeEditor';
 import BattlePage from './BattlePage/containers/BattlePageContainer';
 
+
+function onJoinEnter(nextRouterState){
+  console.log(nextRouterState.params.invId);
+
+}
+
 export const createRoutes = (store) => (
   <Route path="/" component={CoreLayout} >
-    <Route path="/code_editor" component={CodeEditor} />
-    <Route path="/counter" component={CounterRoute} />
-    <Route path="/battlePage" component={BattlePage} />
+    <Route path="code_editor" component={CodeEditor} />
+    <Route path="counter" component={CounterRoute} />
+    <Route path="battlePage" component={BattlePage} />
+    <Route path="joinGame/:invId" onEnter={onJoinEnter} component={BattlePage} />
     <IndexRoute component={Home}/>
   </Route>
 )
