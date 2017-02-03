@@ -23,9 +23,10 @@ module.exports = function(server) {
 				socket.join(data);
 			} else {
 				//if there is one player already in the room we need to grab the questions from the DB
-				//since the game is ready to start and we will have 2 players in the room 
+				//since the game is ready to start and we will have 2 players in the room
 				if (io.sockets.adapter.rooms[data].length === 1) {
 					socket.join(data);
+					io.in(data).emit('redirect', data);
 					//get the random questions from the database
 					Question.findAll({
 							//limit it to the number of questions you want to get
@@ -47,7 +48,7 @@ module.exports = function(server) {
 							//grab the socket Id of all the connected sockets in the room
 							const arrOfSocketIDs = Object.keys(io.sockets.adapter.rooms[data].sockets);
 							const gameData = {
-								// assign player one to the socket that connected first to the room 
+								// assign player one to the socket that connected first to the room
 								player1: arrOfSocketIDs[0],
 								//assign player two to the socket that connected second to the room
 								player2: arrOfSocketIDs[1],
@@ -56,10 +57,10 @@ module.exports = function(server) {
 							}
 							console.log("emit this question data", gameData);
 
-							//emits the game data object to all the connected sockets in the room 
+							//emits the game data object to all the connected sockets in the room
 							io.in(data).emit('sending Questions', gameData);
 						});
-				//if someone else attempts to join the room and it already has 2 people in it			
+				//if someone else attempts to join the room and it already has 2 people in it
 				} else if (io.sockets.adapter.rooms[data].length < 2) socket.join(data);
 				else {
 					//this emit will tell the person who is attempting to join a full room, that is already full

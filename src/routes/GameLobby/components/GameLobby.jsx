@@ -6,6 +6,13 @@ class GameLobby extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    console.log(this.props);
+    socket.on('redirect', data => {
+      this.props.router.push('/battlePage');
+    })
+  }
+
   render() {
     return (
       <div style={{color:"white"}}>
