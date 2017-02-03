@@ -21,3 +21,22 @@
 	max-width: 100%;
 	padding: 1em;
 }
+
+
+.CodeMirror-gutter-wrapper {
+ left: -30px !important;
+}
+.CodeMirror-sizer {
+ margin-left: 30px !important;
+ min-width: 7px !important;
+}
+.CodeMirror-gutters{
+ left: 0 !important;
+}
+.CodeMirror-gutter.CodeMirror-linenumbers{
+ width: 29px !important;
+}
+
+.CodeMirror-linenumber.CodeMirror-gutter-elt {
+ width: 21px !important;
+}

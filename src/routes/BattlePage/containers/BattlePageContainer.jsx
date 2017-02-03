@@ -32,14 +32,14 @@ class BattlePage extends Component {
         //console.log(socket);
         socket.on('sending Questions', (data) => {
         //console.log(data);
-        this.setState({player1: data.player1, player2: data.player2, questionsArr: data.questions })
+        this.setState({player1: data.player1, player2: data.player2, questionsArr: data.questions})
     })
   }
  
 
 
   render() {
-
+    console.log("render of the container",this.state.questionsArr[this.state.currentQuestion]);
     return (
         <div>
           <div className="row-fluid-clock">
@@ -54,7 +54,7 @@ class BattlePage extends Component {
                 <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
               </div>
               <div className="col-xs-8">
-                <CodeEditor />
+                <CodeEditor currentQuestionID={this.state.questionsArr[this.state.currentQuestion]} />
               </div>
             </div>
           </div>
