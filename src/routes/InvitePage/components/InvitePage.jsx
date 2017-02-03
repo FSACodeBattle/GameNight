@@ -16,7 +16,7 @@ class InvitePage extends Component {
   }
 
   componentDidMount(){
-  		
+
     }
   
 
@@ -70,7 +70,7 @@ class InvitePage extends Component {
     return (
       <div>
         <h1> THIS IS THE INVITE PAGE </h1>
-        <input size="32" type="text" value={inviteURL}/>
+        <input size="3" type="text" value={inviteURL}/>
       </div>
     );
   }
