@@ -15,6 +15,7 @@ export const Header = () => (
           <li><Link to="battlePage">Battle Page</Link></li>
           <li><Link to="code_editor">Code Editor</Link></li>
           <li><Link to="/invite" activeClassName="route--active">Invite</Link></li>
+          <li><Link to={`/lobby/${makeid()}`} >Create Lobby</Link></li>
         </ul>
         <form className="navbar-form navbar-left search" id="login">
           <div className="form-group">
@@ -27,5 +28,12 @@ export const Header = () => (
   </nav>
 );
 
-export default Header;
+function makeid() {
+    let text = "";
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for(let i = 0; i < 6; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    return text;
+}
 
+export default Header;
