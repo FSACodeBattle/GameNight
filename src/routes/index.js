@@ -23,6 +23,7 @@ function onPageEnter(store) {
 
 export const createRoutes = (store) => (
   <Route path="/" component={CoreLayout} onEnter={() => onPageEnter(store)}>
+    <Route path="lobby/:roomid" />
     <Route path="invite" component={InvitePage} />
     <Route path="code_editor" component={CodeEditor} />
     <Route path="counter" component={CounterRoute} />
