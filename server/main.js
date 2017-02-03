@@ -42,7 +42,7 @@ passport.use(new LocalStrategy(function(username, pass, cb){
       return cb(null, false); }
       if (!bcrypt.compareSync(pass, user.password)){
         return cb(null, false); }
-        console.log(user);
+        console.log();
         return cb(null, user);
       })
     }))
@@ -63,7 +63,7 @@ app.use(passport.session());
 app.post("/signin", passport.authenticate('local', {
   failureRedirect: '/signin',
   successRedirect: '/posts'
-}))
+}));
 
 app.post("/signup", function(req, res, next){
   User.findOne({
@@ -85,6 +85,11 @@ app.post("/signup", function(req, res, next){
     }
   })
 })
+
+app.get('/user', (req, res, next) => {
+  res.send(req.user);
+});
+
 app.use('/api', require('./routes/'));
 app.use('/join', require('./routes/join.js'));
 
