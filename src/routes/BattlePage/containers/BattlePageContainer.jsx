@@ -11,6 +11,7 @@ class BattlePage extends Component {
     this.state = {
       player1: '',
       player2: '',
+      //holds the question objects
       questionsArr: [], 
       code: '',
       results: '',
@@ -21,16 +22,16 @@ class BattlePage extends Component {
       playerProgress: [0, 0],
       playerNumber: 0,
       numberOfQuestions: 2,
+      //the index of the questionArr
       currentQuestion: 0
     }
 
   }
 
   componentDidMount(){
-
         //console.log(socket);
         socket.on('sending Questions', (data) => {
-        console.log(data);
+        //console.log(data);
         this.setState({player1: data.player1, player2: data.player2, questionsArr: data.questions })
     })
   }
@@ -49,6 +50,7 @@ class BattlePage extends Component {
               <div className="col-xs-4">
                 <h2>{this.state.player1}</h2>
                 <h2>{this.state.player2}</h2>
+                {/**Passes in the users current question object to the Problem component by using ArrayOfQuestions[current question index]**/}
                 <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
               </div>
               <div className="col-xs-8">
