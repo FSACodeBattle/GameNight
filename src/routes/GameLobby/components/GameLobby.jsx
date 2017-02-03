@@ -11,10 +11,7 @@ class GameLobby extends React.Component {
       <div style={{color:"white"}}>
         Lobby
         <div>
-          Box with players
-        </div>
-        <div>
-          <textarea value={`localhost/lobby/${this.props.roomid}`} style={{textAlign: "center", color: "black"}} rows="1" readOnly>
+          <textarea value={`localhost/lobby/${this.props.roomid}`} style={{resize: "none", textAlign: "center", color: "black"}} rows="1" readOnly>
           </textarea>
         </div>
       </div>
