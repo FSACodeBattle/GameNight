@@ -4,9 +4,6 @@ class GameLobby extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      roomid: this.props.routeParams.roomid,
-    }
   }
 
   render() {
