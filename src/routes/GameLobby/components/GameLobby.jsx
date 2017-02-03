@@ -8,7 +8,7 @@ class GameLobby extends React.Component {
 
   componentDidMount() {
     console.log(this.props);
-    socket.on('redirect', data => {
+    socket.on('startGame', data => {
       this.props.router.push('/battlePage');
     })
   }

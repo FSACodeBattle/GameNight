@@ -26,7 +26,7 @@ module.exports = function(server) {
 				//since the game is ready to start and we will have 2 players in the room
 				if (io.sockets.adapter.rooms[data].length === 1) {
 					socket.join(data);
-					io.in(data).emit('redirect', data);
+					io.in(data).emit('startGame', data);
 					//get the random questions from the database
 					Question.findAll({
 							//limit it to the number of questions you want to get
