@@ -2,83 +2,62 @@ const { db } = require('./database.js')
 
 const seedUsers = () => db.Promise.map(
 	[{
-		id:1,	
 		name: "Jonathan Guy",
 		email: "jguy@gmail.com",
 	}, {
-		id:2,
 		name: "Buddy Pal",
 		email: "palbud@gmail.com",
 	}, {
-		id:3,
 		name: "Emma Watson",
 		email: "emmawatson@gmail.com",
 	}, {
-		id:4,
 		name: "Harry Potter",
 		email: "harrypotter@gmail.com",
 	}, {
-		id:5,
 		name: "Ron Weaseley",
 		email: "ronweaseley@gmail.com",
 	}, {
-		id:6,
 		name: "Barack Obama",
 		email: "bobama@yahoo.com",
 	}, {
-		id:7,
 		name: "Joe Biden",
 		email: "jbiden@hotmail.com",
 	}, {
-		id:8,
 		name: "Michelle Obama",
 		email: "mobama@gmail.com",
 	}, {
-		id:9,
 		name: "Hermione Granger",
 		email: "hgranger@gmail.com",
 	}, {
-		id:10,
 		name: "Hillary Clinton",
 		email: "hclinton@gmail.com",
 	}], user => db.model('users').create(user))
 
 const seedQuestions = () => db.Promise.map(
-	[{
-		id:1,	
-		name: "Fibonacci",
-		tests: "Fibonacci Tests"
-	}, {
-		id:2,	
-		name: "Fizzbuzz",
-		tests: "Fizzbuzz Tests"
-	}, {
-		id:3,	
-		name: "DP Problem",
-		tests: "DP Tests"
-	}, {
-		id:4,	
-		name: "JavaScript Problem",
-		tests: "JavaScript Tests"
-	}, {
-		id:5,
-		name: "RegEx Problem",
-		tests: "Regex Tests",
+	[{	
+		name: "Question 1",
+		questionText: `Make a function called returnOne that returns 1\n
+		This is filler text for a second line.\n
+		This is filler text for a third line.\n`,
+		tests: `describe("returnOne", function(){
+        			it("should return 1", function(){
+         	 			assert.equal(1, returnOne());
+      				})
+    			})`
+	}, {	
+		name: "Question 2",
+		questionText: "Make a function called returnTwo that return 2",
+		tests: `describe("returnTwo", function(){
+        			it("should return 2", function(){
+         	 			assert.equal(2, returnTwo());
+      				})
+    			})`
 	}], question => db.model('questions').create(question))
 
 const seedFights = () => db.Promise.map(
-	[{
-		id:1,	
+	[{	
 		number: 1,
 		questions: [1, 2]
-	}, {
-		id:2,	
-		number: 2,
-		questions: [1, 2, 4]
-	}, {
-		id:3,	
-		number: 3,
-		questions: [3, 5]
 	}], fight => db.model('fights').create(fight))
 
 
@@ -94,5 +73,3 @@ db.sync()
 	.then((fights) => console.log(`Seeded ${fights.length} fights OK`))
 	.catch(error => console.error(error))
 	.finally(() => db.close())
-
-

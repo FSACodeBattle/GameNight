@@ -18,10 +18,10 @@ router.get('/:invCode', (req, res, next) =>{
 	const ioObj = io();
 	//console.log("this is the ioObj.id", ioObj.id);
 	const gameRoomId = req.params.invCode;
-	console.log("new game room", ioObj.sockets.adapter.rooms);
+	console.log("new game room", ioObj.sockets.adapter.rooms[gameRoomId].sockets);
 	console.log(req.params.invCode);
 	res.send(200);
 
 })
-
+console.log(makeid());
 module.exports = router;
