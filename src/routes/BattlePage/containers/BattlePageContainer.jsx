@@ -12,7 +12,7 @@ class BattlePage extends Component {
       player1: '',
       player2: '',
       //holds the question objects
-      questionsArr: [], 
+      questionsArr: [],
       code: '',
       results: '',
       // timeRemaining: 60,
@@ -25,9 +25,7 @@ class BattlePage extends Component {
       //the index of the questionArr
       currentQuestion: 0
     }
-
   }
-
   componentDidMount(){
         //console.log(socket);
         socket.on('sending Questions', (data) => {
@@ -35,11 +33,7 @@ class BattlePage extends Component {
         this.setState({player1: data.player1, player2: data.player2, questionsArr: data.questions })
     })
   }
- 
-
-
   render() {
-
     return (
         <div>
           <div className="row-fluid-clock">
