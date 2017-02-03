@@ -8,4 +8,11 @@ router.get('/all', (req, res, next) => {
   res.send(clients);
 })
 
+router.get('/room/:roomid', (req, res, next) => {
+  const ioObj = io();
+  const roomId = req.params.roomid;
+  const clients = Object.keys(ioObj.sockets.adapter.rooms[roomId].sockets);
+  res.send(clients);
+})
+
 module.exports = router;

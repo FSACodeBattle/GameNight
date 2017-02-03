@@ -7,8 +7,10 @@ import CounterRoute from './Counter/containers/CounterContainer';
 import CodeEditor from './CodeEditor/components/CodeEditor';
 import BattlePage from './BattlePage/containers/BattlePageContainer';
 import InvitePage from './InvitePage/components/InvitePage';
+import GameLobbyContainer from './GameLobby/containers/GameLobbyContainer';
 
 import { fetchClients } from '../store/client'
+import { setRoomId } from '../store/gamelobby';
 
 function onJoinEnter(nextRouterState){
   //console.log(nextRouterState.params.invId);
@@ -21,8 +23,14 @@ function onPageEnter(store) {
   store.dispatch(fetchClients());
 }
 
+function onGameLobbyEnter(nextRouterState, store) {
+  const roomid = nextRouterState.params.roomid;
+  socket.emit('joinGameLobby', roomid);
+  store.dispatch(setRoomId(roomid));
+}
 export const createRoutes = (store) => (
   <Route path="/" component={CoreLayout} onEnter={() => onPageEnter(store)}>
+    <Route path="lobby/:roomid" component={GameLobbyContainer} onEnter={(nextRouterState) => onGameLobbyEnter(nextRouterState, store)}/>
     <Route path="invite" component={InvitePage} />
     <Route path="code_editor" component={CodeEditor} />
     <Route path="counter" component={CounterRoute} />
