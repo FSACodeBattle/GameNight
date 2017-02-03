@@ -45,7 +45,7 @@ module.exports = function(server) {
 								}
 							})
 							//grab the socket Id of all the connected sockets in the room
-							const arrOfSocetIDs = Object.keys(io.sockets.adapter.rooms[data].sockets);
+							const arrOfSocketIDs = Object.keys(io.sockets.adapter.rooms[data].sockets);
 							const gameData = {
 								// assign player one to the socket that connected first to the room 
 								player1: arrOfSocketIDs[0],
