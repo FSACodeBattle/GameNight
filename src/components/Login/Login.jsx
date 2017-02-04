@@ -21,7 +21,10 @@ class Login extends React.Component {
     console.log("I'm Here");
 
     axios.post('/signin', this.state)
-    .then(user => store.dispatch(setUser(user.data)));
+    .then(user => {
+      store.dispatch(setUser(user.data));
+      this.props.router.push('/');
+    });
   }
 
   onChangeHandler(event) {
@@ -35,7 +38,7 @@ class Login extends React.Component {
           <label>Username: </label>
           <input type="text" id="username"></input>
           <label>Password: </label>
-          <input type="text" id="password"></input>
+          <input type="password" id="password"></input>
           <button type="submit">Submit</button>
         </form>
       </div>
