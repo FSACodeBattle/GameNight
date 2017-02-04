@@ -3,6 +3,7 @@ import axios from 'axios';
 import create from '../../store/createStore';
 import { setUser } from '../../store/user';
 const store = create();
+import { Link } from 'react-router';
 
 class Login extends React.Component {
   constructor(props) {
@@ -18,13 +19,8 @@ class Login extends React.Component {
 
   onSubmitHandler(event) {
     event.preventDefault();
-    console.log("I'm Here");
-
     axios.post('/signin', this.state)
-    .then(user => {
-      store.dispatch(setUser(user.data));
-      this.props.router.push('/');
-    });
+    .then(user => store.dispatch(setUser(user.data)));
   }
 
   onChangeHandler(event) {
@@ -33,13 +29,12 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{margin: "auto"}}>
         <form onChange={this.onChangeHandler} onSubmit={this.onSubmitHandler}>
-          <label>Username: </label>
-          <input type="text" id="username"></input>
-          <label>Password: </label>
-          <input type="password" id="password"></input>
+          <input type="text" id="username" placeholder="username"></input>
+          <input type="password" id="password" placeholder="password"></input>
           <button type="submit">Submit</button>
+          <Link to="/signup">[Sign Up]</Link>
         </form>
       </div>
     )
