@@ -30,7 +30,7 @@ module.exports = function(server) {
 					//get the random questions from the database
 					Question.findAll({
 							//limit it to the number of questions you want to get
-							limit: 2,
+							limit: 3,
 							//gets random rows from the questions table
 							order: [
 								[Sequelize.fn('RANDOM')]
