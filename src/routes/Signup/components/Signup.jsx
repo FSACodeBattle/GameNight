@@ -60,7 +60,7 @@ class Signup extends React.Component {
         <form onChange={this.onChangeHandler} onSubmit={this.onSubmitHandler}>
           <input type="text" id="username" placeholder="username" className="loginForm"></input>
           <input type="password" id="password" placeholder="password" className="loginForm"></input>
-          <input type="password" id="confirmPassword" placeholder="confirmPassword" className="loginForm"></input>
+          <input type="password" id="confirmPassword" placeholder="confirm password" className="loginForm"></input>
           <input type="text" id="name" placeholder="name" className="loginForm"></input>
           <input type="text" id="email" placeholder="email" className="loginForm"></input>
           <button type="submit">Submit</button>
