@@ -1,8 +1,4 @@
 import React from 'react';
-import createStore from '../../../store/createStore';
-
-const initialState = window.___INITIAL_STATE__;
-const store = createStore(initialState);
 
 class MainLobby extends React.Component {
   constructor(props) {

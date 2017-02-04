@@ -30,22 +30,22 @@ app.use(bodyParser.json());
 app.use(require('cookie-parser')());
 app.use(require('express-session')({ secret: 'battlecode', resave: false, saveUninitialized: false }));
 
+
 passport.use(new LocalStrategy(function(username, pass, cb){
+  console.log(username, pass);
   var hashedPass = bcrypt.hashSync(pass, 10);
-  User.findOne({
-    where: {
-      username: username
-    }
-  }).then(function(user, err){
-    if (err) { return cb(err); }
-    if (!user) {
-      return cb(null, false); }
-      if (!bcrypt.compareSync(pass, user.password)){
-        return cb(null, false); }
-        console.log();
-        return cb(null, user);
-      })
-    }))
+  User.findOne({ where: { username: username } })
+  .then(function(user, err){
+    if (err) return cb(err);
+    if (!user) return cb(null, false);
+    if (!bcrypt.compareSync(pass, user.password)) return cb(null, false);
+
+    return cb(null, user);
+  });
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser(function(user, cb) {
   cb(null, user.id);
@@ -57,13 +57,8 @@ passport.deserializeUser(function(id, cb) {
   });
 });
 
-app.use(passport.initialize());
-app.use(passport.session());
 
-app.post("/signin", passport.authenticate('local', {
-  failureRedirect: '/signin',
-  successRedirect: '/posts'
-}));
+app.post("/signin", passport.authenticate('local', {successRedirect: '/user'}));
 
 app.post("/signup", function(req, res, next){
   User.findOne({
@@ -78,7 +73,7 @@ app.post("/signup", function(req, res, next){
         name: req.body.name,
         email: req.body.email
       }).then(function(user){
-        passport.authenticate("local", {failureRedirect:"/signup", successRedirect: "/posts"})(req, res, next)
+        passport.authenticate("local", {});
       })
     } else {
       res.send("user exists")
@@ -87,6 +82,7 @@ app.post("/signup", function(req, res, next){
 })
 
 app.get('/user', (req, res, next) => {
+  console.log("I'm here");
   res.send(req.user);
 });
 
