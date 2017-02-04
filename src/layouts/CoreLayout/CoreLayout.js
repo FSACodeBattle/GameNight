@@ -8,7 +8,7 @@ export const CoreLayout = ({ children }) => (
     <Header />
     <div className="container-fluid core-layout__viewport">
       <div className="row">
-        <div className="col col-xs-12 col-md-10 col-md-offset-1">
+        <div className="col-xs-12 col-md-12 col-lg-12" id="children">
           {children}
         </div>
       </div>

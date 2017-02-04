@@ -1,7 +1,6 @@
 // #match-history-container {
 //   background-color: #1F1F1F;
 // }
-
 #matchComponent {
   background-color: #131414;
   color: #777;
@@ -10,10 +9,13 @@
 }
 .table-responsive {
   color: #777;
+  width: 100%;
 }
-.container-fluid-matchhistory {
-  background-color: blue;
-}
+
 h2 {
+  text-align: center;
+}
+
+td {
   text-align: center;
 }

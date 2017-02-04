@@ -8,12 +8,15 @@ import MainLobbyContainer from '../../MainLobbyList/containers/MainLobbyContaine
 
 export const HomeView = () => (
   <div id="homeViewContainer">
+    <img src="warrior.jpeg" className="img-fluid" alt="Responsive image"/>
     <h4 style={{color:"#777"}}>Welcome!</h4>
     <div className="container-fluid">
-      <div className="row">
+      <div className="row-fluid">
         <MainLobbyContainer />
-    	  <MatchHistory />
-    	  <Leaderboard />
+      </div>
+      <div className="row">
+        <MatchHistory />
+        <Leaderboard />
       </div>
       <div className="row">
         <Achievements />
