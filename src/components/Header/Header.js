@@ -1,8 +1,10 @@
 'use strict';
-import React from 'react'
-import { IndexLink, Link } from 'react-router'
-import './Header.scss'
+import React from 'react';
+import { IndexLink, Link } from 'react-router';
+import './Header.scss';
 import Login from '../Login/Login';
+import create from '../../store/createStore';
+const store = create();
 
 export const Header = (props) => (
 
@@ -18,13 +20,10 @@ export const Header = (props) => (
           <li><Link to="/invite" activeClassName="route--active">Invite</Link></li>
           <li><Link to={`/lobby/${makeid()}`} >Create Lobby</Link></li>
         </ul>
-        {/* <form className="navbar-form navbar-left search" id="login">
-          <div className="form-group">
-            <input type="text" className="form-control" placeholder="Search" />
-          </div>
-          <button type="submit" className="btn btn-default">Submit</button>
-        </form> */}
-        <Login props={props} />
+        {
+          
+        }
+        <Login/>
       </div>
     </div>
   </nav>

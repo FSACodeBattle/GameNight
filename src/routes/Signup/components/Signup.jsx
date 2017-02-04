@@ -36,7 +36,6 @@ class Signup extends React.Component {
     else {
       axios.post('signup', this.state)
       .then(result => {
-        console.log(result, result.data === 'user exists');
         if(result.data === "user exists") this.setState({error: true, errorText: "User already exists!"});
         else {
           store.dispatch(setUser(result.data));
