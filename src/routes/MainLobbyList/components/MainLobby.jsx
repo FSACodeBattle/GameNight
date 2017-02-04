@@ -13,7 +13,9 @@ class MainLobby extends React.Component {
     const clients = this.props.clients.clients;
     return (
       <div>
-        Warriors
+        <div style={{color:"#777"}}>
+          Warriors
+        </div>
         <div>
           { clients.length > 1 ?
             clients.filter(client => client !== socket.id).map((client, idx) => <div key={idx}>{client}</div>)

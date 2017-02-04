@@ -31,6 +31,18 @@ export const Leaderboard = () => (
 				        <td>hello</td>
 				      </tr>
 				      <tr>
+				        <th scope="row">2</th>
+				        <td>62</td>
+				        <td>Loss</td>
+				        <td>hello</td>
+				      </tr>
+				      <tr>
+				        <th scope="row">2</th>
+				        <td>62</td>
+				        <td>Loss</td>
+				        <td>hello</td>
+				      </tr>
+				      <tr>
 				        <th scope="row">3</th>
 				        <td>77</td>
 				        <td>Win</td>

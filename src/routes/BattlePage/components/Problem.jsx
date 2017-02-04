@@ -6,27 +6,24 @@ import './Problem.scss';
 export const Problem = (props) => {
 
 	// get the current question that was passed in through props
-	const currentQuestion = props.CurrentQuestion; 
-			
-		//if the current question is defined 
-		if (currentQuestion){
+	const currentQuestion = props.CurrentQuestion;
+
+		//if the current question is defined
+	if (currentQuestion){
 			//split the qurstion text by the next line tags
-			var splitQuestion = currentQuestion.questionText.split("\n")
+		var splitQuestion = currentQuestion.questionText.split("\n")
 			//map over each "line" of text and wrap them in <p> tags
-			var pTags = splitQuestion.map((questionLine, i) => (
-		 		<p key={i} style={{textAlign: 'left'}}>{questionLine}</p>
+		var pTags = splitQuestion.map((questionLine, i) => (
+		 	<p key={i} style={{textAlign: 'left'}}>{questionLine}</p>
 		 	))
-		}
-
+	}
 	return(
-
 		<div className="container-fluid-problem">
 			<h3> Problem </h3>
 			<h3> {currentQuestion && currentQuestion.questionName} </h3>
 			<div>{currentQuestion && pTags}</div>
 		</div>
 		)
-
 }
 
 export default Problem;

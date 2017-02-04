@@ -7,7 +7,11 @@ export const CoreLayout = ({ children }) => (
   <div className="container-fluid text-center corelay">
     <Header />
     <div className="container-fluid core-layout__viewport">
-      {children}
+      <div className="row">
+        <div className="col col-xs-12 col-md-10 col-md-offset-1">
+          {children}
+        </div>
+      </div>
     </div>
   </div>
 )

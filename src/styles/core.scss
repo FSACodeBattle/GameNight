@@ -1,6 +1,8 @@
+@import 'base';
 @import '~normalize.css/normalize';
 @import '../../node_modules/codemirror/lib/codemirror.css';
 @import '../../node_modules/codemirror/theme/solarized.css';
+
 
 // Some best-practice CSS that's useful for most apps
 // Just remove them if they're not what you want
@@ -20,4 +22,5 @@ body {
   box-sizing: inherit;
 }
 
-@import 'base';
+
+

@@ -3,15 +3,17 @@
 // }
 
 #matchComponent {
-  background-color: pink;
+  background-color: #131414;
+  color: #777;
   height: 305px;
   overflow-y: scroll;
 }
-
+.table-responsive {
+  color: #777;
+}
 .container-fluid-matchhistory {
   background-color: blue;
 }
-
 h2 {
   text-align: center;
 }

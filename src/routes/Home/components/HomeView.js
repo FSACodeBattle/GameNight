@@ -8,7 +8,7 @@ import MainLobbyContainer from '../../MainLobbyList/containers/MainLobbyContaine
 
 export const HomeView = () => (
   <div id="homeViewContainer">
-    <h4>Welcome!</h4>
+    <h4 style={{color:"#777"}}>Welcome!</h4>
     <div className="container-fluid">
       <div className="row">
         <MainLobbyContainer />

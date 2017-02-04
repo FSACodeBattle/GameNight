@@ -1,4 +1,4 @@
-import React , { Component } from 'react'
+import React, { Component } from 'react'
 import './BattlePageContainer.scss';
 import Problem from '../components/Problem'
 import CountdownClock from '../components/CountdownClock'
@@ -41,13 +41,13 @@ class BattlePage extends Component {
           </div>
           <div className="container-fluid-row-battle">
             <div className="row-fluid-battlepage">
-              <div className="col-xs-4">
-                <h2>{this.state.player1}</h2>
-                <h2>{this.state.player2}</h2>
+              <div className="col col-xs-4 col-md-4 col-lg-4">
+                <h4>{this.state.player1}</h4>
+                <h4>{this.state.player2}</h4>
                 {/**Passes in the users current question object to the Problem component by using ArrayOfQuestions[current question index]**/}
                 <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
               </div>
-              <div className="col-xs-8">
+              <div className="col col-xs-4 col-md-8 col-lg-12">
                 <CodeEditor />
               </div>
             </div>

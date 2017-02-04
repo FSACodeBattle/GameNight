@@ -17,7 +17,7 @@ export const Header = () => (
           <li><Link to="/invite" activeClassName="route--active">Invite</Link></li>
           <li><Link to={`/lobby/${makeid()}`} >Create Lobby</Link></li>
         </ul>
-        <form className="navbar-form navbar-left search" id="login">
+        <form className="navbar-form navbar-left search pull-right" id="login">
           <div className="form-group">
             <input type="text" className="form-control" placeholder="Search" />
           </div>

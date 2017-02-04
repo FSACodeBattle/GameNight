@@ -5,10 +5,16 @@
   margin: 1.5rem auto;
 }
 
+#codeEditorForm textarea {
+  width: 100%;
+  min-height: 200px;
+}
+
 .codeMirror {
 	height: auto;
 	width: 100%;
 }
+
 
 .ReactCodeMirror {
 	border: 3px solid black;

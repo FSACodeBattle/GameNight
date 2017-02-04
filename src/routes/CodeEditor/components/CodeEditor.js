@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import CodeMirror from 'react-codemirror';
 import axios from 'axios';
+import './CodeEditor.scss';
+import 'codemirror/lib/codemirror.css'
+require('codemirror/theme/solarized.css');
 require('codemirror/mode/javascript/javascript');
 
 class CodeEditor extends Component {
@@ -110,28 +113,39 @@ class CodeEditor extends Component {
   render() {
     var options = {
       mode: "javascript",
-      lineNumbers: true
+      lineNumbers: true,
+      theme: "solarized dark"
     };
 
     return (
       <div>
-        <h1>{this.state.playerProgress.join('-')}</h1>
-        <h1>Enter Code</h1>
-        <div>
-          <CodeMirror
-            value={this.state.code}
-            onChange={this.updateCode}
-            options={options}
-          />
+        <h3 style={{color: "#777"}}>
+          {this.state.playerProgress.join('-')}
+        </h3>
+        <h4 style={{color:"#777"}}>Enter Code</h4>
+        <div className="container">
+          <div className="row">
+            <div className="col col-xs-12 col-md-10 col-md-offset-1">
+              <CodeMirror
+                value={this.state.code}
+                onChange={this.updateCode}
+                options={options}
+              />
+              <button onClick={this.handleSubmit}>SUBMIT</button>
+              <h3 style={{color: "#777"}}>Answer</h3>
+              <form id="codeEditorForm">
+                <textarea value={this.state.results}></textarea>
+              </form>
+            </div>
+          </div>
         </div>
-        <button onClick={this.handleSubmit}>SUBMIT</button>
-        <h2>Your answer</h2>
-        <form>
-          <textarea rows="10" cols="100" value={this.state.results}></textarea>
-        </form>
       </div>
     );
   }
 }
 
 export default CodeEditor
+
+
+
+
