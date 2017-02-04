@@ -32,7 +32,6 @@ app.use(require('express-session')({ secret: 'battlecode', resave: false, saveUn
 
 
 passport.use(new LocalStrategy(function(username, pass, cb){
-  console.log(username, pass);
   var hashedPass = bcrypt.hashSync(pass, 10);
   User.findOne({ where: { username: username } })
   .then(function(user, err){
@@ -73,10 +72,10 @@ app.post("/signup", function(req, res, next){
         name: req.body.name,
         email: req.body.email
       }).then(function(user){
-        passport.authenticate("local", {});
+        passport.authenticate("local", {successRedirect: '/user'});
       })
     } else {
-      res.send("user exists")
+      res.send("user exists");
     }
   })
 })
