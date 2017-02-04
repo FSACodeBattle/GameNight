@@ -12,9 +12,11 @@ class Signup extends React.Component {
     this.state = {
       username: '',
       password: '',
+      confirmPassword: '',
       name: '',
-      password: '',
-      userExists: false
+      email: '',
+      errorText: '',
+      error: false
     }
 
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -23,15 +25,25 @@ class Signup extends React.Component {
 
   onSubmitHandler(event) {
     event.preventDefault();
-    axios.post('signup', this.state)
-    .then(result => {
-      console.log(result, result.data === 'user exists');
-      if(result.data === "user exists") this.setState({userExists: true});
-      else {
-        store.dispatch(setUser(result.data));
-        this.props.router.push('/');
-      }
-    })
+    if(!this.state.username || !this.state.password || !this.state.confirmPassword
+        || !this.state.name || !this.state.email)
+    {
+      this.setState({error: true, errorText: "One or more invalid fields!"});
+    }
+    else if(this.state.password !== this.state.confirmPassword) {
+      this.setState({error: true, errorText: "Passwords do not match!"});
+    }
+    else {
+      axios.post('signup', this.state)
+      .then(result => {
+        console.log(result, result.data === 'user exists');
+        if(result.data === "user exists") this.setState({error: true, errorText: "User already exists!"});
+        else {
+          store.dispatch(setUser(result.data));
+          this.props.router.push('/');
+        }
+      })
+    }
   }
 
   onChangeHandler(event) {
@@ -41,8 +53,8 @@ class Signup extends React.Component {
   render() {
     return (
       <div>
-        { this.state.userExists
-          ? <div style={{color: "red"}}>User already exists!</div>
+        { this.state.error
+          ? <div style={{color: "red"}}>{ this.state.errorText }</div>
           : null
         }
         <form onChange={this.onChangeHandler} onSubmit={this.onSubmitHandler}>

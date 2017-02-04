@@ -60,30 +60,21 @@ passport.deserializeUser(function(id, cb) {
 app.post("/signin", passport.authenticate('local', {successRedirect: '/user'}));
 
 app.post("/signup", function(req, res, next){
-  User.findOne({
-    where: {
-      username: req.body.username
-    }
-  }).then(function(user){
-    if(!user){
-      User.create({
-        username: req.body.username,
-        password: bcrypt.hashSync(req.body.password, 10),
-        name: req.body.name,
-        email: req.body.email
-      }).then(function(user){
-        passport.authenticate("local", {successRedirect: '/user'});
-      })
-    } else {
-      res.send("user exists");
-    }
-  })
+  console.log(req.body);
+  User.findOne({ where: { username: req.body.username } })
+    .then(function(user){
+      if(!user){
+        User.create({
+          username: req.body.username,
+          password: bcrypt.hashSync(req.body.password, 10),
+          name: req.body.name,
+          email: req.body.email
+        }).then(user => res.send(user));
+      } else res.send("user exists");
+    })
 })
 
-app.get('/user', (req, res, next) => {
-  console.log("I'm here");
-  res.send(req.user);
-});
+app.get('/user', (req, res, next) => res.send(req.user));
 
 app.use('/api', require('./routes/'));
 app.use('/join', require('./routes/join.js'));
