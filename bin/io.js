@@ -70,6 +70,12 @@ module.exports = function(server) {
 
 		})
 
+		socket.on('gameOver', (data) => {
+			console.log("gameover event ", data);
+			io.in(data.roomID).emit('gameWinningState', data);
+		})
+
+
 		socket.on('my other event', socketCallbacks.hello);
 		var currentClients = io.sockets.adapter.rooms["MainLobby"];
 

@@ -23,11 +23,17 @@ class BattlePage extends Component {
       startingTime: null,
       playerProgress: [0, 0],
       playerNumber: 0,
-      numberOfQuestions: 3
+      numberOfQuestions: 1, 
+      roomID: ''
       // timeRemaining: 60,
       // prevTime: null,
     }
+    this.gameWinningEmitEvent = this.gameWinningEmitEvent.bind(this);
 
+  }
+
+  gameWinningEmitEvent(){
+    socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player1.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed})
   }
 
   componentDidMount(){
@@ -37,6 +43,7 @@ class BattlePage extends Component {
     this.setState({player1: {id:data.player1, progress: 0}, player2: {id: data.player2, progress: 0}, questionsArr: data.questions})
     })
 
+    
     //when someone gets a question correct
     socket.on('updatePlayerScore', (data) => {
       console.log("socket data",data);
@@ -47,12 +54,21 @@ class BattlePage extends Component {
         //if the the clients socket ID matches the socket ID of player 1  
         if(socket.id === data.currentPlayer){
           //change player 1's progress and their current question 
-          this.setState( {player1: {id: this.state.player1.id, progress: (this.state.player1.progress + 1)}, currentQuestion: (this.state.currentQuestion + 1)});
+          this.setState( {player1: {id: this.state.player1.id, progress: (this.state.player1.progress + 1)}, currentQuestion: (this.state.currentQuestion + 1), roomID: data.roomID}, () => {
+            if(this.state.player1.progress === 1){
+                //
+                console.log("inside win check")
+                //
+                socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player1.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});
+                
+              }
+          });
+          
           console.log('Player 1 progress updated and the question should have changed', this.state.player1.progress)
         }
         else{
           //change player 1's progress to update the score
-          this.setState( {player1: {id: this.state.player1.id, progress: (this.state.player1.progress + 1)}});
+          this.setState( {player1: {id: this.state.player1.id, progress: (this.state.player1.progress + 1)}, roomID: data.roomID});
           console.log('Player 1 progress updated', this.state.player1.progress)
         }
       }
@@ -61,22 +77,37 @@ class BattlePage extends Component {
         console.log("player 2 state",this.state.player2);
         //if the client is player 2 update their progress and change the score       
         if(socket.id === data.currentPlayer){
-          this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1)}, currentQuestion: (this.state.currentQuestion + 1)});
-          console.log('Player 2 progress updated and the question should have changed', this.state.player2.progress)
+          this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1)}, currentQuestion: (this.state.currentQuestion + 1), roomID: data.roomID}, () => {
+              if(this.state.player2.progress === 1){
+                    console.log("inside win check")
+                    //
+                    socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player2.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});
+                    
+                  }
+          });
+          
+          console.log('Player 2 progress updated and the question should have changed', this.state.player2.progress) 
         }
         else{
           //just change player 2's score
-          this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1)}})
+          this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1)}, roomID: data.roomID})
           console.log('Player 2 progress updated', this.state.player2.progress )
         }
       }
       console.log(`${data.playerToUpdate} has completed a question`);
+
     })
 
     //when a player fails an attempt
     socket.on('failedSub', (data) => {
       console.log(`${data.playerToUpdate} has failed an attempt because of ${data.reason}`);
     })
+
+
+    socket.on('gameWinningState', (data) => {
+      console.log(data.winner, "won");
+    })
+
   }
  
   render() {
@@ -104,8 +135,6 @@ class BattlePage extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  roomID : state.gameLobby
-})
+const mapStateToProps = (state) => ({roomID : state.gameLobby})
 
 export default connect(mapStateToProps)(BattlePage);
