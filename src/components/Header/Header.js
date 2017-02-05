@@ -4,7 +4,6 @@ import { IndexLink, Link } from 'react-router'
 import './Header.scss'
 
 export const Header = () => (
-
   <nav className="navbar navbar-default">
     <div className="container-fluid">
       <div className="navbar-header">

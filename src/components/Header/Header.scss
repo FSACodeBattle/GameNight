@@ -2,15 +2,22 @@
   font-weight: bold;
   text-decoration: underline;
 }
+
+.route:active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .navbar.navbar-default{
   max-width: 100%;
   background-color: #303133;
   margin-bottom: 0px;
+  border-color: #303133;
 }
 
-#nav-login {
-  float: right!important;
-}
+// #nav-login {
+//   float: right!important;
+// }
 
 .navbar a {
   color: #777;
@@ -23,11 +30,6 @@
 
 .navbar-default .navbar-nav>li>a:hover {
     color: #999;
-}
-
-.route:active {
-  font-weight: bold;
-  text-decoration: underline;
 }
 
 

@@ -13,20 +13,20 @@ export const HomeView = () => (
       <div className="row" id="introaboutcode">
         <h4 style={{color:"#777"}}>Welcome!</h4>
       <div className="container-fluid">
-          <div className="row-fluid">
-            <MainLobbyContainer />
-          </div>
-          <div className="row">
-            <MatchHistory />
-            <Leaderboard />
-          </div>
-          <div className="row">
-            <Achievements />
-          </div>
+        <div className="row-fluid">
+          <MainLobbyContainer />
+        </div>
+        <div className="row" id="matchAndLeaders">
+          <MatchHistory />
+          <Leaderboard />
+        </div>
+        <div className="row">
+          <Achievements />
         </div>
       </div>
+      </div>
     </div>
-    </div>
+  </div>
 )
 
 export default HomeView
