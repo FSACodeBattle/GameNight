@@ -3,8 +3,9 @@ import CodeMirror from 'react-codemirror';
 import axios from 'axios';
 import './CodeEditor.scss';
 import 'codemirror/lib/codemirror.css'
-require('codemirror/theme/solarized.css');
+// require('codemirror/theme/solarized.css');
 require('codemirror/mode/javascript/javascript');
+require('codemirror/theme/base16-dark.css');
 
 class CodeEditor extends Component {
   constructor() {
@@ -114,7 +115,7 @@ class CodeEditor extends Component {
     var options = {
       mode: "javascript",
       lineNumbers: true,
-      theme: "solarized dark"
+      theme: "base16-dark"
     };
 
     return (
