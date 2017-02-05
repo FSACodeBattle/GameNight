@@ -4,8 +4,9 @@ import axios from 'axios';
 require('codemirror/mode/javascript/javascript');
 
 class CodeEditor extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    console.log("codeEditor props", this.props)
     this.state = {
       code: '',
       results: '',
@@ -15,7 +16,8 @@ class CodeEditor extends Component {
       startingTime: null,
       playerProgress: [0, 0],
       playerNumber: 0,
-      numberOfQuestions: 2
+      numberOfQuestions: 2, 
+      currentQuestionID: 0
     }
     this.updateCode = this.updateCode.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,7 +31,8 @@ class CodeEditor extends Component {
     const startingTime = Date.now();
     this.setState({
       playerNumber: 1,
-      startingTime: startingTime
+      startingTime: startingTime,
+      
     })
   }
   // when component mounts can you save the start time
@@ -65,44 +68,55 @@ class CodeEditor extends Component {
     const startingTime = this.state.startingTime;
     const playerNumber = this.state.playerNumber;
     const playerProgress = this.state.playerProgress;
-
+    console.log("inside handleSubmit");
+    console.log(socket);
     axios.post('/api/code', {
       code: this.state.code,
       timeElapsed: (Date.now() - startingTime)/1000,
       // use playerNumber in playerProgress array
       // to figure out where you are in tests
       playerNumber: this.state.playerNumber,
-      playerProgress: this.state.playerProgress
+      playerProgress: this.state.playerProgress,
+      currentQuestionID: this.props.currentQuestionID.questionID,
+      room: this.props.roomID,
+      socketID: socket.id
     })
     .then(response => {
-      this.setState({results: response.data});
-      // console.log("response from running code: ", response.data );
-      // console.log('saved successfully');
 
-      if(response.data.indexOf('failing') === -1){
-        console.log('emitting correct response from front-end')
-        socket.emit('correct response', {
-          playerNumber: this.state.playerNumber,
-          playerProgress: this.state.playerProgress
-        });
-        socket.on('update progress', (playerProgress) => {
-          this.setState({
-            playerProgress: playerProgress
-          })
-        })
 
-        // check if game is won
 
-        // console.log(playerProgress[playerNumber -1],this.state.numberOfQuestions - 1);
-        if (playerProgress[playerNumber - 1] === this.state.numberOfQuestions - 1){
-          console.log(playerNumber + " won!");
-        }
+
+
+       this.setState({results: response.data});
+      // //console.log("response from running code: ", response.data );
+      // // console.log('saved successfully');
+      // console.log(this.state.results);
+      // console.log(this.state.results[this.state.results.length-1] === "1");
+
+      // if(this.state.results[this.state.results.length-1] === "1"){
+      //   console.log('emitting correct response from front-end')
+      //   socket.emit('correct response', {
+      //     playerNumber: this.state.playerNumber,
+      //     playerProgress: this.state.playerProgress
+      //   });
+      //   socket.on('update progress', (playerProgress) => {
+      //     this.setState({
+      //       playerProgress: playerProgress
+      //     })
+      //   })
+
+      //   // check if game is won
+
+      //   // console.log(playerProgress[playerNumber -1],this.state.numberOfQuestions - 1);
+      //   if (playerProgress[playerNumber - 1] === this.state.numberOfQuestions - 1){
+      //     console.log(playerNumber + " won!");
+      //   }
 
         // want to leave game if you solved final question correctly
         // socket.on('disconnect', function(){
         //   console.log('socket id ' + socket.id + ' has disconnected. : (');
         // })
-      }
+      //}
 
     })
 
@@ -115,7 +129,6 @@ class CodeEditor extends Component {
 
     return (
       <div>
-        <h1>{this.state.playerProgress.join('-')}</h1>
         <h1>Enter Code</h1>
         <div>
           <CodeMirror
@@ -133,5 +146,8 @@ class CodeEditor extends Component {
     );
   }
 }
+
+
+
 
 export default CodeEditor
