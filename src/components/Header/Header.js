@@ -28,7 +28,7 @@ class Header extends React.Component {
             </ul>
             {
               Object.keys(user).length
-              ? <div className="loginComponent"><button>Account</button></div>
+              ? <div className="loginComponent"><Link to={`/profile/${user.username}`}><button>Account</button></Link></div>
               : <Login />
             }
           </div>

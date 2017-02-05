@@ -57,7 +57,7 @@ passport.deserializeUser(function(id, cb) {
 });
 
 
-app.post("/signin", passport.authenticate('local', {successRedirect: '/user'}));
+app.post("/signin", passport.authenticate('local', {failureRedirect: '/failure', successRedirect: '/user'}));
 
 app.post("/signup", function(req, res, next){
   console.log(req.body);
@@ -75,6 +75,7 @@ app.post("/signup", function(req, res, next){
 })
 
 app.get('/user', (req, res, next) => res.send(req.user));
+app.get('/failure', (req, res, next) => res.send(null));
 
 app.use('/api', require('./routes/'));
 app.use('/join', require('./routes/join.js'));
