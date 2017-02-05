@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import create from '../../../store/createStore';
-const store = create();
 import  { setUser } from '../../../store/user';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
 class Signup extends React.Component {
 
@@ -38,8 +38,8 @@ class Signup extends React.Component {
       .then(result => {
         if(result.data === "user exists") this.setState({error: true, errorText: "User already exists!"});
         else {
-          store.dispatch(setUser(result.data));
-          this.props.router.push('/');
+          this.props.setLoggedInUser(result.data);
+          browserHistory.push('/');
         }
       })
     }
@@ -69,4 +69,12 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLoggedInUser: function(user) {
+      dispatch(setUser(user));
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Signup);

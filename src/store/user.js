@@ -21,8 +21,8 @@ export function setUser(user) {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const inititalState = {user: {}}
-export default function usersReducer(state = inititalState, action) {
+const initialState = {user: {}};
+export default function usersReducer(state = initialState, action) {
   const newState = Object.assign({}, state);
   switch(action.type) {
     case SET_USER:

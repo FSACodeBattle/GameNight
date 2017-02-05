@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router'
 
 class GameLobby extends React.Component {
 
@@ -9,7 +10,7 @@ class GameLobby extends React.Component {
   componentDidMount() {
     console.log(this.props);
     socket.on('startGame', data => {
-      this.props.router.push('/battlePage');
+      browserHistory.push('/battlePage');
     })
   }
 

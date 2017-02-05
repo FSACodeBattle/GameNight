@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import create from '../../store/createStore';
 import { setUser } from '../../store/user';
-const store = create();
+//import create from '../../store/createStore';
+//const store = create();
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 class Login extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class Login extends React.Component {
   onSubmitHandler(event) {
     event.preventDefault();
     axios.post('/signin', this.state)
-    .then(user => store.dispatch(setUser(user.data)));
+    .then(user => this.props.setLoggedInUser(user.data));
   }
 
   onChangeHandler(event) {
@@ -41,4 +42,12 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLoggedInUser: function(user) {
+      dispatch(setUser(user));
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login);
