@@ -41,13 +41,13 @@ class BattlePage extends Component {
         </div>
         <div className="container-fluid-row-battle">
           <div className="row-fluid-battlepage">
-            <div className="col-xs-12 col-md-4 col-lg-4" id="problemsContainers">
+            <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4" id="problemsContainers">
               {/**Passes in the users current question object to the Problem component by using ArrayOfQuestions[current question index]**/}
               <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
               <h5>{this.state.player1}</h5>
               <h5>{this.state.player2}</h5>
             </div>
-            <div className="col-xs-12 col-md-8 col-lg-8" id="codeeditor">
+            <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8" id="codeeditor">
               <CodeEditor />
             </div>
           </div>

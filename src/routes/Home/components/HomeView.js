@@ -12,7 +12,7 @@ export const HomeView = () => (
       <div className="row" id="introaboutcode">
         <h4 style={{color:"#777"}}>Welcome!</h4>
       <div className="container-fluid">
-        <div className="row-fluid">
+        <div className="row-fluid-lobby">
           <MainLobbyContainer />
         </div>
         <div className="row" id="matchAndLeaders">

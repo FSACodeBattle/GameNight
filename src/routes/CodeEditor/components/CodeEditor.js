@@ -113,27 +113,27 @@ class CodeEditor extends Component {
   }
   render() {
     var options = {
-      mode: "javascript",
+      mode: 'javascript',
       lineNumbers: true,
-      theme: "base16-dark",
+      theme: 'base16-dark',
       tabSize: 2,
       lineWrapping: true,
       showCursorWhenSelecting: true
     };
     var optionsForAnswers = {
-      mode: "javascript",
+      mode: 'javascrip',
       lineNumbers: true,
-      theme: "base16-dark",
+      theme: 'base16-dark',
       tabSize: 2,
       lineWrapping: true,
       showCursorWhenSelecting: true,
       readOnly: true
-    }
+    };
     return (
       <div id="code-editor-text">
         <div className="container">
           <div className="row">
-            <div className="col-xs-12 col-md-10 col-md-offset-1">
+            <div className="col-xs-12 col-md-10 col-md-offset-1" id="code-offset">
               <div className="playerProgress" style={{color: "#777"}}>
                   <div>
                     {this.state.playerProgress.join('-')}

@@ -23,8 +23,10 @@ export const Problem = (props) => {
 				<h4> Problems </h4>
 			</div>
 			<div className="container-fluid-problem">
-			<h4> {currentQuestion && currentQuestion.questionName} </h4>
-			<div>{currentQuestion && pTags}</div>
+				<div className="row-fluid">
+					<h4> {currentQuestion && currentQuestion.questionName} </h4>
+					<div>{currentQuestion && pTags}</div>
+				</div>
 			</div>
 	  </div>
 	);
