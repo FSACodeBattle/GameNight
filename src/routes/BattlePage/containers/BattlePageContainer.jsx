@@ -25,7 +25,7 @@ class BattlePage extends Component {
       startingTime: null,
       playerProgress: [0, 0],
       playerNumber: 0,
-      numberOfQuestions: 1, 
+      numberOfQuestions: 3, 
       roomID: '',
       // timeRemaining: 60,
       // prevTime: null,
@@ -59,12 +59,22 @@ class BattlePage extends Component {
           //change player 1's progress and their current question 
           this.setState( {player1: {id: this.state.player1.id, progress: (this.state.player1.progress + 1)}, currentQuestion: (this.state.currentQuestion + 1), roomID: data.roomID}, () => {
 
-            if(this.state.player1.progress === 2){
+            if(this.state.player1.progress === this.state.numberOfQuestions && this.state.gameWon === false){
                 notify.show('You won the game!', 'success', 2500);
                 console.log("inside player 1 win check")
                 socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player1.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});         
-                browserHistory.push('/gameWon');
-              } else {
+
+                setTimeout(() => { 
+                      browserHistory.push('/gameWon');
+                }, 2500);
+              } 
+            else if (this.state.player1.progress === this.state.numberOfQuestions && this.state.gameWon === true) {
+                notify.show('You got all the answers! But your opponent was faster. :(', 'success', 2500);
+                setTimeout(() => { 
+                  browserHistory.push('/gameFinished');
+                }, 2500);
+              }
+              else {
                 notify.show('You got an answer correct!', 'success', 2500);
             }
           });
@@ -76,10 +86,10 @@ class BattlePage extends Component {
           this.setState( {player1: {id: this.state.player1.id, progress: (this.state.player1.progress + 1)}, roomID: data.roomID});
           console.log('Player 1 progress updated', this.state.player1.progress)
 
-          if(this.state.player1.progress === 2){
-            notify.show('Player 1 won the game!', 'error', 2500);
+          if(this.state.player1.progress === this.state.numberOfQuestions){
+            notify.show('Player 1 answered question #' + this.state.player1.progress + ' and won! You can still keep going, though :)', 'error', 2500);
           } else {
-            notify.show('Player 1 submitted a correct answer!', 'warning', 2500);
+            notify.show('Player 1 submitted a correct answer to question #' + this.state.player1.progress +'!', 'warning', 2500);
           }
         }
       }
@@ -90,15 +100,24 @@ class BattlePage extends Component {
         if(socket.id === data.currentPlayer){
           this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1)}, currentQuestion: (this.state.currentQuestion + 1), roomID: data.roomID}, () => {
               // notify.show('Player 2 got an answer correct!', 'success', 2500);
-              if(this.state.player2.progress === 2){
+              if(this.state.player2.progress === this.state.numberOfQuestions && this.state.gameWon === false){
                     notify.show('You won the game!', 'success', 2500);
                     console.log("inside player 2 win check")
                     //
                     socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player2.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});
-                    browserHistory.push('/gameWon');
-                  } else {
-                      notify.show('You got an answer correct!', 'success', 2500);
-                  }
+                    setTimeout(() => { 
+                      browserHistory.push('/gameWon');
+                    }, 2500);
+                } 
+              else if (this.state.player2.progress === this.state.numberOfQuestions && this.state.gameWon === true) {
+                    notify.show('You got all the answers! But your opponent was faster. :(', 'success', 2500);
+                    setTimeout(() => { 
+                      browserHistory.push('/gameFinished');
+                    }, 2500);
+                }
+            else {
+                    notify.show('You got an answer correct!', 'success', 2500);
+                }
           });
           
           console.log('Player 2 progress updated and the question should have changed', this.state.player2.progress) 
@@ -108,10 +127,10 @@ class BattlePage extends Component {
           this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1)}, roomID: data.roomID})
           console.log('Player 2 progress updated', this.state.player2.progress )
 
-          if(this.state.player2.progress === 2){
-            notify.show('Player 2 won the game!', 'error', 2500);
+          if(this.state.player2.progress === this.state.numberOfQuestions){
+            notify.show('Player 2 answered question #' + this.state.player2.progress + ' and won! You can still keep going, though :)', 'error', 2500);
           } else {
-            notify.show('Player 2 submitted a correct answer!', 'warning', 2500);
+            notify.show('Player 2 submitted a correct answer to question #' + this.state.player2.progress +'!', 'warning', 2500);
           }
         }
       }
@@ -128,7 +147,7 @@ class BattlePage extends Component {
     socket.on('gameWinningState', (data) => {
       // alert(data.winnerID, "won");
       // notify.show(data.winnerID, " won the game!", 'success', 2500);
-
+      this.setState({gameWon: true});
       console.log(data.winnerID, "won");
     })
 
