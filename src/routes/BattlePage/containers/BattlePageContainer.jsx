@@ -105,7 +105,8 @@ class BattlePage extends Component {
 
 
     socket.on('gameWinningState', (data) => {
-      console.log(data.winner, "won");
+      //alert(data.winnerID, "won");
+      console.log(data.winnerID, "won");
     })
 
   }
