@@ -6,6 +6,7 @@ import CountdownClock from '../components/CountdownClock'
 import CodeEditor from '../../CodeEditor/components/CodeEditor'
 import axios from 'axios';
 import Notifications, {notify} from 'react-notify-toast'; 
+import { browserHistory } from 'react-router';
 
 class BattlePage extends Component {
   constructor(props) {
@@ -25,9 +26,10 @@ class BattlePage extends Component {
       playerProgress: [0, 0],
       playerNumber: 0,
       numberOfQuestions: 1, 
-      roomID: ''
+      roomID: '',
       // timeRemaining: 60,
       // prevTime: null,
+      gameWon: false
     }
     this.gameWinningEmitEvent = this.gameWinningEmitEvent.bind(this);
 
@@ -61,6 +63,7 @@ class BattlePage extends Component {
                 notify.show('You won the game!', 'success', 2500);
                 console.log("inside player 1 win check")
                 socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player1.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});         
+                browserHistory.push('/gameWon');
               } else {
                 notify.show('You got an answer correct!', 'success', 2500);
             }
@@ -92,9 +95,9 @@ class BattlePage extends Component {
                     console.log("inside player 2 win check")
                     //
                     socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player2.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});
-                    
+                    browserHistory.push('/gameWon');
                   } else {
-                                    notify.show('You got an answer correct!', 'success', 2500);
+                      notify.show('You got an answer correct!', 'success', 2500);
                   }
           });
           

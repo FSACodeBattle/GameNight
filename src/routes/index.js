@@ -8,6 +8,7 @@ import CodeEditor from './CodeEditor/components/CodeEditor';
 import BattlePage from './BattlePage/containers/BattlePageContainer';
 import InvitePage from './InvitePage/components/InvitePage';
 import GameLobbyContainer from './GameLobby/containers/GameLobbyContainer';
+import GameWonPage from './GameWonPage/components/GameWonPage'
 import Login from '../components/Login/Login';
 import Signup from './Signup/components/Signup';
 import Profile from './Profile/components/Profile';
@@ -43,6 +44,7 @@ export const createRoutes = (store) => (
     <Route path="counter" component={CounterRoute} />
     <Route path="battlePage" component={BattlePage} />
     <Route path="joinGame/:invId" onEnter={onJoinEnter} component={BattlePage} />
+    <Route path ="gameWon" component={GameWonPage} />
     <IndexRoute component={Home} />
   </Route>
 )
