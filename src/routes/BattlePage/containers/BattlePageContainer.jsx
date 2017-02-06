@@ -5,6 +5,7 @@ import Problem from '../components/Problem'
 import CountdownClock from '../components/CountdownClock'
 import CodeEditor from '../../CodeEditor/components/CodeEditor'
 import axios from 'axios';
+import Notifications, {notify} from 'react-notify-toast'; 
 
 class BattlePage extends Component {
   constructor(props) {
@@ -55,10 +56,10 @@ class BattlePage extends Component {
         if(socket.id === data.currentPlayer){
           //change player 1's progress and their current question 
           this.setState( {player1: {id: this.state.player1.id, progress: (this.state.player1.progress + 1)}, currentQuestion: (this.state.currentQuestion + 1), roomID: data.roomID}, () => {
-            if(this.state.player1.progress === 1){
+            if(this.state.player1.progress === 2){
                 //
                 console.log("inside win check")
-                //
+
                 socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player1.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});
                 
               }
@@ -67,6 +68,7 @@ class BattlePage extends Component {
           console.log('Player 1 progress updated and the question should have changed', this.state.player1.progress)
         }
         else{
+          notify.show('Player 1 submitted a correct answer!', 'warning', 2500);
           //change player 1's progress to update the score
           this.setState( {player1: {id: this.state.player1.id, progress: (this.state.player1.progress + 1)}, roomID: data.roomID});
           console.log('Player 1 progress updated', this.state.player1.progress)
@@ -78,7 +80,7 @@ class BattlePage extends Component {
         //if the client is player 2 update their progress and change the score       
         if(socket.id === data.currentPlayer){
           this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1)}, currentQuestion: (this.state.currentQuestion + 1), roomID: data.roomID}, () => {
-              if(this.state.player2.progress === 1){
+              if(this.state.player2.progress === 2){
                     console.log("inside win check")
                     //
                     socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player2.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});
@@ -89,6 +91,7 @@ class BattlePage extends Component {
           console.log('Player 2 progress updated and the question should have changed', this.state.player2.progress) 
         }
         else{
+          notify.show('Player 2 submitted a correct answer!', 'warning', 2500);
           //just change player 2's score
           this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1)}, roomID: data.roomID})
           console.log('Player 2 progress updated', this.state.player2.progress )
@@ -115,6 +118,7 @@ class BattlePage extends Component {
     console.log("render of the container",this.state.questionsArr[this.state.currentQuestion]);
     return (
         <div>
+          <Notifications />
           <div className="row-fluid-clock">
             <CountdownClock />
           </div>
