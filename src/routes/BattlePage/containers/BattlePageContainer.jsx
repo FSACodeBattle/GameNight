@@ -5,6 +5,8 @@ import Problem from '../components/Problem'
 import CountdownClock from '../components/CountdownClock'
 import CodeEditor from '../../CodeEditor/components/CodeEditor'
 import axios from 'axios';
+import Notifications, {notify} from 'react-notify-toast';
+import { browserHistory } from 'react-router';
 
 class BattlePage extends Component {
   constructor(props) {
@@ -23,10 +25,11 @@ class BattlePage extends Component {
       startingTime: null,
       playerProgress: [0, 0],
       playerNumber: 0,
-      numberOfQuestions: 1,
-      roomID: ''
+      numberOfQuestions: 3,
+      roomID: '',
       // timeRemaining: 60,
       // prevTime: null,
+      gameWon: false
     }
     this.gameWinningEmitEvent = this.gameWinningEmitEvent.bind(this);
 
@@ -60,13 +63,25 @@ class BattlePage extends Component {
         if(socket.id === data.currentPlayer){
           //change player 1's progress and their current question
           this.setState( {player1: {id: this.state.player1.id, progress: (this.state.player1.progress + 1), username: p1username}, currentQuestion: (this.state.currentQuestion + 1), roomID: data.roomID}, () => {
-            if(this.state.player1.progress === 1){
-                //
-                console.log("inside win check")
-                //
+
+            if(this.state.player1.progress === this.state.numberOfQuestions && this.state.gameWon === false){
+                notify.show('You won the game!', 'success', 2500);
+                console.log("inside player 1 win check")
                 socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player1.id, username: p1username, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});
 
+                setTimeout(() => {
+                      browserHistory.push('/gameWon');
+                }, 2500);
               }
+            else if (this.state.player1.progress === this.state.numberOfQuestions && this.state.gameWon === true) {
+                notify.show('You got all the answers! But your opponent was faster. :(', 'success', 2500);
+                setTimeout(() => {
+                  browserHistory.push('/gameFinished');
+                }, 2500);
+              }
+              else {
+                notify.show('You got an answer correct!', 'success', 2500);
+            }
           });
 
           console.log('Player 1 progress updated and the question should have changed', this.state.player1.progress)
@@ -75,6 +90,12 @@ class BattlePage extends Component {
           //change player 1's progress to update the score
           this.setState( {player1: {id: this.state.player1.id, progress: (this.state.player1.progress + 1), username: p1username}, roomID: data.roomID});
           console.log('Player 1 progress updated', this.state.player1.progress)
+
+          if(this.state.player1.progress === this.state.numberOfQuestions){
+            notify.show('Player 1 answered question #' + this.state.player1.progress + ' and won! You can still keep going, though :)', 'error', 2500);
+          } else {
+            notify.show('Player 1 submitted a correct answer to question #' + this.state.player1.progress +'!', 'warning', 2500);
+          }
         }
       }
       //player must be player 2
@@ -83,12 +104,25 @@ class BattlePage extends Component {
         //if the client is player 2 update their progress and change the score
         if(socket.id === data.currentPlayer){
           this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1), username: p2username}, currentQuestion: (this.state.currentQuestion + 1), roomID: data.roomID}, () => {
-              if(this.state.player2.progress === 1){
-                    console.log("inside win check")
+              // notify.show('Player 2 got an answer correct!', 'success', 2500);
+              if(this.state.player2.progress === this.state.numberOfQuestions && this.state.gameWon === false){
+                    notify.show('You won the game!', 'success', 2500);
+                    console.log("inside player 2 win check")
                     //
                     socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player2.id, username: p2username, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});
-
-                  }
+                    setTimeout(() => {
+                      browserHistory.push('/gameWon');
+                    }, 2500);
+                }
+              else if (this.state.player2.progress === this.state.numberOfQuestions && this.state.gameWon === true) {
+                    notify.show('You got all the answers! But your opponent was faster. :(', 'success', 2500);
+                    setTimeout(() => {
+                      browserHistory.push('/gameFinished');
+                    }, 2500);
+                }
+            else {
+                    notify.show('You got an answer correct!', 'success', 2500);
+                }
           });
 
           console.log('Player 2 progress updated and the question should have changed', this.state.player2.progress)
@@ -97,6 +131,12 @@ class BattlePage extends Component {
           //just change player 2's score
           this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1), username: p2username}, roomID: data.roomID})
           console.log('Player 2 progress updated', this.state.player2.progress )
+
+          if(this.state.player2.progress === this.state.numberOfQuestions){
+            notify.show('Player 2 answered question #' + this.state.player2.progress + ' and won! You can still keep going, though :)', 'error', 2500);
+          } else {
+            notify.show('Player 2 submitted a correct answer to question #' + this.state.player2.progress +'!', 'warning', 2500);
+          }
         }
       }
       console.log(`${data.playerToUpdate} has completed a question`);
@@ -110,7 +150,9 @@ class BattlePage extends Component {
 
 
     socket.on('gameWinningState', (data) => {
-      //alert(data.winnerID, "won");
+      // alert(data.winnerID, "won");
+      // notify.show(data.winnerID, " won the game!", 'success', 2500);
+      this.setState({gameWon: true});
       console.log(data.winnerID, "won");
     })
 
@@ -120,6 +162,7 @@ class BattlePage extends Component {
     console.log("render of the container",this.state.questionsArr[this.state.currentQuestion]);
     return (
         <div>
+          <Notifications />
           <div className="row-fluid-clock">
             <CountdownClock />
           </div>
