@@ -46,10 +46,34 @@ const seedQuestions = () => db.Promise.map(
     			})`
 	}, {	
 		name: "Question 2",
-		questionText: "Make a function called returnTwo that return 2",
+		questionText: "Make a function called returnTwo that returns 2",
 		tests: `describe("returnTwo", function(){
         			it("should return 2", function(){
          	 			assert.equal(2, returnTwo());
+      				})
+    			})`
+	}, {	
+		name: "Question 3",
+		questionText: "Make a function called returnThree that returns 3",
+		tests: `describe("returnThree", function(){
+        			it("should return 3", function(){
+         	 			assert.equal(3, returnThree());
+      				})
+    			})`
+	}, {	
+		name: "Question 4",
+		questionText: "Make a function called returnFour that returns 4",
+		tests: `describe("returnFour", function(){
+        			it("should return 4", function(){
+         	 			assert.equal(4, returnFour());
+      				})
+    			})`
+	}, {	
+		name: "Question 5",
+		questionText: "Make a function called returnFive that returns 5",
+		tests: `describe("returnFive", function(){
+        			it("should return 5", function(){
+         	 			assert.equal(5, returnFive());
       				})
     			})`
 	}], question => db.model('questions').create(question))

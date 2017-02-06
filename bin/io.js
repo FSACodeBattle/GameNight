@@ -30,7 +30,7 @@ module.exports = function(server) {
 					//get the random questions from the database
 					Question.findAll({
 							//limit it to the number of questions you want to get
-							limit: 1,
+							limit: 3,
 							//gets random rows from the questions table
 							order: [
 								[Sequelize.fn('RANDOM')]
@@ -70,12 +70,18 @@ module.exports = function(server) {
 
 		})
 
+		socket.on('gameOver', (data) => {
+			console.log("gameover event ", data);
+			io.in(data.roomID).emit('gameWinningState', data);
+		})
+
+
 		socket.on('my other event', socketCallbacks.hello);
 		var currentClients = io.sockets.adapter.rooms["MainLobby"];
 
 		socket.on('correct response', socketCallbacks.updatePlayerProgress);
 
-		let playerProgress = [0, 0];
+		// let playerProgress = [0, 0];
 		socket.on('correct response', (data) => {
 			console.log('receiving correct response on back-end')
 			playerProgress[data.playerNumber - 1]++;
