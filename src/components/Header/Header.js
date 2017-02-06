@@ -1,32 +1,42 @@
 'use strict';
-import React from 'react'
-import { IndexLink, Link } from 'react-router'
-import './Header.scss'
+import React from 'react';
+import { IndexLink, Link } from 'react-router';
+import './Header.scss';
+import Login from '../Login/Login';
+import { connect } from 'react-redux';
 
-export const Header = () => (
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  <nav className="navbar navbar-default">
-    <div className="container-fluid">
-      <div className="navbar-header">
-        <Link className="navbar-brand" to="/">Home</Link>
-      </div>
-      <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul className="nav navbar-nav">
-          <li><Link to="battlePage">Battle Page</Link></li>
-          <li><Link to="code_editor">Code Editor</Link></li>
-          <li><Link to="/invite" activeClassName="route--active">Invite</Link></li>
-          <li><Link to={`/lobby/${makeid()}`} >Create Lobby</Link></li>
-        </ul>
-        <form className="navbar-form navbar-left search" id="login">
-          <div className="form-group">
-            <input type="text" className="form-control" placeholder="Search" />
+  render() {
+    const user = this.props.user;
+    console.log('user', user);
+    return (
+      <nav className="navbar navbar-default">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <Link className="navbar-brand" to="/">Home</Link>
           </div>
-          <button type="submit" className="btn btn-default">Submit</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-);
+          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul className="nav navbar-nav">
+              <li><Link to="battlePage">Battle Page</Link></li>
+              <li><Link to="code_editor">Code Editor</Link></li>
+              <li><Link to="/invite" activeClassName="route--active">Invite</Link></li>
+              <li><Link to={`/lobby/${makeid()}`} >Create Lobby</Link></li>
+            </ul>
+            {
+              Object.keys(user).length
+              ? <div className="loginComponent"><Link to={`/profile/${user.username}`}><button>Account</button></Link></div>
+              : <Login />
+            }
+          </div>
+        </div>
+      </nav>
+    )
+  }
+}
 
 function makeid() {
     let text = "";
@@ -36,4 +46,8 @@ function makeid() {
     return text;
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {user: state.user.user};
+}
+
+export default connect(mapStateToProps)(Header);

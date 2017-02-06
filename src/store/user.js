@@ -1,36 +1,34 @@
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const LOCATION_CHANGE = 'LOCATION_CHANGE'
+export const SET_USER = 'SET_USER';
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export function locationChange (location = '/') {
+
+export function setUser(user) {
   return {
-    type    : LOCATION_CHANGE,
-    payload : location
+    type: SET_USER,
+    user
   }
 }
 
 // ------------------------------------
 // Specialized Action Creator
 // ------------------------------------
-export const updateLocation = ({ dispatch }) => {
-  return (nextLocation) => dispatch(locationChange(nextLocation))
-}
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = {};
-export default function locationReducer (state = initialState, action) {
+const initialState = {user: {}};
+export default function usersReducer(state = initialState, action) {
   const newState = Object.assign({}, state);
-  
   switch(action.type) {
-    case LOCATION_CHANGE:
-      newState.location = action.location;
+    case SET_USER:
+      newState.user = action.user;
       break;
   }
+
   return newState;
 }

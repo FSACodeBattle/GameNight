@@ -8,6 +8,9 @@ import CodeEditor from './CodeEditor/components/CodeEditor';
 import BattlePage from './BattlePage/containers/BattlePageContainer';
 import InvitePage from './InvitePage/components/InvitePage';
 import GameLobbyContainer from './GameLobby/containers/GameLobbyContainer';
+import Login from '../components/Login/Login';
+import Signup from './Signup/components/Signup';
+import Profile from './Profile/components/Profile';
 
 import { fetchClients } from '../store/client'
 import { setRoomId } from '../store/gamelobby';
@@ -31,7 +34,10 @@ function onGameLobbyEnter(nextRouterState, store) {
 
 export const createRoutes = (store) => (
   <Route path="/" component={CoreLayout} onEnter={() => onPageEnter(store)}>
+    <Route path="login" component={Login} />
+    <Route path="signup" component={Signup} />
     <Route path="lobby/:roomid" component={GameLobbyContainer} onEnter={(nextRouterState) => onGameLobbyEnter(nextRouterState, store)}/>
+    <Route path="profile/:username" component={Profile}/>
     <Route path="invite" component={InvitePage} />
     <Route path="code_editor" component={CodeEditor} />
     <Route path="counter" component={CounterRoute} />

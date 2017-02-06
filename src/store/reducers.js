@@ -2,12 +2,14 @@ import { combineReducers } from 'redux'
 import locationReducer from './location'
 import clientsReducer from './client'
 import gameLobbyReducer from './gamelobby';
+import usersReducer from './user';
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
     location: locationReducer,
     clients: clientsReducer,
     gameLobby: gameLobbyReducer,
+    user: usersReducer,
     ...asyncReducers
   })
 }
