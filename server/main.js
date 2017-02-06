@@ -11,7 +11,7 @@ const history = require('connect-history-api-fallback');
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-var bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 const app = express();
 

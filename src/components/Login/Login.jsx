@@ -21,7 +21,9 @@ class Login extends React.Component {
   onSubmitHandler(event) {
     event.preventDefault();
     axios.post('/signin', this.state)
-    .then(user => this.props.setLoggedInUser(user.data));
+    .then(user => {
+      this.props.setLoggedInUser(user.data);
+    });
   }
 
   onChangeHandler(event) {

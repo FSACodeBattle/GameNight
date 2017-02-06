@@ -8,7 +8,13 @@ module.exports = function(server) {
 	if (io) return io;
 	io = socketio(server);
 	io.on('connection', function(socket) {
-		socket.join('MainLobby');
+		socket.on('setUser', payload => {
+			//console.log('pppppp', payload.user);
+			payload.user.socketId = socket.id;
+			socket.user = payload.user;
+			socket.join('MainLobby');
+			io.emit('reload');
+		});
 		//socket.on('joinMainLobby', socketCallbacks.joinMainLobby)
 		socket.emit('news', {
 			hello: 'world'
@@ -26,7 +32,7 @@ module.exports = function(server) {
 				//since the game is ready to start and we will have 2 players in the room
 				if (io.sockets.adapter.rooms[data].length === 1) {
 					socket.join(data);
-					io.in(data).emit('startGame', data);
+					if(io.sockets.adapter.rooms[data].length > 1) io.in(data).emit('startGame', data);
 					//get the random questions from the database
 					Question.findAll({
 							//limit it to the number of questions you want to get
@@ -46,12 +52,30 @@ module.exports = function(server) {
 								}
 							})
 							//grab the socket Id of all the connected sockets in the room
-							const arrOfSocketIDs = Object.keys(io.sockets.adapter.rooms[data].sockets);
+
+							const room = io.sockets.adapter.rooms[data];
+							let users = Object.keys(room.sockets).map(id => {
+								console.log(id);
+								const user = io.sockets.connected[id].user;
+								return user;
+							})
+
+							const mainLobby = io.sockets.adapter.rooms["MainLobby"];
+							clients = Object.keys(mainLobby.sockets).map(id => {
+								const user = io.sockets.connected[id].user;
+								return user;
+							})
+
+							console.log('c', clients);
+							console.log('user', users);
+
+							//const arrOfSocketIDs = Object.keys(io.sockets.adapter.rooms[data].sockets);
+
 							const gameData = {
 								// assign player one to the socket that connected first to the room
-								player1: arrOfSocketIDs[0],
+								player1: users[0],
 								//assign player two to the socket that connected second to the room
-								player2: arrOfSocketIDs[1],
+								player2: users[1],
 								//stores the array of the question objects created above
 								questions: arrOfQuestionObjs
 							}
