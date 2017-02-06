@@ -5,20 +5,32 @@
 //   margin: 1.5rem auto;
 // }
 
-#codeEditorForm textarea {
-  width: 100%;
-  min-height: 200px;
+// #codeEditorForm textarea {
+//   width: 100%;
+//   min-height: 600px;
+// }
+
+#code-editor-text {
+  height: 100%;
 }
 
 .codeMirror {
-	height: auto;
+	height: 100%;
 	width: 100%;
+  overflow-y: scroll;
 }
 
+#submit-btn {
+  background-color: dimgray;
+  border-color: transparent;
+}
 
 .ReactCodeMirror {
-	border: 3px solid black;
+	border: 2px solid black;
   text-align: left;
+  height: auto;
+  overflow-y: hidden;
+  margin-bottom: 10px;
 }
 
 .container {
@@ -26,6 +38,11 @@
 	margin-right: auto;
 	max-width: 100%;
 	padding: 1em;
+  height: 100%;
+}
+
+.row {
+  height: 100%;
 }
 
 .CodeMirror-gutter-wrapper {

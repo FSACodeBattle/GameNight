@@ -115,11 +115,13 @@ class CodeEditor extends Component {
     var options = {
       mode: "javascript",
       lineNumbers: true,
-      theme: "base16-dark"
+      theme: "base16-dark",
+      tabSize: 2,
+      // lineWrapping: true,
+      showCursorWhenSelecting: true
     };
-
     return (
-      <div>
+      <div id="code-editor-text">
         <h3 style={{color: "#777"}}>
           {this.state.playerProgress.join('-')}
         </h3>
@@ -132,11 +134,12 @@ class CodeEditor extends Component {
                 onChange={this.updateCode}
                 options={options}
               />
-              <button onClick={this.handleSubmit}>SUBMIT</button>
+              <button id="submit-btn" className="btn btn-primary btn-small" onClick={this.handleSubmit}>SUBMIT</button>
               <h3 style={{color: "#777"}}>Answer</h3>
-              <form id="codeEditorForm">
-                <textarea value={this.state.results}></textarea>
-              </form>
+              <CodeMirror
+                value={this.state.results}
+                options={options}
+              />
             </div>
           </div>
         </div>
@@ -150,3 +153,6 @@ export default CodeEditor
 
 
 
+              // <form id="codeEditorForm">
+              //   <textarea value={this.state.results}></textarea>
+              // </form>

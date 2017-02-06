@@ -17,13 +17,13 @@ export const Problem = (props) => {
 		 	<p key={i} style={{textAlign: 'left'}}>{questionLine}</p>
 		 	))
 	}
-	return(
+	return (
 		<div className="container-fluid-problem">
-			<h3> Problem </h3>
-			<h3> {currentQuestion && currentQuestion.questionName} </h3>
+			<h4> Problem </h4>
+			<h4> {currentQuestion && currentQuestion.questionName} </h4>
 			<div>{currentQuestion && pTags}</div>
 		</div>
-		)
+	);
 }
 
 export default Problem;
