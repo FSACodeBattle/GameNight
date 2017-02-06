@@ -120,6 +120,15 @@ class CodeEditor extends Component {
       lineWrapping: true,
       showCursorWhenSelecting: true
     };
+    var optionsForAnswers = {
+      mode: "javascript",
+      lineNumbers: true,
+      theme: "base16-dark",
+      tabSize: 2,
+      lineWrapping: true,
+      showCursorWhenSelecting: true,
+      readOnly: true
+    }
     return (
       <div id="code-editor-text">
         <h3 style={{color: "#777"}}>
@@ -138,7 +147,7 @@ class CodeEditor extends Component {
               <h3 style={{color: "#777"}}>Answer</h3>
               <CodeMirror
                 value={this.state.results}
-                options={options}
+                options={optionsForAnswers}
               />
             </div>
           </div>
