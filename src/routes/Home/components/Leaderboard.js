@@ -7,7 +7,7 @@ export const Leaderboard = () => (
 
   		<div className="col-xs-12 col-md-4 col-lg-4" id="leaderboardComponent">
   			<div className="table-responsive">
-  			<h2> Leader board </h2>
+  			<h2 style={{color:'#777'}}> Leader board </h2>
 				  <table className="table">
 				    <thead>
 				      <tr>

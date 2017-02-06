@@ -17,6 +17,7 @@ export const HomeView = () => (
         </div>
         <div className="row" id="matchAndLeaders">
           <MatchHistory />
+          <div className="col-xs-12 col-md-4 col-lg-4"></div>
           <Leaderboard />
         </div>
         <div className="row">
