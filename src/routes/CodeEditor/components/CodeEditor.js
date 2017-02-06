@@ -121,7 +121,7 @@ class CodeEditor extends Component {
       showCursorWhenSelecting: true
     };
     var optionsForAnswers = {
-      mode: 'javascrip',
+      mode: 'javascript',
       lineNumbers: true,
       theme: 'base16-dark',
       tabSize: 2,
