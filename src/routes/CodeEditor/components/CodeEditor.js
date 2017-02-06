@@ -117,7 +117,7 @@ class CodeEditor extends Component {
       lineNumbers: true,
       theme: "base16-dark",
       tabSize: 2,
-      // lineWrapping: true,
+      lineWrapping: true,
       showCursorWhenSelecting: true
     };
     return (
