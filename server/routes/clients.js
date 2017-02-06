@@ -9,11 +9,7 @@ router.get('/all', (req, res, next) => {
   //console.log(mainLobby.sockets);
   let clients = [];
   if(mainLobby) {
-    clients = Object.keys(mainLobby.sockets).map(id => {
-      const user = ioObj.sockets.connected[id].user;
-      user.socketId = id;
-      return user;
-    })
+    clients = Object.keys(mainLobby.sockets).map(id => ioObj.sockets.connected[id].user)
   }
 
   res.send(clients);

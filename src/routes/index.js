@@ -32,8 +32,15 @@ function onPageEnter(store) {
 
 function onGameLobbyEnter(nextRouterState, store) {
   const roomid = nextRouterState.params.roomid;
-  if(store.getState().user.user) socket.emit('joinGameLobby', roomid);
-  store.dispatch(setRoomId(roomid));
+  store.dispatch(fetchClients());
+  axios.get('/user')
+  .then(user => {
+    store.dispatch(setUser(user.data))
+    if(user.data) {
+      socket.emit('joinGameLobby', roomid);
+      store.dispatch(setRoomId(roomid));
+    }
+  })
 }
 
 export const createRoutes = (store) => (

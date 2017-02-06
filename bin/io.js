@@ -9,6 +9,8 @@ module.exports = function(server) {
 	io = socketio(server);
 	io.on('connection', function(socket) {
 		socket.on('setUser', payload => {
+			//console.log('pppppp', payload.user);
+			payload.user.socketId = socket.id;
 			socket.user = payload.user;
 			socket.join('MainLobby');
 			io.emit('reload');
@@ -50,12 +52,30 @@ module.exports = function(server) {
 								}
 							})
 							//grab the socket Id of all the connected sockets in the room
-							const arrOfSocketIDs = Object.keys(io.sockets.adapter.rooms[data].sockets);
+
+							const room = io.sockets.adapter.rooms[data];
+							let users = Object.keys(room.sockets).map(id => {
+								console.log(id);
+								const user = io.sockets.connected[id].user;
+								return user;
+							})
+
+							const mainLobby = io.sockets.adapter.rooms["MainLobby"];
+							clients = Object.keys(mainLobby.sockets).map(id => {
+								const user = io.sockets.connected[id].user;
+								return user;
+							})
+
+							console.log('c', clients);
+							console.log('user', users);
+
+							//const arrOfSocketIDs = Object.keys(io.sockets.adapter.rooms[data].sockets);
+
 							const gameData = {
 								// assign player one to the socket that connected first to the room
-								player1: arrOfSocketIDs[0],
+								player1: users[0],
 								//assign player two to the socket that connected second to the room
-								player2: arrOfSocketIDs[1],
+								player2: users[1],
 								//stores the array of the question objects created above
 								questions: arrOfQuestionObjs
 							}
