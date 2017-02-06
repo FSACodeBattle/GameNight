@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { Provider, connect } from 'react-redux';
+import axios from 'axios';
 import CoreLayout from '../layouts/CoreLayout';
 import Home from './Home/components/HomeView';
 import CounterRoute from './Counter/containers/CounterContainer';
@@ -14,6 +15,7 @@ import Profile from './Profile/components/Profile';
 
 import { fetchClients } from '../store/client'
 import { setRoomId } from '../store/gamelobby';
+import { setUser } from '../store/user';
 
 function onJoinEnter(nextRouterState){
   //console.log(nextRouterState.params.invId);
@@ -24,6 +26,8 @@ function onJoinEnter(nextRouterState){
 
 function onPageEnter(store) {
   store.dispatch(fetchClients());
+  axios.get('/user')
+  .then(user => store.dispatch(setUser(user.data)))
 }
 
 function onGameLobbyEnter(nextRouterState, store) {

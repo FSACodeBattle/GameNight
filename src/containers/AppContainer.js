@@ -21,6 +21,8 @@ class AppContainer extends Component {
       store.dispatch(fetchClients())
     });
 
+
+
     return (
       <Provider store={store}>
         <div>

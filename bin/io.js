@@ -8,7 +8,11 @@ module.exports = function(server) {
 	if (io) return io;
 	io = socketio(server);
 	io.on('connection', function(socket) {
-		socket.join('MainLobby');
+		socket.on('setUser', payload => {
+			socket.user = payload.user;
+			socket.join('MainLobby');
+			io.emit('reload');
+		});
 		//socket.on('joinMainLobby', socketCallbacks.joinMainLobby)
 		socket.emit('news', {
 			hello: 'world'
