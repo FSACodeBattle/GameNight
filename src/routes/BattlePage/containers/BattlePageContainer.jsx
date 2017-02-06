@@ -42,8 +42,8 @@ class BattlePage extends Component {
         <div className="container-fluid-row-battle">
           <div className="row-fluid-battlepage">
             <div className="col col-xs-12 col-md-4 col-lg-4">
-              <h4>{this.state.player1}</h4>
-              <h4>{this.state.player2}</h4>
+              <h5>{this.state.player1}</h5>
+              <h5>{this.state.player2}</h5>
               {/**Passes in the users current question object to the Problem component by using ArrayOfQuestions[current question index]**/}
               <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
             </div>

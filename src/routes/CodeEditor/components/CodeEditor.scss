@@ -20,9 +20,15 @@
   overflow-y: scroll;
 }
 
+.playerProgress {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
 #submit-btn {
   background-color: dimgray;
   border-color: transparent;
+  margin-bottom: 10px;
 }
 
 .ReactCodeMirror {
@@ -39,6 +45,12 @@
 	max-width: 100%;
 	padding: 1em;
   height: 100%;
+}
+
+#enterCodeText {
+  background-color: rgba(0,0,0,0.2);
+  padding-left: 10px;
+  text-align: left;
 }
 
 .row {

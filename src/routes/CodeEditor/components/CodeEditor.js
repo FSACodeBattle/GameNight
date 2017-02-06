@@ -131,20 +131,25 @@ class CodeEditor extends Component {
     }
     return (
       <div id="code-editor-text">
-        <h3 style={{color: "#777"}}>
-          {this.state.playerProgress.join('-')}
-        </h3>
-        <h4 style={{color:"#777"}}>Enter Code</h4>
         <div className="container">
           <div className="row">
             <div className="col col-xs-12 col-md-10 col-md-offset-1">
+              <div className="playerProgress" style={{color: "#777"}}>
+                  <div>
+                    {this.state.playerProgress.join('-')}
+                  </div>
+              </div>
+              <div id="enterCodeText"style={{color:"#777"}}>Enter Code
+              </div>
               <CodeMirror
                 value={this.state.code}
                 onChange={this.updateCode}
                 options={options}
               />
               <button id="submit-btn" className="btn btn-primary btn-small" onClick={this.handleSubmit}>SUBMIT</button>
-              <h3 style={{color: "#777"}}>Answer</h3>
+              <div id="enterCodeText"style={{color:"#777"}}>
+                Answer
+              </div>
               <CodeMirror
                 value={this.state.results}
                 options={optionsForAnswers}
