@@ -133,7 +133,7 @@ class CodeEditor extends Component {
       <div id="code-editor-text">
         <div className="container">
           <div className="row">
-            <div className="col col-xs-12 col-md-10 col-md-offset-1">
+            <div className="col-xs-12 col-md-10 col-md-offset-1">
               <div className="playerProgress" style={{color: "#777"}}>
                   <div>
                     {this.state.playerProgress.join('-')}
