@@ -32,7 +32,7 @@ function onPageEnter(store) {
 
 function onGameLobbyEnter(nextRouterState, store) {
   const roomid = nextRouterState.params.roomid;
-  socket.emit('joinGameLobby', roomid);
+  if(store.getState().user.user) socket.emit('joinGameLobby', roomid);
   store.dispatch(setRoomId(roomid));
 }
 
