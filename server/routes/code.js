@@ -8,6 +8,7 @@ router.post('/', (req, res, next) => {
   const ioObj = io();
   const docker = new createDocker();
   const codeToRun = `${req.body.code}`;
+  console.log(req.body.timeElapsed);
   // pull in all testsToRun for every question at one time from the db
   // this will be an array of strings shown like this 
   /// [test1andtest2, test3
