@@ -31,6 +31,7 @@ function onGameLobbyEnter(nextRouterState, store) {
   socket.emit('joinGameLobby', roomid);
   store.dispatch(setRoomId(roomid));
 }
+
 export const createRoutes = (store) => (
   <Route path="/" component={CoreLayout} onEnter={() => onPageEnter(store)}>
     <Route path="login" component={Login} />
