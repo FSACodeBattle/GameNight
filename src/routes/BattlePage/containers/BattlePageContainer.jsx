@@ -56,22 +56,28 @@ class BattlePage extends Component {
         if(socket.id === data.currentPlayer){
           //change player 1's progress and their current question 
           this.setState( {player1: {id: this.state.player1.id, progress: (this.state.player1.progress + 1)}, currentQuestion: (this.state.currentQuestion + 1), roomID: data.roomID}, () => {
-            if(this.state.player1.progress === 2){
-                //
-                console.log("inside win check")
 
-                socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player1.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});
-                
-              }
+            if(this.state.player1.progress === 2){
+                notify.show('You won the game!', 'success', 2500);
+                console.log("inside player 1 win check")
+                socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player1.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});         
+              } else {
+                notify.show('You got an answer correct!', 'success', 2500);
+            }
           });
           
           console.log('Player 1 progress updated and the question should have changed', this.state.player1.progress)
         }
         else{
-          notify.show('Player 1 submitted a correct answer!', 'warning', 2500);
           //change player 1's progress to update the score
           this.setState( {player1: {id: this.state.player1.id, progress: (this.state.player1.progress + 1)}, roomID: data.roomID});
           console.log('Player 1 progress updated', this.state.player1.progress)
+
+          if(this.state.player1.progress === 2){
+            notify.show('Player 1 won the game!', 'error', 2500);
+          } else {
+            notify.show('Player 1 submitted a correct answer!', 'warning', 2500);
+          }
         }
       }
       //player must be player 2
@@ -80,21 +86,30 @@ class BattlePage extends Component {
         //if the client is player 2 update their progress and change the score       
         if(socket.id === data.currentPlayer){
           this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1)}, currentQuestion: (this.state.currentQuestion + 1), roomID: data.roomID}, () => {
+              // notify.show('Player 2 got an answer correct!', 'success', 2500);
               if(this.state.player2.progress === 2){
-                    console.log("inside win check")
+                    notify.show('You won the game!', 'success', 2500);
+                    console.log("inside player 2 win check")
                     //
                     socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player2.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed});
                     
+                  } else {
+                                    notify.show('You got an answer correct!', 'success', 2500);
                   }
           });
           
           console.log('Player 2 progress updated and the question should have changed', this.state.player2.progress) 
         }
         else{
-          notify.show('Player 2 submitted a correct answer!', 'warning', 2500);
           //just change player 2's score
           this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1)}, roomID: data.roomID})
           console.log('Player 2 progress updated', this.state.player2.progress )
+
+          if(this.state.player2.progress === 2){
+            notify.show('Player 2 won the game!', 'error', 2500);
+          } else {
+            notify.show('Player 2 submitted a correct answer!', 'warning', 2500);
+          }
         }
       }
       console.log(`${data.playerToUpdate} has completed a question`);
@@ -108,7 +123,9 @@ class BattlePage extends Component {
 
 
     socket.on('gameWinningState', (data) => {
-      //alert(data.winnerID, "won");
+      // alert(data.winnerID, "won");
+      // notify.show(data.winnerID, " won the game!", 'success', 2500);
+
       console.log(data.winnerID, "won");
     })
 
