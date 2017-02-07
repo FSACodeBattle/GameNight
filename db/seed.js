@@ -4,16 +4,31 @@ const bcrypt = require('bcryptjs');
 const seedUsers = () => db.Promise.map(
 	[
 		{
-			username: 'a',
-			password: bcrypt.hashSync('a', 10),
-			name: 'a',
-			email: 'a@a.com'
+			username: 'mitch',
+			password: bcrypt.hashSync('mitch', 10),
+			name: 'mitch k',
+			email: 'mitch@mitch.com',
+			points: 975,
+			wins: 4,
+			losses: 5
 		},
 		{
-			username: 'b',
-			password: bcrypt.hashSync('b', 10),
-			name: 'b',
-			email: 'b@b.com'
+			username: 'john',
+			password: bcrypt.hashSync('john', 10),
+			name: 'john y',
+			email: 'john@john.com',
+			points: 1025,
+			wins: 5,
+			losses: 4
+		},
+		{
+			username: 'ming',
+			password: bcrypt.hashSync('ming', 10),
+			name: 'ming t',
+			email: 'ming@ming.com',
+			points: 2433,
+			wins: 123,
+			losses: 3
 		}
 	// {
 	// 	username: 'jonguy',
@@ -53,49 +68,104 @@ const seedUsers = () => db.Promise.map(
 const seedQuestions = () => db.Promise.map(
 	[
 	{
-		name: "Question 1",
-		questionText: `Make a function called returnOne that returns 1\n
-		function returnOne() {return 1} \n
-		This is filler text for a second line.\n
-		This is filler text for a third line.\n`,
-		tests: `describe("returnOne", function(){
-        			it("should return 1", function(){
-         	 			assert.equal(1, returnOne());
+		name: "Fibonacci Series",
+		questionText: `Make a function named fib that takes in a non-negative integer n and returns the nth Fibonacci number.\n
+		The Fibonacci sequence is the series of numbers in which each number is the sum of the two preceding numbers.\n
+		1, 1, 2, 3, 5, 8, etc.
+		`,
+		tests: `describe("fib", function(){
+        			it("1st element should return 1", function(){
+         	 			assert.equal(1, fib(0));
       				})
-    			})`
-	}, {
-		name: "Question 2",
-		questionText: "Make a function called returnTwo that returns 2 	\nfunction returnTwo() {return 2} \n",
-		tests: `describe("returnTwo", function(){
-        			it("should return 2", function(){
-         	 			assert.equal(2, returnTwo());
+      				it("2nd element should return 1", function(){
+         	 			assert.equal(1, fib(1));
       				})
-    			})`
-	}, {
-		name: "Question 3",
-		questionText: "Make a function called returnThree that returns 3 	\nfunction returnThree() {return 3} \n",
-		tests: `describe("returnThree", function(){
-        			it("should return 3", function(){
-         	 			assert.equal(3, returnThree());
+      				it("3rd element should return 2", function(){
+         	 			assert.equal(2, fib(2));
       				})
-    			})`
-	}, {
-		name: "Question 4",
-		questionText: "Make a function called returnFour that returns 4  \nfunction returnFour() {return 4} \n",
-		tests: `describe("returnFour", function(){
-        			it("should return 4", function(){
-         	 			assert.equal(4, returnFour());
+      				it("4th element should return 3", function(){
+         	 			assert.equal(3, fib(3));
       				})
-    			})`
-	}, {
-		name: "Question 5",
-		questionText: "Make a function called returnFive that returns 5	 \nfunction returnFive() {return 5} \n",
-		tests: `describe("returnFive", function(){
-        			it("should return 5", function(){
-         	 			assert.equal(5, returnFive());
+      				it("5th element should return 5", function(){
+         	 			assert.equal(5, fib(4));
+      				})
+      				it("6th element should return 8", function(){
+         	 			assert.equal(8, fib(5));
+      				})
+      				it("7th element should return 13", function(){
+         	 			assert.equal(13, fib(6));
       				})
     			})`
 	},
+	{
+		name: "Hey! Diddle, diddle...",
+		questionText: `In the nursery rhyme "Hey! Diddle, diddle..." write a function called motherGoose that fills in the blank. \n
+		Hey! diddle, diddle, \n
+		The cat and the fiddle, \n
+		The cow jumped over the moon; \n
+		The little dog laughed \n 
+		To see such sport, \n 
+		And the dish ran away with the _____. \n
+		`,
+		tests: `describe("motherGoose", function(){
+        			it("should return", function(){
+         	 			assert.equal("spoon", motherGoose());
+      				})
+    			})`
+	}
+	// , {
+	// 	name: "Question 2",
+	// 	questionText: "Make a function called returnTwo that returns 2 	\nfunction returnTwo() {return 2} \n",
+	// 	tests: `describe("returnTwo", function(){
+ //        			it("should return 2", function(){
+ //         	 			assert.equal(2, returnTwo());
+ //      				})
+ //    			})`
+	// }
+	// {
+	// 	name: "Question 1",
+	// 	questionText: `Make a function called returnOne that returns 1\n
+	// 	function returnOne() {return 1} \n
+	// 	This is filler text for a second line.\n
+	// 	This is filler text for a third line.\n`,
+	// 	tests: `describe("returnOne", function(){
+ //        			it("should return 1", function(){
+ //         	 			assert.equal(1, returnOne());
+ //      				})
+ //    			})`
+	// }, {
+	// 	name: "Question 2",
+	// 	questionText: "Make a function called returnTwo that returns 2 	\nfunction returnTwo() {return 2} \n",
+	// 	tests: `describe("returnTwo", function(){
+ //        			it("should return 2", function(){
+ //         	 			assert.equal(2, returnTwo());
+ //      				})
+ //    			})`
+	// }, {
+	// 	name: "Question 3",
+	// 	questionText: "Make a function called returnThree that returns 3 	\nfunction returnThree() {return 3} \n",
+	// 	tests: `describe("returnThree", function(){
+ //        			it("should return 3", function(){
+ //         	 			assert.equal(3, returnThree());
+ //      				})
+ //    			})`
+	// }, {
+	// 	name: "Question 4",
+	// 	questionText: "Make a function called returnFour that returns 4  \nfunction returnFour() {return 4} \n",
+	// 	tests: `describe("returnFour", function(){
+ //        			it("should return 4", function(){
+ //         	 			assert.equal(4, returnFour());
+ //      				})
+ //    			})`
+	// }, {
+	// 	name: "Question 5",
+	// 	questionText: "Make a function called returnFive that returns 5	 \nfunction returnFive() {return 5} \n",
+	// 	tests: `describe("returnFive", function(){
+ //        			it("should return 5", function(){
+ //         	 			assert.equal(5, returnFive());
+ //      				})
+ //    			})`
+	// },
 // 	{
 // 		name: "Set Property on an Object Literal",
 // 		questionText: `Make a function named setPropertiesOnObjLiteral that takes in an object and sets the x property of that object to 3.`,
@@ -409,11 +479,11 @@ const seedQuestions = () => db.Promise.map(
 	// },
 	], question => db.model('questions').create(question))
 
-const seedFights = () => db.Promise.map(
-	[{
-		number: 1,
-		questions: [1, 2]
-	}], fight => db.model('fights').create(fight))
+// const seedFights = () => db.Promise.map(
+// 	[{
+// 		number: 1,
+// 		questions: [1, 2]
+// 	}], fight => db.model('fights').create(fight))
 
 
 db.sync()
@@ -424,7 +494,7 @@ db.sync()
 	.then((users) => console.log(`Seeded ${users.length} users OK`))
 	.then(seedQuestions)
 	.then((questions) => console.log(`Seeded ${questions.length} questions OK`))
-	.then(seedFights)
-	.then((fights) => console.log(`Seeded ${fights.length} fights OK`))
+	// .then(seedFights)
+	// .then((fights) => console.log(`Seeded ${fights.length} fights OK`))
 	.catch(error => console.error(error))
 	.finally(() => db.close())

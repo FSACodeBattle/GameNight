@@ -12,7 +12,7 @@ export const Leaderboard = (props) => {
 					<td> {++i} </td>
 					<td>{user.username}</td>
 					<td>{user.wins}</td>
-					<td>{user.wins + user.losses ? user.wins/(user.wins + user.losses) : 0}</td>
+					<td>{user.wins + user.losses ? (user.wins/(user.wins + user.losses)).toFixed(2) : 0}</td>
 					<td>{user.points}</td>
 				</tr>
 				)
@@ -28,7 +28,7 @@ export const Leaderboard = (props) => {
 				        <th>#</th>
 				        <th>Username</th>
 				        <th>Total Wins</th>
-				        <th>Win/Loss</th>
+				        <th>Winning Percentage</th>
 				        <th>Points</th>
 				      </tr>
 				    </thead>
