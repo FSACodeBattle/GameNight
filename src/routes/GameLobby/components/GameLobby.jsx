@@ -49,14 +49,6 @@ class GameLobby extends React.Component {
 }
 export default GameLobby;
 
-
-
-
-
-
-
-
-
 //   render() {
 //     return (
 //       <div style={{color:"white"}}>
@@ -69,4 +61,12 @@ export default GameLobby;
 //     )
 //   }
 // }
+
+
+
+
+
+
+
+
 
