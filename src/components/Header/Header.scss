@@ -2,14 +2,19 @@
   font-weight: bold;
   text-decoration: underline;
 }
-.navbar.navbar-default{
-  max-width: 100%;
-  background-color: #303133
+
+.route:active {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
-#nav-login {
-  float: right!important;
+.navbar.navbar-default{
+  max-width: 100%;
+  background-color: #303133;
+  margin-bottom: 0px;
+  border-color: #303133;
 }
+
 
 .navbar a {
   color: #777;
@@ -21,16 +26,6 @@
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-    color: #444;
-}
-
-.route:active {
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-
-.navbar-form.navbar-left.search {
-  float: right !important;
+    color: #999;
 }
 
