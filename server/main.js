@@ -74,6 +74,11 @@ app.post("/signup", function(req, res, next){
     })
 })
 
+app.get('/signout', (req, res, next) => {
+  req.session.destroy();
+  res.sendStatus(200);
+})
+
 app.get('/user', (req, res, next) => res.send(req.user));
 app.get('/failure', (req, res, next) => res.send(null));
 
