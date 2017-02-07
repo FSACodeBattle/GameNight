@@ -69,7 +69,7 @@ app.post("/signup", function(req, res, next){
           password: bcrypt.hashSync(req.body.password, 10),
           name: req.body.name,
           email: req.body.email
-        }).then(user => res.send(user));
+        }).then(() => passport.authenticate("local", {failureRedirect:"/failure", successRedirect: "/user"})(req, res, next));
       } else res.send("user exists");
     })
 })
