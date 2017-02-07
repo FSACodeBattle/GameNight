@@ -42,7 +42,7 @@ class BattlePage extends Component {
   gameWinningEmitEvent(){
     socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player1.id, score: [this.state.player1.progress, this.state.player2.progress], time: this.state.timeElapsed})
   }
-  componentDidMount(){
+  componentDidMount() {
     //set the player ids to their socket ids
     //get the questions getting sent from the backend and store them in questionsArr
     let p1username = 'Player One';
@@ -170,20 +170,16 @@ class BattlePage extends Component {
           </div>
           <div className="row">
             <div className="col col-xs-12 col-sm-6 col-md-4 col-lg-4" id="problemsContainers">
-            <div className="col-xs-4">
-              <h2>{`${this.state.player1.username} - ${this.state.player1.progress}`}</h2>
-              <h2>{`${this.state.player2.username} - ${this.state.player2.progress}`}</h2>
 
-                {/**Passes in the users current question object to the Problem component by using ArrayOfQuestions[current question index]**/}
-              <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
-              <h5>{this.state.player1}</h5>
-              <h5>{this.state.player2}</h5>
-            </div>
-            <div className="col col-xs-12 col-sm-6 col-md-8 col-lg-8" id="codeeditor">
-              <CodeEditor currentQuestionID={this.state.questionsArr[this.state.currentQuestion]} roomID={this.props.roomID.id}/>
+                  {/**Passes in the users current question object to the Problem component by using ArrayOfQuestions[current question index]**/}
+                <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
+                <h2>{`${this.state.player1.username} - ${this.state.player1.progress}`}</h2>
+                <h2>{`${this.state.player2.username} - ${this.state.player2.progress}`}</h2>
+              </div>
+              <div className="col col-xs-12 col-sm-6 col-md-8 col-lg-8" id="codeeditor">
+                <CodeEditor currentQuestionID={this.state.questionsArr[this.state.currentQuestion]} roomID={this.props.roomID.id}/>
             </div>
           </div>
-        </div>
       </div>
       );
     }
