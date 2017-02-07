@@ -3,6 +3,7 @@ import axios from 'axios';
 import  { setUser } from '../../../store/user';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import '../Signup.scss';
 
 class Signup extends React.Component {
 
