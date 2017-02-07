@@ -43,7 +43,7 @@ class Header extends React.Component {
               ?
               (
                 <div className="pull-right AccountDropdown">
-                  <DropdownButton pullRight={true} title={user.name.split(' ')[0]} >
+                  <DropdownButton id={`dropdown-basic-1`} pullRight={true} title={user.name.split(' ')[0]} >
                     <MenuItem onSelect={() => browserHistory.push(`/profile/${user.username}`)}>Profile</MenuItem>
                     <MenuItem >Settings</MenuItem>
                     <MenuItem onSelect={this.logout}>Logout</MenuItem>
