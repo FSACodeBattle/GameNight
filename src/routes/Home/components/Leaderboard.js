@@ -1,11 +1,10 @@
 import React from 'react'
-import DuckImage from '../assets/Duck.jpg'
 import './HomeView.scss'
 import './leaderboard.scss';
 
 export const Leaderboard = (props) => {
 		const leaderboard = props.leaderboard;
-			//if the current question is defined
+			//if leaderboard is defined
 		if (leaderboard){
 
 			var rows = leaderboard.map((user, i) =>

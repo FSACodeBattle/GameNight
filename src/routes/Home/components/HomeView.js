@@ -11,7 +11,8 @@ class HomeView extends Component {
     super(props);
     this.state = {
       username: '',
-      leaderboard: []
+      leaderboard: [],
+      matches: []
     }
 
   }
@@ -20,10 +21,16 @@ class HomeView extends Component {
       .then((leaderboard) => {
         this.setState({leaderboard: leaderboard.data});
       })
+
+
+    axios.get('/api/users/allMatches')
+      .then((matches) => {
+        this.setState({matches: matches.data})
+      })
+
   }
 
   render(){
-    console.log("adasdfsaDSFSDF", this.state.leaderboard);
     return (
       <div>
         <img src="ninja.jpg" className="img" alt="Responsive image"/>
@@ -33,7 +40,7 @@ class HomeView extends Component {
             <MainLobbyContainer />
           </div>
           <div className="row" id="matchAndLeaders">
-            <MatchHistory />
+            <MatchHistory matches={this.state.matches}/>
             <div className="col-xs-12 col-md-4 col-lg-4">
 
             </div>
