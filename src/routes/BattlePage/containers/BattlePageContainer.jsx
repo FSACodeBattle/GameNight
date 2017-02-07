@@ -34,27 +34,49 @@ class BattlePage extends Component {
     })
   }
   render() {
-    return (
-      <div>
-        <div className="row-fluid-clock">
-          <CountdownClock />
-        </div>
-        <div className="container-fluid-row-battle">
-          <div className="row-fluid-battlepage">
-            <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4" id="problemsContainers">
-              {/**Passes in the users current question object to the Problem component by using ArrayOfQuestions[current question index]**/}
-              <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
-              <h5>{this.state.player1}</h5>
-              <h5>{this.state.player2}</h5>
-            </div>
-            <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8" id="codeeditor">
-              <CodeEditor />
-            </div>
+      return (
+        <div className="container-fluid">
+          <div className="row">
+            <CountdownClock />
+          </div>
+          <div className="row">
+              <div className="col col-xs-12 col-sm-6 col-md-4 col-lg-4" id="problemsContainers">
+                {/**Passes in the users current question object to the Problem component by using ArrayOfQuestions[current question index]**/}
+                <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
+                <h5>{this.state.player1}</h5>
+                <h5>{this.state.player2}</h5>
+              </div>
+              <div className="col col-xs-12 col-sm-6 col-md-8 col-lg-8" id="codeeditor">
+                <CodeEditor />
+              </div>
           </div>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 }
 
 export default BattlePage;
+
+
+// render() {
+//   return (
+//     <div>
+//       <div className="row-fluid-clock">
+//         <CountdownClock />
+//       </div>
+//       <div className="container-fluid">
+//         <div className="row-fluid">
+//           <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4" id="problemsContainers">
+//             {*Passes in the users current question object to the Problem component by using ArrayOfQuestions[current question index]*}
+//             <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
+//             <h5>{this.state.player1}</h5>
+//             <h5>{this.state.player2}</h5>
+//           </div>
+//           <div className="col-xs-12 col-sm-6 col-md-8 col-lg-8" id="codeeditor">
+//             <CodeEditor />
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
