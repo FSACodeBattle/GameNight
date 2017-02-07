@@ -3,66 +3,44 @@ import DuckImage from '../assets/Duck.jpg'
 import './HomeView.scss'
 import './Matchhistory.scss';
 
-export const MatchHistory = () => (
+export const MatchHistory = (props) => {
+  const matches = props.matches;
+      //if matches is defined
+    if (matches){
+
+      var rows = matches.map(match =>
+        <tr key={match.id} >
+          <td>{match.createdAt}</td>
+          <td>{match.id}</td>
+          <td>{match.winnerId}</td>
+          <td>{match.loserId}</td>
+          <td>{match.winnerDuration}</td>
+        </tr>
+        )
+    }
+
+    return (
+
   <div className="col-xs-12 col-md-4 col-lg-4" id="matchComponent">
     <div className="table-responsive">
     <h2 style={{color:"#777"}}> Match History </h2>
       <table className="table">
         <thead>
           <tr>
-            <th>#</th>
+            <th>Date</th>
             <th>Match ID</th>
-            <th>Win/Loss</th>
-            <th>Opponent</th>
+            <th>Winning Player</th>
+            <th>Losing Player</th>
+            <th>Winning Time</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>5</td>
-            <td>Win</td>
-            <td>CodeMaster</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>62</td>
-            <td>Loss</td>
-            <td>QueenCoder</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>77</td>
-            <td>Win</td>
-            <td>CodeNoob</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>5</td>
-            <td>Win</td>
-            <td>CodeMaster</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>5</td>
-            <td>Win</td>
-            <td>CodeMaster</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>5</td>
-            <td>Win</td>
-            <td>CodeMaster</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>5</td>
-            <td>Win</td>
-            <td>CodeMaster</td>
-          </tr>
+          {rows}
         </tbody>
       </table>
     </div>
   </div>
 )
+}
 
 export default MatchHistory;
