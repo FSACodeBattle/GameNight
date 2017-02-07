@@ -11,6 +11,7 @@ export const Header = () => (
       </div>
       <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul className="nav navbar-nav">
+          <li><Link to="about">About</Link></li>
           <li><Link to="battlePage">Battle Page</Link></li>
           <li><Link to="code_editor">Code Editor</Link></li>
           <li><Link to="/invite" activeClassName="route--active">Invite</Link></li>
