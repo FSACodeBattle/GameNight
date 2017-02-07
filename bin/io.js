@@ -57,18 +57,10 @@ module.exports = function(server) {
 
 							const room = io.sockets.adapter.rooms[data];
 							let users = Object.keys(room.sockets).map(id => {
-								console.log(id);
 								const user = io.sockets.connected[id].user;
 								return user;
 							})
 
-							const mainLobby = io.sockets.adapter.rooms["MainLobby"];
-							clients = Object.keys(mainLobby.sockets).map(id => {
-								const user = io.sockets.connected[id].user;
-								return user;
-							})
-
-							console.log('c', clients);
 							console.log('user', users);
 
 							//const arrOfSocketIDs = Object.keys(io.sockets.adapter.rooms[data].sockets);

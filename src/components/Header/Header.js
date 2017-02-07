@@ -1,19 +1,28 @@
 'use strict';
+import axios from 'axios';
 import React from 'react';
-import { IndexLink, Link } from 'react-router';
-import './Header.scss';
-import Login from '../Login/Login';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
+import { IndexLink, Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
+import Login from '../Login/Login';
+import { setUser } from '../../store/user';
+import './Header.scss';
+
 
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
+
+    this.logout = this.logout.bind(this);
+  }
+
+  logout() {
+    this.props.logoutUser();
   }
 
   render() {
     const user = this.props.user;
-    console.log('user', user);
     return (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
@@ -31,12 +40,17 @@ class Header extends React.Component {
             </ul>
             {
               Object.keys(user).length
-              ? <div className="loginComponent">
-                  <Link to={`/profile/${user.username}`}>
-                  <button>{user.username}</button>
-                  </Link>
+              ?
+              (
+                <div className="pull-right AccountDropdown">
+                  <DropdownButton id={`dropdown-basic-1`} pullRight={true} title={user.name.split(' ')[0]} >
+                    <MenuItem onSelect={() => browserHistory.push(`/profile/${user.username}`)}>Profile</MenuItem>
+                    <MenuItem >Settings</MenuItem>
+                    <MenuItem onSelect={this.logout}>Logout</MenuItem>
+                  </DropdownButton>
                 </div>
-              : <Login />
+              )
+              : <div className="pull-right AccountDropdown"><Login /></div>
             }
           </div>
         </div>
@@ -53,12 +67,17 @@ function makeid() {
     return text;
 }
 
-
-
-
-
 const mapStateToProps = (state) => {
   return {user: state.user.user};
 }
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logoutUser: function() {
+      axios.get('/signout')
+      .then(() => dispatch(setUser({})));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
