@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React from 'react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
-import { IndexLink, Link } from 'react-router';
+import { IndexLink, Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import Login from '../Login/Login';
 import { setUser } from '../../store/user';
@@ -44,7 +44,7 @@ class Header extends React.Component {
               (
                 <div className="pull-right AccountDropdown">
                   <DropdownButton pullRight={true} title={user.name.split(' ')[0]} >
-                    <MenuItem >Profile</MenuItem>
+                    <MenuItem onSelect={() => browserHistory.push(`/profile/${user.username}`)}>Profile</MenuItem>
                     <MenuItem >Settings</MenuItem>
                     <MenuItem onSelect={this.logout}>Logout</MenuItem>
                   </DropdownButton>
