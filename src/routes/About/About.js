@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './About.scss';
 
-class About extends Component {
-  render() {
-
+const About = () => {
   return (
     <div className="container">
       <div className="row">
@@ -51,8 +49,7 @@ class About extends Component {
       </div>
 
     </div>
-  )
-  }
-};
+  );
+}
 
 export default About;
