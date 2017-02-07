@@ -11,7 +11,7 @@ const history = require('connect-history-api-fallback');
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const app = express();
 
@@ -69,9 +69,14 @@ app.post("/signup", function(req, res, next){
           password: bcrypt.hashSync(req.body.password, 10),
           name: req.body.name,
           email: req.body.email
-        }).then(user => res.send(user));
+        }).then(() => passport.authenticate("local", {failureRedirect:"/failure", successRedirect: "/user"})(req, res, next));
       } else res.send("user exists");
     })
+})
+
+app.get('/signout', (req, res, next) => {
+  req.session.destroy();
+  res.sendStatus(200);
 })
 
 app.get('/user', (req, res, next) => res.send(req.user));

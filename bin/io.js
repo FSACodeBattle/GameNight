@@ -2,6 +2,8 @@ const socketio = require('socket.io');
 const socketCallbacks = require('../server/sockets/socketCallbacks');
 const Question = require('../db/database').Question;
 const Sequelize = require('sequelize');
+const User = require('../db/database').User;
+const Fight = require('../db/database').Fight
 let io = null;
 
 module.exports = function(server) {
@@ -55,18 +57,10 @@ module.exports = function(server) {
 
 							const room = io.sockets.adapter.rooms[data];
 							let users = Object.keys(room.sockets).map(id => {
-								console.log(id);
 								const user = io.sockets.connected[id].user;
 								return user;
 							})
 
-							const mainLobby = io.sockets.adapter.rooms["MainLobby"];
-							clients = Object.keys(mainLobby.sockets).map(id => {
-								const user = io.sockets.connected[id].user;
-								return user;
-							})
-
-							console.log('c', clients);
 							console.log('user', users);
 
 							//const arrOfSocketIDs = Object.keys(io.sockets.adapter.rooms[data].sockets);
@@ -96,6 +90,25 @@ module.exports = function(server) {
 
 		socket.on('gameOver', (data) => {
 			console.log("gameover event ", data);
+								
+			Fight.create({
+						winnerId: data.winnerUserID,
+						loserId: data.loserUserID,
+						winnerDuration: data.time
+			})
+			.then((savedFight => {
+				User.findById(data.winnerUserID)
+					.then((winningUser) => {
+						winningUser.update({wins: (winningUser.wins + 1), points: (winningUser.points + 25)})
+
+					})
+				User.findById(data.loserUserID)
+					.then((losingUser) => {
+						losingUser.update({losses: (losingUser.losses + 1), points: (losingUser.points - 25)})
+					})
+			}))
+			
+
 			io.in(data.roomID).emit('gameWinningState', data);
 		})
 

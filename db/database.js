@@ -7,6 +7,7 @@ const db = new Sequelize('postgres://localhost:5432/code_battle', {
 const User = db.define('users', {
   username: {
     type: Sequelize.STRING,
+    unique: true
   },
   password: {
     type: Sequelize.STRING,
@@ -14,13 +15,26 @@ const User = db.define('users', {
   name: {
     type: Sequelize.STRING,
   },
+  wins: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  losses: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  points: {
+    type: Sequelize.INTEGER,
+    defaultValue: 1000
+  },
+
   email: {
     type: Sequelize.STRING,
     validate: {
       isEmail: true,
       notEmpty: true,
     }
-	}
+  }
 })
 
 const Question = db.define('questions', {
@@ -36,12 +50,13 @@ const Question = db.define('questions', {
 })
 
 const Fight = db.define('fights', {
-  number: {
-    type: Sequelize.STRING,
+  winnerDuration: {
+    type: Sequelize.FLOAT,
   }
 })
 
-
+Fight.belongsTo(User, {as: 'winner'});
+Fight.belongsTo(User, {as: 'loser'});
 //Relationships
 
 // User.hasMany(Fight, {as: 'Fights'});
