@@ -22,7 +22,7 @@ const About = () => {
           </a>
         </div>
         <div className="col-xs-6 col-md-8">
-          Hello, Info About Patryck
+          Hello, Info About Patryk
         </div>
       </div>
 

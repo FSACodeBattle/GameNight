@@ -4,6 +4,7 @@ import './BattlePageContainer.scss';
 import Problem from '../components/Problem'
 import CountdownClock from '../components/CountdownClock'
 import CodeEditor from '../../CodeEditor/components/CodeEditor'
+import ProgressBar from '../components/ProgressBar.js'
 import axios from 'axios';
 import Notifications, {notify} from 'react-notify-toast';
 import { browserHistory } from 'react-router';
@@ -163,6 +164,17 @@ class BattlePage extends Component {
 {/*        <div className="row">
           <CountdownClock />
         </div>*/}
+
+        <div className="row">
+          <div className="col col-xs-12 col-md-6">
+            <label>{`${this.state.player1.username}`}</label>
+            <ProgressBar style={{width: `${this.state.player1.progress}/2 *100`}} />
+          </div>
+          <div className="col col-xs-12 col-md-6">
+            <label>{`${this.state.player2.username}`}</label>
+            <ProgressBar style={{width: `${this.state.player1.progress}`}} />
+          </div>
+        </div>
         <div className="row">
           <div className="col col-xs-12 col-sm-6 col-md-4 col-lg-4" id="problemsContainers">
 
