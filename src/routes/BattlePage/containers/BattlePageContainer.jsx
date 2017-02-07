@@ -160,7 +160,6 @@ class BattlePage extends Component {
     })
 
   }
-  }
   render() {
     console.log("render of the container",this.state.questionsArr[this.state.currentQuestion]);
       return (
