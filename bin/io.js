@@ -107,12 +107,12 @@ module.exports = function(server) {
 			.then((savedFight => {
 				User.findById(data.winnerUserID)
 					.then((winningUser) => {
-						winningUser.update({wins: (winningUser.wins + 1)})
+						winningUser.update({wins: (winningUser.wins + 1), points: (winningUser.points + 25)})
 
 					})
 				User.findById(data.loserUserID)
 					.then((losingUser) => {
-						losingUser.update({losses: (losingUser.losses + 1)})
+						losingUser.update({losses: (losingUser.losses + 1), points: (losingUser.points - 25)})
 					})
 			}))
 			

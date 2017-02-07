@@ -8,3 +8,11 @@ module.exports = require('express').Router()
 		.then(users => res.json(users))
 		.catch(next)
 	})
+	.get('/leaderboard', (req, res, next) => {
+		User.findAll({
+			limit: 10,
+			order: [['points', 'DESC']]
+		})
+		.then(users => res.json(users))
+		.catch(next)
+	})

@@ -3,11 +3,26 @@ import DuckImage from '../assets/Duck.jpg'
 import './HomeView.scss'
 import './leaderboard.scss';
 
-export const Leaderboard = () => (
+export const Leaderboard = (props) => {
+		const leaderboard = props.leaderboard;
+			//if the current question is defined
+		if (leaderboard){
 
+			var rows = leaderboard.map((user, i) =>
+				<tr key={user.id} >
+					<td> {++i} </td>
+					<td>{user.username}</td>
+					<td>{user.wins}</td>
+					<td>{user.wins/(user.wins + user.losses)}</td>
+					<td>{user.points}</td>
+				</tr>
+				)
+		}
+
+		return (
   		<div className="col-xs-12 col-md-4 col-lg-4" id="leaderboardComponent">
   			<div className="table-responsive">
-  			<h2 style={{color:'#777'}}> Leader board </h2>
+  			<h2 style={{color:'#777'}}> Leaderboard </h2>
 				  <table className="table">
 				    <thead>
 				      <tr>
@@ -15,55 +30,16 @@ export const Leaderboard = () => (
 				        <th>Username</th>
 				        <th>Total Wins</th>
 				        <th>Win/Loss</th>
+				        <th>Points</th>
 				      </tr>
 				    </thead>
 				    <tbody>
-				      <tr>
-				        <th scope="row">1</th>
-				        <td>5</td>
-				        <td>Win</td>
-				        <td>hello</td>
-				      </tr>
-				      <tr>
-				        <th scope="row">2</th>
-				        <td>62</td>
-				        <td>Loss</td>
-				        <td>hello</td>
-				      </tr>
-				      <tr>
-				        <th scope="row">2</th>
-				        <td>62</td>
-				        <td>Loss</td>
-				        <td>hello</td>
-				      </tr>
-				      <tr>
-				        <th scope="row">2</th>
-				        <td>62</td>
-				        <td>Loss</td>
-				        <td>hello</td>
-				      </tr>
-				      <tr>
-				        <th scope="row">3</th>
-				        <td>77</td>
-				        <td>Win</td>
-				        <td>hello</td>
-				      </tr>
-				      <tr>
-				        <th scope="row">4</th>
-				        <td>5</td>
-				        <td>Win</td>
-				        <td>hello</td>
-				      </tr>
-				      <tr>
-				        <th scope="row">5</th>
-				        <td>5</td>
-				        <td>Win</td>
-				        <td>hello</td>
-				      </tr>
+				    {rows}
 				    </tbody>
 				  </table>
   			</div>
   	</div>
-)
+	)
+}
 
 export default Leaderboard;
