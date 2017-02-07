@@ -4,6 +4,7 @@ import { Provider, connect } from 'react-redux';
 import CoreLayout from '../layouts/CoreLayout';
 import Home from '../routes/Home';
 import CodeEditor from '../routes/CodeEditor';
+import BattlePage from '../routes/BattlePage/containers/BattlePageContainer.jsx'
 import { fetchClients } from '../store/client';
 
 

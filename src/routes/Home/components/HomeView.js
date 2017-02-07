@@ -1,19 +1,24 @@
 import React from 'react'
-import DuckImage from '../assets/Duck.jpg'
 import './HomeView.scss'
 import MatchHistory from './MatchHistory'
 import Achievements from './Achievements'
 import Leaderboard from './Leaderboard'
-import MainLobbyContainer from '../../MainLobbyList/containers/MainLobbyContainer'
+import MainLobbyContainer from '../../MainLobbyList/containers/MainLobbyContainer';
 
 export const HomeView = () => (
-  <div id="homeViewContainer">
-    <h4>Welcome!</h4>
+  <div>
+    <img src="ninja.jpg" className="img" alt="Responsive image"/>
     <div className="container-fluid">
-      <div className="row">
+      <div className="row" id="introaboutcode">
+        <h4 style={{color:"#777"}}>Welcome!</h4>
         <MainLobbyContainer />
-    	  <MatchHistory />
-    	  <Leaderboard />
+      </div>
+      <div className="row" id="matchAndLeaders">
+        <MatchHistory />
+        <div className="col-xs-12 col-md-4 col-lg-4">
+
+        </div>
+        <Leaderboard />
       </div>
       <div className="row">
         <Achievements />
@@ -22,4 +27,4 @@ export const HomeView = () => (
   </div>
 )
 
-export default HomeView
+export default HomeView;

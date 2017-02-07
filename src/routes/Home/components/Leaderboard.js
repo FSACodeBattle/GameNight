@@ -5,9 +5,9 @@ import './leaderboard.scss';
 
 export const Leaderboard = () => (
 
-  		<div className="col-xs-12 col-md-6 col-lg-6" id="leaderboardComponent">
-  			<h2> Leader board </h2>
+  		<div className="col-xs-12 col-md-4 col-lg-4" id="leaderboardComponent">
   			<div className="table-responsive">
+  			<h2 style={{color:'#777'}}> Leader board </h2>
 				  <table className="table">
 				    <thead>
 				      <tr>
@@ -22,6 +22,18 @@ export const Leaderboard = () => (
 				        <th scope="row">1</th>
 				        <td>5</td>
 				        <td>Win</td>
+				        <td>hello</td>
+				      </tr>
+				      <tr>
+				        <th scope="row">2</th>
+				        <td>62</td>
+				        <td>Loss</td>
+				        <td>hello</td>
+				      </tr>
+				      <tr>
+				        <th scope="row">2</th>
+				        <td>62</td>
+				        <td>Loss</td>
 				        <td>hello</td>
 				      </tr>
 				      <tr>

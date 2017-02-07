@@ -1,10 +1,33 @@
-.row-fluid-clock{
-  background-color: purple;
-}
-.container-fluid-battlepage {
-  background-color: green;
+// #codeeditor {
+//   width: 700px;
+//   padding: 0px;
+// }
+
+#codeeditor {
+  height: 100%;
 }
 
-.row-fluid-battlepage {
-  background-color: blue;
+.problemsText {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#problemsContainer {
+  height: 100%;
+  width: 100%;
+  padding-left: 15px;
+}
+
+// .row-fluid-battlepage {
+//   background-color: blue;
+// }
+
+.container {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+#battlePageWrapper {
+  min-height: 100%;
+  min-height: 100%;
 }
