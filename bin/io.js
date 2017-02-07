@@ -2,6 +2,8 @@ const socketio = require('socket.io');
 const socketCallbacks = require('../server/sockets/socketCallbacks');
 const Question = require('../db/database').Question;
 const Sequelize = require('sequelize');
+const User = require('../db/database').User;
+const Fight = require('../db/database').Fight
 let io = null;
 
 module.exports = function(server) {
@@ -96,6 +98,25 @@ module.exports = function(server) {
 
 		socket.on('gameOver', (data) => {
 			console.log("gameover event ", data);
+								
+			Fight.create({
+						winnerId: data.winnerUserID,
+						loserId: data.loserUserID,
+						winnerDuration: data.time
+			})
+			.then((savedFight => {
+				User.findById(data.winnerUserID)
+					.then((winningUser) => {
+						winningUser.update({wins: (winningUser.wins + 1)})
+
+					})
+				User.findById(data.loserUserID)
+					.then((losingUser) => {
+						losingUser.update({losses: (losingUser.losses + 1)})
+					})
+			}))
+			
+
 			io.in(data.roomID).emit('gameWinningState', data);
 		})
 
