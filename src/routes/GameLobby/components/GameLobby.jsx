@@ -23,27 +23,24 @@ class GameLobby extends React.Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col col-xs-12 col-md-6 col-lg-6" id="gameInvite">
+      <div className="row" id="gameInvite">
           <label style={{color:"#777"}}>Invite To Game!</label>
           <div className="input-group">
-
             <input
               type="text"
               className="form-control"
-              value={`localhost/lobby/${this.props.roomid}`}
+              value={`localhost:3000/lobby/${this.props.roomid}`}
               onChange={() => this.setState({ copied: false})}
             />
 
             <CopyToClipboard
-              text={`localhost/lobby/${this.props.roomid}`}
+              text={`localhost:3000/lobby/${this.props.roomid}`}
               onCopy={() => this.setState({copied: true})}
             >
               <button className="btn btn-primary btn-join">Copy To Clipboard</button>
              </CopyToClipboard>
              {this.state.copied ? <span style={{color: 'red'}}>Copied.</span> : null}
           </div>
-        </div>
       </div>
     );
   }

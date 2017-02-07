@@ -1,30 +1,53 @@
-import React from 'react'
+
+import React , {Component} from 'react'
 import './HomeView.scss'
 import MatchHistory from './MatchHistory'
 import Achievements from './Achievements'
 import Leaderboard from './Leaderboard'
+
 import MainLobbyContainer from '../../MainLobbyList/containers/MainLobbyContainer';
+import axios from 'axios';
 
-export const HomeView = () => (
-  <div>
-    <img src="ninja.jpg" className="img" alt="Responsive image"/>
-    <div className="container-fluid">
-      <div className="row" id="introaboutcode">
-        <h4 style={{color:"#777"}}>Welcome!</h4>
-        <MainLobbyContainer />
-      </div>
-      <div className="row" id="matchAndLeaders">
-        <MatchHistory />
-        <div className="col-xs-12 col-md-4 col-lg-4">
+class HomeView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      leaderboard: [],
+      matches: []
+    }
 
+  }
+  componentDidMount(){
+    axios.get('/api/users/leaderboard')
+      .then((leaderboard) => {
+        this.setState({leaderboard: leaderboard.data});
+      })
+
+
+    axios.get('/api/users/allMatches')
+      .then((matches) => {
+        this.setState({matches: matches.data})
+      })
+  }
+  render(){
+    return (
+      <div>
+        <div className="container-fluid">
+          <div className="row" id="introaboutcode">
+            <h4 style={{color:"#777"}}>Welcome!</h4>
+            <MainLobbyContainer />
+          </div>
+          <div className="row" id="matchAndLeaders">
+            <MatchHistory matches={this.state.matches}/>
+            <Leaderboard leaderboard={this.state.leaderboard}/>
+            <Achievements />
+          </div>
         </div>
-        <Leaderboard />
       </div>
-      <div className="row">
-        <Achievements />
-      </div>
-    </div>
-  </div>
-)
+    );
+  }
+}
+
 
 export default HomeView;

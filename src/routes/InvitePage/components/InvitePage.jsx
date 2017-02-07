@@ -17,7 +17,7 @@ class InvitePage extends Component {
 
   componentDidMount(){
 
-    }
+  }
 
 
   updateCode(newCode) {

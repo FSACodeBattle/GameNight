@@ -1,4 +1,3 @@
-
 import React , { Component } from 'react'
 import { connect } from 'react-redux'
 import './BattlePageContainer.scss';
@@ -161,9 +160,9 @@ class BattlePage extends Component {
     return (
       <div className="container-fluid" id="battlePageWrapper">
         <Notifications />
-        <div className="row">
+{/*        <div className="row">
           <CountdownClock />
-        </div>
+        </div>*/}
         <div className="row">
           <div className="col col-xs-12 col-sm-6 col-md-4 col-lg-4" id="problemsContainers">
 

@@ -23,6 +23,10 @@ const User = db.define('users', {
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
+  points: {
+    type: Sequelize.INTEGER,
+    defaultValue: 1000
+  },
 
   email: {
     type: Sequelize.STRING,
