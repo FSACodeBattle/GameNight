@@ -8,6 +8,7 @@ import CounterRoute from './Counter/containers/CounterContainer';
 import CodeEditor from './CodeEditor/components/CodeEditor';
 import BattlePage from './BattlePage/containers/BattlePageContainer';
 import InvitePage from './InvitePage/components/InvitePage';
+import About from './About/About.js';
 import GameLobbyContainer from './GameLobby/containers/GameLobbyContainer';
 import GameWonPage from './GameWonPage/components/GameWonPage'
 import GameFinishedPage from './GameFinishedPage/components/GameFinishedPage'
@@ -50,8 +51,9 @@ export const createRoutes = (store) => (
     <Route path="login" component={Login} />
     <Route path="signup" component={Signup} />
     <Route path="lobby/:roomid" component={GameLobbyContainer} onEnter={(nextRouterState) => onGameLobbyEnter(nextRouterState, store)}/>
-    <Route path="profile/:username" component={Profile}/>
+    <Route path="profile/:username" component={Profile} />
     <Route path="invite" component={InvitePage} />
+    <Route path="about" component={About} />
     <Route path="code_editor" component={CodeEditor} />
     <Route path="counter" component={CounterRoute} />
     <Route path="battlePage" component={BattlePage} />

@@ -9,7 +9,7 @@ class InvitePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+
     }
     this.updateCode = this.updateCode.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +18,7 @@ class InvitePage extends Component {
   componentDidMount(){
 
     }
-  
+
 
   updateCode(newCode) {
     this.setState ({
@@ -30,7 +30,7 @@ class InvitePage extends Component {
     console.log('handleSubmit works if this shows your code', this.state.code);
     const startingTime = this.state.startingTime;
     axios.post('/api/code', {
-      code: this.state.code, 
+      code: this.state.code,
       timeElapsed: (Date.now() - startingTime)/1000
     })
     .then(response => {

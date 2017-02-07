@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import CodeMirror from 'react-codemirror';
 import axios from 'axios';
+import './CodeEditor.scss';
+import 'codemirror/lib/codemirror.css'
+// require('codemirror/theme/solarized.css');
 require('codemirror/mode/javascript/javascript');
+require('codemirror/theme/base16-dark.css');
 
 class CodeEditor extends Component {
   constructor(props) {
@@ -16,7 +20,7 @@ class CodeEditor extends Component {
       startingTime: null,
       playerProgress: [0, 0],
       playerNumber: 0,
-      numberOfQuestions: 2, 
+      numberOfQuestions: 2,
       currentQuestionID: 0
     }
     this.updateCode = this.updateCode.bind(this);
@@ -32,7 +36,7 @@ class CodeEditor extends Component {
     this.setState({
       playerNumber: 1,
       startingTime: startingTime,
-      
+
     })
   }
   // when component mounts can you save the start time
@@ -123,26 +127,54 @@ class CodeEditor extends Component {
   }
   render() {
     var options = {
-      mode: "javascript",
-      lineNumbers: true
+      mode: 'javascript',
+      lineNumbers: true,
+      theme: 'base16-dark',
+      tabSize: 2,
+      lineWrapping: true,
+      showCursorWhenSelecting: true
     };
-
+    var optionsForAnswers = {
+      mode: 'javascript',
+      lineNumbers: true,
+      theme: 'base16-dark',
+      tabSize: 2,
+      lineWrapping: true,
+      showCursorWhenSelecting: true,
+      readOnly: true
+    };
     return (
-      <div>
-        <h1>Enter Code</h1>
-        <div>
+    <div id="code-editor-text" className="container">
+      <div className="row">
+        <div className="col-xs-12">
+          <div className="playerProgress" style={{color: "#777"}}>
+            <div>
+              {this.state.playerProgress.join('-')}
+            </div>
+          </div>
+          <div id="enterCodeText"style={{color:"#777"}}>Enter Code
+          </div>
           <CodeMirror
-            value={this.state.code}
-            onChange={this.updateCode}
-            options={options}
+                value={this.state.code}
+                onChange={this.updateCode}
+                options={options}
+          />
+          <button id="submit-btn" className="btn btn-primary btn-small" onClick={this.handleSubmit}>SUBMIT</button>
+
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-xs-12">
+          <div id="enterCodeText"style={{color:"#777"}}>
+            Answer
+          </div>
+          <CodeMirror
+                value={this.state.results}
+                options={optionsForAnswers}
           />
         </div>
-        <button onClick={this.handleSubmit}>SUBMIT</button>
-        <h2>Your answer</h2>
-        <form>
-          <textarea rows="10" cols="100" value={this.state.results}></textarea>
-        </form>
       </div>
+    </div>
     );
   }
 }
@@ -151,3 +183,33 @@ class CodeEditor extends Component {
 
 
 export default CodeEditor
+
+
+//       <div id="code-editor-text">
+//         <div className="container">
+//           <div className="row">
+//             <div className="col-xs-12 col-md-8 col-md-offset-2" id="code-offset">
+//               <div className="playerProgress" style={{color: "#777"}}>
+//                   <div>
+//                     {this.state.playerProgress.join('-')}
+//                   </div>
+//               </div>
+//               <div id="enterCodeText"style={{color:"#777"}}>Enter Code
+//               </div>
+//               <CodeMirror
+//                 value={this.state.code}
+//                 onChange={this.updateCode}
+//                 options={options}
+//               />
+//               <button id="submit-btn" className="btn btn-primary btn-small" onClick={this.handleSubmit}>SUBMIT</button>
+//               <div id="enterCodeText"style={{color:"#777"}}>
+//                 Answer
+//               </div>
+//               <CodeMirror
+//                 value={this.state.results}
+//                 options={optionsForAnswers}
+//               />
+//             </div>
+//           </div>
+//         </div>
+//       </div>

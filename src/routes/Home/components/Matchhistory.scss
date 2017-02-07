@@ -1,17 +1,21 @@
 // #match-history-container {
 //   background-color: #1F1F1F;
 // }
-
 #matchComponent {
-  background-color: pink;
+  background-color: rgba(0,0,0,.2);
+  color: #777;
   height: 305px;
   overflow-y: scroll;
 }
-
-.container-fluid-matchhistory {
-  background-color: blue;
+.table-responsive {
+  color: #777;
+  width: 100%;
 }
 
 h2 {
+  text-align: center;
+}
+
+td {
   text-align: center;
 }

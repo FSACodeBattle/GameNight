@@ -115,6 +115,7 @@
     "react": "^15.0.0",
     "react-bootstrap": "^0.30.7",
     "react-codemirror": "^0.3.0",
+    "react-copy-to-clipboard": "^4.2.3",
     "react-countdown-clock": "^1.0.9",
     "react-dom": "^15.0.0",
     "react-notify-toast": "^0.1.4",
