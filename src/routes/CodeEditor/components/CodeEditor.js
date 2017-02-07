@@ -39,28 +39,6 @@ class CodeEditor extends Component {
 
     })
   }
-  // when component mounts can you save the start time
-  // then when you submit, send the difference?
-
-  // put socket.on in handleSubmit? will this work?
-
-  // componentDidUpdate(){
-    // this.tick();
-  // }
-
-  // tick(){
-  //   setTimeout(() => {
-  //     var currentTime = Date.now();
-  //     var dt = this.state.prevTime ? (currentTime - this.state.prevTime) : 0;
-  //     var timeRemaining = Math.max(this.state.timeRemaining - dt/1000, 0);
-  //     this.setState({
-  //       timeRemaining: timeRemaining,
-  //       prevTime: currentTime
-  //     });
-  //   }, 1000);
-  // }
-
-
   updateCode(newCode) {
     this.setState ({
       code: newCode
@@ -144,37 +122,37 @@ class CodeEditor extends Component {
       readOnly: true
     };
     return (
-    <div id="code-editor-text" className="container">
-      <div className="row">
-        <div className="col-xs-12">
-          <div className="playerProgress" style={{color: "#777"}}>
-            <div>
-              {this.state.playerProgress.join('-')}
+      <div id="code-editor-text" className="container">
+        <div className="row">
+          <div className="col-xs-12">
+            <div className="playerProgress" style={{color: "#777"}}>
+              <div>
+                {this.state.playerProgress.join('-')}
+              </div>
             </div>
-          </div>
-          <div id="enterCodeText"style={{color:"#777"}}>Enter Code
-          </div>
-          <CodeMirror
-                value={this.state.code}
-                onChange={this.updateCode}
-                options={options}
-          />
-          <button id="submit-btn" className="btn btn-primary btn-small" onClick={this.handleSubmit}>SUBMIT</button>
+            <div id="enterCodeText"style={{color:"#777"}}>Enter Code
+            </div>
+            <CodeMirror
+                  value={this.state.code}
+                  onChange={this.updateCode}
+                  options={options}
+            />
+            <button id="submit-btn" className="btn btn-primary btn-small" onClick={this.handleSubmit}>SUBMIT</button>
 
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-xs-12">
-          <div id="enterCodeText"style={{color:"#777"}}>
-            Answer
           </div>
-          <CodeMirror
-                value={this.state.results}
-                options={optionsForAnswers}
-          />
+        </div>
+        <div className="row">
+          <div className="col-xs-12">
+            <div id="enterCodeText"style={{color:"#777"}}>
+              Answer
+            </div>
+            <CodeMirror
+                  value={this.state.results}
+                  options={optionsForAnswers}
+            />
+          </div>
         </div>
       </div>
-    </div>
     );
   }
 }
@@ -182,7 +160,7 @@ class CodeEditor extends Component {
 
 
 
-export default CodeEditor
+export default CodeEditor;
 
 
 //       <div id="code-editor-text">
