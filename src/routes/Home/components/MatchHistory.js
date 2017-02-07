@@ -10,7 +10,7 @@ export const MatchHistory = (props) => {
 
       var rows = matches.map(match =>
         <tr key={match.id} >
-          <td>{match.createdAt}</td>
+          <td>{match.createdAt.substring(0, 10)}</td>
           <td>{match.id}</td>
           <td>{match.winnerId}</td>
           <td>{match.loserId}</td>
@@ -20,27 +20,26 @@ export const MatchHistory = (props) => {
     }
 
     return (
-
-  <div className="col-xs-12 col-md-4 col-lg-4" id="matchComponent">
-    <div className="table-responsive">
-    <h2 style={{color:"#777"}}> Match History </h2>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Match ID</th>
-            <th>Winning Player</th>
-            <th>Losing Player</th>
-            <th>Winning Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows}
-        </tbody>
-      </table>
-    </div>
-  </div>
-)
+      <div className="col-xs-12 col-md-4 col-lg-4" id="matchComponent">
+        <div className="table-responsive">
+        <h2 style={{color:"#777"}}> Match History </h2>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Match ID</th>
+                <th>Winning Player</th>
+                <th>Losing Player</th>
+                <th>Winning Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )
 }
 
 export default MatchHistory;

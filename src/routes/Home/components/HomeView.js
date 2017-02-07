@@ -36,13 +36,15 @@ class HomeView extends Component {
         <div className="container-fluid">
           <div className="row" id="introaboutcode">
             <h4 style={{color:"#777"}}>Welcome!</h4>
-            <MainLobbyContainer />
           </div>
           <div className="row" id="matchAndLeaders">
             <MatchHistory matches={this.state.matches}/>
             <Leaderboard leaderboard={this.state.leaderboard}/>
             <Achievements />
           </div>
+          {/* <div style={{paddingTop: "10px"}}>
+            <MainLobbyContainer />
+          </div> */}
         </div>
       </div>
     );
