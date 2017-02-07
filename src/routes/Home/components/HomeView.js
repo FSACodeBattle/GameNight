@@ -1,8 +1,10 @@
+
 import React , {Component} from 'react'
 import './HomeView.scss'
 import MatchHistory from './MatchHistory'
 import Achievements from './Achievements'
 import Leaderboard from './Leaderboard'
+
 import MainLobbyContainer from '../../MainLobbyList/containers/MainLobbyContainer';
 import axios from 'axios';
 
@@ -27,13 +29,10 @@ class HomeView extends Component {
       .then((matches) => {
         this.setState({matches: matches.data})
       })
-
   }
-
   render(){
     return (
       <div>
-        <img src="ninja.jpg" className="img" alt="Responsive image"/>
         <div className="container-fluid">
           <div className="row" id="introaboutcode">
             <h4 style={{color:"#777"}}>Welcome!</h4>
@@ -41,19 +40,13 @@ class HomeView extends Component {
           </div>
           <div className="row" id="matchAndLeaders">
             <MatchHistory matches={this.state.matches}/>
-            <div className="col-xs-12 col-md-4 col-lg-4">
-
-            </div>
             <Leaderboard leaderboard={this.state.leaderboard}/>
-          </div>
-          <div className="row">
             <Achievements />
           </div>
         </div>
       </div>
-      )
+    );
   }
-
 }
 
 

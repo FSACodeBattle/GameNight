@@ -12,15 +12,18 @@ class MainLobby extends React.Component {
         <div style={{color:"#777"}}>
           Warriors
         </div>
-        <h1 style={{color: "white"}}>
-          { clients.length > 1 ?
-            clients.filter(client => client.socketId !== socket.id).map((client, idx) => <div key={idx}>{client.username}</div>)
-            : "None"
-          }
-        </h1>
       </div>
     )
   }
 }
 
 export default MainLobby;
+
+
+// sdf
+//         <h1 style={{color: "white"}}>
+//           { clients.length > 1 ?
+//             clients.filter(client => client.socketId !== socket.id).map((client, idx) => <div key={idx}>{client.username}</div>)
+//             : "None"
+//           }
+//         </h1>
