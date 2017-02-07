@@ -4,7 +4,14 @@ const io = require('../../bin/io');
 
 router.get('/all', (req, res, next) => {
   const ioObj = io();
-  const clients = Object.keys(ioObj.sockets.adapter.rooms["MainLobby"].sockets);
+  const mainLobby = ioObj.sockets.adapter.rooms["MainLobby"];
+
+  //console.log(mainLobby.sockets);
+  let clients = [];
+  if(mainLobby) {
+    clients = Object.keys(mainLobby.sockets).map(id => ioObj.sockets.connected[id].user)
+  }
+
   res.send(clients);
 })
 

@@ -8,8 +8,14 @@ const compress = require('compression')
 const bodyParser = require('body-parser');
 
 const history = require('connect-history-api-fallback');
+
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const bcrypt = require('bcrypt');
+
 const app = express();
 
+const { User } = require('../db/database');
 
 // Apply gzip compression
 app.use(compress())
@@ -20,11 +26,62 @@ app.use(require('volleyball'));
 // Use BodyParser
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+
+app.use(require('cookie-parser')());
+app.use(require('express-session')({ secret: 'battlecode', resave: false, saveUninitialized: false }));
+
+
+passport.use(new LocalStrategy(function(username, pass, cb){
+  var hashedPass = bcrypt.hashSync(pass, 10);
+  User.findOne({ where: { username: username } })
+  .then(function(user, err){
+    if (err) return cb(err);
+    if (!user) return cb(null, false);
+    if (!bcrypt.compareSync(pass, user.password)) return cb(null, false);
+
+    return cb(null, user);
+  });
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user.id);
+});
+
+passport.deserializeUser(function(id, cb) {
+  User.findById(id).then(function (user) {
+    cb(null, user);
+  });
+});
+
+
+app.post("/signin", passport.authenticate('local', {failureRedirect: '/failure', successRedirect: '/user'}));
+
+app.post("/signup", function(req, res, next){
+  console.log(req.body);
+  User.findOne({ where: { username: req.body.username } })
+    .then(function(user){
+      if(!user){
+        User.create({
+          username: req.body.username,
+          password: bcrypt.hashSync(req.body.password, 10),
+          name: req.body.name,
+          email: req.body.email
+        }).then(user => res.send(user));
+      } else res.send("user exists");
+    })
+})
+
+app.get('/user', (req, res, next) => res.send(req.user));
+app.get('/failure', (req, res, next) => res.send(null));
+
 app.use('/api', require('./routes/'));
 app.use('/join', require('./routes/join.js'));
+
+
 app.use(history());
-
-
 // ------------------------------------
 // Apply Webpack HMR Middleware
 // ------------------------------------

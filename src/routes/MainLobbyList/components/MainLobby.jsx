@@ -1,8 +1,4 @@
 import React from 'react';
-import createStore from '../../../store/createStore';
-
-const initialState = window.___INITIAL_STATE__;
-const store = createStore(initialState);
 
 class MainLobby extends React.Component {
   constructor(props) {
@@ -16,12 +12,12 @@ class MainLobby extends React.Component {
         <div style={{color:"#777"}}>
           Warriors
         </div>
-        <div>
+        <h1 style={{color: "white"}}>
           { clients.length > 1 ?
-            clients.filter(client => client !== socket.id).map((client, idx) => <div key={idx}>{client}</div>)
+            clients.filter(client => client.socketId !== socket.id).map((client, idx) => <div key={idx}>{client.username}</div>)
             : "None"
           }
-        </div>
+        </h1>
       </div>
     )
   }

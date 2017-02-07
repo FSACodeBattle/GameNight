@@ -1,42 +1,61 @@
-const { db } = require('./database.js')
+const { db } = require('./database.js');
+const bcrypt = require('bcrypt');
 
 const seedUsers = () => db.Promise.map(
-	[{
-		name: "Jonathan Guy",
-		email: "jguy@gmail.com",
-	}, {
-		name: "Buddy Pal",
-		email: "palbud@gmail.com",
-	}, {
-		name: "Emma Watson",
-		email: "emmawatson@gmail.com",
-	}, {
-		name: "Harry Potter",
-		email: "harrypotter@gmail.com",
-	}, {
-		name: "Ron Weaseley",
-		email: "ronweaseley@gmail.com",
-	}, {
-		name: "Barack Obama",
-		email: "bobama@yahoo.com",
-	}, {
-		name: "Joe Biden",
-		email: "jbiden@hotmail.com",
-	}, {
-		name: "Michelle Obama",
-		email: "mobama@gmail.com",
-	}, {
-		name: "Hermione Granger",
-		email: "hgranger@gmail.com",
-	}, {
-		name: "Hillary Clinton",
-		email: "hclinton@gmail.com",
-	}], user => db.model('users').create(user))
+	[
+		{
+			username: 'a',
+			password: bcrypt.hashSync('a', 10),
+			name: 'a',
+			email: 'a@a.com'
+		},
+		{
+			username: 'b',
+			password: bcrypt.hashSync('b', 10),
+			name: 'b',
+			email: 'b@b.com'
+		}
+	// {
+	// 	username: 'jonguy',
+	// 	password: bcrypt.hashSync('pass123', 10),
+	// 	name: "Jonathan Guy",
+	// 	email: "jguy@gmail.com",
+	// }, {
+	// 	name: "Buddy Pal",
+	// 	email: "palbud@gmail.com",
+	// }, {
+	// 	name: "Emma Watson",
+	// 	email: "emmawatson@gmail.com",
+	// }, {
+	// 	name: "Harry Potter",
+	// 	email: "harrypotter@gmail.com",
+	// }, {
+	// 	name: "Ron Weaseley",
+	// 	email: "ronweaseley@gmail.com",
+	// }, {
+	// 	name: "Barack Obama",
+	// 	email: "bobama@yahoo.com",
+	// }, {
+	// 	name: "Joe Biden",
+	// 	email: "jbiden@hotmail.com",
+	// }, {
+	// 	name: "Michelle Obama",
+	// 	email: "mobama@gmail.com",
+	// }, {
+	// 	name: "Hermione Granger",
+	// 	email: "hgranger@gmail.com",
+	// }, {
+	// 	name: "Hillary Clinton",
+	// 	email: "hclinton@gmail.com",
+	// }
+], user => db.model('users').create(user))
 
 const seedQuestions = () => db.Promise.map(
-	[{	
+	[
+	{
 		name: "Question 1",
 		questionText: `Make a function called returnOne that returns 1\n
+		function returnOne() {return 1} \n
 		This is filler text for a second line.\n
 		This is filler text for a third line.\n`,
 		tests: `describe("returnOne", function(){
@@ -44,18 +63,354 @@ const seedQuestions = () => db.Promise.map(
          	 			assert.equal(1, returnOne());
       				})
     			})`
-	}, {	
+	}, {
 		name: "Question 2",
-		questionText: "Make a function called returnTwo that return 2",
+		questionText: "Make a function called returnTwo that returns 2 	\nfunction returnTwo() {return 2} \n",
 		tests: `describe("returnTwo", function(){
         			it("should return 2", function(){
          	 			assert.equal(2, returnTwo());
       				})
     			})`
-	}], question => db.model('questions').create(question))
+	}, {
+		name: "Question 3",
+		questionText: "Make a function called returnThree that returns 3 	\nfunction returnThree() {return 3} \n",
+		tests: `describe("returnThree", function(){
+        			it("should return 3", function(){
+         	 			assert.equal(3, returnThree());
+      				})
+    			})`
+	}, {
+		name: "Question 4",
+		questionText: "Make a function called returnFour that returns 4  \nfunction returnFour() {return 4} \n",
+		tests: `describe("returnFour", function(){
+        			it("should return 4", function(){
+         	 			assert.equal(4, returnFour());
+      				})
+    			})`
+	}, {
+		name: "Question 5",
+		questionText: "Make a function called returnFive that returns 5	 \nfunction returnFive() {return 5} \n",
+		tests: `describe("returnFive", function(){
+        			it("should return 5", function(){
+         	 			assert.equal(5, returnFive());
+      				})
+    			})`
+	},
+// 	{
+// 		name: "Set Property on an Object Literal",
+// 		questionText: `Make a function named setPropertiesOnObjLiteral that takes in an object and sets the x property of that object to 3.`,
+// 		tests: `
+// 				describe("setPropertiesOnObjLiteral", function() {
+// 					var object = {};
+// 					setPropertiesOnObjLiteral(object);
+
+//     				it("sets x to 3", function() {
+//       					assert.equal(object.x, 3);
+//     				});
+//   				});
+//   				`
+// 	},
+// 	{
+// 		name: "Set Properties on an Array Object",
+// 		questionText: `One of the coolest things about JavaScript is that Arrays are just a specific type of Object that has more features.  Everything that you can do with objects, you can also do with arrays. \n
+// Make a function named setPropertiesOnArrayObj that takes in an array object and sets the property hello to a function that returns the string Hello! and sets the zeroth index of the array to a value of 5`,
+// 		tests: `
+// 				describe("setPropertiesOnArrayObj", function() {
+// 				    var arrayObject = [];
+//     				setPropertiesOnArrayObj(arrayObject);
+
+// 				    it("sets the property hello to a function that returns the string Hello! ", function() {
+// 				      assert.equal(arrayObject.hello(), "Hello!");
+// 				    });
+
+// 				    it("accesses the zeroth index value in the array", function() {
+// 				      assert.equal(arrayObject[0], 5);
+// 				    });
+// 				});
+//   				`
+// 	},
+// 	{
+// 		name: "Set Properties on a Function Object",
+// 		questionText: `One of the coolest things about JavaScript is that Functions are just a specific type of Object that has more features.  Everything that you can do with objects, you can also do with functions. \n
+// Make a function named setPropertiesOnFunctionObj that takes in a function object and sets the year property to equal 2017 and sets divideByTwo to a function that accepts a number and returns the value divided by two.`,
+// 		tests: `
+// 				describe("setPropertiesOnFunctionObj", function() {
+// 				    var functionObject = function() {};
+//     				setPropertiesOnFunctionObj(functionObject)
+
+// 				    it("sets year to 2017", function() {
+//       					assert.equal(functionObject.year, 2017);
+//     				});
+
+//     				it("sets divideByTwo to a function that accepts a number and returns the value divided by two ", function() {
+//       					assert.equal(functionObject.divideByTwo(6), 3);
+//     				})
+// 				});
+//   				`
+// 	},
+// 	{
+// 		name: "Create a Calculator Object",
+// 		questionText: `In this exercise create a calculator object that performs basic mathematic operations. \n
+// We'll be using a pattern called the factory pattern where our function creates an object tailored to our needs. \n
+// The calcular object should start with a total property of 0, have a value property that is a function that returns that total, and have add and subtract properties.
+// `,
+// 		tests: `
+// 				describe("Create a Calculator", function() {
+// 					it("initially has 0", function() {
+// 					  var calculator = createCalculator();
+// 					  assert.equal(calculator.value(), 0);
+// 					});
+
+// 					it("can add a number", function() {
+// 					  var calculator = createCalculator();
+// 					  calculator.add(2);
+// 					  assert.equal(calculator.value(), 2);
+// 					});
+
+// 					it("can add two numbers", function() {
+// 					  var calculator = createCalculator();
+// 					  calculator.add(2);
+// 					  calculator.add(3);
+// 					  assert.equal(calculator.value(), 5);
+// 					});
+
+// 					it("can add many numbers", function() {
+// 					  var calculator = createCalculator();
+// 					  calculator.add(2);
+// 					  calculator.add(3);
+// 					  calculator.add(4);
+// 					  assert.equal(calculator.value(), 9);
+// 					});
+
+// 					it("can subtract a number", function() {
+// 					  var calculator = createCalculator();
+// 					  calculator.subtract(2);
+// 					  assert.equal(calculator.value(), -2);
+// 					});
+
+// 					it("can add and subtract", function() {
+// 					  var calculator = createCalculator();
+// 					  calculator.add(3);
+// 					  calculator.subtract(2);
+// 					  assert.equal(calculator.value(), 1);
+// 					});
+
+// 				});
+//   				`
+// 	},
+// 	{
+// 		name: "The Repeat Function",
+// 		questionText: `Create a function named repeat which takes a string as its first argument and a non-negative number n as its second argument which returns the string repeated n times.`,
+// 		tests: `
+// 				describe("repeat", function() {
+// 				    it("is empty with 0 repeats", function() {
+// 				      assert.equal(repeat("yo", 0), "");
+// 				    });
+// 				    it("repeats its argument once", function() {
+// 				      assert.equal(repeat("yo", 1), "yo");
+// 				    });
+// 				    it("repeats its argument twice", function() {
+// 				      assert.equal(repeat("yo", 2), "yoyo");
+// 				    });
+// 				      it("repeats its argument many times", function() {
+// 				      assert.equal(repeat("yo", 10), "yoyoyoyoyoyoyoyoyoyo");
+// 				    });
+//   				});
+//   				`
+// 	},
+// 	{
+// 		name: "The Sum Function",
+// 		questionText: `Create a function named sum which takes an array and returns the sum of all the elements in the array.`,
+// 		tests: `
+// 				describe("sum", function() {
+// 				    it("computes the sum of an empty array", function() {
+// 				      assert.equal(sum([]), 0);
+// 				    });
+
+// 				    it("computes the sum of an array of one number", function() {
+// 				      assert.equal(sum([7]), 7);
+// 				    });
+
+// 				    it("computes the sum of an array of two numbers", function() {
+// 				      assert.equal(sum([7, 11]), 18);
+// 				    });
+
+// 				    it("computes the sum of an array of many numbers", function() {
+// 				      assert.equal(sum([1, 3, 5, 7, 9]), 25);
+// 				    });
+// 				});
+//   				`
+// 	},
+// 	{
+// 		name: "The Join Function",
+// 		questionText: `Create a function named join which takes in an array as its first object and a delimiter as its second object and returns the array joined by the delimter.\n
+// Do not use the built-in join function.
+// 		`,
+// 		tests: `
+// 				describe("join", function() {
+// 				    it("turns an empty array into an empty string", function() {
+// 				      assert.equal(join([]), "");
+// 				    });
+
+// 				    it("turns an array with one element into a string", function() {
+// 				      assert.equal(join(["a"]), "a");
+// 				    });
+
+// 				    it("turns an array with many elements into a string", function() {
+// 				      assert.equal(join(["apple", "banana", "cherry"]), "applebananacherry");
+// 				    });
+
+// 				    it("inserts a delimiter between elements", function() {
+// 				      assert.equal(join(["apple", "banana", "cherry"], "/"), "apple/banana/cherry");
+// 				    });
+// 				});
+//   				`
+// 	},
+// 	{
+// 		name: "Paramify an Object",
+// 		questionText: `Create a function named paramify that takes in an object and returns a string of the keys andvalues of that object in separted by an "=" in alphabetical order.\n
+// 		For example, an object of {height: 74, width: 12} would return "height=74&width=12".
+// 		`,
+// 		tests: `
+// 				describe("paramify", function() {
+// 				    it("works on an empty object", function() {
+// 				      assert.equal(paramify({}), "");
+// 				    });
+
+// 				    it("converts an object with one element", function() {
+// 				      assert.equal(paramify({
+// 				        size: 14
+// 				      }), "size=14");
+// 				    });
+
+// 				    it("converts an object with two elements", function() {
+// 				      assert.equal(paramify({
+// 				        height: 74,
+// 				        width: 12
+// 				      }), "height=74&width=12");
+// 				    });
+
+// 				    it("converts an object with many elements", function() {
+// 				      var object = {a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 };
+// 				      assert.equal(paramify(object), "a=1&b=2&c=3&d=4&e=5&f=6");
+// 				    });
+
+// 				    // this one might be a bit tricky ;-)
+// 				    it("outputs the parameters in alphabetical order", function() {
+// 				      var object = {f: 6, e: 5, d: 4, c: 3, b: 2, a: 1 };
+// 				      assert.equal(paramify(object), "a=1&b=2&c=3&d=4&e=5&f=6");
+// 				    });
+// 				});
+//   				`
+// 	},
+// 	{
+// 		name: "functionRunner",
+// 		questionText: `Create a function called functionRunner that takes in an unspecified number of functions, runs the functions, and returns the return values of all the functions concatenated as a string.\n
+// Hint: use the concept of "arguments".
+// 		`,
+// 		tests: `
+// 				describe("higher-order functions", function() {
+
+// 				  var callThisFunction = function() {
+// 				      return "Called Value";
+// 				    };
+
+// 				  it("means that a function can take a function as an argument", function() {
+
+// 				    assert.equal(functionRunner(callThisFunction), "Called Value");
+// 				    var andThisFunction = function() {
+// 				      return " and Other Value";
+// 				    };
+
+// 				    assert.equal(functionRunner(callThisFunction, andThisFunction), "Called Value and Other Value");
+// 				  });
+// 				});
+//   				`
+// 	},
+// 	{
+// 		name: "Once",
+// 		questionText: `Create a function named once that takes in a function and returns a function that will only run once, no matter how many times it is called.\n
+// 		Hint: use the concept of closures.
+// 		`,
+// 		tests: `
+// 				describe("once", function() {
+// 				  it("should only increment num one time", function() {
+// 				    var num = 0;
+// 				    var increment = once(function() {
+// 				      num++;
+// 				    });
+
+// 				    increment();
+// 				    increment();
+// 				    increment();
+// 				    increment();
+
+// 				    assert.equal(num, 1);
+// 				  });
+// 				});
+//   				`
+// 	},
+	// {
+	// 	name: "Map",
+	// 	questionText: `Create a function named map that takes in an array as the first argument and an iterator function as its second argument and returns an array with iterator function applied to each element.\n
+	// 	`,
+	// 	tests: `
+	// 			describe("map", function() {
+	// 			  it("takes a tripling function", function() {
+	// 			    assert.equal(map([1, 2, 3], function(elem) {
+	// 			      return elem * 3;
+	// 			    })[0], 3);
+	// 			    assert.equal(map([1, 2, 3], function(elem) {
+	// 			      return elem * 3;
+	// 			    })[1], 6);
+	// 			    assert.equal(map([1, 2, 3], function(elem) {
+	// 			      return elem * 3;
+	// 			    })[2], 9);
+	// 			  });
+	// 			  it("takes a doubling function", function() {
+	// 			    assert.equal(map([1, 2, 3], function(elem) {
+	// 			      return elem * 2;
+	// 			    })[0], 2);
+	// 			    assert.equal(map([1, 2, 3], function(elem) {
+	// 			      return elem * 2;
+	// 			    })[1], 4);
+	// 			    assert.equal(map([1, 2, 3], function(elem) {
+	// 			      return elem * 2;
+	// 			    })[2], 6);
+	// 			  });
+	// 			});
+ //  				`
+	// },
+	// {
+	// 	name: "Filter",
+	// 	questionText: `Create a function named filter that takes in an array as the first argument and an iterator function as its second argument and returns a filtered array using the iterator function.\n
+	// 	`,
+	// 	tests: `
+	// 			var evenFilter = function(element) {
+	// 			    if (element % 2 === 0)
+	// 			      return true;
+	// 			    else
+	// 			      return false;
+	// 			  };
+
+	// 			  var oddFilter = function(element) {
+	// 			      return !evenFilter(element);
+
+	// 			  it("filters an array based on evens", function() {
+	// 			    assert.equal(filter([1, 2, 3, 4, 5, 6, 7, 8], evenFilter), [2, 4, 6, 8]);
+	// 			  });
+
+	// 			  it("filters an array based on odds", function() {
+
+	// 			    assert.equal(filter([1, 2, 3, 4, 5, 6, 7, 8], oddFilter), [1, 3, 5, 7]);
+	// 			  });
+
+ //  				`
+	// },
+	], question => db.model('questions').create(question))
 
 const seedFights = () => db.Promise.map(
-	[{	
+	[{
 		number: 1,
 		questions: [1, 2]
 	}], fight => db.model('fights').create(fight))

@@ -1,10 +1,16 @@
 var Sequelize = require('sequelize');
 
-var db = new Sequelize('postgres://localhost:5432/code_battle', {
+const db = new Sequelize('postgres://localhost:5432/code_battle', {
   logging: false
 });
 
 const User = db.define('users', {
+  username: {
+    type: Sequelize.STRING,
+  },
+  password: {
+    type: Sequelize.STRING,
+  },
   name: {
     type: Sequelize.STRING,
   },
@@ -13,7 +19,7 @@ const User = db.define('users', {
     validate: {
       isEmail: true,
       notEmpty: true,
-    	}
+    }
 	}
 })
 

@@ -1,6 +1,10 @@
 import React from 'react';
+<<<<<<< HEAD
 import './GameLobby.scss';
 import CopyToClipboard from 'react-copy-to-clipboard';
+=======
+import { browserHistory } from 'react-router'
+>>>>>>> 80156f0e852b3835f03a1935b24346e2fe8643fc
 
 class GameLobby extends React.Component {
 
@@ -14,7 +18,7 @@ class GameLobby extends React.Component {
   componentDidMount() {
     console.log(this.props);
     socket.on('startGame', data => {
-      this.props.router.push('/battlePage');
+      browserHistory.push('/battlePage');
     })
   }
 
