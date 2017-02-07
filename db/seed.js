@@ -1,5 +1,5 @@
 const { db } = require('./database.js');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const seedUsers = () => db.Promise.map(
 	[
