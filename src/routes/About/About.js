@@ -18,7 +18,7 @@ const About = () => {
       <div className="row">
         <div className="col-xs-6 col-md-4">
           <a className="thumbnail">
-            <img src="headshot_johnyom.jpg" alt="john" />
+            <img src="Patryk.jpg" alt="john" />
           </a>
         </div>
         <div className="col-xs-6 col-md-8">

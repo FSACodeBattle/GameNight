@@ -8,8 +8,6 @@ import Login from '../Login/Login';
 import { setUser } from '../../store/user';
 import './Header.scss';
 
-
-
 class Header extends React.Component {
   constructor(props) {
     super(props);
