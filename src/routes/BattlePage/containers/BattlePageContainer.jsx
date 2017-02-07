@@ -35,7 +35,7 @@ class BattlePage extends Component {
   }
   render() {
       return (
-        <div className="container-fluid">
+        <div className="container-fluid" id="battlePageWrapper">
           <div className="row">
             <CountdownClock />
           </div>

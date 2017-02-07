@@ -144,7 +144,7 @@ class CodeEditor extends Component {
                 value={this.state.code}
                 onChange={this.updateCode}
                 options={options}
-                />
+          />
           <button id="submit-btn" className="btn btn-primary btn-small" onClick={this.handleSubmit}>SUBMIT</button>
 
         </div>
@@ -157,7 +157,7 @@ class CodeEditor extends Component {
           <CodeMirror
                 value={this.state.results}
                 options={optionsForAnswers}
-                />
+          />
         </div>
       </div>
     </div>
