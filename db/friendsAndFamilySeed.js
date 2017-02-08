@@ -90,7 +90,7 @@ const seedQuestions = () => db.Promise.map(
 	// 	Example [1,-4,7,12] => 1 + 7 + 12 = 20\n
 	// 	Write a function named positveSum that returns the sum of all the positive elements.\n
 	// 	`,
-	// 	tests: `describe("positveSum", function(){
+	// 	tests: `describe("positiveSum", function(){
  //        			it("This array should return 20", function(){
  //         	 			assert.equal(20, positiveSum([1, -4, 7, 12]));
  //      				})
@@ -106,10 +106,10 @@ const seedQuestions = () => db.Promise.map(
 		Example [1,-4,7,12] => [-4, 7]\n
 		Write a function named removeFirstAndLast that does this.\n
 		`,
-		tests: `describe("positveSum", function(){
+		tests: `describe("removeFirstAndLast", function(){
         			it("This array should return [-4, 7]", function(){
-         	 			assert.equal(-4, positiveSum([1, -4, 7, 12][0]));
-         	 			assert.equal(7, positiveSum([1, -4, 7, 12])[1]);
+         	 			assert.equal(-4, removeFirstAndLast([1, -4, 7, 12])[0]);
+         	 			assert.equal(7, removeFirstAndLast([1, -4, 7, 12])[1]);
       				})
     			})`
 	},
