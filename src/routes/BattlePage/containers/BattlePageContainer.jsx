@@ -1,9 +1,10 @@
-import React , { Component } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './BattlePageContainer.scss';
 import Problem from '../components/Problem'
 import CountdownClock from '../components/CountdownClock'
 import CodeEditor from '../../CodeEditor/components/CodeEditor'
+import ProgressBar from '../components/ProgressBar.js'
 import axios from 'axios';
 import Notifications, {notify} from 'react-notify-toast';
 import { browserHistory } from 'react-router';
@@ -17,10 +18,8 @@ class BattlePage extends Component {
       player2: {id:'Player Two', progress: 0, username: 'Player Two', userID: ''},
       //holds the question objects
       questionsArr: [],
-
       //the index of the questionArr
       currentQuestion: 0,
-
       code: '',
       results: '',
       timeElapsed: 0,
@@ -33,7 +32,6 @@ class BattlePage extends Component {
       // prevTime: null,
       gameWon: false
     }
-
   }
   componentDidMount() {
     //set the player ids to their socket ids
@@ -156,20 +154,30 @@ class BattlePage extends Component {
 
   }
   render() {
-    console.log("render of the container", this.state.questionsArr[this.state.currentQuestion]);
     return (
-      <div className="container-fluid" id="battlePageWrapper">
+      <div className="container" id="battlePageWrapper">
         <Notifications />
 {/*        <div className="row">
           <CountdownClock />
         </div>*/}
+
+        <div className="row">
+          <div className="col col-xs-12 col-md-6">
+            <label id="playerProgressLabel">{`${this.state.player1.username}`}</label>
+            <ProgressBar Progress={this.state.player1.progress} QuestionsArr={this.state.questionsArr} />
+          </div>
+          <div className="col col-xs-12 col-md-6">
+            <label id="playerProgressLabel">{`${this.state.player2.username}`}</label>
+            <ProgressBar Progress={this.state.player2.progress} QuestionsArr={this.state.questionsArr} />
+          </div>
+        </div>
         <div className="row">
           <div className="col col-xs-12 col-sm-6 col-md-4 col-lg-4" id="problemsContainers">
 
                 {/**Passes in the users current question object to the Problem component by using ArrayOfQuestions[current question index]**/}
             <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
-            <h2>{`${this.state.player1.username} - ${this.state.player1.progress}`}</h2>
-            <h2>{`${this.state.player2.username} - ${this.state.player2.progress}`}</h2>
+{/*            <h2>{`${this.state.player1.username} - ${this.state.player1.progress}`}</h2>
+            <h2>{`${this.state.player2.username} - ${this.state.player2.progress}`}</h2>*/}
             </div>
           <div className="col col-xs-12 col-sm-6 col-md-8 col-lg-8" id="codeeditor">
             <CodeEditor currentQuestionID={this.state.questionsArr[this.state.currentQuestion]} roomID={this.props.roomID.id}/>

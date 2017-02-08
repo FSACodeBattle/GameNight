@@ -2,3 +2,4 @@ node_modules
 npm-debug.log
 npm-debug.log.*
 src/routes/.DS_Store
+bower_components

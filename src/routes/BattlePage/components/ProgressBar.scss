@@ -1,0 +1,15 @@
+.progress {
+  background: rgba(242, 228, 228, 1);
+  background: -webkit-linear-gradient(top, rgba(138, 124, 124, 1) 0%, rgba(242, 228, 228, 1) 100%);
+  background: linear-gradient(to bottom, rgba(138, 124, 124, 1) 0%, rgba(242, 228, 228, 1) 100%);
+  border: 0px solid rgba(122, 120, 120, 1);
+  border-radius: 8px;
+  height: 19px;
+}
+
+.progress-bar-custom {
+  background: rgba(158, 162, 166, 1);
+  background: -webkit-linear-gradient(top, rgba(29, 30, 31, 1) 0%, rgba(158, 162, 166, 1) 100%);
+  background: linear-gradient(to bottom, rgba(29, 30, 31, 1) 0%, rgba(158, 162, 166, 1) 100%);
+}
+
