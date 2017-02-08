@@ -99,19 +99,46 @@ const seedQuestions = () => db.Promise.map(
  //      				})
  //    			})`
 	// },
+	// {
+	// 	name: "Remove the First and Last",
+	// 	questionText: `You receive an array with at least two elements.\n
+	// 	Return a new array with first and last elements removed.
+	// 	Example [1,-4,7,12] => [-4, 7]\n
+	// 	Write a function named removeFirstAndLast that does this.\n
+	// 	`,
+	// 	tests: `describe("removeFirstAndLast", function(){
+ //        			it("This array should return [-4, 7]", function(){
+ //         	 			assert.equal(-4, removeFirstAndLast([1, -4, 7, 12])[0]);
+ //         	 			assert.equal(7, removeFirstAndLast([1, -4, 7, 12])[1]);
+ //      				})
+ //    			})`
+	// },
 	{
-		name: "Remove the First and Last",
-		questionText: `You receive an array with at least two elements.\n
-		Return a new array with first and last elements removed.
-		Example [1,-4,7,12] => [-4, 7]\n
-		Write a function named removeFirstAndLast that does this.\n
+		name: "Find Maximum and Minimum Values of a List",
+		questionText: `Your task is to make two functions named max and min that take in an array\n
+		and return the maximum and minimum values of that array, respectively.\n
+		For example, \n
+		max([4,6,2,1,9,63,-134,566]) returns 566\n
+		min([-52, 56, 30, 29, -54, 0, -110]) returns -110\n
 		`,
-		tests: `describe("removeFirstAndLast", function(){
-        			it("This array should return [-4, 7]", function(){
-         	 			assert.equal(-4, removeFirstAndLast([1, -4, 7, 12])[0]);
-         	 			assert.equal(7, removeFirstAndLast([1, -4, 7, 12])[1]);
+		tests: `
+				describe("max", function(){
+        			it("This array should return 566", function(){
+         	 			assert.equal(566, max([4,6,2,1,9,63,-134,566]));
       				})
-    			})`
+      				it("This array should return 5", function(){
+         	 			assert.equal(5, max([5]));
+      				})
+    			})
+    			describe("min", function(){
+        			it("This array should return -110", function(){
+         	 			assert.equal(-110, min([-52, 56, 30, 29, -54, 0, -110]));
+      				})
+      				it("This array should return 0", function(){
+         	 			assert.equal(0, positiveSum([42, 54, 65, 87, 0]));
+      				})
+    			})
+    			`
 	},
 	// {
 	// 	name: "Fibonacci Series",
