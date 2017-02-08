@@ -67,17 +67,32 @@ const seedUsers = () => db.Promise.map(
 
 const seedQuestions = () => db.Promise.map(
 	[
+	// {
+	// 	name: "A Needle in a Haystack",
+	// 	questionText: `Can you find the needle in the haystack?\n
+	// 	Write a function findNeedle() that takes an array full of junk but containing one "needle"\n
+	// 	and returns the index of where it found the needle.\n
+	// 	So findNeedle(['hay', 'junk', 'hay', 'hay', 'moreJunk', 'needle', 'randomJunk'])\n
+	// 	should return 5.
+	// 	`,
+	// 	tests: `describe("findNeedle", function(){
+ //        			it("This array should return 5", function(){
+ //         	 			assert.equal(5, findNeedle(["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"]));
+ //      				})
+ //      				it("This array should return 0", function(){
+ //         	 			assert.equal(0, findNeedle(["needle"]));
+ //      				})
+ //    			})`
+	// },
 	{
-		name: "A Needle in a Haystack",
-		questionText: `Can you find the needle in the haystack?\n
-		Write a function findNeedle() that takes an array full of junk but containing one "needle"\n
-		and returns the index of where it found the needle.\n
-		So findNeedle(['hay', 'junk', 'hay', 'hay', 'moreJunk', 'needle', 'randomJunk'])\n
-		should return 5.
+		name: "Sum of Positive",
+		questionText: `You get an array of numbers, return the sum of all of the positives ones.\n
+		Example [1,-4,7,12] => 1 + 7 + 12 = 20\n
+		Write a function named positveSum that returns the sum of all the positive elements.\n
 		`,
-		tests: `describe("findNeedle", function(){
-        			it("This array should return 5", function(){
-         	 			assert.equal(5, findNeedle(["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"]));
+		tests: `describe("positveSum", function(){
+        			it("This array should return 20", function(){
+         	 			assert.equal(20, positveSum([1, -4, 7, 12]));
       				})
       				it("This array should return 0", function(){
          	 			assert.equal(0, findNeedle(["needle"]));
