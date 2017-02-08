@@ -92,10 +92,10 @@ const seedQuestions = () => db.Promise.map(
 		`,
 		tests: `describe("positveSum", function(){
         			it("This array should return 20", function(){
-         	 			assert.equal(20, positveSum([1, -4, 7, 12]));
+         	 			assert.equal(20, positiveSum([1, -4, 7, 12]));
       				})
-      				it("This array should return 0", function(){
-         	 			assert.equal(0, findNeedle(["needle"]));
+      				it("This array should return 5", function(){
+         	 			assert.equal(5, positiveSum([5, -1, -10, 0]));
       				})
     			})`
 	},
