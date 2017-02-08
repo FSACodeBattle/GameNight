@@ -26,7 +26,7 @@ class BattlePage extends Component {
       startingTime: null,
       playerProgress: [0, 0],
       playerNumber: 0,
-      numberOfQuestions: 3,
+      numberOfQuestions: 2,
       roomID: '',
       // timeRemaining: 60,
       // prevTime: null,

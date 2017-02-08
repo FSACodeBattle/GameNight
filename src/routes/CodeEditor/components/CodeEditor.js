@@ -10,7 +10,6 @@ require('codemirror/theme/base16-dark.css');
 class CodeEditor extends Component {
   constructor(props) {
     super(props);
-    console.log("codeEditor props", this.props)
     this.state = {
       code: '',
       results: '',
@@ -38,7 +37,11 @@ class CodeEditor extends Component {
       startingTime: startingTime,
 
     })
+
+
+
   }
+
   updateCode(newCode) {
     this.setState ({
       code: newCode
@@ -64,12 +67,11 @@ class CodeEditor extends Component {
       socketID: socket.id
     })
     .then(response => {
-
-
-
-
-
        this.setState({results: response.data});
+
+       if(response.data.indexOf('failing') === -1 && response.data.indexOf('SyntaxError') === -1){
+        this.setState({code: ''});
+      }
       // //console.log("response from running code: ", response.data );
       // // console.log('saved successfully');
       // console.log(this.state.results);

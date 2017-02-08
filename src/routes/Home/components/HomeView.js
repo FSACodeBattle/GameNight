@@ -1,5 +1,4 @@
-
-import React , {Component} from 'react'
+import React, {Component} from 'react'
 import './HomeView.scss'
 import MatchHistory from './MatchHistory'
 import Achievements from './Achievements'
@@ -35,13 +34,15 @@ class HomeView extends Component {
       <div className="container">
         <div className="row" id="introaboutcode">
           <h4 style={{color:"#777"}}>Welcome!</h4>
-          <MainLobbyContainer />
         </div>
         <div className="row-fluid" id="matchAndLeaders">
           <MatchHistory matches={this.state.matches}/>
           <Leaderboard leaderboard={this.state.leaderboard}/>
           <Achievements />
         </div>
+          {/* <div style={{paddingTop: "10px"}}>
+            <MainLobbyContainer />
+          </div> */}
       </div>
     );
   }
