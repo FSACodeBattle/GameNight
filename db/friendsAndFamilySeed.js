@@ -114,9 +114,8 @@ const seedQuestions = () => db.Promise.map(
  //    			})`
 	// },
 	{
-		name: "Find Maximum and Minimum Values of a List",
-		questionText: `Your task is to make two functions named max and min that take in an array\n
-		and return the maximum and minimum values of that array, respectively.\n
+		name: "Find Maximum and Minimum Values of an Array",
+		questionText: `Your task is to make two functions named max and min that take in an array and return the maximum and minimum values of that array, respectively.\n
 		For example, \n
 		max([4,6,2,1,9,63,-134,566]) returns 566\n
 		min([-52, 56, 30, 29, -54, 0, -110]) returns -110\n
@@ -135,7 +134,7 @@ const seedQuestions = () => db.Promise.map(
          	 			assert.equal(-110, min([-52, 56, 30, 29, -54, 0, -110]));
       				})
       				it("This array should return 0", function(){
-         	 			assert.equal(0, positiveSum([42, 54, 65, 87, 0]));
+         	 			assert.equal(0, min([42, 54, 65, 87, 0]));
       				})
     			})
     			`
