@@ -19,13 +19,17 @@ export const Problem = (props) => {
 	}
 	return (
 	  <div>
-			<div id="problems">
-				<h4> Problems </h4>
-			</div>
 			<div className="container" id="problemsContainer">
 				<div className="row" id="problemsRow">
-					<h4> {currentQuestion && currentQuestion.questionName} </h4>
-					<div>{currentQuestion && pTags}</div>
+					<div className="col-xs-12 "id="questionsBox" style={{color:"#777"}}>
+						<div id="problems">
+							Questions
+						</div>
+					</div>
+					<div className="col-xs-12" id="questionsArray" style={{color: "#777"}}>
+						<h4> {currentQuestion && currentQuestion.questionName} </h4>
+						<div>{currentQuestion && pTags}</div>
+					</div>
 				</div>
 			</div>
 	  </div>

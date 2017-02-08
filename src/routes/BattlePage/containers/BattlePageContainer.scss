@@ -23,11 +23,29 @@
 // }
 
 .container {
-  margin-left: 30px;
-  margin-right: 30px;
+  height: 100%;
+  min-height: 70vh;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #battlePageWrapper {
   min-height: 100%;
   min-height: 100%;
+}
+
+.row {
+  height: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+#playerProgressLabel {
+  color: white;
 }

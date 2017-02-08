@@ -125,11 +125,12 @@ class CodeEditor extends Component {
       <div id="code-editor-text" className="container">
         <div className="row">
           <div className="col-xs-12">
-            <div className="playerProgress" style={{color: "#777"}}>
+        {/*removed the 0-0 player progress above the code editor*/}
+            {/*<div className="playerProgress" style={{color: "#777"}}>
               <div>
                 {this.state.playerProgress.join('-')}
               </div>
-            </div>
+            </div>*/}
             <div id="enterCodeText"style={{color:"#777"}}>Enter Code
             </div>
             <CodeMirror

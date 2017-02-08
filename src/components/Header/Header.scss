@@ -1,36 +1,55 @@
-.route--active {
-  font-weight: bold;
-  text-decoration: underline;
-  color: white;
+.AccountDropdown {
+  padding: 10px;
+  padding-right: 0px;
+  form {
+    button {
+      padding-top: 3px;
+    }
+  }
 }
 
-.route:active {
-  font-weight: bold;
-  text-decoration: underline;
-  color: white;
-}
-
-.navbar.navbar-default{
-  max-width: 100%;
-  background-color: #303133;
-  margin-bottom: 0px;
-  border-color: #303133;
-}
-
-
-.navbar a {
-  color: #777;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
+ul.nav.navbar-nav {
+  a {
     color: #777;
   }
 }
 
-.navbar-default .navbar-nav>li>a:hover {
-    color: #999;
+.navbar-brand {
+  color: #777;
 }
+// .route--active {
+//   font-weight: bold;
+//   text-decoration: underline;
+//   color: white;
+// }
 
-.AccountDropdown {
-  padding-top: 10px;
-}
+// .route:active {
+//   font-weight: bold;
+//   text-decoration: underline;
+//   color: white;
+// }
+
+// .navbar.navbar-default{
+//   max-width: 100%;
+//   background-color: #303133;
+//   margin-bottom: 0px;
+//   border-color: #303133;
+// }
+
+
+// .navbar a {
+//   color: #777;
+//   text-decoration: none;
+//   &:hover {
+//     text-decoration: underline;
+//     color: #777;
+//   }
+// }
+
+// .navbar-default .navbar-nav>li>a:hover {
+//     color: #999;
+// }
+
+// .AccountDropdown {
+//   padding-top: 10px;
+// }
