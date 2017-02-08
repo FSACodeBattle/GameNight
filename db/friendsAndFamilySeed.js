@@ -77,10 +77,10 @@ const seedQuestions = () => db.Promise.map(
 		`,
 		tests: `describe("findNeedle", function(){
         			it("This array should return 5", function(){
-         	 			assert.equal(5, findNeedle(['hay', 'junk', 'hay', 'hay', 'moreJunk', 'needle', 'randomJunk']));
+         	 			assert.equal(5, findNeedle(["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"]));
       				})
-      				it("2nd element should return 1", function(){
-         	 			assert.equal(1, fib(1));
+      				it("This array should return 0", function(){
+         	 			assert.equal(0, findNeedle(["needle"]));
       				})
     			})`
 	},
