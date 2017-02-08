@@ -50,7 +50,7 @@ export const createRoutes = (store) => (
   <Route path="/" component={CoreLayout} onEnter={() => onPageEnter(store)}>
     <Route path="login" component={Login} />
     <Route path="signup" component={Signup} />
-    <Route path="lobby/:roomid" component={GameLobbyContainer} onEnter={(nextRouterState) => onGameLobbyEnter(nextRouterState, store)}/>
+    <Route path="lobby/:roomid" component={GameLobbyContainer} onEnter={(nextRouterState) => onGameLobbyEnter(nextRouterState, store)} />
     <Route path="profile/:username" component={Profile} />
     <Route path="invite" component={InvitePage} />
     <Route path="about" component={About} />

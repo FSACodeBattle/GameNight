@@ -7,11 +7,10 @@ const About = () => {
       <div className = "row">
         <div className = "col-sm-6 col-md-3 col-lg-3">
           <div className = "thumbnail">
-            <img src = "Mitch2.jpg" alt = "Mitch Image" style={{textAlign: "center"}}/>
+            <img src = "MitchHeadShot.jpg" alt = "Mitch Image" style={{textAlign: "center"}} />
           </div>
           <div className = "caption">
-            <h3>Mitch</h3>
-            <p>LinkedIn</p>
+            <h3>Mitch Kosowski</h3>
             <p>
               <a href = "#" className = "btn btn-primary" role = "button">
                    Button
@@ -27,8 +26,7 @@ const About = () => {
             <img src = "Patryk.jpg" alt = "Patryk Image" />
           </div>
           <div className = "caption">
-            <h3>Patryk</h3>
-            <p>Some sample text. Some sample text.</p>
+            <h3>Patryk Chmura</h3>
             <p>
               <a href = "#" className = "btn btn-primary" role = "button">
                    Button
@@ -41,11 +39,10 @@ const About = () => {
         </div>
         <div className = "col-sm-6 col-md-3 col-lg-3">
           <div className = "thumbnail">
-            <img src = "/bootstrap/images/kittens.jpg" alt = "Generic placeholder thumbnail" />
+            <img src = "Ming.jpg" alt = "Generic placeholder thumbnail" />
           </div>
           <div className = "caption">
-            <h3>Ming</h3>
-            <p>LinkedIn Github</p>
+            <h3>Ming Tung Wong</h3>
             <p>
               <a href = "#" className = "btn btn-primary" role = "button">
                  Button
@@ -62,7 +59,6 @@ const About = () => {
           </div>
           <div className = "caption">
             <h3>John Yom</h3>
-            <p>Some sample text. Some sample text.</p>
             <p>
               <a href = "#" className = "btn btn-primary" role = "button">
                  Button

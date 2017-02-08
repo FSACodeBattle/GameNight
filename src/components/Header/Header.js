@@ -51,8 +51,7 @@ class Header extends React.Component {
           }
         </Navbar.Collapse>
       </Navbar>
-    )
-
+    );
   }
 }
 

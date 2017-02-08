@@ -32,17 +32,15 @@ class HomeView extends Component {
   }
   render(){
     return (
-      <div>
-        <div className="container-fluid">
-          <div className="row" id="introaboutcode">
-            <h4 style={{color:"#777"}}>Welcome!</h4>
-            <MainLobbyContainer />
-          </div>
-          <div className="row" id="matchAndLeaders">
-            <MatchHistory matches={this.state.matches}/>
-            <Leaderboard leaderboard={this.state.leaderboard}/>
-            <Achievements />
-          </div>
+      <div className="container">
+        <div className="row" id="introaboutcode">
+          <h4 style={{color:"#777"}}>Welcome!</h4>
+          <MainLobbyContainer />
+        </div>
+        <div className="row-fluid" id="matchAndLeaders">
+          <MatchHistory matches={this.state.matches}/>
+          <Leaderboard leaderboard={this.state.leaderboard}/>
+          <Achievements />
         </div>
       </div>
     );

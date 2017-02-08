@@ -8,8 +8,14 @@ const ProgressBar = (props) => {
   return (
     <div>
       <div className="progress">
-        <div className="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={{width: progressPercentage + "%" }}>
-        </div>
+        <div
+         className="progress-bar progress-bar-custom"
+         role="progressbar"
+         aria-valuenow="60"
+         aria-valuemin="0"
+         aria-valuemax="100"
+         style={{width: progressPercentage + '%' }}
+        />
       </div>
     </div>
   );
