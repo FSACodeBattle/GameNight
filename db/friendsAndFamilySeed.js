@@ -84,18 +84,32 @@ const seedQuestions = () => db.Promise.map(
  //      				})
  //    			})`
 	// },
+	// {
+	// 	name: "Sum of Positive",
+	// 	questionText: `You get an array of numbers, return the sum of all of the positives ones.\n
+	// 	Example [1,-4,7,12] => 1 + 7 + 12 = 20\n
+	// 	Write a function named positveSum that returns the sum of all the positive elements.\n
+	// 	`,
+	// 	tests: `describe("positveSum", function(){
+ //        			it("This array should return 20", function(){
+ //         	 			assert.equal(20, positiveSum([1, -4, 7, 12]));
+ //      				})
+ //      				it("This array should return 5", function(){
+ //         	 			assert.equal(5, positiveSum([5, -1, -10, 0]));
+ //      				})
+ //    			})`
+	// },
 	{
-		name: "Sum of Positive",
-		questionText: `You get an array of numbers, return the sum of all of the positives ones.\n
-		Example [1,-4,7,12] => 1 + 7 + 12 = 20\n
-		Write a function named positveSum that returns the sum of all the positive elements.\n
+		name: "Remove the First and Last",
+		questionText: `You receive an array with at least two elements.\n
+		Return a new array with first and last elements removed.
+		Example [1,-4,7,12] => [-4, 7]\n
+		Write a function named removeFirstAndLast that does this.\n
 		`,
 		tests: `describe("positveSum", function(){
-        			it("This array should return 20", function(){
-         	 			assert.equal(20, positiveSum([1, -4, 7, 12]));
-      				})
-      				it("This array should return 5", function(){
-         	 			assert.equal(5, positiveSum([5, -1, -10, 0]));
+        			it("This array should return [-4, 7]", function(){
+         	 			assert.equal(-4, positiveSum([1, -4, 7, 12][0]));
+         	 			assert.equal(7, positiveSum([1, -4, 7, 12])[1]);
       				})
     			})`
 	},
