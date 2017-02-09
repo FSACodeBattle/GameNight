@@ -33,10 +33,18 @@ class Header extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem eventKey={1}><Link to="/about">About</Link></NavItem>
-            <NavItem eventKey={2}><Link to="/battlePage">Battle Page</Link></NavItem>
-            <NavItem eventKey={3}><Link to="/code_editor">Code Editor</Link></NavItem>
-            <NavItem eventKey={4}><Link to={`/lobby/${makeid()}`}>Create Lobby</Link></NavItem>
+            <LinkContainer to="/about" >
+              <NavItem eventKey={1}>About</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/battlePage" >
+              <NavItem eventKey={2}>Battle Page</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/code_editor" >
+              <NavItem eventKey={3}>Code Editor</NavItem>
+            </LinkContainer>
+            <LinkContainer to={`/lobby/${makeid()}`} >
+              <NavItem eventKey={4}>Create Lobby</NavItem>
+            </LinkContainer>
           </Nav>
           {
             Object.keys(user).length
