@@ -13,8 +13,7 @@ class HomeView extends Component {
     super(props);
     this.state = {
       username: '',
-      leaderboard: [],
-      matches: []
+      leaderboard: []
     }
   }
 
