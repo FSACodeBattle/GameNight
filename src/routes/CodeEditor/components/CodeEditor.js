@@ -12,20 +12,11 @@ class CodeEditor extends Component {
     this.state = {
       code: '',
       results: '',
-      timeElapsed: 0,
-      startingTime: null,
       numberOfQuestions: 2,
       currentQuestionID: 0
     }
     this.updateCode = this.updateCode.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentDidMount(){
-    const startingTime = Date.now();
-    this.setState({
-      startingTime: startingTime,
-    })
   }
 
   updateCode(newCode) {
@@ -35,10 +26,8 @@ class CodeEditor extends Component {
   }
 
   handleSubmit() {
-    const startingTime = this.state.startingTime;
     axios.post('/api/code', {
       code: this.state.code,
-      timeElapsed: (Date.now() - startingTime)/1000,
       currentQuestionID: this.props.currentQuestionID.questionID,
       room: this.props.roomID,
       socketID: socket.id
