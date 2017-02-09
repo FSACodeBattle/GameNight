@@ -136,15 +136,30 @@ class BattlePage extends Component {
       }
       //player must be player 2
       else {
-        console.log("player 2 state",this.state.player2);
+        // console.log("player 2 state",this.state.player2);
         //if the client is player 2 update their progress and change the score
         if(socket.id === data.currentPlayer){
-          this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1), username: p2username, userID: this.state.player2.userID}, currentQuestion: (this.state.currentQuestion + 1), roomID: data.roomID}, () => {
+          this.setState( {
+            player2: {
+              id: this.state.player2.id, 
+              progress: (this.state.player2.progress + 1), 
+              username: p2username, 
+              userID: this.state.player2.userID}, 
+              currentQuestion: (this.state.currentQuestion + 1), 
+              roomID: data.roomID}, 
+              () => {
               if (this.state.player2.progress === this.state.numberOfQuestions && this.state.gameWon === false){
                     notify.show('You won the game!', 'success', 2500);
-                    console.log("inside player 2 win check")
-                    console.log(this.state);
-                    socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player1.id, username: p1username, winnerUserID: this.state.player2.userID, loserUserID: this.state.player1.userID, score: [this.state.player1.progress, this.state.player2.progress], time: (Date.now() - this.state.startingTime)/1000});
+                    // console.log("inside player 2 win check")
+                    // console.log(this.state);
+                    socket.emit('gameOver', {
+                      roomID: this.state.roomID, 
+                      winnerID: this.state.player1.id, 
+                      username: p1username, 
+                      winnerUserID: this.state.player2.userID, 
+                      loserUserID: this.state.player1.userID, 
+                      score: [this.state.player1.progress, this.state.player2.progress], 
+                      time: (Date.now() - this.state.startingTime)/1000});
                     setTimeout(() => {
                       browserHistory.push('/gameWon');
                     }, 2500);
@@ -160,12 +175,19 @@ class BattlePage extends Component {
                 }
           });
 
-          console.log('Player 2 progress updated and the question should have changed', this.state.player2.progress)
+          // console.log('Player 2 progress updated and the question should have changed', this.state.player2.progress)
         }
         else {
           //just change player 2's score
-          this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1), username: p2username, userID: this.state.player2.userID}, roomID: data.roomID})
-          console.log('Player 2 progress updated', this.state.player2.progress )
+          this.setState( {
+            player2: {
+              id: this.state.player2.id, 
+              progress: (this.state.player2.progress + 1), 
+              username: p2username, 
+              userID: this.state.player2.userID}, 
+              roomID: data.roomID
+            })
+          // console.log('Player 2 progress updated', this.state.player2.progress )
 
           if (this.state.player2.progress === this.state.numberOfQuestions){
             notify.show('Player 2 answered question #' + this.state.player2.progress + ' and won! You can still keep going, though :)', 'error', 2500);
@@ -174,7 +196,7 @@ class BattlePage extends Component {
           }
         }
       }
-      console.log(`${data.playerToUpdate} has completed a question`);
+      // console.log(`${data.playerToUpdate} has completed a question`);
 
     })
 
