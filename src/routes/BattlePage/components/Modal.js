@@ -28,9 +28,6 @@ class ExampleModal extends React.Component {
       <div>
         <Modal
           isOpen={this.state.modalIsOpen}
-          closeTimeoutMS={2500}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
           style={customStyles}
           shouldCloseOnOverlayClick={false}
           contentLabel="No Overlay Click Modal"

@@ -34,9 +34,10 @@ class BattlePage extends Component {
       numberOfQuestions: 2,
       roomID: '',
       gameWon: false,
-      modalIsOpen: true
+      modalIsOpen: false
     }
   }
+
   componentDidMount() {
     //set the player ids to their socket ids
     //get the questions getting sent from the backend and store them in questionsArr
@@ -112,15 +113,6 @@ class BattlePage extends Component {
               }
               else {
                 notify.show('You got an answer correct!', 'success', 2500);
-                this.setState({
-                  modalIsOpen: true
-                })
-                console.log(this.state.modalIsOpen);
-                // setTimeout(() => {
-                //   this.setState({
-                //     modalIsOpen: false
-                //   })
-                // }, 7500);
             }
           });
 
@@ -183,15 +175,6 @@ class BattlePage extends Component {
                 }
             else {
                     notify.show('You got an answer correct!', 'success', 2500);
-                    this.setState({
-                      modalIsOpen: true
-                    })
-                    console.log(this.state.modalIsOpen);
-                //     setTimeout(() => {
-                //       this.setState({
-                //         modalIsOpen: false
-                //       })
-                //     }, 7500);
                 }
           });
 
@@ -230,7 +213,9 @@ class BattlePage extends Component {
       this.setState({gameWon: true});
     })
 
+    
   }
+
   render() {
     return (
       <div className="container" id="battlePageWrapper">

@@ -108,18 +108,9 @@ module.exports = function(server) {
 			io.in(data.roomID).emit('gameWinningState', data);
 		})
 
-
-		socket.on('my other event', socketCallbacks.hello);
 		var currentClients = io.sockets.adapter.rooms["MainLobby"];
 
 		socket.on('correct response', socketCallbacks.updatePlayerProgress);
-
-		// let playerProgress = [0, 0];
-		socket.on('correct response', (data) => {
-			console.log('receiving correct response on back-end')
-			playerProgress[data.playerNumber - 1]++;
-			socket.emit('update progress', playerProgress);
-		});
 
 		socket.on('disconnect', () => socketCallbacks.reloadLobby(io))
 	});
