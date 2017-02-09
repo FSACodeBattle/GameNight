@@ -27,7 +27,7 @@ class HomeView extends Component {
         this.setState({leaderboard: leaderboard.data});
       })
 
-    if(!Object.keys(this.props.user).length) {
+    if(!Object.keys(user).length) {
       axios.get('/api/users/allMatches')
       .then((matches) => {
         this.setState({matches: matches.data})
@@ -35,6 +35,7 @@ class HomeView extends Component {
     }
     else {
       //Get only the user's match history
+      console.log(user);
       axios.get(`/api/users/matches/${user.id}`)
       .then(matches => this.setState({matches}));
     }

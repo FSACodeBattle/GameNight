@@ -6,14 +6,15 @@ import './Matchhistory.scss';
 export const MatchHistory = (props) => {
   const matches = props.matches;
       //if matches is defined
+      console.log(matches);
     if (matches){
 
       var rows = matches.map(match =>
         <tr key={match.id} >
           <td>{match.createdAt.substring(0, 10)}</td>
           <td>{match.id}</td>
-          <td>{match.winnerId}</td>
-          <td>{match.loserId}</td>
+          <td>{match.winner.username}</td>
+          <td>{match.loser.username}</td>
           <td>{match.winnerDuration}</td>
         </tr>
         )
