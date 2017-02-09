@@ -57,7 +57,7 @@ module.exports = function(server) {
 								return user;
 							})
 
-							console.log('user', users);
+							// console.log('user', users);
 
 							//const arrOfSocketIDs = Object.keys(io.sockets.adapter.rooms[data].sockets);
 
@@ -69,7 +69,7 @@ module.exports = function(server) {
 								//stores the array of the question objects created above
 								questions: arrOfQuestionObjs
 							}
-							console.log("emit this question data", gameData);
+							// console.log("emit this question data", gameData);
 
 							//emits the game data object to all the connected sockets in the room
 							io.in(data).emit('sending Questions', gameData);
@@ -85,7 +85,7 @@ module.exports = function(server) {
 		})
 
 		socket.on('gameOver', (data) => {
-			console.log("gameover event ", data);
+			// console.log("gameover event ", data);
 								
 			Fight.create({
 						winnerId: data.winnerUserID,
