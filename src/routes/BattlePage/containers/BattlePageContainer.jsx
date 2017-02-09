@@ -13,18 +13,23 @@ class BattlePage extends Component {
     super(props);
     this.state = {
       //player object holds the socket id and the number of questions answered correctly
-      player1: {id:'Player One', progress: 0, username: 'Player One', userID: ''},
-      player2: {id:'Player Two', progress: 0, username: 'Player Two', userID: ''},
+      player1: {
+        id:'Player One', progress: 0, 
+        username: 'Player One', 
+        userID: ''
+      },
+      player2: {
+        id:'Player Two', 
+        progress: 0, 
+        username: 'Player Two', 
+        userID: ''
+      },
       //holds the question objects
       questionsArr: [],
       //the index of the questionArr
       currentQuestion: 0,
-      code: '',
-      results: '',
       timeElapsed: 0,
       startingTime: null,
-      playerProgress: [0, 0],
-      playerNumber: 0,
       numberOfQuestions: 2,
       roomID: '',
       gameWon: false
