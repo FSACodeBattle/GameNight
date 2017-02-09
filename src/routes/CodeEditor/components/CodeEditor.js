@@ -3,7 +3,6 @@ import CodeMirror from 'react-codemirror';
 import axios from 'axios';
 import './CodeEditor.scss';
 import 'codemirror/lib/codemirror.css'
-// require('codemirror/theme/solarized.css');
 require('codemirror/mode/javascript/javascript');
 require('codemirror/theme/base16-dark.css');
 
@@ -15,8 +14,6 @@ class CodeEditor extends Component {
       results: '',
       timeElapsed: 0,
       startingTime: null,
-      playerProgress: [0, 0],
-      playerNumber: 0,
       numberOfQuestions: 2,
       currentQuestionID: 0
     }
@@ -25,8 +22,6 @@ class CodeEditor extends Component {
   }
 
   componentDidMount(){
-    // update playerNumber here using sockets
-    // this is dummy code for now
     const startingTime = Date.now();
     this.setState({
       startingTime: startingTime,
@@ -41,8 +36,6 @@ class CodeEditor extends Component {
 
   handleSubmit() {
     const startingTime = this.state.startingTime;
-    console.log("inside handleSubmit");
-    console.log(socket);
     axios.post('/api/code', {
       code: this.state.code,
       timeElapsed: (Date.now() - startingTime)/1000,
@@ -52,7 +45,6 @@ class CodeEditor extends Component {
     })
     .then(response => {
        this.setState({results: response.data});
-
        if(response.data.indexOf('failing') === -1 && response.data.indexOf('SyntaxError') === -1){
         this.setState({code: ''});
       }
