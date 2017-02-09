@@ -8,7 +8,6 @@ router.post('/', (req, res, next) => {
   const ioObj = io();
   const docker = new createDocker();
   const codeToRun = `${req.body.code}`;
-  console.log(req.body.timeElapsed);
 
   //socket room that is passed in from the post request
   const room = req.body.room;

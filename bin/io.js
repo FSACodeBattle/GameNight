@@ -11,15 +11,10 @@ module.exports = function(server) {
 	io = socketio(server);
 	io.on('connection', function(socket) {
 		socket.on('setUser', payload => {
-			//console.log('pppppp', payload.user);
 			payload.user.socketId = socket.id;
 			socket.user = payload.user;
 			socket.join('MainLobby');
 			io.emit('reload');
-		});
-		//socket.on('joinMainLobby', socketCallbacks.joinMainLobby)
-		socket.emit('news', {
-			hello: 'world'
 		});
 
 		io.emit('reload');

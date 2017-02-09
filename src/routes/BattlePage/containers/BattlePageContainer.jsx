@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './BattlePageContainer.scss';
 import Problem from '../components/Problem'
-import CountdownClock from '../components/CountdownClock'
 import CodeEditor from '../../CodeEditor/components/CodeEditor'
 import ProgressBar from '../components/ProgressBar.js'
 import axios from 'axios';
@@ -28,8 +27,6 @@ class BattlePage extends Component {
       playerNumber: 0,
       numberOfQuestions: 2,
       roomID: '',
-      // timeRemaining: 60,
-      // prevTime: null,
       gameWon: false
     }
   }
@@ -47,7 +44,7 @@ class BattlePage extends Component {
     })
 
 
-    //when someone gets a question correct
+    //when either player gets a question correct
     socket.on('updatePlayerScore', (data) => {
       console.log("socket data",data);
       //string will hold the player who got the question correct
@@ -146,10 +143,7 @@ class BattlePage extends Component {
 
 
     socket.on('gameWinningState', (data) => {
-      // alert(data.winnerID, "won");
-      // notify.show(data.winnerID, " won the game!", 'success', 2500);
       this.setState({gameWon: true});
-      console.log(data.winnerID, "won");
     })
 
   }
@@ -157,10 +151,6 @@ class BattlePage extends Component {
     return (
       <div className="container" id="battlePageWrapper">
         <Notifications />
-{/*        <div className="row">
-          <CountdownClock />
-        </div>*/}
-
         <div className="row">
           <div className="col col-xs-12 col-md-6">
             <label id="playerProgressLabel">{`${this.state.player1.username}`}</label>
@@ -173,12 +163,8 @@ class BattlePage extends Component {
         </div>
         <div className="row">
           <div className="col col-xs-12 col-sm-6 col-md-4 col-lg-4" id="problemsContainers">
-
-                {/**Passes in the users current question object to the Problem component by using ArrayOfQuestions[current question index]**/}
             <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
-{/*            <h2>{`${this.state.player1.username} - ${this.state.player1.progress}`}</h2>
-            <h2>{`${this.state.player2.username} - ${this.state.player2.progress}`}</h2>*/}
-            </div>
+           </div>
           <div className="col col-xs-12 col-sm-6 col-md-8 col-lg-8" id="codeeditor">
             <CodeEditor currentQuestionID={this.state.questionsArr[this.state.currentQuestion]} roomID={this.props.roomID.id}/>
           </div>
@@ -191,4 +177,3 @@ class BattlePage extends Component {
 const mapStateToProps = (state) => ({roomID : state.gameLobby})
 
 export default connect(mapStateToProps)(BattlePage);
-
