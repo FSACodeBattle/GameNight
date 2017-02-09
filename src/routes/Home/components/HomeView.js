@@ -9,6 +9,7 @@ import MainLobbyContainer from '../../MainLobbyList/containers/MainLobbyContaine
 import axios from 'axios';
 
 class HomeView extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -16,30 +17,23 @@ class HomeView extends Component {
       leaderboard: [],
       matches: []
     }
-
   }
+
   componentDidMount(){
-
-    const user = this.props.user;
-
     axios.get('/api/users/leaderboard')
-      .then((leaderboard) => {
-        this.setState({leaderboard: leaderboard.data});
-      })
-
-    if(!Object.keys(user).length) {
-      axios.get('/api/users/allMatches')
-      .then((matches) => {
-        this.setState({matches: matches.data})
-      })
-    }
-    else {
-      //Get only the user's match history
-      console.log(user);
-      axios.get(`/api/users/matches/${user.id}`)
-      .then(matches => this.setState({matches}));
-    }
+    .then(leaderboard => {
+      this.setState({leaderboard: leaderboard.data});
+      return axios.get('/user');
+    })
+    .then(loggedInUser => {
+      const user = loggedInUser.data;
+      return user
+      ? axios.get(`/api/users/matches/${user.id}`)
+      : axios.get('/api/users/allMatches')
+    })
+    .then(matches => this.setState({ matches: matches.data }));
   }
+
   render(){
     return (
       <div className="container">
@@ -47,7 +41,7 @@ class HomeView extends Component {
           <h4 style={{color:"#777"}}>Welcome!</h4>
         </div>
         <div className="row-fluid" id="matchAndLeaders">
-          <MatchHistory matches={this.state.matches}/>
+          <MatchHistory matches={this.state.matches} user={this.props.user} />
           <Leaderboard leaderboard={this.state.leaderboard}/>
           <Achievements />
         </div>

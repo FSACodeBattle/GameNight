@@ -1,7 +1,8 @@
 'use strict'
 
-const {User} = require('../../db/database.js');
-const Fight = require('../../db/database').Fight;
+const db = require('../../db/database');
+const User = db.User;
+const Fight = db.Fight;
 
 module.exports = require('express').Router()
 	.get('/', (req, res, next) => {
@@ -27,12 +28,13 @@ module.exports = require('express').Router()
 		.catch(next)
 	})
 	.get('/matches/:userId', (req, res, next) => {
+		const userId = req.params.userId;
 		Fight.findAll({
 			where: {$or: [{winnerId: userId}, {loserId: userId}]},
 			limit: 20,
 			order: [['createdAt', 'DESC']],
 			include: [{ all: true }]
 		})
-		.then(matches => res.json(matches))
+		.then(matches => res.send(matches))
 		.catch(next)
 	})
