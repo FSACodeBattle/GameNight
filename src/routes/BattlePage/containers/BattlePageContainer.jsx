@@ -38,6 +38,10 @@ class BattlePage extends Component {
     }
   }
 
+  sendAttack() {
+    socket.emit('sending attack')
+  }
+
   componentDidMount() {
     //set the player ids to their socket ids
     //get the questions getting sent from the backend and store them in questionsArr
@@ -213,7 +217,9 @@ class BattlePage extends Component {
       this.setState({gameWon: true});
     })
 
-    
+    socket.on('received attack', () => {
+      this.setState({modalIsOpen: true});
+    })
   }
 
   render() {
@@ -239,6 +245,7 @@ class BattlePage extends Component {
           </div>
         </div>
         <ExampleModal modalIsOpen={this.state.modalIsOpen}/>
+        <button onClick={this.sendAttack}>Send Attack</button>
       </div>
     );
   }
