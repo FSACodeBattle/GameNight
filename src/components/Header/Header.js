@@ -1,11 +1,13 @@
 'use strict';
 import axios from 'axios';
 import React from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
 import { DropdownButton, MenuItem, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { IndexLink, Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import Login from '../Login/Login';
 import { setUser } from '../../store/user';
+import { fetchMatches } from '../../store/match';
 import './Header.scss';
 
 class Header extends React.Component {
@@ -18,6 +20,7 @@ class Header extends React.Component {
   logout() {
     this.props.logoutUser();
   }
+
   render() {
     const user = this.props.user;
     return (
@@ -70,8 +73,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     logoutUser: function() {
-      axios.get('/signout')
-      .then(() => dispatch(setUser({})));
+      axios.get('/signout').then(() => {
+        dispatch(setUser({}));
+        dispatch(fetchMatches(null));
+      })
     }
   }
 }
