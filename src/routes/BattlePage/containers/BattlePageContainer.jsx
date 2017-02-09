@@ -33,7 +33,8 @@ class BattlePage extends Component {
       startingTime: null,
       numberOfQuestions: 2,
       roomID: '',
-      gameWon: false
+      gameWon: false,
+      modalIsOpen: true
     }
   }
   componentDidMount() {
@@ -66,7 +67,7 @@ class BattlePage extends Component {
 
     //when either player gets a question correct
     socket.on('updatePlayerScore', (data) => {
-      console.log("socket data",data);
+      // console.log("socket data",data);
       //string will hold the player who got the question correct
       let playerToUpdate = data.playerToUpdate;
       if (playerToUpdate === 'Player1'){
@@ -111,7 +112,15 @@ class BattlePage extends Component {
               }
               else {
                 notify.show('You got an answer correct!', 'success', 2500);
-                
+                this.setState({
+                  modalIsOpen: true
+                })
+                console.log(this.state.modalIsOpen);
+                // setTimeout(() => {
+                //   this.setState({
+                //     modalIsOpen: false
+                //   })
+                // }, 7500);
             }
           });
 
@@ -174,6 +183,15 @@ class BattlePage extends Component {
                 }
             else {
                     notify.show('You got an answer correct!', 'success', 2500);
+                    this.setState({
+                      modalIsOpen: true
+                    })
+                    console.log(this.state.modalIsOpen);
+                //     setTimeout(() => {
+                //       this.setState({
+                //         modalIsOpen: false
+                //       })
+                //     }, 7500);
                 }
           });
 
@@ -235,7 +253,7 @@ class BattlePage extends Component {
             <CodeEditor currentQuestionID={this.state.questionsArr[this.state.currentQuestion]} roomID={this.props.roomID.id}/>
           </div>
         </div>
-        <ExampleModal />
+        <ExampleModal modalIsOpen={this.state.modalIsOpen}/>
       </div>
     );
   }
