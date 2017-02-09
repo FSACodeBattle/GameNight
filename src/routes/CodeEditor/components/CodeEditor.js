@@ -13,8 +13,6 @@ class CodeEditor extends Component {
     this.state = {
       code: '',
       results: '',
-      // timeRemaining: 60,
-      // prevTime: null,
       timeElapsed: 0,
       startingTime: null,
       playerProgress: [0, 0],
@@ -27,7 +25,6 @@ class CodeEditor extends Component {
   }
 
   componentDidMount(){
-    // this.tick();
 
     // update playerNumber here using sockets
     // this is dummy code for now
@@ -49,7 +46,6 @@ class CodeEditor extends Component {
   }
 
   handleSubmit() {
-    // console.log('handleSubmit works if this shows your code', this.state.code);
     const startingTime = this.state.startingTime;
     const playerNumber = this.state.playerNumber;
     const playerProgress = this.state.playerProgress;
@@ -72,36 +68,6 @@ class CodeEditor extends Component {
        if(response.data.indexOf('failing') === -1 && response.data.indexOf('SyntaxError') === -1){
         this.setState({code: ''});
       }
-      // //console.log("response from running code: ", response.data );
-      // // console.log('saved successfully');
-      // console.log(this.state.results);
-      // console.log(this.state.results[this.state.results.length-1] === "1");
-
-      // if(this.state.results[this.state.results.length-1] === "1"){
-      //   console.log('emitting correct response from front-end')
-      //   socket.emit('correct response', {
-      //     playerNumber: this.state.playerNumber,
-      //     playerProgress: this.state.playerProgress
-      //   });
-      //   socket.on('update progress', (playerProgress) => {
-      //     this.setState({
-      //       playerProgress: playerProgress
-      //     })
-      //   })
-
-      //   // check if game is won
-
-      //   // console.log(playerProgress[playerNumber -1],this.state.numberOfQuestions - 1);
-      //   if (playerProgress[playerNumber - 1] === this.state.numberOfQuestions - 1){
-      //     console.log(playerNumber + " won!");
-      //   }
-
-        // want to leave game if you solved final question correctly
-        // socket.on('disconnect', function(){
-        //   console.log('socket id ' + socket.id + ' has disconnected. : (');
-        // })
-      //}
-
     })
 
   }
