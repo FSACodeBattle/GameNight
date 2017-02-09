@@ -17,11 +17,20 @@ module.exports = require('express').Router()
 		.then(users => res.json(users))
 		.catch(next)
 	})
-	.get('/allMatches', (req, res, next) =>{
+	.get('/allMatches', (req, res, next) => {
 		Fight.findAll({
 			limit:10,
 			order: [['createdAt', 'DESC']]
 		})
 		.then(matches => res.json(matches))
 		.catch(next)
+	})
+	.get('/matches/:userId', (req, res, next) => {
+		Fight.findAll({
+			where: {$or: [{winnerId: userId}, {loserId: userId}]},
+			limit: 20,
+			order: [['createdAt', 'DESC']]
+		})
+		.then(matches => res.json(matches))
+		.catch(next);
 	})

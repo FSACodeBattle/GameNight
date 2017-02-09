@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import './HomeView.scss'
 import MatchHistory from './MatchHistory'
 import Achievements from './Achievements'
@@ -18,16 +19,25 @@ class HomeView extends Component {
 
   }
   componentDidMount(){
+
+    const user = this.props.user;
+
     axios.get('/api/users/leaderboard')
       .then((leaderboard) => {
         this.setState({leaderboard: leaderboard.data});
       })
 
-
-    axios.get('/api/users/allMatches')
+    if(!Object.keys(this.props.user).length) {
+      axios.get('/api/users/allMatches')
       .then((matches) => {
         this.setState({matches: matches.data})
       })
+    }
+    else {
+      //Get only the user's match history
+      axios.get(`/api/users/matches/${user.id}`)
+      .then(matches => this.setState({matches}));
+    }
   }
   render(){
     return (
@@ -48,5 +58,10 @@ class HomeView extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user.user
+  }
+}
 
-export default HomeView;
+export default connect(mapStateToProps)(HomeView);
