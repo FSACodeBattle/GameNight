@@ -60,7 +60,15 @@ class BattlePage extends Component {
                 notify.show('You won the game!', 'success', 2500);
                 console.log("inside player 1 win check")
                 console.log(this.state);
-                socket.emit('gameOver', {roomID: this.state.roomID, winnerID: this.state.player1.id, username: p1username, winnerUserID: this.state.player1.userID, loserUserID: this.state.player2.userID, score: [this.state.player1.progress, this.state.player2.progress], time: (Date.now() - this.state.startingTime)/1000});
+                socket.emit('gameOver', {
+                  roomID: this.state.roomID, 
+                  winnerID: this.state.player1.id, 
+                  username: p1username, 
+                  winnerUserID: this.state.player1.userID, 
+                  loserUserID: this.state.player2.userID, 
+                  score: [this.state.player1.progress, this.state.player2.progress], 
+                  time: (Date.now() - this.state.startingTime)/1000
+                });
 
                 setTimeout(() => {
                       browserHistory.push('/gameWon');
@@ -97,7 +105,6 @@ class BattlePage extends Component {
         //if the client is player 2 update their progress and change the score
         if(socket.id === data.currentPlayer){
           this.setState( {player2: {id: this.state.player2.id, progress: (this.state.player2.progress + 1), username: p2username, userID: this.state.player2.userID}, currentQuestion: (this.state.currentQuestion + 1), roomID: data.roomID}, () => {
-              // notify.show('Player 2 got an answer correct!', 'success', 2500);
               if (this.state.player2.progress === this.state.numberOfQuestions && this.state.gameWon === false){
                     notify.show('You won the game!', 'success', 2500);
                     console.log("inside player 2 win check")
