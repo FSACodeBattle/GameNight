@@ -7,6 +7,7 @@ import ProgressBar from '../components/ProgressBar.js'
 import axios from 'axios';
 import Notifications, {notify} from 'react-notify-toast';
 import { browserHistory } from 'react-router';
+import ExampleModal from '../components/Modal';
 
 class BattlePage extends Component {
   constructor(props) {
@@ -110,6 +111,7 @@ class BattlePage extends Component {
               }
               else {
                 notify.show('You got an answer correct!', 'success', 2500);
+                
             }
           });
 
@@ -233,6 +235,7 @@ class BattlePage extends Component {
             <CodeEditor currentQuestionID={this.state.questionsArr[this.state.currentQuestion]} roomID={this.props.roomID.id}/>
           </div>
         </div>
+        <ExampleModal />
       </div>
     );
   }

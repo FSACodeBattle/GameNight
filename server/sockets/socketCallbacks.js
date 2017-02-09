@@ -15,9 +15,9 @@ const reloadLobby = function(io) {
 }
 
 const updatePlayerProgress = function(data){
-	console.log('receiving correct response on back-end')
+	// console.log('receiving correct response on back-end')
   	data.playerProgress[data.playerNumber - 1]++;
-  	console.log(data.playerProgress);
+  	// console.log(data.playerProgress);
  	this.emit('update progress', data.playerProgress);
 }
 
