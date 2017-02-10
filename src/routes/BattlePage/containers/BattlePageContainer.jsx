@@ -34,7 +34,8 @@ class BattlePage extends Component {
       numberOfQuestions: 2,
       roomID: this.props.roomID.id,
       gameWon: false,
-      modalIsOpen: false
+      modalIsOpen: false,
+      powerUpNum: 2
     }
     this.sendAttack = this.sendAttack.bind(this);
   }
@@ -222,11 +223,14 @@ class BattlePage extends Component {
     socket.on('receive attack', (data) => {
       console.log('received an attack', data);
       console.log(socket.id);
-      if (socket.id === data) {
-        this.setState({modalIsOpen: true});
+      if (socket.id === data && this.state.powerUpNum > 0) {
+        this.setState({
+          modalIsOpen: true,
+          powerUpNum: this.state.powerUpNum - 1
+        });
         setTimeout(() => {
           this.setState({modalIsOpen: false});
-        }, 5000);
+        }, 9500);
       }
     })
   }

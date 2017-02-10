@@ -140,7 +140,6 @@ module.exports = function(server) {
 
 		socket.on('sending attack', (data) => {
 			var room = io.sockets.adapter.rooms[data];
-			console.log('*********** this is room', room);
 			let users = Object.keys(room.sockets).map(id => {
 				const user = io.sockets.connected[id].user;
 				return user;
