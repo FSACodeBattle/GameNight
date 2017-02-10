@@ -58,7 +58,7 @@ class Header extends React.Component {
             <NavItem eventKey={2}><Link to="/battlePage">Battle Page</Link></NavItem>
             <NavItem eventKey={3}><Link to="/code_editor">Code Editor</Link></NavItem>
             <NavItem eventKey={4}><Link to={`/lobby/${makeid()}`}>Create Lobby</Link></NavItem>
-            <NavItem eventKey={4}><button onClick={this.handleOpenModal}>hello</button></NavItem>
+            <NavItem eventKey={5}><button onClick={this.handleOpenModal}>Quick Play!</button></NavItem>
           </Nav>
           {
             Object.keys(user).length
