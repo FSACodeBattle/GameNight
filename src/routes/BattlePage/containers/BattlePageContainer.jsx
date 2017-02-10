@@ -8,6 +8,7 @@ import axios from 'axios';
 import Notifications, {notify} from 'react-notify-toast';
 import { browserHistory } from 'react-router';
 import ExampleModal from '../components/Modal';
+import { setOpponentAnswers } from '../../../store/matchresult';
 
 class BattlePage extends Component {
   constructor(props) {
@@ -15,14 +16,14 @@ class BattlePage extends Component {
     this.state = {
       //player object holds the socket id and the number of questions answered correctly
       player1: {
-        id:'Player One', progress: 0, 
-        username: 'Player One', 
+        id:'Player One', progress: 0,
+        username: 'Player One',
         userID: ''
       },
       player2: {
-        id:'Player Two', 
-        progress: 0, 
-        username: 'Player Two', 
+        id:'Player Two',
+        progress: 0,
+        username: 'Player Two',
         userID: ''
       },
       //holds the question objects
@@ -50,18 +51,18 @@ class BattlePage extends Component {
       p2username = data.player2.username;
       this.setState({
         player1: {
-          id:data.player1.socketId, 
-          progress: 0, 
-          username: p1username, 
+          id:data.player1.socketId,
+          progress: 0,
+          username: p1username,
           userID: data.player1.id
-        }, 
+        },
         player2: {
-          id: data.player2.socketId, 
-          progress: 0, 
-          username: p2username, 
+          id: data.player2.socketId,
+          progress: 0,
+          username: p2username,
           userID: data.player2.id
-        }, 
-        questionsArr: data.questions, 
+        },
+        questionsArr: data.questions,
         startingTime: startingTime})
     })
 
@@ -78,13 +79,13 @@ class BattlePage extends Component {
           //change player 1's progress and their current question
           this.setState( {
             player1: {
-              id: this.state.player1.id, 
-              progress: (this.state.player1.progress + 1), 
-              username: p1username, 
+              id: this.state.player1.id,
+              progress: (this.state.player1.progress + 1),
+              username: p1username,
               userID: this.state.player1.userID
-            }, 
-            currentQuestion: (this.state.currentQuestion + 1), 
-            roomID: data.roomID}, 
+            },
+            currentQuestion: (this.state.currentQuestion + 1),
+            roomID: data.roomID},
             () => {
 
             if (this.state.player1.progress === this.state.numberOfQuestions && this.state.gameWon === false){
@@ -92,12 +93,12 @@ class BattlePage extends Component {
                 // console.log("inside player 1 win check")
                 // console.log(this.state);
                 socket.emit('gameOver', {
-                  roomID: this.state.roomID, 
-                  winnerID: this.state.player1.id, 
-                  username: p1username, 
-                  winnerUserID: this.state.player1.userID, 
-                  loserUserID: this.state.player2.userID, 
-                  score: [this.state.player1.progress, this.state.player2.progress], 
+                  roomID: this.state.roomID,
+                  winnerID: this.state.player1.id,
+                  username: p1username,
+                  winnerUserID: this.state.player1.userID,
+                  loserUserID: this.state.player2.userID,
+                  score: [this.state.player1.progress, this.state.player2.progress],
                   time: (Date.now() - this.state.startingTime)/1000
                 });
 
@@ -122,10 +123,10 @@ class BattlePage extends Component {
           //change player 1's progress to update the score
           this.setState( {
             player1: {
-              id: this.state.player1.id, 
-              progress: (this.state.player1.progress + 1), 
-              username: p1username, 
-              userID: this.state.player1.userID}, 
+              id: this.state.player1.id,
+              progress: (this.state.player1.progress + 1),
+              username: p1username,
+              userID: this.state.player1.userID},
               roomID: data.roomID
             });
           // console.log('Player 1 progress updated', this.state.player1.progress)
@@ -144,24 +145,24 @@ class BattlePage extends Component {
         if(socket.id === data.currentPlayer){
           this.setState( {
             player2: {
-              id: this.state.player2.id, 
-              progress: (this.state.player2.progress + 1), 
-              username: p2username, 
-              userID: this.state.player2.userID}, 
-              currentQuestion: (this.state.currentQuestion + 1), 
-              roomID: data.roomID}, 
+              id: this.state.player2.id,
+              progress: (this.state.player2.progress + 1),
+              username: p2username,
+              userID: this.state.player2.userID},
+              currentQuestion: (this.state.currentQuestion + 1),
+              roomID: data.roomID},
               () => {
               if (this.state.player2.progress === this.state.numberOfQuestions && this.state.gameWon === false){
                     notify.show('You won the game!', 'success', 2500);
                     // console.log("inside player 2 win check")
                     // console.log(this.state);
                     socket.emit('gameOver', {
-                      roomID: this.state.roomID, 
-                      winnerID: this.state.player1.id, 
-                      username: p1username, 
-                      winnerUserID: this.state.player2.userID, 
-                      loserUserID: this.state.player1.userID, 
-                      score: [this.state.player1.progress, this.state.player2.progress], 
+                      roomID: this.state.roomID,
+                      winnerID: this.state.player1.id,
+                      username: p1username,
+                      winnerUserID: this.state.player2.userID,
+                      loserUserID: this.state.player1.userID,
+                      score: [this.state.player1.progress, this.state.player2.progress],
                       time: (Date.now() - this.state.startingTime)/1000});
                     setTimeout(() => {
                       browserHistory.push('/gameWon');
@@ -184,10 +185,10 @@ class BattlePage extends Component {
           //just change player 2's score
           this.setState( {
             player2: {
-              id: this.state.player2.id, 
-              progress: (this.state.player2.progress + 1), 
-              username: p2username, 
-              userID: this.state.player2.userID}, 
+              id: this.state.player2.id,
+              progress: (this.state.player2.progress + 1),
+              username: p2username,
+              userID: this.state.player2.userID},
               roomID: data.roomID
             })
           // console.log('Player 2 progress updated', this.state.player2.progress )
@@ -248,5 +249,10 @@ class BattlePage extends Component {
 }
 
 const mapStateToProps = (state) => ({roomID : state.gameLobby})
+const mapDispatchToProps = (dispatch) => ({
+  setAnswer: function(answers) {
+    dispatch(setOpponentAnswers(answers));
+  }
+})
 
 export default connect(mapStateToProps)(BattlePage);

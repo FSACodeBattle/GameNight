@@ -19,7 +19,7 @@ export const fetchMatches = (user) => {
   }
 }
 
-const initialState = {matches: []};
+const initialState = { matches: [] };
 export default function matchesReducer(state = initialState, action) {
   const newState = Object.assign({}, state);
   switch(action.type) {
