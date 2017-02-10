@@ -50,6 +50,10 @@
   margin-right: 0px;
 }
 
+.cm-invalidchar, .cm-s-default .cm-error {
+    color: rgba(0, 0, 0, 0);
+}
+
 .CodeMirror-gutter-wrapper {
   left: -30px !important;
 }
