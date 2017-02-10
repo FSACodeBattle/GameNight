@@ -6,6 +6,7 @@ import Leaderboard from './Leaderboard';
 import { Jumbotron } from 'react-bootstrap';
 import MainLobbyContainer from '../../MainLobbyList/containers/MainLobbyContainer';
 import axios from 'axios';
+import HomePage from './homePage';
 
 class HomeView extends Component {
   constructor(props) {
@@ -40,36 +41,7 @@ class HomeView extends Component {
             </div>
           </div>
         </Jumbotron>
-        <div className="row row-code-battle">
-          <div className="col-xs-12 col-md-6">
-            <h3>
-              PUT SOME IMAGE HERE??
-            </h3>
-          </div>
-          <div className="col-xs-12 col-md-6">
-            <h3>
-              CodeBattle
-            </h3>
-            <p>
-             Want to learn coding fundamentals while having fun? <br/>Challenge your friends to a CodeBattle! Win to earn points <br/> Unlock achievements as you learn the basics of JavaScript. CodeBattle is designed to prepare students for success in the rigorous Fullstack Code Academy program.
-            </p>
-          </div>
-        </div>
-        <div className="row row-code-battle2">
-          <div className="col-xs-12 col-md-6">
-            <h3>
-              PUT SOME IMAGE HERE??
-            </h3>
-          </div>
-          <div className="col-xs-12 col-md-6">
-            <h3>
-              CodeBattle
-            </h3>
-            <p>
-             Want to learn coding fundamentals while having fun? <br/>Challenge your friends to a CodeBattle! Win to earn points <br/> Unlock achievements as you learn the basics of JavaScript. CodeBattle is designed to prepare students for success in the rigorous Fullstack Code Academy program.
-            </p>
-          </div>
-        </div>
+        <HomePage />
         <div className="container">
           <div className="row" id="introaboutcode">
             <h4 style={{color:"#777"}}>Welcome!</h4>
