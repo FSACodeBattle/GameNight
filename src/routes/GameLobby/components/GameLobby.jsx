@@ -22,30 +22,30 @@ class GameLobby extends React.Component {
   render() {
     const user = this.props.user;
     return (
-          <div className="row" id="gameInvite">
-            <label style={{color:"#777"}}>Invite To Game!</label>
-            {
-              Object.keys(user).length
-              ?
-                <div className="input-group" style={{margin: "0px auto"}}>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={`localhost:3000/lobby/${this.props.roomid}`}
-                    onChange={() => this.setState({ copied: false})}
-                  />
+      <div className="row" id="gameInvite">
+        <label style={{color:"#777"}}>Invite To Game!</label>
+        {
+          Object.keys(user).length
+          ?
+            <div className="input-group" style={{margin: "0px auto"}}>
+              <input
+                type="text"
+                className="form-control"
+                value={`localhost:3000/lobby/${this.props.roomid}`}
+                onChange={() => this.setState({ copied: false})}
+              />
 
-                  <CopyToClipboard
-                    text={`http://138.197.51.247/lobby/${this.props.roomid}`}
-                    onCopy={() => this.setState({copied: true})}
-                    >
-                      <button className="btn btn-primary btn-join">Copy To Clipboard</button>
-                    </CopyToClipboard>
-                    {this.state.copied ? <span style={{color: 'red', marginLeft: "10px"}}>Copied.</span> : null}
-                </div>
-              : <div style={{color: "white"}}>Please log in</div>
-            }
-          </div>
+              <CopyToClipboard
+                text={`http://138.197.51.247/lobby/${this.props.roomid}`}
+                onCopy={() => this.setState({copied: true})}
+                >
+                  <button className="btn btn-primary btn-join">Copy To Clipboard</button>
+                </CopyToClipboard>
+                {this.state.copied ? <span style={{color: 'red', marginLeft: "10px"}}>Copied.</span> : null}
+            </div>
+          : <div style={{color: "white"}}>Please log in</div>
+        }
+      </div>
     )
   }
 }
