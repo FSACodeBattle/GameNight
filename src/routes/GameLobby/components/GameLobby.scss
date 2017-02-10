@@ -17,3 +17,13 @@
 .input-group {
   text-align: center;
 }
+
+.input-group {
+  .form-control {
+    z-index: 0;
+  }
+}
+
+.ninja-modal {
+  margin-bottom: 5px;
+}
