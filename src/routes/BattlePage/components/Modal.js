@@ -40,7 +40,7 @@ class ExampleModal extends React.Component {
         </Modal>
         <ReactHowler
           src='http://wavcentral.com/sounds/movies/jurassic/jurass01.mp3'
-          playing={true}
+          playing={false}
           loop={true}
         />
 

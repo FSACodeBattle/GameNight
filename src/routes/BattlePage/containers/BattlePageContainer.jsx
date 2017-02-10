@@ -34,7 +34,7 @@ class BattlePage extends Component {
       numberOfQuestions: 2,
       roomID: '',
       gameWon: false,
-      modalIsOpen: true
+      modalIsOpen: false
     }
   }
 
