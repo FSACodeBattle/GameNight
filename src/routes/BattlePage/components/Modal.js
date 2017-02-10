@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import ReactHowler from 'react-howler';
 
 const customStyles = {
   content : {
@@ -37,6 +38,12 @@ class ExampleModal extends React.Component {
             className='magicWord'
             src='https://media.giphy.com/media/uOAXDA7ZeJJzW/giphy.gif' />
         </Modal>
+        <ReactHowler
+          src='http://wavcentral.com/sounds/movies/jurassic/jurass01.mp3'
+          playing={true}
+          loop={true}
+        />
+
       </div>
     );
   }

@@ -34,12 +34,8 @@ class BattlePage extends Component {
       numberOfQuestions: 2,
       roomID: '',
       gameWon: false,
-      modalIsOpen: false
+      modalIsOpen: true
     }
-  }
-
-  sendAttack() {
-    socket.emit('sending attack')
   }
 
   componentDidMount() {
@@ -49,7 +45,7 @@ class BattlePage extends Component {
     let p1username = 'Player One';
     let p2username = 'Player Two';
     socket.on('sending Questions', (data) => {
-      console.log('frontend data', data);
+      // console.log('frontend data', data);
       p1username = data.player1.username;
       p2username = data.player2.username;
       this.setState({
@@ -245,7 +241,7 @@ class BattlePage extends Component {
           </div>
         </div>
         <ExampleModal modalIsOpen={this.state.modalIsOpen}/>
-        <button onClick={this.sendAttack}>Send Attack</button>
+        <button>Send Attack</button>
       </div>
     );
   }

@@ -112,7 +112,6 @@ module.exports = function(server) {
 
 		socket.on('correct response', socketCallbacks.updatePlayerProgress);
 
-		socket.on('sending attack', socket.emit('receiving attack'));
 
 		socket.on('disconnect', () => socketCallbacks.reloadLobby(io))
 	});
