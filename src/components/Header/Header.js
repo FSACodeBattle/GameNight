@@ -8,6 +8,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Login from '../Login/Login';
 import { fetchMatches } from '../../store/match'
 import { setUser } from '../../store/user';
+import { setRoomId } from '../../store/gamelobby';
 import './Header.scss';
 import ReactModal from 'react-modal';
 class Header extends React.Component {
@@ -23,7 +24,7 @@ class Header extends React.Component {
 
   componentDidMount(){
     socket.on('gameReady', (data) => {
-      socket.emit('joinGameLobby', data);
+      this.props.setId(data);
     })
     socket.on('startGame', data => {
       this.setState({ showModal: false });
@@ -114,11 +115,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     logoutUser: function() {
-    axios.get('/signout').then(() => {
-      dispatch(setUser({}));
-      dispatch(fetchMatches(null));
-    })
-      .then(() => dispatch(setUser({})));
+      axios.get('/signout').then(() => {
+        dispatch(setUser({}));
+        dispatch(fetchMatches(null));
+      })
+    },
+    setId: function(id) {
+        dispatch(setRoomId(id));
+        socket.emit('joinGameLobby', id);
     }
   }
 }
