@@ -144,8 +144,6 @@ module.exports = function(server) {
 				let user = io.sockets.connected[id].user;
 				return user;
 			})
-			console.log(users[0].socketId, users[1].socketId);
-			console.log(socket.id === users[0].socketId);
 			if (socket.id === users[0].socketId){
 				io.to(data).emit('receive attack', users[1].socketId)
 			} else {
