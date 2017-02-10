@@ -5,11 +5,6 @@ const User = db.User;
 const Fight = db.Fight;
 
 module.exports = require('express').Router()
-	.get('/', (req, res, next) => {
-		User.findAll()
-		.then(users => res.json(users))
-		.catch(next)
-	})
 	.get('/leaderboard', (req, res, next) => {
 		User.findAll({
 			limit: 10,
@@ -42,5 +37,10 @@ module.exports = require('express').Router()
 		console.log('adfjalfa', req.params.username);
 		User.findOne({where: {username: req.params.username}})
 		.then(user => res.send(user))
+		.catch(next)
+	})
+	.get('/', (req, res, next) => {
+		User.findAll()
+		.then(users => res.json(users))
 		.catch(next)
 	})

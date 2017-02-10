@@ -5,7 +5,7 @@ import './HomeView.scss'
 import './Matchhistory.scss';
 
 export const MatchHistory = (props) => {
-  const matches = props.matches;
+  const matches = props.userMatches || props.matches;
     const rows = matches.map(match =>
       <tr key={match.id} >
         <td>{match.createdAt.substring(0, 10)}</td>

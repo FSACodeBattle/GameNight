@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import MatchHistory from '../../Home/components/MatchHistory';
+
 
 class Profile extends React.Component {
   constructor(props) {
@@ -6,12 +9,19 @@ class Profile extends React.Component {
   }
 
   render() {
+    console.log('umatches', this.props.userMatches);
     return (
       <div>
-        Test
+        <MatchHistory userMatches={this.props.userMatches} />
       </div>
     )
   }
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+  return {
+    userMatches: state.profile.matches
+  }
+}
+
+export default connect(mapStateToProps)(Profile);
