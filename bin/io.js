@@ -61,10 +61,10 @@ module.exports = function(server) {
 							//limit it to the number of questions you want to get
 							limit: 2,
 							//gets random rows from the questions table
-							// order: [
-							// 	[Sequelize.fn('RANDOM')]
-							// ]
-							order: [["id", "ASC"]]
+							order: [
+								[Sequelize.fn('RANDOM')]
+							]
+							// order: [["id", "ASC"]]
 						})
 						.then((setOfQuestions) => {
 							//arrOfQuestionObj holds objects that contain each questions ID, Name, and Text
