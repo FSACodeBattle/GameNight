@@ -36,7 +36,7 @@ class GameLobby extends React.Component {
                   />
 
                   <CopyToClipboard
-                    text={`localhost:3000/lobby/${this.props.roomid}`}
+                    text={`http://138.197.51.247/lobby/${this.props.roomid}`}
                     onCopy={() => this.setState({copied: true})}
                     >
                       <button className="btn btn-primary btn-join">Copy To Clipboard</button>
