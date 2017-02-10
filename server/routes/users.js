@@ -28,7 +28,7 @@ module.exports = require('express').Router()
 		.catch(next)
 	})
 	.get('/matches/:userId', (req, res, next) => {
-		const userId = req.params.userId;
+		const userId = +req.params.userId;
 		Fight.findAll({
 			where: {$or: [{winnerId: userId}, {loserId: userId}]},
 			limit: 20,
@@ -36,5 +36,11 @@ module.exports = require('express').Router()
 			include: [{ all: true }]
 		})
 		.then(matches => res.send(matches))
+		.catch(next)
+	})
+	.get('/user/:username', (req, res, next) => {
+		console.log('adfjalfa', req.params.username);
+		User.findOne({where: {username: req.params.username}})
+		.then(user => res.send(user))
 		.catch(next)
 	})

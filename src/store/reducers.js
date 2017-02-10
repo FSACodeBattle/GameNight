@@ -3,7 +3,8 @@ import locationReducer from './location'
 import clientsReducer from './client'
 import gameLobbyReducer from './gamelobby';
 import usersReducer from './user';
-import matchesReducer from './match'
+import matchesReducer from './match';
+import profilesReducer from './profile';
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
@@ -12,6 +13,7 @@ export const makeRootReducer = (asyncReducers) => {
     gameLobby: gameLobbyReducer,
     user: usersReducer,
     match: matchesReducer,
+    profile: profilesReducer,
     ...asyncReducers
   })
 }
