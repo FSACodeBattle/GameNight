@@ -145,9 +145,9 @@ module.exports = function(server) {
 				return user;
 			})
 			if (socket.id === users[0]){
-				io.to(data).emit('receive attack', users[1].socketId)
-			} else {
 				io.to(data).emit('receive attack', users[0].socketId)
+			} else {
+				io.to(data).emit('receive attack', users[1].socketId)
 			}
 
 		})

@@ -4,6 +4,9 @@ import Modal from 'react-modal';
 import ReactHowler from 'react-howler';
 
 const customStyles = {
+  overlay: {
+    zIndex: '6'
+  },
   content : {
     top                   : '50%',
     left                  : '50%',
