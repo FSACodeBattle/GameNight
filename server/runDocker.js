@@ -19,7 +19,7 @@ createDocker.prototype.runCommand = function (userCode, testCode, scenario) {
     //const userCodeEdited = userCode;
     //const runUserCodeCommand = `node -p  '${userCode}' && exit`;
 
-    userCodeEdited = 'var assert = require("assert");' + userCodeEdited + testCode;
+    userCodeEdited = ' \"use strict\"; var assert = require("assert");' + userCodeEdited + testCode;
 
     const runUserCodeCommand = `touch test.js && echo $'${userCodeEdited}' > test.js && babel test.js --out-file test-compiled.js && mocha -R spec test-compiled.js && exit`;
     const stdoutStream = new streamBuffers.WritableStreamBuffer();
