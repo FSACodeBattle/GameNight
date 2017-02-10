@@ -15,45 +15,34 @@
 ul.nav.navbar-nav {
   a {
     color: #777;
+    background-color: #222;
+
   }
 }
 
 .navbar-brand {
   color: #777;
 }
-// .route--active {
-//   font-weight: bold;
-//   text-decoration: underline;
-//   color: white;
-// }
 
-// .route:active {
-//   font-weight: bold;
-//   text-decoration: underline;
-//   color: white;
-// }
+#quick-play-modal {
+  // height: 475px !important;
+}
 
-// .navbar.navbar-default{
-//   max-width: 100%;
-//   background-color: #303133;
-//   margin-bottom: 0px;
-//   border-color: #303133;
-// }
+#quick-play {
+  background-color: rgb(34, 34, 34);
+  border: 0;
+  border-color: rgb(34, 34, 34);
+}
+
+.ninja-modal {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
 
 
-// .navbar a {
-//   color: #777;
-//   text-decoration: none;
-//   &:hover {
-//     text-decoration: underline;
-//     color: #777;
-//   }
-// }
+.btn.btn-primary.btn-modal {
+  background-color: dimgray;
+  border-color: transparent;
+}
 
-// .navbar-default .navbar-nav>li>a:hover {
-//     color: #999;
-// }
-
-// .AccountDropdown {
-//   padding-top: 10px;
-// }
