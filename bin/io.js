@@ -12,15 +12,10 @@ module.exports = function(server) {
 	const quickPlayQueue = [];
 	io.on('connection', function(socket) {
 		socket.on('setUser', payload => {
-			//console.log('pppppp', payload.user);
 			payload.user.socketId = socket.id;
 			socket.user = payload.user;
 			socket.join('MainLobby');
 			io.emit('reload');
-		});
-		//socket.on('joinMainLobby', socketCallbacks.joinMainLobby)
-		socket.emit('news', {
-			hello: 'world'
 		});
 
 		io.emit('reload');
@@ -64,7 +59,7 @@ module.exports = function(server) {
 					//get the random questions from the database
 					Question.findAll({
 							//limit it to the number of questions you want to get
-							limit: 3,
+							limit: 2,
 							//gets random rows from the questions table
 							// order: [
 							// 	[Sequelize.fn('RANDOM')]
@@ -88,7 +83,7 @@ module.exports = function(server) {
 								return user;
 							})
 
-							console.log('user', users);
+							// console.log('user', users);
 
 							//const arrOfSocketIDs = Object.keys(io.sockets.adapter.rooms[data].sockets);
 
@@ -100,7 +95,7 @@ module.exports = function(server) {
 								//stores the array of the question objects created above
 								questions: arrOfQuestionObjs
 							}
-							console.log("emit this question data", gameData);
+							// console.log("emit this question data", gameData);
 
 							//emits the game data object to all the connected sockets in the room
 							io.in(data).emit('sending Questions', gameData);
@@ -116,7 +111,7 @@ module.exports = function(server) {
 		})
 
 		socket.on('gameOver', (data) => {
-			console.log("gameover event ", data);
+			// console.log("gameover event ", data);
 								
 			Fight.create({
 						winnerId: data.winnerUserID,
@@ -139,18 +134,10 @@ module.exports = function(server) {
 			io.in(data.roomID).emit('gameWinningState', data);
 		})
 
-
-		socket.on('my other event', socketCallbacks.hello);
 		var currentClients = io.sockets.adapter.rooms["MainLobby"];
 
 		socket.on('correct response', socketCallbacks.updatePlayerProgress);
 
-		// let playerProgress = [0, 0];
-		socket.on('correct response', (data) => {
-			console.log('receiving correct response on back-end')
-			playerProgress[data.playerNumber - 1]++;
-			socket.emit('update progress', playerProgress);
-		});
 
 		socket.on('disconnect', () => socketCallbacks.reloadLobby(io))
 	});
