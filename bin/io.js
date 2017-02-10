@@ -9,6 +9,7 @@ let io = null;
 module.exports = function(server) {
 	if (io) return io;
 	io = socketio(server);
+	const quickPlayQueue = [];
 	io.on('connection', function(socket) {
 		socket.on('setUser', payload => {
 			payload.user.socketId = socket.id;
@@ -18,7 +19,32 @@ module.exports = function(server) {
 		});
 
 		io.emit('reload');
+		//when a user wants to find an opponent 
+		socket.on('quickPlay', (data) => {
 
+			function makeid()
+			{
+			    var text = "";
+			    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+			    for( var i=0; i < 6; i++ )
+			        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+			    return text;
+			}
+
+
+			quickPlayQueue.push(socket);
+			console.log("quickPlayQueue:", quickPlayQueue);
+			if(quickPlayQueue.length >= 2){
+				console.log("inside if check for quickPlayQueue");
+				const quickGameRoom = makeid();
+				var socket1 = quickPlayQueue.shift();
+				var socket2 = quickPlayQueue.shift();
+				console.log("quickPlayQueue length after 2 shifts: ", quickPlayQueue.length)
+				io.to(socket1.id).emit('gameReady', quickGameRoom);
+				io.to(socket2.id).emit('gameReady', quickGameRoom);				
+			}
+		})
 		//joining and creating a game lobby
 		socket.on('joinGameLobby', (data) => {
 			//if the room doesn't exist
