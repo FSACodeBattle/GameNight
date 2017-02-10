@@ -157,10 +157,6 @@ class BattlePage extends Component {
     return (
       <div className="container" id="battlePageWrapper">
         <Notifications />
-{/*        <div className="row">
-          <CountdownClock />
-        </div>*/}
-
         <div className="row">
           <div className="col col-xs-12 col-md-6">
             <label id="playerProgressLabel">{`${this.state.player1.username}`}</label>
@@ -176,8 +172,6 @@ class BattlePage extends Component {
 
                 {/**Passes in the users current question object to the Problem component by using ArrayOfQuestions[current question index]**/}
             <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
-{/*            <h2>{`${this.state.player1.username} - ${this.state.player1.progress}`}</h2>
-            <h2>{`${this.state.player2.username} - ${this.state.player2.progress}`}</h2>*/}
             </div>
           <div className="col col-xs-12 col-sm-6 col-md-8 col-lg-8" id="codeeditor">
             <CodeEditor currentQuestionID={this.state.questionsArr[this.state.currentQuestion]} roomID={this.props.roomID.id}/>
