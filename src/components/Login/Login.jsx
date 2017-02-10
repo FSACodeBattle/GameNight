@@ -5,6 +5,7 @@ import { setUser } from '../../store/user';
 //const store = create();
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import './Login.scss';
 
 class Login extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class Login extends React.Component {
         <form onChange={this.onChangeHandler} onSubmit={this.onSubmitHandler}>
           <input type="text" id="username" placeholder="username"></input>
           <input type="password" id="password" placeholder="password"></input>
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn btn-primary btn-small" id="loginSubmit">Submit</button>
           <Link to="/signup">[Sign Up]</Link>
         </form>
       </div>
