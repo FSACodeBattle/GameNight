@@ -17,10 +17,10 @@ const customStyles = {
 
 class ExampleModal extends React.Component {
   constructor(props) {
-    super();
-    
+    super(props);
+    // console.log(props);
     this.state = {
-      modalIsOpen: props.modalIsOpen
+      modalIsOpen: this.props.modalIsOpen
     };
   }
 
@@ -28,7 +28,7 @@ class ExampleModal extends React.Component {
     return (
       <div>
         <Modal
-          isOpen={this.state.modalIsOpen}
+          isOpen={this.props.modalIsOpen}
           style={customStyles}
           shouldCloseOnOverlayClick={false}
           contentLabel="No Overlay Click Modal"
@@ -40,7 +40,7 @@ class ExampleModal extends React.Component {
         </Modal>
         <ReactHowler
           src='http://wavcentral.com/sounds/movies/jurassic/jurass01.mp3'
-          playing={false}
+          playing={this.props.modalIsOpen}
           loop={true}
         />
 

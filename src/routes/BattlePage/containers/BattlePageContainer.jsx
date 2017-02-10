@@ -32,10 +32,16 @@ class BattlePage extends Component {
       timeElapsed: 0,
       startingTime: null,
       numberOfQuestions: 2,
-      roomID: '',
+      roomID: this.props.roomID.id,
       gameWon: false,
       modalIsOpen: false
     }
+    this.sendAttack = this.sendAttack.bind(this);
+  }
+
+  sendAttack() {
+    // console.log(this.props.roomID.id);
+    socket.emit('sending attack', this.props.roomID.id);
   }
 
   componentDidMount() {
@@ -213,8 +219,15 @@ class BattlePage extends Component {
       this.setState({gameWon: true});
     })
 
-    socket.on('received attack', () => {
-      this.setState({modalIsOpen: true});
+    socket.on('receive attack', (data) => {
+      console.log('received an attack', data);
+      console.log(socket.id);
+      if (socket.id === data) {
+        this.setState({modalIsOpen: true});
+        setTimeout(() => {
+          this.setState({modalIsOpen: false});
+        }, 5000);
+      }
     })
   }
 
@@ -241,7 +254,7 @@ class BattlePage extends Component {
           </div>
         </div>
         <ExampleModal modalIsOpen={this.state.modalIsOpen}/>
-        <button>Send Attack</button>
+        <button onClick={this.sendAttack}>Send Attack</button>
       </div>
     );
   }
