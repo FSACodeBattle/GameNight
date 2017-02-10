@@ -1,23 +1,21 @@
 import React from 'react'
 import DuckImage from '../assets/Duck.jpg'
+import { connect } from 'react-redux';
 import './HomeView.scss'
 import './Matchhistory.scss';
 
 export const MatchHistory = (props) => {
   const matches = props.matches;
-      //if matches is defined
-    if (matches){
+    const rows = matches.map(match =>
+      <tr key={match.id} >
+        <td>{match.createdAt.substring(0, 10)}</td>
+        <td>{match.id}</td>
+        <td>{match.winner.username}</td>
+        <td>{match.loser.username}</td>
+        <td>{match.winnerDuration}</td>
+      </tr>
+    )
 
-      var rows = matches.map(match =>
-        <tr key={match.id} >
-          <td>{match.createdAt.substring(0, 10)}</td>
-          <td>{match.id}</td>
-          <td>{match.winnerId}</td>
-          <td>{match.loserId}</td>
-          <td>{match.winnerDuration}</td>
-        </tr>
-        )
-    }
     return (
       <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4" id="matchComponent">
         <div className="table-responsive">
@@ -41,4 +39,10 @@ export const MatchHistory = (props) => {
     )
 }
 
-export default MatchHistory;
+const mapStateToProps = (state) => {
+  return {
+    matches: state.match.matches
+  }
+}
+
+export default connect(mapStateToProps)(MatchHistory);

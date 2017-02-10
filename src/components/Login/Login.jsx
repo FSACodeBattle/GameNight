@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { setUser } from '../../store/user';
-//import create from '../../store/createStore';
-//const store = create();
+import { fetchMatches } from '../../store/match';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import './Login.scss';
@@ -22,9 +21,7 @@ class Login extends React.Component {
   onSubmitHandler(event) {
     event.preventDefault();
     axios.post('/signin', this.state)
-    .then(user => {
-      this.props.setLoggedInUser(user.data);
-    });
+    .then(user => this.props.setLoggedInUser(user.data));
   }
 
   onChangeHandler(event) {
@@ -49,6 +46,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setLoggedInUser: function(user) {
       dispatch(setUser(user));
+      dispatch(fetchMatches(user));
     }
   }
 }

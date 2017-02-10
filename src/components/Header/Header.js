@@ -1,11 +1,13 @@
 'use strict';
 import axios from 'axios';
 import React from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
 import { DropdownButton, MenuItem, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { IndexLink, Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import Login from '../Login/Login';
 import { setUser } from '../../store/user';
+import { fetchMatches } from '../../store/match';
 import './Header.scss';
 import ReactModal from 'react-modal';
 class Header extends React.Component {
@@ -33,7 +35,7 @@ class Header extends React.Component {
      this.setState({ showModal: true });
      socket.emit('quickPlay');
    }
-   
+
    handleCloseModal () {
      this.setState({ showModal: false });
    }
@@ -41,6 +43,7 @@ class Header extends React.Component {
   logout() {
     this.props.logoutUser();
   }
+
   render() {
     const user = this.props.user;
     return (
@@ -54,10 +57,18 @@ class Header extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem eventKey={1}><Link to="/about">About</Link></NavItem>
-            <NavItem eventKey={2}><Link to="/battlePage">Battle Page</Link></NavItem>
-            <NavItem eventKey={3}><Link to="/code_editor">Code Editor</Link></NavItem>
-            <NavItem eventKey={4}><Link to={`/lobby/${makeid()}`}>Create Lobby</Link></NavItem>
+            <LinkContainer to="/about" >
+              <NavItem eventKey={1}>About</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/battlePage" >
+              <NavItem eventKey={2}>Battle Page</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/code_editor" >
+              <NavItem eventKey={3}>Code Editor</NavItem>
+            </LinkContainer>
+            <LinkContainer to={`/lobby/${makeid()}`} >
+              <NavItem eventKey={4}>Create Lobby</NavItem>
+            </LinkContainer>
             <NavItem eventKey={5}><button onClick={this.handleOpenModal}>Quick Play!</button></NavItem>
           </Nav>
           {
@@ -76,7 +87,7 @@ class Header extends React.Component {
           }
         </Navbar.Collapse>
       </Navbar>
-      <ReactModal 
+      <ReactModal
                  isOpen={this.state.showModal}
                  contentLabel="Quick Game!"
                  onRequestClose={this.handleCloseModal}
@@ -104,8 +115,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     logoutUser: function() {
-      axios.get('/signout')
-      .then(() => dispatch(setUser({})));
+      axios.get('/signout').then(() => {
+        dispatch(setUser({}));
+        dispatch(fetchMatches(null));
+      })
     }
   }
 }

@@ -19,6 +19,7 @@ import Profile from './Profile/components/Profile';
 import { fetchClients } from '../store/client'
 import { setRoomId } from '../store/gamelobby';
 import { setUser } from '../store/user';
+import { fetchMatches } from '../store/match';
 
 function onJoinEnter(nextRouterState){
   //console.log(nextRouterState.params.invId);
@@ -30,7 +31,11 @@ function onJoinEnter(nextRouterState){
 function onPageEnter(store) {
   store.dispatch(fetchClients());
   axios.get('/user')
-  .then(user => store.dispatch(setUser(user.data)))
+  .then(loggedInUser => {
+    const user = loggedInUser.data
+    store.dispatch(setUser(user));
+    store.dispatch(fetchMatches(user));
+  })
 }
 
 function onGameLobbyEnter(nextRouterState, store) {

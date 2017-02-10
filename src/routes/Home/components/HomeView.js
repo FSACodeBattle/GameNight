@@ -9,27 +9,20 @@ import axios from 'axios';
 import HomePage from './homePage';
 
 class HomeView extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      leaderboard: [],
-      matches: []
+      leaderboard: []
     }
-
   }
+
   componentDidMount(){
     axios.get('/api/users/leaderboard')
-      .then((leaderboard) => {
-        this.setState({leaderboard: leaderboard.data});
-      })
-
-
-    axios.get('/api/users/allMatches')
-      .then((matches) => {
-        this.setState({matches: matches.data})
-      })
+    .then(leaderboard => this.setState({leaderboard: leaderboard.data}));
   }
+
   render(){
     return (
       <div>
@@ -47,7 +40,7 @@ class HomeView extends Component {
             <h4 style={{color:"#777"}}>Welcome!</h4>
           </div>
           <div className="row" id="matchAndLeaders">
-            <MatchHistory matches={this.state.matches}/>
+            <MatchHistory />
             <Leaderboard leaderboard={this.state.leaderboard}/>
             <Achievements />
           </div>
@@ -59,6 +52,5 @@ class HomeView extends Component {
     );
   }
 }
-
 
 export default HomeView;
