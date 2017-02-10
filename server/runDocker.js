@@ -19,13 +19,13 @@ createDocker.prototype.runCommand = function (userCode, testCode, scenario) {
     //const userCodeEdited = userCode;
     //const runUserCodeCommand = `node -p  '${userCode}' && exit`;
 
-    userCodeEdited = '"use strict" var assert = require("assert");' + userCodeEdited + testCode;
+    userCodeEdited = 'var assert = require("assert");' + userCodeEdited + testCode;
 
     const runUserCodeCommand = `touch test.js && echo $'${userCodeEdited}' > test.js && babel test.js --out-file test-compiled.js && mocha -R spec test-compiled.js && exit`;
     const stdoutStream = new streamBuffers.WritableStreamBuffer();
     console.log(runUserCodeCommand);
     const finishedPromise = new Bluebird((resolve, reject) => {
-      
+
         this.docker.run('mocha-chai-node', ['bash', '-c', runUserCodeCommand], stdoutStream, function(err, data, container) {
             if (err) return reject(err);
 
