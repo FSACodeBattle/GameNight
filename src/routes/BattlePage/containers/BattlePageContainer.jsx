@@ -44,28 +44,28 @@ class BattlePage extends Component {
 
   sendAttack() {
     if (socket.id === this.state.player1.id && this.state.player1.powerUpNum > 0) {
-      socket.emit('sending attack', this.props.roomID.id);
       this.setState({
         player1: {
-          id:data.player1.socketId, 
-          progress: 0, 
-          username: p1username, 
-          userID: data.player1.id,
+          id: this.state.player1.id, 
+          progress: this.state.player1.progress,
+          username: this.state.player1.username, 
+          userID: this.state.player1.userID,
           powerUpNum: (this.state.player1.powerUpNum - 1)
         }
       });
+      socket.emit('sending attack', this.props.roomID.id);
     }
     if (socket.id === this.state.player2.id && this.state.player2.powerUpNum > 0) {
-      socket.emit('sending attack', this.props.roomID.id);
       this.setState({
         player2: {
-          id:data.player2.socketId, 
-          progress: 0, 
-          username: p2username, 
-          userID: data.player2.id,
+          id: this.state.player2.id, 
+          progress: this.state.player2.progress,
+          username: this.state.player2.username, 
+          userID: this.state.player2.userID,
           powerUpNum: (this.state.player2.powerUpNum - 1)
         }
       });
+      socket.emit('sending attack', this.props.roomID.id);
     }
   }
 
@@ -107,7 +107,7 @@ class BattlePage extends Component {
       //string will hold the player who got the question correct
       let playerToUpdate = data.playerToUpdate;
       if (playerToUpdate === 'Player1'){
-        console.log("player 1 state", this.state.player1);
+        // console.log("player 1 state", this.state.player1);
         //if the the clients socket ID matches the socket ID of player 1
         if (socket.id === data.currentPlayer){
           //change player 1's progress and their current question
@@ -292,7 +292,7 @@ class BattlePage extends Component {
         });
         setTimeout(() => {
           this.setState({modalIsOpen: false});
-        }, 9600);
+        }, 9700);
       }
     })
   }

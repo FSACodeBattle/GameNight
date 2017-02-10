@@ -141,13 +141,15 @@ module.exports = function(server) {
 		socket.on('sending attack', (data) => {
 			var room = io.sockets.adapter.rooms[data];
 			let users = Object.keys(room.sockets).map(id => {
-				const user = io.sockets.connected[id].user;
+				let user = io.sockets.connected[id].user;
 				return user;
 			})
-			if (socket.id === users[0]){
-				io.to(data).emit('receive attack', users[0].socketId)
-			} else {
+			console.log(users[0].socketId, users[1].socketId);
+			console.log(socket.id === users[0].socketId);
+			if (socket.id === users[0].socketId){
 				io.to(data).emit('receive attack', users[1].socketId)
+			} else {
+				io.to(data).emit('receive attack', users[0].socketId)
 			}
 
 		})
