@@ -138,6 +138,19 @@ module.exports = function(server) {
 
 		socket.on('correct response', socketCallbacks.updatePlayerProgress);
 
+		socket.on('sending attack', (data) => {
+			var room = io.sockets.adapter.rooms[data];
+			let users = Object.keys(room.sockets).map(id => {
+				let user = io.sockets.connected[id].user;
+				return user;
+			})
+			if (socket.id === users[0].socketId){
+				io.to(data).emit('receive attack', users[1].socketId)
+			} else {
+				io.to(data).emit('receive attack', users[0].socketId)
+			}
+
+		})
 
 		socket.on('disconnect', () => socketCallbacks.reloadLobby(io))
 	});
