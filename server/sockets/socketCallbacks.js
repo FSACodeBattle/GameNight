@@ -7,9 +7,6 @@ const onUserCodeSubmit = function(data) {
 }
 
 const joinGameLobby = function(data){
-	console.log("this is inside data joinGameLobby", data);
-	//console.log("this is inside joinGameLobby",io.sockets.adapter.rooms);
-	//console.log("this is this", this);
 	this.join(data);
 }
 
@@ -18,9 +15,9 @@ const reloadLobby = function(io) {
 }
 
 const updatePlayerProgress = function(data){
-	console.log('receiving correct response on back-end')
+	// console.log('receiving correct response on back-end')
   	data.playerProgress[data.playerNumber - 1]++;
-  	console.log(data.playerProgress);
+  	// console.log(data.playerProgress);
  	this.emit('update progress', data.playerProgress);
 }
 
