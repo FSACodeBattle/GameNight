@@ -1,6 +1,6 @@
 import React from 'react'
-import DuckImage from '../assets/Duck.jpg'
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import './HomeView.scss'
 import './Matchhistory.scss';
 
@@ -10,8 +10,8 @@ export const MatchHistory = (props) => {
       <tr key={match.id}>
         <td>{match.createdAt.substring(0, 10)}</td>
         <td>{match.id}</td>
-        <td>{match.winner.username}</td>
-        <td>{match.loser.username}</td>
+        <td><Link to={`/profile/${match.winner.username}`}>{match.winner.username}</Link></td>
+        <td><Link to={`/profile/${match.loser.username}`}>{match.loser.username}</Link></td>
         <td>{match.winnerDuration}</td>
       </tr>
     )

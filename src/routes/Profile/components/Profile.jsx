@@ -39,7 +39,8 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = (state) => (
-  { userMatches: state.profile.matches,
+  {
+    userMatches: state.profile.matches,
     user: state.profile.user
   }
 )
