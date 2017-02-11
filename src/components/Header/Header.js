@@ -44,57 +44,98 @@ class Header extends React.Component {
   logout() {
     this.props.logoutUser();
   }
+
   render() {
+    const modalStyles = {
+      overlay: {
+        position: 'fixed',
+        height: '475px',
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        zIndex: '5',
+        width: '500px',
+        backgroundColor: 'rgba(255, 255, 255, 0.75)',
+      },
+      content: {
+        color: 'white',
+        border: '1px solid #ccc',
+        background: '#000',
+        overflow: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        borderRadius: '4px',
+        outline: 'none',
+        top: '0px',
+        bottom: '0px',
+        left: '0px',
+        right: '0px',
+        padding: '0px',
+        textAlign: 'center'
+      }
+    }
     const user = this.props.user;
     return (
       <div>
-      <Navbar inverse collapseOnSelect fluid={true}>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <Link to="/">Home</Link>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
+        <Navbar inverse collapseOnSelect fluid={true}>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <Link to="/">Home</Link>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
           <Nav>
-           <LinkContainer to="/about" >
-                 <NavItem eventKey={1}>About</NavItem>
+            <LinkContainer to="/about" >
+              <NavItem eventKey={1}>About</NavItem>
             </LinkContainer>
-               <LinkContainer to="/battlePage" >
-                <NavItem eventKey={2}>Battle Page</NavItem>
-               </LinkContainer>
-               <LinkContainer to="/code_editor" >
-                 <NavItem eventKey={3}>Code Editor</NavItem>
-               </LinkContainer>
-               <LinkContainer to={`/lobby/${makeid()}`} >
-                 <NavItem eventKey={4}>Create Lobby</NavItem>
-               </LinkContainer>
-               <NavItem eventKey={5}><button onClick={this.handleOpenModal}>Quick Play!</button></NavItem>
+           {/* <LinkContainer to="/battlePage" >
+              <NavItem eventKey={2}>Battle Page</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/code_editor" >
+              <NavItem eventKey={3}>Code Editor</NavItem>
+            </LinkContainer>*/}
+            <LinkContainer to={`/lobby/${makeid()}`} >
+              <NavItem eventKey={4}>Create Lobby</NavItem>
+            </LinkContainer>
+            <NavItem eventKey={5}>
+              <button id="quick-play" onClick={this.handleOpenModal}>Quick Play!</button>
+            </NavItem>
           </Nav>
-          {
-            Object.keys(user).length
-            ?
-            (
-              <div className="pull-right AccountDropdown">
-                <DropdownButton id={`dropdown-basic-1`} pullRight={true} title={user.name.split(' ')[0]} >
-                  <MenuItem onSelect={() => browserHistory.push(`/profile/${user.username}`)}>Profile</MenuItem>
-                  <MenuItem >Settings</MenuItem>
-                  <MenuItem onSelect={this.logout}>Logout</MenuItem>
-                </DropdownButton>
-              </div>
-            )
-            : <div className="pull-right AccountDropdown"><Login /></div>
-          }
-        </Navbar.Collapse>
-      </Navbar>
-      <ReactModal
-                 isOpen={this.state.showModal}
-                 contentLabel="Quick Game!"
-                 onRequestClose={this.handleCloseModal}
-              >
-                <p>Looking for a game</p>
-                <button onClick={this.handleCloseModal}>Close Modal</button>
-      </ReactModal>
+            {
+              Object.keys(user).length
+              ?
+              (
+                <div className="pull-right AccountDropdown">
+                  <DropdownButton id={`dropdown-basic-1`} pullRight={true} title={user.name.split(' ')[0]} >
+                    <MenuItem onSelect={() => browserHistory.push(`/profile/${user.username}`)}>Profile</MenuItem>
+                    <MenuItem >Settings</MenuItem>
+                    <MenuItem onSelect={this.logout}>Logout</MenuItem>
+                  </DropdownButton>
+                </div>
+              )
+              : <div className="pull-right AccountDropdown"><Login /></div>
+            }
+          </Navbar.Collapse>
+        </Navbar>
+        <ReactModal
+          id="quick-play-modal"
+          style={modalStyles}
+          isOpen={this.state.showModal}
+          contentLabel="Quick Game!"
+          onRequestClose={this.handleCloseModal}>
+            <h3>Searching For Game...</h3>
+            <img
+              alt='Ninja'
+              className='ninja-modal'
+              src='https://media.giphy.com/media/Z3bvJIYORDZde/giphy.gif'
+            />
+            <button className="btn btn-modal" onClick={this.handleCloseModal}>
+              Quit Search
+            </button>
+        </ReactModal>
       </div>
     );
   }
@@ -102,8 +143,7 @@ class Header extends React.Component {
 
 function makeid() {
     let text = "";
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for(let i = 0; i < 6; i++ )
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; for(let i = 0; i < 6; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     return text;
 }
@@ -128,36 +168,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
-
-  // return (
-  //   <nav className="navbar navbar-default">
-  //     <div className="container-fluid">
-  //       <div className="navbar-header">
-  //         <Link className="navbar-brand" to="/">Home</Link>
-  //       </div>
-  //       <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-  //         <ul className="nav navbar-nav">
-  //           <li className="active"><Link to="about">About</Link></li>
-  //           <li><Link to="battlePage">Battle Page</Link></li>
-  //           <li><Link to="code_editor">Code Editor</Link></li>
-  //           <li><Link to="/invite" activeClassName="route--active">Invite</Link></li>
-  //           <li><Link to={`/lobby/${makeid()}`} >Create Lobby</Link></li>
-  //         </ul>
-  //         {
-  //           Object.keys(user).length
-  //           ?
-  //           (
-  //             <div className="pull-right AccountDropdown">
-  //               <DropdownButton id={`dropdown-basic-1`} pullRight={true} title={user.name.split(' ')[0]} >
-  //                 <MenuItem onSelect={() => browserHistory.push(`/profile/${user.username}`)}>Profile</MenuItem>
-  //                 <MenuItem >Settings</MenuItem>
-  //                 <MenuItem onSelect={this.logout}>Logout</MenuItem>
-  //               </DropdownButton>
-  //             </div>
-  //           )
-  //           : <div className="pull-right AccountDropdown"><Login /></div>
-  //         }
-  //       </div>
-  //     </div>
-  //   </nav>
-  // )

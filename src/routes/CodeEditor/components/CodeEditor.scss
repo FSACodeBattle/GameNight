@@ -1,15 +1,3 @@
-
-// .duck {
-//   display: block;
-//   width: 120px;
-//   margin: 1.5rem auto;
-// }
-
-// #codeEditorForm textarea {
-//   width: 100%;
-//   min-height: 600px;
-// }
-
 #code-editor-text {
   height: 100%;
 }
@@ -62,9 +50,9 @@
   margin-right: 0px;
 }
 
-// .CodeMirror-vscrollbar {
-//   color: black !important;
-// }
+.cm-invalidchar, .cm-s-default .cm-error {
+    color: rgba(0, 0, 0, 0);
+}
 
 .CodeMirror-gutter-wrapper {
   left: -30px !important;
@@ -84,3 +72,6 @@
   width: 21px !important;
 }
 
+// .CodeMirror-vscrollbar {
+//   color: black !important;
+// }

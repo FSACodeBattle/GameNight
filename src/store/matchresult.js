@@ -12,7 +12,7 @@ export const setOpponentAnswers = (answers) => {
 export const setOwnAnswers = (answers) => {
   return {
     type: SET_OWN_ANSWERS,
-    answers;
+    answers
   }
 }
 
