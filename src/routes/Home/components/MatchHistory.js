@@ -19,7 +19,7 @@ export const MatchHistory = (props) => {
     return (
       <div className="row" id="matchComponent">
         <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-        <div className="table-responsive">
+        <div /*className="table-responsive"*/>
         <h2 style={{color:"#777"}}> Match History </h2>
           <table className="table">
             <thead>
