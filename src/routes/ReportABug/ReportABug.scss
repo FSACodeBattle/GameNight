@@ -1,12 +1,18 @@
 .bugForm {
   display: block;
   text-align: center;
-  margin: 0px auto;
-  margin-bottom: 3px;
+  margin: 10px 0 0 25px;
 }
+
+#bugDescription {
+  height: 200px;
+  width: 350px;
+}
+
 
 #bugSubmit {
   background-color: dimgray;
   border-color: transparent;
-  margin-top: 10px;
+  float: left;
+  margin: 10px 0 0 25px;
 }

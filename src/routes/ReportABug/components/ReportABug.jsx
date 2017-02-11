@@ -23,7 +23,7 @@ class ReportABug extends React.Component {
 
   onSubmitHandler(event) {
     event.preventDefault();
-    if(!this.state.bugName || !this.state.bugDescription || !this.state.name ||)
+    if(!this.state.bugName || !this.state.bugDescription || !this.state.name)
     {
       this.setState({error: true, errorText: "One or more invalid fields!"});
     }
@@ -52,8 +52,8 @@ class ReportABug extends React.Component {
         }
         <form onChange={this.onChangeHandler} onSubmit={this.onSubmitHandler}>
           <input type="text" id="bugName" placeholder="bug name" className="bugForm"></input>
-          <input type="text" id="bugDescription" placeholder="bug description" className="loginForm"></input>
-          <input type="text" id="name" placeholder="name" className="loginForm"></input>
+          <textarea id="bugDescription" placeholder="bug description" className="bugForm"></textarea>
+          <input type="text" id="name" placeholder="your name" className="bugForm"></input>
           <button type="submit" id="bugSubmit" className="btn btn-primary btn-small">Submit</button>
         </form>
       </div>
