@@ -54,7 +54,6 @@ function onGameLobbyEnter(nextRouterState, store) {
 
 function onProfileEnter(nextRouterState, store) {
   const username = nextRouterState.params.username;
-  console.log('uname', username);
   store.dispatch(fetchProfile(username));
 }
 

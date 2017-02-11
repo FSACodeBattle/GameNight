@@ -32,6 +32,7 @@ export const fetchProfile = (username) => {
       dispatch(setProfileUser(user));
       dispatch(setProfileMatches(matches));
     })
+    .catch(err => {})
   }
 }
 

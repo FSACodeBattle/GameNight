@@ -10,18 +10,38 @@ class Profile extends React.Component {
   }
 
   render() {
+    const user = this.props.user;
     return (
-      <div /*id="profileMatchHistory"*/>
-        <MatchHistory userMatches={this.props.userMatches} />
-      </div>
+          Object.keys(user).length
+          ? (
+              <div className="profilePage">
+                <div>
+                  Username: {user.username}
+                </div>
+                <div>
+                  Member Since: {user.createdAt.substring(0, 10)}
+                </div>
+                <div>
+                  Wins: {user.wins}
+                </div>
+                <div>
+                  Losses: {user.losses}
+                </div>
+                <div>
+                  Points: {user.points}
+                </div>
+                <MatchHistory userMatches={this.props.userMatches} />
+              </div>
+          )
+          : ( <h2 className="profilePage"> Nonexistent User </h2> )
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    userMatches: state.profile.matches
+const mapStateToProps = (state) => (
+  { userMatches: state.profile.matches,
+    user: state.profile.user
   }
-}
+)
 
 export default connect(mapStateToProps)(Profile);
