@@ -15,7 +15,7 @@ const bcrypt = require('bcryptjs');
 
 const app = express();
 
-const { User } = require('../db/database');
+const { User, Bug } = require('../db/database');
 
 // Apply gzip compression
 app.use(compress())
@@ -72,6 +72,15 @@ app.post("/signup", function(req, res, next){
         }).then(() => passport.authenticate("local", {failureRedirect:"/failure", successRedirect: "/user"})(req, res, next));
       } else res.send("user exists");
     })
+})
+
+app.post("/report-a-bug", function(req, res, next){
+  console.log(req.body);
+  Bug.create({
+    bugName: req.body.bugName,
+    bugDescription: req.body.bugDescription,
+    name: req.body.name
+  })
 })
 
 app.get('/signout', (req, res, next) => {
