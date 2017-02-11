@@ -7,7 +7,7 @@ import './Matchhistory.scss';
 export const MatchHistory = (props) => {
   const matches = props.userMatches || props.matches;
     const rows = matches.map(match =>
-      <tr key={match.id} >
+      <tr key={match.id}>
         <td>{match.createdAt.substring(0, 10)}</td>
         <td>{match.id}</td>
         <td>{match.winner.username}</td>
@@ -17,20 +17,20 @@ export const MatchHistory = (props) => {
     )
 
     return (
-      <div className="row" id="matchComponent">
+      <div /*className="row"*/ id="matchComponent">
         <div /*className="col-xs-12 col-sm-6 col-md-4 col-lg-4"*/>
           <div /*className="table-responsive"*/>
             <h2 style={{color:"#777"}}> Match History </h2>
-            <table className="table">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Match ID</th>
-                <th>Winning Player</th>
-                <th>Losing Player</th>
-                <th>Winning Time</th>
-              </tr>
-            </thead>
+            <table className="table" style={{tableLayout: "fixed"}}>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Match ID</th>
+                  <th>Winning Player</th>
+                  <th>Losing Player</th>
+                  <th>Winning Time</th>
+                </tr>
+              </thead>
               <tbody>
                 {rows}
               </tbody>
