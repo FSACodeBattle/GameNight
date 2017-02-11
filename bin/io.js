@@ -19,7 +19,7 @@ module.exports = function(server) {
 		});
 
 		io.emit('reload');
-		//when a user wants to find an opponent 
+		//when a user wants to find an opponent
 		socket.on('quickPlay', (data) => {
 
 			function makeid()
@@ -34,7 +34,7 @@ module.exports = function(server) {
 
 
 			quickPlayQueue.push(socket);
-			console.log("quickPlayQueue:", quickPlayQueue);
+			// console.log("quickPlayQueue:", quickPlayQueue);
 			if(quickPlayQueue.length >= 2){
 				console.log("inside if check for quickPlayQueue");
 				const quickGameRoom = makeid();
@@ -42,7 +42,7 @@ module.exports = function(server) {
 				var socket2 = quickPlayQueue.shift();
 				console.log("quickPlayQueue length after 2 shifts: ", quickPlayQueue.length)
 				io.to(socket1.id).emit('gameReady', quickGameRoom);
-				io.to(socket2.id).emit('gameReady', quickGameRoom);				
+				io.to(socket2.id).emit('gameReady', quickGameRoom);
 			}
 		})
 		//joining and creating a game lobby
@@ -61,10 +61,10 @@ module.exports = function(server) {
 							//limit it to the number of questions you want to get
 							limit: 2,
 							//gets random rows from the questions table
-							// order: [
-							// 	[Sequelize.fn('RANDOM')]
-							// ]
-							order: [["id", "ASC"]]
+							order: [
+								[Sequelize.fn('RANDOM')]
+							]
+							// order: [["id", "ASC"]]
 						})
 						.then((setOfQuestions) => {
 							//arrOfQuestionObj holds objects that contain each questions ID, Name, and Text
@@ -112,7 +112,7 @@ module.exports = function(server) {
 
 		socket.on('gameOver', (data) => {
 			// console.log("gameover event ", data);
-								
+
 			Fight.create({
 						winnerId: data.winnerUserID,
 						loserId: data.loserUserID,
@@ -129,7 +129,7 @@ module.exports = function(server) {
 						losingUser.update({losses: (losingUser.losses + 1), points: (losingUser.points - 25)})
 					})
 			}))
-			
+
 
 			io.in(data.roomID).emit('gameWinningState', data);
 		})
@@ -138,6 +138,19 @@ module.exports = function(server) {
 
 		socket.on('correct response', socketCallbacks.updatePlayerProgress);
 
+		socket.on('sending attack', (data) => {
+			var room = io.sockets.adapter.rooms[data];
+			let users = Object.keys(room.sockets).map(id => {
+				let user = io.sockets.connected[id].user;
+				return user;
+			})
+			if (socket.id === users[0].socketId){
+				io.to(data).emit('receive attack', users[1].socketId)
+			} else {
+				io.to(data).emit('receive attack', users[0].socketId)
+			}
+
+		})
 
 		socket.on('disconnect', () => socketCallbacks.reloadLobby(io))
 	});
