@@ -15,6 +15,7 @@ import GameFinishedPage from './GameFinishedPage/components/GameFinishedPage'
 import Login from '../components/Login/Login';
 import Signup from './Signup/components/Signup';
 import Profile from './Profile/components/Profile';
+import ReportABug from './ReportABug/components/ReportABug';
 
 import { fetchClients } from '../store/client'
 import { setRoomId } from '../store/gamelobby';
@@ -71,6 +72,7 @@ export const createRoutes = (store) => (
     <Route path="joinGame/:invId" onEnter={onJoinEnter} component={BattlePage} />
     <Route path ="gameWon" component={GameWonPage} />
     <Route path ="gameFinished" component={GameFinishedPage} />
+    <Route path ="report-a-bug" component={ReportABug} />
     <IndexRoute component={Home} />
   </Route>
 )

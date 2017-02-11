@@ -551,11 +551,12 @@ const seedQuestions = () => db.Promise.map(
 	// },
 	], question => db.model('questions').create(question))
 
-// const seedFights = () => db.Promise.map(
-// 	[{
-// 		number: 1,
-// 		questions: [1, 2]
-// 	}], fight => db.model('fights').create(fight))
+const seedBugs = () => db.Promise.map(
+	[{
+		bugName: 'Test Bug',
+		bugDescription: 'Test Description',
+		name: 'Test Name'
+	}], bug => db.model('bugs').create(bug))
 
 
 db.sync()
@@ -566,7 +567,7 @@ db.sync()
 	.then((users) => console.log(`Seeded ${users.length} users OK`))
 	.then(seedQuestions)
 	.then((questions) => console.log(`Seeded ${questions.length} questions OK`))
-	// .then(seedFights)
-	// .then((fights) => console.log(`Seeded ${fights.length} fights OK`))
+	.then(seedBugs)
+	.then((bugs) => console.log(`Seeded ${bugs.length} bugs OK`))
 	.catch(error => console.error(error))
 	.finally(() => db.close())
