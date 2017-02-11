@@ -10,9 +10,8 @@ class Profile extends React.Component {
   }
 
   render() {
-    console.log('umatches', this.props.userMatches);
     return (
-      <div className = "row" id="profileMatchHistory">
+      <div /*id="profileMatchHistory"*/>
         <MatchHistory userMatches={this.props.userMatches} />
       </div>
     )
