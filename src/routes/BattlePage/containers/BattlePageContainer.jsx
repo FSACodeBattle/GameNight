@@ -8,6 +8,7 @@ import axios from 'axios';
 import Notifications, {notify} from 'react-notify-toast';
 import { browserHistory } from 'react-router';
 import ExampleModal from '../components/Modal';
+import { setOpponentAnswers, setOwnAnswers } from '../../../store/matchresult';
 
 class BattlePage extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class BattlePage extends Component {
     this.state = {
       //player object holds the socket id and the number of questions answered correctly
       player1: {
+
         id:'Player One', 
         progress: 0, 
         username: 'Player One', 
@@ -27,6 +29,7 @@ class BattlePage extends Component {
         username: 'Player Two', 
         userID: '',
         powerUpNum: 0
+
       },
       //holds the question objects
       questionsArr: [],
@@ -97,6 +100,7 @@ class BattlePage extends Component {
           powerUpNum: this.state.player2.powerUpNum
         }, 
         questionsArr: data.questions, 
+
         startingTime: startingTime})
     })
 
@@ -135,12 +139,12 @@ class BattlePage extends Component {
                 // console.log("inside player 1 win check")
                 // console.log(this.state);
                 socket.emit('gameOver', {
-                  roomID: this.state.roomID, 
-                  winnerID: this.state.player1.id, 
-                  username: p1username, 
-                  winnerUserID: this.state.player1.userID, 
-                  loserUserID: this.state.player2.userID, 
-                  score: [this.state.player1.progress, this.state.player2.progress], 
+                  roomID: this.state.roomID,
+                  winnerID: this.state.player1.id,
+                  username: p1username,
+                  winnerUserID: this.state.player1.userID,
+                  loserUserID: this.state.player2.userID,
+                  score: [this.state.player1.progress, this.state.player2.progress],
                   time: (Date.now() - this.state.startingTime)/1000
                 });
 
@@ -218,12 +222,12 @@ class BattlePage extends Component {
                     // console.log("inside player 2 win check")
                     // console.log(this.state);
                     socket.emit('gameOver', {
-                      roomID: this.state.roomID, 
-                      winnerID: this.state.player1.id, 
-                      username: p1username, 
-                      winnerUserID: this.state.player2.userID, 
-                      loserUserID: this.state.player1.userID, 
-                      score: [this.state.player1.progress, this.state.player2.progress], 
+                      roomID: this.state.roomID,
+                      winnerID: this.state.player1.id,
+                      username: p1username,
+                      winnerUserID: this.state.player2.userID,
+                      loserUserID: this.state.player1.userID,
+                      score: [this.state.player1.progress, this.state.player2.progress],
                       time: (Date.now() - this.state.startingTime)/1000});
                     setTimeout(() => {
                       browserHistory.push('/gameWon');
@@ -326,6 +330,20 @@ class BattlePage extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({roomID : state.gameLobby})
+const mapStateToProps = (state) => (
+  { roomID : state.gameLobby,
+    ownAnswers : state.matchResults.ownAnswers,
+    opponentAnswers : state.matchResults.opponentAnswers
+  }
+)
+
+const mapDispatchToProps = (dispatch) => ({
+  setAnswerOpp: function(answers) {
+    dispatch(setOpponentAnswers(answers));
+  },
+  setAnswerSelf: function(answers) {
+    dispatch(setOwnAnswers(answers));
+  }
+})
 
 export default connect(mapStateToProps)(BattlePage);
