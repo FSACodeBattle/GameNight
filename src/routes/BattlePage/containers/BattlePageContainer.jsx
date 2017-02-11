@@ -8,7 +8,7 @@ import axios from 'axios';
 import Notifications, {notify} from 'react-notify-toast';
 import { browserHistory } from 'react-router';
 import ExampleModal from '../components/Modal';
-import { setOpponentAnswers } from '../../../store/matchresult';
+import { setOpponentAnswers, setOwnAnswers } from '../../../store/matchresult';
 
 class BattlePage extends Component {
   constructor(props) {
@@ -248,10 +248,19 @@ class BattlePage extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({roomID : state.gameLobby})
+const mapStateToProps = (state) => (
+  { roomID : state.gameLobby,
+    ownAnswers : state.matchResults.ownAnswers,
+    opponentAnswers : state.matchResults.opponentAnswers
+  }
+)
+
 const mapDispatchToProps = (dispatch) => ({
-  setAnswer: function(answers) {
+  setAnswerOpp: function(answers) {
     dispatch(setOpponentAnswers(answers));
+  },
+  setAnswerSelf: function(answers) {
+    dispatch(setOwnAnswers(answers));
   }
 })
 
