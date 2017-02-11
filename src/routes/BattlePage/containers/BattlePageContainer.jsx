@@ -21,14 +21,16 @@ class BattlePage extends Component {
         progress: 0, 
         username: 'Player One', 
         userID: '',
-        powerUpNum: 0
+        powerUpNum: 0,
+        code: []
       },
       player2: {
         id:'Player Two', 
         progress: 0, 
         username: 'Player Two', 
         userID: '',
-        powerUpNum: 0
+        powerUpNum: 0,
+        code: []
 
       },
       //holds the question objects
@@ -53,7 +55,8 @@ class BattlePage extends Component {
           progress: this.state.player1.progress,
           username: this.state.player1.username, 
           userID: this.state.player1.userID,
-          powerUpNum: (this.state.player1.powerUpNum - 1)
+          powerUpNum: (this.state.player1.powerUpNum - 1),
+          code: this.state.player1.code
         }
       });
       socket.emit('sending attack', this.props.roomID.id);
@@ -65,7 +68,8 @@ class BattlePage extends Component {
           progress: this.state.player2.progress,
           username: this.state.player2.username, 
           userID: this.state.player2.userID,
-          powerUpNum: (this.state.player2.powerUpNum - 1)
+          powerUpNum: (this.state.player2.powerUpNum - 1),
+          code: this.state.player2.code
         }
       });
       socket.emit('sending attack', this.props.roomID.id);
@@ -90,14 +94,16 @@ class BattlePage extends Component {
           progress: 0, 
           username: p1username, 
           userID: data.player1.id,
-          powerUpNum: this.state.player1.powerUpNum
+          powerUpNum: this.state.player1.powerUpNum,
+          code: this.state.player1.code
         }, 
         player2: {
           id: data.player2.socketId, 
           progress: 0, 
           username: p2username, 
           userID: data.player2.id,
-          powerUpNum: this.state.player2.powerUpNum
+          powerUpNum: this.state.player2.powerUpNum,
+          code: this.state.player2.code
         }, 
         questionsArr: data.questions, 
 
@@ -121,14 +127,16 @@ class BattlePage extends Component {
               progress: (this.state.player1.progress + 1), 
               username: p1username, 
               userID: this.state.player1.userID,
-              powerUpNum: this.state.player1.powerUpNum
+              powerUpNum: this.state.player1.powerUpNum,
+              code: this.state.player1.code
             },
             player2: {
               id: this.state.player2.id, 
               progress: this.state.player2.progress, 
               username: p2username, 
               userID: this.state.player2.userID, 
-              powerUpNum: (this.state.player2.powerUpNum + 1), 
+              powerUpNum: (this.state.player2.powerUpNum + 1),
+              code: this.state.player2.code 
             }, 
             currentQuestion: (this.state.currentQuestion + 1), 
             roomID: data.roomID}, 
@@ -174,6 +182,7 @@ class BattlePage extends Component {
               username: p1username, 
               userID: this.state.player1.userID, 
               powerUpNum: this.state.player1.powerUpNum,
+              code: this.state.player1.code
             },
             roomID: data.roomID,
             player2: {
@@ -181,7 +190,8 @@ class BattlePage extends Component {
               progress: this.state.player2.progress, 
               username: p2username, 
               userID: this.state.player2.userID, 
-              powerUpNum: (this.state.player2.powerUpNum + 1), 
+              powerUpNum: (this.state.player2.powerUpNum + 1),
+              code: this.state.player2.code
             }
             }) 
           // console.log('Player 1 progress updated', this.state.player1.progress)
@@ -204,14 +214,16 @@ class BattlePage extends Component {
               progress: (this.state.player2.progress + 1), 
               username: p2username, 
               userID: this.state.player2.userID,
-              powerUpNum: this.state.player1.powerUpNum
+              powerUpNum: this.state.player1.powerUpNum,
+              code: this.state.player2.code
             }, 
             player1: {
               id: this.state.player1.id, 
               progress: this.state.player1.progress, 
               username: p1username, 
               userID: this.state.player1.userID,
-              powerUpNum: (this.state.player1.powerUpNum + 1)
+              powerUpNum: (this.state.player1.powerUpNum + 1),
+              code: this.state.player1.code
             }, 
               currentQuestion: (this.state.currentQuestion + 1), 
               powerUpNum: this.state.player2.powerUpNum,
@@ -254,7 +266,8 @@ class BattlePage extends Component {
               progress: (this.state.player2.progress + 1), 
               username: p2username, 
               userID: this.state.player2.userID,
-              powerUpNum: this.state.player2.powerUpNum
+              powerUpNum: this.state.player2.powerUpNum,
+              code: this.state.player2.code
             }, 
             roomID: data.roomID,
             player1: {
@@ -262,7 +275,8 @@ class BattlePage extends Component {
               progress: this.state.player1.progress, 
               username: p1username, 
               userID: this.state.player1.userID,
-              powerUpNum: (this.state.player1.powerUpNum + 1)
+              powerUpNum: (this.state.player1.powerUpNum + 1),
+              code: this.state.player1.code
             } 
             })
           // console.log('Player 2 progress updated', this.state.player2.progress )
