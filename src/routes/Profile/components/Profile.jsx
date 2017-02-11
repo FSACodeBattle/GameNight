@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MatchHistory from '../../Home/components/MatchHistory';
+import '../profile.scss';
 
 
 class Profile extends React.Component {
@@ -11,7 +12,7 @@ class Profile extends React.Component {
   render() {
     console.log('umatches', this.props.userMatches);
     return (
-      <div>
+      <div className = "row" id="profileMatchHistory">
         <MatchHistory userMatches={this.props.userMatches} />
       </div>
     )
