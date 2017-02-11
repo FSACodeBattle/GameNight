@@ -4,6 +4,7 @@ import clientsReducer from './client'
 import gameLobbyReducer from './gamelobby';
 import usersReducer from './user';
 import matchesReducer from './match';
+import profilesReducer from './profile';
 import matchResultsReducer from './matchresult';
 
 export const makeRootReducer = (asyncReducers) => {
@@ -13,6 +14,7 @@ export const makeRootReducer = (asyncReducers) => {
     gameLobby: gameLobbyReducer,
     user: usersReducer,
     match: matchesReducer,
+    profile: profilesReducer,
     matchResults: matchResultsReducer,
     ...asyncReducers
   })
