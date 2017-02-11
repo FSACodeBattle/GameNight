@@ -41,10 +41,6 @@ export const MatchHistory = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    matches: state.match.matches
-  }
-}
+const mapStateToProps = (state) => ({ matches: state.match.matches })
 
 export default connect(mapStateToProps)(MatchHistory);
