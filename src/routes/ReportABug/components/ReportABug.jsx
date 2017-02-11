@@ -28,14 +28,7 @@ class ReportABug extends React.Component {
       this.setState({error: true, errorText: "One or more invalid fields!"});
     }
     else {
-      axios.post('signup', this.state)
-      .then(result => {
-        if(result.data === "user exists") this.setState({error: true, errorText: "User already exists!"});
-        else {
-          this.props.setLoggedInUser(result.data);
-          browserHistory.push('/');
-        }
-      })
+      axios.post('report-a-bug', this.state)
     }
   }
 

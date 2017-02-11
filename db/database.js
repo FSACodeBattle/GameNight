@@ -4,6 +4,18 @@ const db = new Sequelize('postgres://localhost:5432/code_battle', {
   logging: false
 });
 
+const Bug = db.define('bugs', {
+  bugName: {
+    type: Sequelize.STRING
+  },
+  bugDescription: {
+    type: Sequelize.TEXT
+  },
+  name: {
+    type: Sequelize.STRING,
+  }
+})
+
 const User = db.define('users', {
   username: {
     type: Sequelize.STRING,
@@ -57,17 +69,11 @@ const Fight = db.define('fights', {
 
 Fight.belongsTo(User, {as: 'winner'});
 Fight.belongsTo(User, {as: 'loser'});
-//Relationships
-
-// User.hasMany(Fight, {as: 'Fights'});
-// Fight.belongsToMany(User, {through: 'FightHistory'});
-
-// Fight.hasMany(Question, {as: 'Questions'});
-// Question.belongsToMany(Fight, {through: })
 
 module.exports = {
   db,
   User,
   Question,
-  Fight
+  Fight,
+  Bug
 };
