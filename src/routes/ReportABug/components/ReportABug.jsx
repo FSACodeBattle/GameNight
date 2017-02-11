@@ -42,27 +42,29 @@ class ReportABug extends React.Component {
 
   render() {
     return (
-      {
-        this.state.submittedBug 
-        ? <div>
-            <h2>Thanks for helping to improve Code Battle!</h2>
-            <img
-            alt='Leo saying thanks'
-            className='thanks'
-            src='https://media.giphy.com/media/awpqNsKuFtXI4/giphy.gif' />
-          </div>
-      }
       <div>
-        { this.state.error
-          ? <div style={{color: "red"}}>{ this.state.errorText }</div>
-          : null
-        }
-        <form onChange={this.onChangeHandler} onSubmit={this.onSubmitHandler}>
-          <input type="text" id="bugName" placeholder="bug name" className="bugForm"></input>
-          <textarea id="bugDescription" placeholder="bug description" className="bugForm"></textarea>
-          <input type="text" id="name" placeholder="your name" className="bugForm"></input>
-          <button type="submit" id="bugSubmit" className="btn btn-primary btn-small">Submit</button>
-        </form>
+        { this.state.submittedBug ?
+           <div>
+              <h2>Thanks for helping to improve Code Battle!</h2>
+              <img
+                alt='Leo saying thanks'
+                className='thanks'
+                src='https://media.giphy.com/media/awpqNsKuFtXI4/giphy.gif' />
+            </div>
+        :  
+        <div>
+          { this.state.error
+            ? <div style={{color: "red"}}>{ this.state.errorText }</div>
+            : null
+          }
+          <form onChange={this.onChangeHandler} onSubmit={this.onSubmitHandler}>
+            <input type="text" id="bugName" placeholder="bug name" className="bugForm"></input>
+            <textarea id="bugDescription" placeholder="bug description" className="bugForm"></textarea>
+            <input type="text" id="name" placeholder="your name" className="bugForm"></input>
+            <button type="submit" id="bugSubmit" className="btn btn-primary btn-small">Submit</button>
+          </form>
+        </div>
+      }
       </div>
     )
   }
