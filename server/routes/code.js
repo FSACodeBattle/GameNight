@@ -33,9 +33,9 @@ router.post('/', (req, res, next) => {
           let playerToUpdate = arrOfSocketIDs.indexOf(socketID);
 
           //if the result string does not contain the words failing (they failed at least 1 test) or SyntaxError (their code throws a syntax error)
-          if(resultString.indexOf('failing') === -1 && resultString.indexOf('SyntaxError') === -1){
+          if(resultString.indexOf('failing') === -1 && resultString.indexOf('SyntaxError') === -1 && resultString.indexOf('FATAL ERROR') === -1 && resultString.toLowerCase().indexOf('syntax') === -1){
             //emit to the room the player that needs to be updated along with the player's socket ID 
-            ioObj.in(room).emit('updatePlayerScore', {playerToUpdate: `Player${playerToUpdate+1}`, currentPlayer: socketID, roomID: room});
+            ioObj.in(room).emit('updatePlayerScore', {playerToUpdate: `Player${playerToUpdate+1}`, currentPlayer: socketID, roomID: room, code: codeToRun});
             //send the result string back to the frontend
             res.send(resultString);
           }

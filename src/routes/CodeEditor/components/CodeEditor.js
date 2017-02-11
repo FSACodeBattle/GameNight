@@ -34,7 +34,7 @@ class CodeEditor extends Component {
     })
     .then(response => {
        this.setState({results: response.data});
-       if(response.data.indexOf('failing') === -1 && response.data.indexOf('SyntaxError') === -1){
+       if(response.data.indexOf('failing') === -1 && response.data.indexOf('SyntaxError') === -1 && response.data.toLowerCase().indexOf('syntax') === -1 && response.data.indexOf('FATAL ERROR') === -1){
         this.setState({code: ''});
       }
     })
