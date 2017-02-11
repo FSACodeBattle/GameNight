@@ -1,5 +1,6 @@
-import React from 'react'
-import '../HomeView.scss'
+import React from 'react';
+import { Link } from 'react-router';
+import '../HomeView.scss';
 import './leaderboard.scss';
 
 export const Leaderboard = (props) => {
@@ -10,7 +11,7 @@ export const Leaderboard = (props) => {
 			var rows = leaderboard.map((user, i) =>
 				<tr key={user.id} >
 					<td> {++i} </td>
-					<td>{user.username}</td>
+					<td><Link to={`/profile/${user.username}`}>{user.username}</Link></td>
 					<td>{user.wins}</td>
 					<td>{user.wins + user.losses ? (user.wins/(user.wins + user.losses)).toFixed(2) : 0}</td>
 					<td>{user.points}</td>
