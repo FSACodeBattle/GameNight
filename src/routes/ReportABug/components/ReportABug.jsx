@@ -14,7 +14,8 @@ class ReportABug extends React.Component {
       bugDescription: '',
       name: '',
       errorText: '',
-      error: false
+      error: false,
+      submittedBug: false
     }
 
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -29,6 +30,9 @@ class ReportABug extends React.Component {
     }
     else {
       axios.post('report-a-bug', this.state)
+      .then(this.setState({
+        submittedBug: true
+      }))
     }
   }
 
@@ -38,6 +42,16 @@ class ReportABug extends React.Component {
 
   render() {
     return (
+      {
+        this.state.submittedBug 
+        ? <div>
+            <h2>Thanks for helping to improve Code Battle!</h2>
+            <img
+            alt='Leo saying thanks'
+            className='thanks'
+            src='https://media.giphy.com/media/awpqNsKuFtXI4/giphy.gif' />
+          </div>
+      }
       <div>
         { this.state.error
           ? <div style={{color: "red"}}>{ this.state.errorText }</div>
