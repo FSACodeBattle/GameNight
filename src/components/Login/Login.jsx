@@ -35,7 +35,7 @@ class Login extends React.Component {
           <input type="text" id="username" placeholder="username"></input>
           <input type="password" id="password" placeholder="password"></input>
           <button type="submit" className="btn btn-primary btn-small" id="loginSubmit">Submit</button>
-          <Link to="/signup">[Sign Up]</Link>
+          <Link to="/signup" style={{color: "lightBlue"}}>[Sign Up]</Link>
         </form>
       </div>
     )
