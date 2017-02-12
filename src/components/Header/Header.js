@@ -104,7 +104,7 @@ class Header extends React.Component {
               <NavItem eventKey={4}>Create Lobby</NavItem>
             </LinkContainer>
             <NavItem eventKey={5}>
-              <button id="quick-play" onClick={this.handleOpenModal}>Quick Play!</button>
+              <button id="quick-play" className="btn btn-primary btn-small" onClick={this.handleOpenModal}>Quick Play!</button>
             </NavItem>
           </Nav>
             {

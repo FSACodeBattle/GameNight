@@ -28,10 +28,17 @@ ul.nav.navbar-nav {
   // height: 475px !important;
 }
 
+// #quick-play {
+//   background-color: rgb(34, 34, 34);
+//   border: 0;
+//   border-color: rgb(34, 34, 34);
+// }
+
 #quick-play {
-  background-color: rgb(34, 34, 34);
-  border: 0;
-  border-color: rgb(34, 34, 34);
+  background-color: white;
+  border-color: transparent;
+  margin-right: 5px;
+  color: black;
 }
 
 .ninja-modal {
