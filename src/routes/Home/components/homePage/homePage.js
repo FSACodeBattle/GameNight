@@ -3,6 +3,7 @@ import React from 'react';
 import './homePage.scss';
 import Logo from '../../assets/Logo.png'
 import NinjaBowing from '../../assets/ninja_bowing.jpg'
+import NinjaAttack from '../../assets/ninja_attack.png'
 
 const HomePage = () => (
   <div>
@@ -63,14 +64,20 @@ const HomePage = () => (
     <div className="row row-code-battle4">
       <div className="col-xs-12 col-md-6" id="quickPlay">
         <h3>
-          Quick Play or Create a Lobby
+          Send Attacks!
         </h3>
         <p>
-         Want to get right into a match? Sign up or log in and select "Quick Play" and you will be matched with the first user available. Good luck!<br /> <br /> Want to challenge a friend? Sign up or log in and select "Create a Lobby" and send the link to your friend. When they join you will hop right into a Code Battle!
+          Is your opponent advancing too quickly through the Code Battle? Unleash a devastating attack to block their progress and disrupt their rhythm. <br /> <br />More powerful attacks are currently in the works!
         </p>
       </div>
       <div className="col-xs-12 col-md-6">
-        <img src="quickPlay.png" className="img-quickplay" rel="pic of quickPlay" />
+        <img src={NinjaAttack} 
+        style={
+            {
+              height: 300,
+              width: 231
+            }
+          }/>
       </div>
     </div>
     {/*<div className="row row-code-battle">
