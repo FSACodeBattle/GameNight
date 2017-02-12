@@ -1,33 +1,61 @@
 'use strict';
 import React from 'react';
 import './homePage.scss';
+import Logo from '../../assets/Logo.png'
 
 const HomePage = () => (
   <div>
     <div className="row row-code-battle">
       <div className="col-xs-12 col-md-6">
-        <img src="http://cdn.thedailybeast.com/content/dailybeast/articles/2013/12/12/i-took-the-one-hour-of-code-challenge/jcr:content/image.crop.800.500.jpg/46228811.cached.jpg" className="img-cirlce" rel="soloCodingPic"/>
+        <img 
+          src={Logo} 
+          style={
+            {
+              resizeMode: 'contain'
+            }
+          }
+        />
       </div>
       <div className="col-xs-12 col-md-6">
         <h3>
-          CodeBattle
+          Code Battle
         </h3>
         <p>
-         Challenge your friends to a CodeBattle! <br />Learn coding fundamentals in a fun competitive environment <br/> Win to earn points and advance up the Leaderboard <br /> CodeBattle is designed to prepare students for success in the rigorous Fullstack Code Academy program.
+         Challenge your friends to a Code Battle! Compete to see who can solve programming challenges the fastest in a competitive environment. Win to earn points and advance up the Leaderboard.<br /><br />CodeBattle is designed with questions related to coding fundatmentals chosen to prepare students for success in the rigorous <br /> Fullstack Code Academy program.
         </p>
       </div>
     </div>
     <div className="row row-code-battle2">
       <div className="col-xs-12 col-md-6" id="quickPlay">
         <h3>
-          Lobby Or Quick Play
+          Quick Play or Create a Lobby
         </h3>
         <p>
-         Challenge friends with a direct link invite <br /> or join a quick match game to get paired against a random player
+         Want to get right into a match? Sign up or log in and select "Quick Play" and you will be matched with the first user available. Good luck!<br /> <br /> Want to challenge a friend? Sign up or log in and select "Create a Lobby" and send the link to your friend. When they join you will hop right into a Code Battle!
         </p>
       </div>
       <div className="col-xs-12 col-md-6">
         <img src="quickPlay.png" className="img-quickplay" rel="pic of quickPlay" />
+      </div>
+    </div>
+    <div className="row row-code-battle3">
+      <div className="col-xs-12 col-md-6">
+        <img 
+          src={Logo} 
+          style={
+            {
+              resizeMode: 'contain'
+            }
+          }
+        />
+      </div>
+      <div className="col-xs-12 col-md-6">
+        <h3>
+          Code Battle
+        </h3>
+        <p>
+         Challenge your friends to a Code Battle! Compete to see who can solve programming challenges the fastest in a competitive environment. Win to earn points and advance up the Leaderboard.<br /><br />CodeBattle is designed with questions related to coding fundatmentals chosen to prepare students for success in the rigorous <br /> Fullstack Code Academy program.
+        </p>
       </div>
     </div>
     {/*<div className="row row-code-battle">
