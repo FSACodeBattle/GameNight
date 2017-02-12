@@ -8,16 +8,20 @@
 #answersRow {
   margin-top: 10px;
   width: 100%;
-  text-align: center;
+  margin: 0 auto;
+  padding: 0 auto;
 }
 
 #userAnswers {
-  display: inline-block;
   background-color: rgba(0,0,0,.2);
   color: #fff;
   height: 100%;
-  width: 50%;
   min-height: 200px;
   font-size: 18px;
-  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
