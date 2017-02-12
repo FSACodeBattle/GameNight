@@ -27,9 +27,9 @@ describe('(Internal Module) Client', () => {
 
       const clients = ['a'];
       state = clientsReducer(state, setClients(clients));
-      expect(state).to.deep.equal({clients: ['a']});
+      expect(state).to.deep.equal({clients});
       state = clientsReducer(state, {type: 'aaa'});
-      expect(state).to.deep.equal({clients: ['a']});
+      expect(state).to.deep.equal({clients});
     })
   })
 
