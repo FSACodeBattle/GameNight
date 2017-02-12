@@ -11,7 +11,7 @@ class GameWonPage extends Component {
     return (
       <div className="container" id="gameWonPage">
         <div className="row">
-          <h1>Congratulations You Won!!</h1>
+          <h1>Congratulations You Won!</h1>
           <img
             alt='Fireworks!'
             className='fireworks'
@@ -19,16 +19,28 @@ class GameWonPage extends Component {
 
         </div>
         <div className="row" id="answersRow">
-          <div id="userAnswers">
-            My Answers:
+          <div className="col-xs-10 col-sm-5 col-md-5 col-lg-5" id="userAnswers">
+            Your Answers:
              {
-               ownAnswers && ownAnswers.map(answer => <div key={answer.id}>{answer}</div>)
+               ownAnswers && ownAnswers.map((answer, i = 1) =>
+                <div>
+                  <div key={answer.id + i}>Question {++i}</div> 
+                  <div key={answer.id}>{answer}</div>
+                  <br />
+                </div>
+                )
              }
           </div>
-          <div id="userAnswers">
-            Opponents Answers:
+          <div className="col-xs-10 col-sm-5 col-md-5 col-lg-5" id="userAnswers">
+            Opponent's Answers:
              {
-               opponentAnswers && opponentAnswers.map(answer => <div key={answer.id}>{answer}</div>)
+               opponentAnswers && opponentAnswers.map((answer, i = 1) =>
+                <div>
+                  <div key={answer.id + i}>Question {++i}</div> 
+                  <div key={answer.id}>{answer}</div>
+                  <br />
+                </div>
+                )
              }
           </div>
         </div>
