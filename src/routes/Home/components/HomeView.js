@@ -29,7 +29,7 @@ class HomeView extends Component {
         <Jumbotron>
           <div className="container">
             <div className="row">
-              <p><span>Code Battle</span></p>
+              <img src="CodeBattle.png" rel="codebattleimage" />
             </div>
           </div>
         </Jumbotron>
