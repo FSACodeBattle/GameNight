@@ -53,7 +53,7 @@ describe('(Internal Module) Client', () => {
       expect(fetchClients).to.be.a('function');
     })
 
-    it('Should return a function (is a thnk).', () => {
+    it('Should return a function (is a thunk).', () => {
       expect(fetchClients()).to.be.a('function');
     })
   })
