@@ -12,7 +12,7 @@ export const MatchHistory = (props) => {
         <td>{match.id}</td>
         <td><Link to={`/profile/${match.winner.username}`}>{match.winner.username}</Link></td>
         <td><Link to={`/profile/${match.loser.username}`}>{match.loser.username}</Link></td>
-        <td>{match.winnerDuration}</td>
+        <td>{match.winnerDuration.toFixed(1) + ' sec'}</td>
       </tr>
     )
 

@@ -10,36 +10,31 @@ class GameWonPage extends Component {
     const { ownAnswers, opponentAnswers } = this.props
     return (
       <div className="container" id="gameWonPage">
-          <h1>Congratulations You Won!!</h1>
-
+        <h1>Congratulations You Won!!</h1>
         <div className="row" id="answersRow">
-          <div className="col-xs-12 col-md-4 col-lg-4 col-lg-4"  id="userAnswers">
-            <img
-              alt='Fireworks!'
-              className='img-responsive'
-              src='http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif'
-            />
-          </div>
-          <div className="col-xs-12 col-md-8 col-lg-8 col-lg-8" id="myanswer">
-            My Answers:
+          <div className="col-xs-10 col-sm-5 col-md-5 col-lg-5" id="userAnswers">
+            Your Answers:
              {
-                ownAnswers && ownAnswers.map(answer =>
-                  <div key={answer.id}>
-                    {answer}
-                  </div>
+               ownAnswers && ownAnswers.map((answer, i = 1) =>
+                <div>
+                  <div key={answer.id + i}>Question {++i}</div>
+                  <div key={answer.id}>{answer}</div>
+                  <br />
+                </div>
                 )
              }
           </div>
-          <div className="col-xs-12 col-md-8 col-lg-8 col-lg-8"  id="userAnswers">
-            Opponents Answers:
+          <div className="col-xs-10 col-sm-5 col-md-5 col-lg-5" id="userAnswers">
+            Opponent's Answers:
              {
-                opponentAnswers && opponentAnswers.map(
-                  answer =>
-                    <div key={answer.id}>
-                      {answer}
-                    </div>
+               opponentAnswers && opponentAnswers.map((answer, i = 1) =>
+                <div>
+                  <div key={answer.id + i}>Question {++i}</div>
+                  <div key={answer.id}>{answer}</div>
+                  <br />
+                </div>
                 )
-              };
+             }
           </div>
         </div>
       </div>
