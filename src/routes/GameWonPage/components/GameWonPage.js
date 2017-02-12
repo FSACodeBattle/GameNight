@@ -1,14 +1,19 @@
-import React from 'react'
-// import FireworksImage from '../assets/fireworks.gif'
+import React, { Component } from 'react';
+import './GameWonPage.scss';
 
-export const GameWonPage = () => (
-  <div>
-    <h1>You won!</h1>
-    <img
-      alt='Fireworks!'
-      className='fireworks'
-      src='http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif' />
-  </div>
-)
+export const GameWonPage = () => {
+  return (
+    <div className="container" id="gameWonPage">
+      <div className="row">
+        <h1>Congratulations You Won!!</h1>
+        <img
+          alt='Fireworks!'
+          className='fireworks'
+          src='http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif' />
+      </div>
+    </div>
+  )
+}
 
-export default GameWonPage
+export default GameWonPage;
+

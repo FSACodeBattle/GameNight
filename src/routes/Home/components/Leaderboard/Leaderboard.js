@@ -20,7 +20,7 @@ export const Leaderboard = (props) => {
 		}
 
 		return (
-  		<div className="col-xs-12 col-md-4 col-lg-4" id="leaderboardComponent">
+  		<div id="leaderboardComponent">
   			<div className="table-responsive">
   			<h2 style={{color:'#777'}}> Leaderboard </h2>
 				  <table className="table">
