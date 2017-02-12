@@ -11,14 +11,6 @@ const About = () => {
           </div>
           <div className = "caption">
             <h3>Mitch Kosowski</h3>
-{/*            <p>
-              <a href = "#" className = "btn btn-primary" role = "button">
-                   Button
-              </a>
-              <a href = "#" className = "btn btn-default" role = "button">
-                   Button
-              </a>
-            </p>*/}
           </div>
         </div>
         <div className = "col-sm-6 col-md-3 col-lg-3">
@@ -27,14 +19,6 @@ const About = () => {
           </div>
           <div className = "caption">
             <h3>Patryk Chmura</h3>
-{/*            <p>
-              <a href = "#" className = "btn btn-primary" role = "button">
-                   Button
-              </a>
-              <a href = "#" className = "btn btn-default" role = "button">
-                   Button
-              </a>
-            </p>*/}
           </div>
         </div>
         <div className = "col-sm-6 col-md-3 col-lg-3">
@@ -43,14 +27,6 @@ const About = () => {
           </div>
           <div className = "caption">
             <h3>Ming Tung Wong</h3>
-{/*            <p>
-              <a href = "#" className = "btn btn-primary" role = "button">
-                 Button
-              </a>
-              <a href = "#" className = "btn btn-default" role =" button">
-                 Button
-              </a>
-              </p>*/}
           </div>
         </div>
         <div className = "col-sm-6 col-md-3 col-lg-3">
@@ -59,14 +35,6 @@ const About = () => {
           </div>
           <div className = "caption">
             <h3>John Yom</h3>
-{/*            <p>
-              <a href = "#" className = "btn btn-primary" role = "button">
-                 Button
-              </a>
-              <a href = "#" className = "btn btn-default" role = "button">
-                 Button
-              </a>
-            </p>*/}
           </div>
         </div>
       </div>
