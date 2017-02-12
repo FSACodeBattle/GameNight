@@ -35,9 +35,10 @@ class HomeView extends Component {
         </Jumbotron>
         <HomePage />
 
-          <div className="row" id="introaboutcode">
+          {/*<div className="row" id="introaboutcode">
             <h4 style={{color:"#777"}}>Welcome!</h4>
           </div>
+        */}
           <div className="row" id="matchAndLeaders">
             <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
               <MatchHistory />

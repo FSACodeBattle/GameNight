@@ -2,6 +2,7 @@
 import React from 'react';
 import './homePage.scss';
 import Logo from '../../assets/Logo.png'
+import NinjaBowing from '../../assets/ninja_bowing.jpg'
 
 const HomePage = () => (
   <div>
@@ -41,21 +42,35 @@ const HomePage = () => (
     <div className="row row-code-battle3">
       <div className="col-xs-12 col-md-6">
         <img 
-          src={Logo} 
+          src={NinjaBowing} 
           style={
             {
-              resizeMode: 'contain'
+              height: 300,
+              width: 174
             }
           }
         />
       </div>
       <div className="col-xs-12 col-md-6">
         <h3>
-          Code Battle
+          Review Code
         </h3>
         <p>
-         Challenge your friends to a Code Battle! Compete to see who can solve programming challenges the fastest in a competitive environment. Win to earn points and advance up the Leaderboard.<br /><br />CodeBattle is designed with questions related to coding fundatmentals chosen to prepare students for success in the rigorous <br /> Fullstack Code Academy program.
+          After the battle, both players will have a chance to review their own code as well as see what their opponent submitted. <br /> <br />If you lost the Code Battle, review your opponent's methods to learn them and be more prepared for the next battle. <br /> <br />If you won, you can review your opponent's code to help them improve.
         </p>
+      </div>
+    </div>
+    <div className="row row-code-battle4">
+      <div className="col-xs-12 col-md-6" id="quickPlay">
+        <h3>
+          Quick Play or Create a Lobby
+        </h3>
+        <p>
+         Want to get right into a match? Sign up or log in and select "Quick Play" and you will be matched with the first user available. Good luck!<br /> <br /> Want to challenge a friend? Sign up or log in and select "Create a Lobby" and send the link to your friend. When they join you will hop right into a Code Battle!
+        </p>
+      </div>
+      <div className="col-xs-12 col-md-6">
+        <img src="quickPlay.png" className="img-quickplay" rel="pic of quickPlay" />
       </div>
     </div>
     {/*<div className="row row-code-battle">
