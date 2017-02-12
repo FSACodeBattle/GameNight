@@ -12,29 +12,34 @@ class GameWonPage extends Component {
       <div className="container" id="gameWonPage">
         <h1>Congratulations You Won!!</h1>
         <div className="row" id="answersRow">
-          <div className="col-xs-10 col-sm-5 col-md-5 col-lg-5" id="userAnswers">
-            Your Answers:
+            <img
+              alt='Fireworks!'
+              className='img-responsive'
+              src='http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif'
+            />
+        </div>
+        <div className="row justify-content-around">
+          <div className="col-xs-12 col-md-6 col-lg-6 col-lg-6" id="myanswer">
+            My Answers:
              {
-               ownAnswers && ownAnswers.map((answer, i = 1) =>
-                <div>
-                  <div key={answer.id + i}>Question {++i}</div>
-                  <div key={answer.id}>{answer}</div>
-                  <br />
-                </div>
+                ownAnswers && ownAnswers.map((answer, i = 1) =>
+                  <div>
+                    <div key={answer.id + i}>Question {++i}</div>
+                    <div key={answer.id}>{answer}</div>
+                  </div>
                 )
              }
           </div>
-          <div className="col-xs-10 col-sm-5 col-md-5 col-lg-5" id="userAnswers">
-            Opponent's Answers:
-             {
-               opponentAnswers && opponentAnswers.map((answer, i = 1) =>
-                <div>
-                  <div key={answer.id + i}>Question {++i}</div>
-                  <div key={answer.id}>{answer}</div>
-                  <br />
-                </div>
-                )
-             }
+          <div className="col-xs-12 col-md-6 col-lg-6 col-lg-6"  id="userAnswers">
+              Opponent's Answers:
+                {
+                 opponentAnswers && opponentAnswers.map((answer, i = 1) =>
+                    <div>
+                      <div key={answer.id + i}>Question {++i}</div>
+                      <div key={answer.id}>{answer}</div>
+                    </div>
+                  )
+                }
           </div>
         </div>
       </div>
@@ -42,7 +47,7 @@ class GameWonPage extends Component {
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
     ownAnswers: state.matchResults.ownAnswers,
     opponentAnswers: state.matchResults.opponentAnswers
