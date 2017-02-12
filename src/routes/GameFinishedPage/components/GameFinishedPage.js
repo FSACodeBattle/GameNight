@@ -3,18 +3,16 @@ import { connect } from 'react-redux';
 import './GameFinishedPage.scss';
 
 class GameFinishedPage extends Component {
-  constructor(){
+  constructor() {
     super()
   }
+
   render(){
     const { ownAnswers, opponentAnswers } = this.props
     return (
       <div className="container" id="gameWonPage">
         <h1>You lost the game, but at least you finished all the questions :D
         </h1>
-
-
-
         <div className="row" id="answersRow">
           <div className="col-xs-12 col-md-4 col-lg-4 col-lg-4" id="userAnswers">
             <img
