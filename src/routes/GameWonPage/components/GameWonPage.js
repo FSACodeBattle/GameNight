@@ -10,26 +10,36 @@ class GameWonPage extends Component {
     const { ownAnswers, opponentAnswers } = this.props
     return (
       <div className="container" id="gameWonPage">
-        <div className="row">
           <h1>Congratulations You Won!!</h1>
-          <img
-            alt='Fireworks!'
-            className='fireworks'
-            src='http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif' />
 
-        </div>
         <div className="row" id="answersRow">
-          <div id="userAnswers">
+          <div className="col-xs-12 col-md-4 col-lg-4 col-lg-4"  id="userAnswers">
+            <img
+              alt='Fireworks!'
+              className='img-responsive'
+              src='http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif'
+            />
+          </div>
+          <div className="col-xs-12 col-md-8 col-lg-8 col-lg-8" id="myanswer">
             My Answers:
              {
-               ownAnswers && ownAnswers.map(answer => <div key={answer.id}>{answer}</div>)
+                ownAnswers && ownAnswers.map(answer =>
+                  <div key={answer.id}>
+                    {answer}
+                  </div>
+                )
              }
           </div>
-          <div id="userAnswers">
+          <div className="col-xs-12 col-md-8 col-lg-8 col-lg-8"  id="userAnswers">
             Opponents Answers:
              {
-               opponentAnswers && opponentAnswers.map(answer => <div key={answer.id}>{answer}</div>)
-             }
+                opponentAnswers && opponentAnswers.map(
+                  answer =>
+                    <div key={answer.id}>
+                      {answer}
+                    </div>
+                )
+              };
           </div>
         </div>
       </div>
