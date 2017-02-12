@@ -31,17 +31,21 @@ h2 {
   margin: 0px auto;
   background: #7986cb;
   height: 100%;
-  min-height: 95vh;
+  min-height: 94vh;
   color: black;
   background-image: url("../../../../public/background.jpg");
   background-repeat: no-repeat;
   background-size:100% 100%;
   p {
-    padding-top: 10px;
+    padding-top: 0px;
     text-align: center;
     font-size: 3em;
+    margin-bottom: 0px
+    span {
+      font: bold 24px/45px Helvetica, Sans-Serif;
+      background: rgb(0, 0, 0); /* fallback color */
+      background: rgba(0, 0, 0, 0.2);
+    }
   }
 }
-
-
 

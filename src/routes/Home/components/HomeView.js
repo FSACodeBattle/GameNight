@@ -29,31 +29,34 @@ class HomeView extends Component {
         <Jumbotron>
           <div className="container">
             <div className="row">
-              <p>CODE BATTLE</p>
-              <p>Begin your journey towards becoming a coding master!</p>
+              <p><span>Code Battle</span></p>
             </div>
           </div>
         </Jumbotron>
         <HomePage />
-        <div className="container">
-          <div className="row" id="introaboutcode">
+
+          {/*<div className="row" id="introaboutcode">
             <h4 style={{color:"#777"}}>Welcome!</h4>
           </div>
+        */}
           <div className="row" id="matchAndLeaders">
-            <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
               <MatchHistory />
             </div>
-
-            <Leaderboard leaderboard={this.state.leaderboard}/>
-            <Achievements />
+            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <Leaderboard leaderboard={this.state.leaderboard}/>
+            </div>
+            {/*<Achievements />*/}
           </div>
             {/* <div style={{paddingTop: "10px"}}>
               <MainLobbyContainer />
             </div> */}
         </div>
-      </div>
+
     );
   }
 }
 
 export default HomeView;
+
+

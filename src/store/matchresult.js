@@ -1,7 +1,12 @@
-
 export const SET_OPPONENT_ANSWERS = 'SET_OPPONENT_ANSWERS';
 export const SET_OWN_ANSWERS = 'SET_OWN_ANSWERS';
+export const GET_ANSWERS = 'GET_ANSWERS';
 
+export const getAnswers = () => {
+  return {
+    type: GET_ANSWERS
+  }
+}
 export const setOpponentAnswers = (answers) => {
   return {
     type: SET_OPPONENT_ANSWERS,
@@ -26,7 +31,8 @@ export default function matchResultsReducer(state = initialState, action) {
     case SET_OWN_ANSWERS:
       newState.ownAnswers = action.answers;
       break;
+    case GET_ANSWERS:
+      return newState
   }
-
   return newState;
 }

@@ -1,0 +1,27 @@
+#gameWonPage {
+  h1 {
+    color: #fff;
+    padding-bottom: 10px;
+  }
+}
+
+#answersRow {
+  margin-top: 10px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+#userAnswers {
+  background-color: rgba(0,0,0,.2);
+  color: #fff;
+  height: 100%;
+  min-height: 200px;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}

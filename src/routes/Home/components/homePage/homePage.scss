@@ -10,6 +10,7 @@
   div {
     color: black;
     p {
+      text-align: center;
       color: black;
       word-wrap: break-word;
       font-size: 18px;
@@ -29,6 +30,49 @@
   div {
     color: black;
     p {
+      margin: 0px auto;
+      text-align: center;
+      color: black;
+      word-wrap: break-word;
+      font-size: 18px;
+    }
+  }
+}
+
+.row.row-code-battle3 {
+  height: 100%;
+  min-height: 250px;
+  width: 100%;
+  padding: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #dedede;
+  text-align: center;
+  div {
+    color: black;
+    p {
+      text-align: center;
+      color: black;
+      word-wrap: break-word;
+      font-size: 18px;
+    }
+  }
+}
+
+.row.row-code-battle4 {
+  height: 100%;
+  min-height: 250px;
+  width: 100%;
+  padding: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #d1d1d1;
+  text-align: center;
+  div {
+    color: black;
+    p {
+      margin: 0px auto;
+      text-align: center;
       color: black;
       word-wrap: break-word;
       font-size: 18px;
@@ -39,4 +83,18 @@
 img-fluid {
   height: 120px;
   width: auto;
+}
+
+.img-cirlce {
+  border-radius: 50%;
+  height: auto;
+  width: auto;
+  max-width: 400px;
+  max-height: 400px;
+}
+.img-quickplay {
+  height: auto;
+  width: auto;
+  max-width: 300px;
+  max-height: 300px;
 }
