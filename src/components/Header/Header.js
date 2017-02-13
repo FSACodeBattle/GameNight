@@ -94,22 +94,11 @@ class Header extends React.Component {
             <LinkContainer to="/report-a-bug" >
               <NavItem eventKey={2}>Report a Bug</NavItem>
             </LinkContainer>
-           {/* <LinkContainer to="/battlePage" >
-              <NavItem eventKey={2}>Battle Page</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/code_editor" >
-              <NavItem eventKey={3}>Code Editor</NavItem>
-            </LinkContainer>*/}
-            {/*
             <LinkContainer to={`/lobby/${makeid()}`} >
-              <NavItem eventKey={4}>Create Lobby</NavItem>
-            </LinkContainer>
-          */}
-            <NavItem eventKey={4}>
-              <Link to={`/lobby/${makeid()}`}>
+              <NavItem eventKey={4}>
                 <button id="create-lobby" className="btn btn-primary btn-small" >Create Lobby</button>
-              </Link>
-            </NavItem>
+              </NavItem>
+            </LinkContainer>
             <NavItem eventKey={5}>
               <button id="quick-play" className="btn btn-primary btn-small" onClick={this.handleOpenModal}>Quick Play!</button>
             </NavItem>
