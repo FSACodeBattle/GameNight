@@ -41,8 +41,8 @@ class GameWonPage extends Component {
                         Question {++i}:
                       </div>
                       <div key={answer.id} >
-                        <CodeMirror 
-                          value={answer} 
+                        <CodeMirror
+                          value={answer}
                           options={optionsForAnswers}
                         />
                       </div>
@@ -61,8 +61,8 @@ class GameWonPage extends Component {
                         Question {++i}:
                       </div>
                       <div key={answer.id} >
-                        <CodeMirror 
-                          value={answer} 
+                        <CodeMirror
+                          value={answer}
                           options={optionsForAnswers}
                         />
                       </div>
