@@ -70,22 +70,20 @@ const seedQuestions = () => db.Promise.map(
 	{
 		name: "Get the Middle Character(s)",
 		questionText: `Write a function named getMiddle that takes in a string and returns the middle character if the length is odd or the middle two characters if the length is even.\n
-		Write a function findNeedle() that takes an array full of junk but containing one "needle"\n
-		For example, \n
 		getMiddle("test") should return "es" \n
 		getMiddle("testing") should return "t" \n
 		`,
 		tests: `describe("getMiddle", function(){
-        			it("This string should return "es" ", function(){
+        			it("This string should return the string es", function(){
          	 			assert.equal("es", getMiddle("test"));
       				})
-      				it("This string should return "t" ", function(){
+      				it("This string should return the string t", function(){
          	 			assert.equal("t", getMiddle("testing"));
       				})
-      				it("This string should return "dd" ", function(){
+      				it("This string should return the string dd", function(){
          	 			assert.equal("dd", getMiddle("middle"));
       				})
-      				it("This string should return "A" ", function(){
+      				it("This string should return the string A", function(){
          	 			assert.equal("A", getMiddle("A"));
       				})
     			})`
