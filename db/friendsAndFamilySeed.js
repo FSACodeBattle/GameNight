@@ -68,6 +68,101 @@ const seedUsers = () => db.Promise.map(
 const seedQuestions = () => db.Promise.map(
 	[
 	{
+		name: "Double Characters",
+		questionText: `Write a function doubleChar that takes in a string and returns a new string with each character repeated once.\n
+		For example,\n
+		doubleChar("String") would return "SSttrriinngg"\n
+		`,
+		tests: `describe("doubleChar", function(){
+        			it("This should double characters", function(){
+         	 			assert.equal("SSttrriinngg", doubleChar("String"));
+      				})
+      				it("This should double characters", function(){
+         	 			assert.equal("HHeelllloo  WWoorrlldd", doubleChar("Hello World"));
+      				}) 				
+    			})`
+	},
+	{
+		name: "Even or Odd",
+		questionText: `Write a function called evenOrOdd that takes in a number and returns the string "even" for even numbers and the string "odd" for odd numbers.
+		For example, \n
+		evenOrOdd(2) would return "Even"\n
+		evenOrOdd(3) would return "Odd"\n
+		`,
+		tests: `describe("evenOrOdd", function(){
+        			it("This number should return Even", function(){
+         	 			assert.equal("Even", evenOrOdd(2));
+      				})
+      				it("This number should return Even", function(){
+         	 			assert.equal("Even", evenOrOdd(4));
+      				}) 
+      				it("This number should return Odd", function(){
+         	 			assert.equal("Odd", evenOrOdd(3));
+      				})  
+      				it("This number should return Odd", function(){
+         	 			assert.equal("Odd", evenOrOdd(5));
+      				})     				
+    			})`
+	},
+	{
+		name: "Sum of Two Smallest Numbers",
+		questionText: `Write a function named sumTwoSmallest that takes in an array and returns the sum of the two smallest numbers in that array. \n
+		For example, \n
+		sumTwoSmallest([19, 5, 42, 2, 77]) would return 7. \n
+		`,
+		tests: `describe("sumTwoSmallest", function(){
+        			it("This array should return 7", function(){
+         	 			assert.equal("7", sumTwoSmallest([19, 5, 42, 2, 77]));
+      				}) 
+      				it("This array should return -5", function(){
+         	 			assert.equal("-5", sumTwoSmallest([-3, -2, 6, 8, 20]));
+      				})
+      				it("This array should return 10", function(){
+         	 			assert.equal("10", sumTwoSmallest([18, 5, 23, 5]));
+      				})      				
+    			})`
+	},
+	{
+		name: "Shortest Word(s)",
+		questionText: `Write a function findShort that takes in a string of different words and returns the length of the shortest word(s).\n
+		For example, \n
+		findShort("This is an example sentence") would return 2. \n
+		findShort("Symphonies are composed") would return 3. \n
+		`,
+		tests: `describe("findShort", function(){
+        			it("This string should return 2", function(){
+         	 			assert.equal("2", findShort("This is an example sentence"));
+      				})
+      				it("This string should return 3", function(){
+         	 			assert.equal("3", findShort("Symphonies are composed"));
+      				})
+      				it("This string should return 6", function(){
+         	 			assert.equal("6", findShort("Praesent libero"));
+      				})     				
+    			})`
+	},
+	{
+		name: "Get the Middle Character(s)",
+		questionText: `Write a function named getMiddle that takes in a string and returns the middle character if the length is odd or the middle two characters if the length is even.\n
+		getMiddle("test") should return "es" \n
+		getMiddle("testing") should return "t" \n
+		`,
+		tests: `describe("getMiddle", function(){
+        			it("This string should return the string es", function(){
+         	 			assert.equal("es", getMiddle("test"));
+      				})
+      				it("This string should return the string t", function(){
+         	 			assert.equal("t", getMiddle("testing"));
+      				})
+      				it("This string should return the string dd", function(){
+         	 			assert.equal("dd", getMiddle("middle"));
+      				})
+      				it("This string should return the string A", function(){
+         	 			assert.equal("A", getMiddle("A"));
+      				})
+    			})`
+	},
+	{
 		name: "A Needle in a Haystack",
 		questionText: `Can you find the needle in the haystack?\n
 		Write a function findNeedle() that takes an array full of junk but containing one "needle"\n
@@ -88,7 +183,7 @@ const seedQuestions = () => db.Promise.map(
 		name: "Sum of Positive",
 		questionText: `You get an array of numbers, return the sum of all of the positives ones.\n
 		Example [1,-4,7,12] => 1 + 7 + 12 = 20\n
-		Write a function named positveSum that returns the sum of all the positive elements.\n
+		Write a function named positiveSum that returns the sum of all the positive elements.\n
 		`,
 		tests: `describe("positiveSum", function(){
         			it("This array should return 20", function(){
