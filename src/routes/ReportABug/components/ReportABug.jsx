@@ -51,7 +51,7 @@ class ReportABug extends React.Component {
                 className='thanks'
                 src='https://media.giphy.com/media/awpqNsKuFtXI4/giphy.gif' />
             </div>
-        :  
+        :
         <div>
           { this.state.error
             ? <div style={{color: "red"}}>{ this.state.errorText }</div>

@@ -34,8 +34,10 @@ class Login extends React.Component {
         <form onChange={this.onChangeHandler} onSubmit={this.onSubmitHandler}>
           <input type="text" id="username" placeholder="username"></input>
           <input type="password" id="password" placeholder="password"></input>
-          <button type="submit" className="btn btn-primary btn-small" id="loginSubmit">Submit</button>
-          <Link to="/signup" style={{color: "lightBlue"}}>[Sign Up]</Link>
+          <button type="submit" className="btn btn-primary btn-small" id="loginSubmit">Log In</button>
+          <Link to="/signup">
+            <button type="submit" className="btn btn-primary btn-small" id="signUp"> Sign Up</button>
+          </Link>
         </form>
       </div>
     )

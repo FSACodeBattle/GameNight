@@ -1,7 +1,7 @@
 #aboutContainer {
   height: 100%;
-  margin-top: 10px;
-  margin-bottom: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
   padding-top: 30px;
   padding-bottom: 15px;
   padding-right: 15px;
@@ -10,6 +10,11 @@
   margin-right: auto;
   background-color: rgba(0,0,0,.2);
 }
+
+#aboutRow {
+  height: 100%;
+}
+
 .thumbnail {
   height: 100%;
   width: 100%;

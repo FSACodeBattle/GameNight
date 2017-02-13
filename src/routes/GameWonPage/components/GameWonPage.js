@@ -1,14 +1,67 @@
-import React from 'react'
-// import FireworksImage from '../assets/fireworks.gif'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import './GameWonPage.scss';
 
-export const GameWonPage = () => (
-  <div>
-    <h1>You won!</h1>
-    <img
-      alt='Fireworks!'
-      className='fireworks'
-      src='http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif' />
-  </div>
-)
+class GameWonPage extends Component {
+  constructor(){
+    super()
+  }
+  render(){
+    const { ownAnswers, opponentAnswers } = this.props
+    return (
+      <div className="container" id="gameCompletePage">
+        <div className="row" id="headRow">
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div className="heady">
+              <img src="http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif" className="fireworks" />
+              <span className="slogan">Congrautions You Won!</span>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="boxy">
+            <div className="col-md-5" id="myanswer">
+              <div id="answersheader">
+                My Answers:
+              </div>
+               {
+                  ownAnswers && ownAnswers.map((answer, i = 1) =>
+                    <div>
+                      <div key={answer.id + i} style={{fontSize: '20px', color: 'black'}}>
+                        Question {++i}:
+                      </div>
+                      <div key={answer.id}>{answer}</div>
+                    </div>
+                  )
+               }
+          </div>
+          <div className="col-md-5 col-md-offset-2"  id="userAnswers">
+              <div id="answersheader">
+                Opponent's Answers:
+              </div>
+                {
+                 opponentAnswers && opponentAnswers.map((answer, i = 1) =>
+                    <div>
+                      <div key={answer.id + i} style={{fontSize: '20px', color: 'black'}}>
+                        Question {++i}:
+                      </div>
+                      <div key={answer.id}>{answer}</div>
+                    </div>
+                  )
+                }
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+}
 
-export default GameWonPage
+function mapStateToProps(state) {
+  return {
+    ownAnswers: state.matchResults.ownAnswers,
+    opponentAnswers: state.matchResults.opponentAnswers
+  }
+}
+
+export default connect(mapStateToProps)(GameWonPage);
