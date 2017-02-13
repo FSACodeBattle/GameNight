@@ -68,26 +68,45 @@ const seedUsers = () => db.Promise.map(
 const seedQuestions = () => db.Promise.map(
 	[
 	{
-		name: "Get the Middle Character(s)",
-		questionText: `Write a function named getMiddle that takes in a string and returns the middle character if the length is odd or the middle two characters if the length is even.\n
-		getMiddle("test") should return "es" \n
-		getMiddle("testing") should return "t" \n
+		name: "Shortest Word(s)",
+		questionText: `Write a function findShort that takes in a string of different words and returns the length of the shortest word(s).\n
+		For example, \n
+		findShort("This is an example sentence.") would return 2. \n
+		findShort("Symphonies are composed.") would return 3. \n
 		`,
-		tests: `describe("getMiddle", function(){
-        			it("This string should return the string es", function(){
-         	 			assert.equal("es", getMiddle("test"));
+		tests: `describe("findShort", function(){
+        			it("This string should return 2", function(){
+         	 			assert.equal("2", getMiddle("This is an example sentence."));
       				})
-      				it("This string should return the string t", function(){
-         	 			assert.equal("t", getMiddle("testing"));
+      				it("This string should return 3", function(){
+         	 			assert.equal("3", getMiddle("Symphonies are composed."));
       				})
-      				it("This string should return the string dd", function(){
-         	 			assert.equal("dd", getMiddle("middle"));
-      				})
-      				it("This string should return the string A", function(){
-         	 			assert.equal("A", getMiddle("A"));
-      				})
+      				it("This string should return 6", function(){
+         	 			assert.equal("6", getMiddle("Praesent libero."));
+      				})     				
     			})`
 	},
+	// {
+	// 	name: "Get the Middle Character(s)",
+	// 	questionText: `Write a function named getMiddle that takes in a string and returns the middle character if the length is odd or the middle two characters if the length is even.\n
+	// 	getMiddle("test") should return "es" \n
+	// 	getMiddle("testing") should return "t" \n
+	// 	`,
+	// 	tests: `describe("getMiddle", function(){
+ //        			it("This string should return the string es", function(){
+ //         	 			assert.equal("es", getMiddle("test"));
+ //      				})
+ //      				it("This string should return the string t", function(){
+ //         	 			assert.equal("t", getMiddle("testing"));
+ //      				})
+ //      				it("This string should return the string dd", function(){
+ //         	 			assert.equal("dd", getMiddle("middle"));
+ //      				})
+ //      				it("This string should return the string A", function(){
+ //         	 			assert.equal("A", getMiddle("A"));
+ //      				})
+ //    			})`
+	// },
 	// {
 	// 	name: "A Needle in a Haystack",
 	// 	questionText: `Can you find the needle in the haystack?\n
