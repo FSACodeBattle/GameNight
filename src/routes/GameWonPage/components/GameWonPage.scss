@@ -16,7 +16,6 @@
   }
 }
 
-
 #myanswer {
   background-color: rgba(0,0,0,.2);
   color: white;
@@ -24,14 +23,21 @@
   padding-left: 0px;
   word-wrap: break-word;
   font-size: 16px;
+  #answersheader {
+    margin-bottom: 5px;
+    background-color: #191919;
+  }
 }
 
 #userAnswers {
   background-color: rgba(0,0,0,.2);
   color: white;
-
   padding-right: 0px;
   padding-left: 0px;
   word-wrap: break-word;
   font-size: 16px;
+  #answersheader {
+    margin-bottom: 5px;
+    background-color: #191919;
+  }
 }

@@ -10,13 +10,11 @@
     margin-bottom: 1em;
     .img-responsive {
       width: 100%;
-      // height: 50%;
       margin: 0 auto;
       padding: 0 auto;
     }
   }
 }
-
 
 #myanswer {
   background-color: rgba(0,0,0,0.2);
@@ -25,6 +23,10 @@
   word-wrap: break-word;
   padding-left: 0px;
   font-size: 16px;
+  #answersheader {
+    margin-bottom: 5px;
+    background-color: #191919;
+  }
 }
 
 #userAnswers {
@@ -34,4 +36,8 @@
   word-wrap: break-word;
   padding-left: 0px;
   font-size: 16px;
+  #answersheader {
+    margin-bottom: 5px;
+    background-color: #191919;
+  }
 }

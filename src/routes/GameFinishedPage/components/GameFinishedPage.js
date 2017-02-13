@@ -23,26 +23,26 @@ class GameFinishedPage extends Component {
         </div>
         <div className="row">
           <div className="col-md-5" id="myanswer">
-            <div style={{backgroundColor: '#191919'}}>
+            <div id="answersheader">
               My Answers:
             </div>
               {
                 ownAnswers && ownAnswers.map((answer, i = 1) =>
                   <div>
-                    <div key={answer.id + i} style={{fontSize: '20px'}}>Question {++i}: </div>
+                    <div key={answer.id + i} style={{fontSize: '20px', color: '#777'}}>Question {++i}: </div>
                     <div key={answer.id}>{answer}</div>
                   </div>
                 )
               }
           </div>
           <div className="col-md-5 col-md-offset-2" id="userAnswers">
-            <div style={{backgroundColor: '#191919'}}>
+            <div id="answersheader">
               Opponent's Answers:
             </div>
               {
                 opponentAnswers && opponentAnswers.map((answer, i = 1) =>
                   <div>
-                    <div key={answer.id + i} style={{fontSize: '20px'}}>Question {++i}: </div>
+                    <div key={answer.id + i} style={{fontSize: '20px', color: '#777'}}>Question {++i}: </div>
                     <div key={answer.id}>{answer}</div>
                   </div>
                 )
