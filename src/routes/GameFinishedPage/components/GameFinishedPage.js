@@ -6,7 +6,6 @@ class GameFinishedPage extends Component {
   constructor() {
     super()
   }
-
   render(){
     const { ownAnswers, opponentAnswers } = this.props
     return (
@@ -14,28 +13,37 @@ class GameFinishedPage extends Component {
         <h1>You lost the game, but at least you finished all the questions :D
         </h1>
         <div className="row" id="answersRow">
-          <div className="col-xs-12 col-md-4 col-lg-4 col-lg-4" id="userAnswers">
+          <div className="col-md-6 col-md-offset-3" id="simpsons">
             <img
               alt='At least you tried'
               className='img-responsive'
-              src='http://ci.memecdn.com/2000578.gif' />
+              src='http://ci.memecdn.com/2000578.gif'
+            />
           </div>
-          <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8" id="myanswer">
-            My Answers:
-             {
-                ownAnswers && ownAnswers.map(answer =>
-                  <div key={answer.id}>
-                    {answer}
+        </div>
+        <div className="row">
+          <div className="col-md-5" id="myanswer">
+            <div style={{backgroundColor: '#191919'}}>
+              My Answers:
+            </div>
+              {
+                ownAnswers && ownAnswers.map((answer, i = 1) =>
+                  <div>
+                    <div key={answer.id + i}>Question {++i}</div>
+                    <div key={answer.id}>{answer}</div>
                   </div>
                 )
-             }
+              }
           </div>
-          <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8" id="userAnswers">
-            Opponents Answers:
+          <div className="col-md-5 col-md-offset-2" id="userAnswers">
+            <div style={{backgroundColor: '#191919'}}>
+              Opponent's Answers:
+            </div>
               {
-                opponentAnswers && opponentAnswers.map(answer =>
-                  <div key={answer.id}>
-                   {answer}
+                opponentAnswers && opponentAnswers.map((answer, i = 1) =>
+                  <div>
+                    <div key={answer.id + i}>Question {++i}</div>
+                    <div key={answer.id}>{answer}</div>
                   </div>
                 )
               }

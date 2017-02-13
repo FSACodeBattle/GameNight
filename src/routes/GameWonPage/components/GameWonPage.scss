@@ -1,13 +1,18 @@
-#gameWonPage {
+#gameFinished {
   background-color: rgba(0,0,0,.2);
   h1 {
+    margin-top: 10px;
     color: #fff;
-    padding-bottom: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
-  .img-responsive {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 auto;
+  #fireworks {
+    margin-bottom: 1em;
+    .img-responsive {
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 auto;
+    }
   }
 }
 
@@ -15,46 +20,18 @@
 #myanswer {
   background-color: rgba(0,0,0,.2);
   color: white;
-  // padding-top: 10px;
-  // padding-bottom: 10px;
-  // margin-top: 3px;
-  // margin-bottom: 3px;
-  // font-size: 16px;
+  padding-right: 0px;
+  padding-left: 0px;
+  word-wrap: break-word;
+  font-size: 16px;
 }
 
 #userAnswers {
   background-color: rgba(0,0,0,.2);
   color: white;
-  // padding-top: 10px;
-  // padding-bottom: 10px;
-  // margin-top: 3px;
-  // margin-bottom: 3px;
-  // font-size: 16px;
+
+  padding-right: 0px;
+  padding-left: 0px;
+  word-wrap: break-word;
+  font-size: 16px;
 }
-
-// #answersRow {
-//   margin-top: 10px;
-//   width: 100%;
-//   text-align: center;
-// }
-
-// #userAnswers {
-//   display: inline-block;
-//   background-color: #303133;
-
-// #answersRow {
-//   margin-top: 10px;
-//   width: 100%;
-//   text-align: center;
-// }
-
-// #userAnswers {
-//   display: inline-block;
-//   background-color: rgba(0,0,0,.2);
-//   color: #fff;
-//   height: 100%;
-//   width: 50%;
-//   min-height: 200px;
-//   font-size: 18px;
-//   margin: 0 auto;
-// }

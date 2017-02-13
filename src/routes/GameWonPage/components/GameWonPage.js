@@ -9,18 +9,22 @@ class GameWonPage extends Component {
   render(){
     const { ownAnswers, opponentAnswers } = this.props
     return (
-      <div className="container" id="gameWonPage">
+      <div className="container" id="gameFinished">
         <h1>Congratulations You Won!!</h1>
         <div className="row" id="answersRow">
+          <div className="col-md-6 col-md-offset-3" id="fireworks">
             <img
-              alt='Fireworks!'
-              className='img-responsive'
+              alt="Fireworks!"
+              className="img-responsive"
               src='http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif'
             />
+          </div>
         </div>
-        <div className="row justify-content-around">
-          <div className="col-xs-12 col-md-6 col-lg-6 col-lg-6" id="myanswer">
-            My Answers:
+        <div className="row">
+          <div className="col-md-5" id="myanswer">
+            <div style={{backgroundColor: '#191919'}}>
+              My Answers:
+            </div>
              {
                 ownAnswers && ownAnswers.map((answer, i = 1) =>
                   <div>
@@ -30,8 +34,10 @@ class GameWonPage extends Component {
                 )
              }
           </div>
-          <div className="col-xs-12 col-md-6 col-lg-6 col-lg-6"  id="userAnswers">
-              Opponent's Answers:
+          <div className="col-md-5 col-md-offset-2"  id="userAnswers">
+              <div style={{backgroundColor: '#191919'}}>
+                Opponent's Answers:
+              </div>
                 {
                  opponentAnswers && opponentAnswers.map((answer, i = 1) =>
                     <div>
