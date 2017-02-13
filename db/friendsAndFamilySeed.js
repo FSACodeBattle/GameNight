@@ -68,24 +68,36 @@ const seedUsers = () => db.Promise.map(
 const seedQuestions = () => db.Promise.map(
 	[
 	{
-		name: "Shortest Word(s)",
-		questionText: `Write a function findShort that takes in a string of different words and returns the length of the shortest word(s).\n
+		name: "Sum of Two Smallest Numbers",
+		questionText: `Write a function named sumTwoSmallest that takes in an array and returns the sum of the two smallest numbers in that array. \n
 		For example, \n
-		findShort("This is an example sentence") would return 2. \n
-		findShort("Symphonies are composed") would return 3. \n
+		sumTwoSmallest([19, 5, 42, 2, 77]) would return 7. \n
 		`,
 		tests: `describe("findShort", function(){
         			it("This string should return 2", function(){
          	 			assert.equal("2", findShort("This is an example sentence"));
-      				})
-      				it("This string should return 3", function(){
-         	 			assert.equal("3", findShort("Symphonies are composed"));
-      				})
-      				it("This string should return 6", function(){
-         	 			assert.equal("6", findShort("Praesent libero"));
-      				})     				
+      				})    				
     			})`
 	},
+	// {
+	// 	name: "Shortest Word(s)",
+	// 	questionText: `Write a function findShort that takes in a string of different words and returns the length of the shortest word(s).\n
+	// 	For example, \n
+	// 	findShort("This is an example sentence") would return 2. \n
+	// 	findShort("Symphonies are composed") would return 3. \n
+	// 	`,
+	// 	tests: `describe("findShort", function(){
+ //        			it("This string should return 2", function(){
+ //         	 			assert.equal("2", findShort("This is an example sentence"));
+ //      				})
+ //      				it("This string should return 3", function(){
+ //         	 			assert.equal("3", findShort("Symphonies are composed"));
+ //      				})
+ //      				it("This string should return 6", function(){
+ //         	 			assert.equal("6", findShort("Praesent libero"));
+ //      				})     				
+ //    			})`
+	// },
 	// {
 	// 	name: "Get the Middle Character(s)",
 	// 	questionText: `Write a function named getMiddle that takes in a string and returns the middle character if the length is odd or the middle two characters if the length is even.\n
