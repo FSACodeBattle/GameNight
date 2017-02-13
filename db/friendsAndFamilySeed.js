@@ -73,10 +73,16 @@ const seedQuestions = () => db.Promise.map(
 		For example, \n
 		sumTwoSmallest([19, 5, 42, 2, 77]) would return 7. \n
 		`,
-		tests: `describe("findShort", function(){
-        			it("This string should return 2", function(){
-         	 			assert.equal("2", findShort("This is an example sentence"));
-      				})    				
+		tests: `describe("sumTwoSmallest", function(){
+        			it("This array should return 7", function(){
+         	 			assert.equal("7", sumTwoSmallest([19, 5, 42, 2, 77]));
+      				}) 
+      				it("This array should return -5", function(){
+         	 			assert.equal("-5", sumTwoSmallest([-3, -2, 6, 8, 20]));
+      				})
+      				it("This array should return 10", function(){
+         	 			assert.equal("10", sumTwoSmallest([18, 5, 23, 5]));
+      				})      				
     			})`
 	},
 	// {
