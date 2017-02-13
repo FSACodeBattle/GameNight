@@ -68,23 +68,45 @@ const seedUsers = () => db.Promise.map(
 const seedQuestions = () => db.Promise.map(
 	[
 	{
-		name: "Sum of Two Smallest Numbers",
-		questionText: `Write a function named sumTwoSmallest that takes in an array and returns the sum of the two smallest numbers in that array. \n
+		name: "Even or Odd",
+		questionText: `Write a function called evenOrOdd that takes in a number and returns the string "even" for even numbers and the string "odd" for odd numbers.
 		For example, \n
-		sumTwoSmallest([19, 5, 42, 2, 77]) would return 7. \n
+		evenOrOdd(2) would return "Even"\n
+		evenOrOdd(3) would return "Odd"\n
 		`,
-		tests: `describe("sumTwoSmallest", function(){
-        			it("This array should return 7", function(){
-         	 			assert.equal("7", sumTwoSmallest([19, 5, 42, 2, 77]));
-      				}) 
-      				it("This array should return -5", function(){
-         	 			assert.equal("-5", sumTwoSmallest([-3, -2, 6, 8, 20]));
+		tests: `describe("evenOrOdd", function(){
+        			it("This number should return Even", function(){
+         	 			assert.equal("Even", evenOrOdd(2));
       				})
-      				it("This array should return 10", function(){
-         	 			assert.equal("10", sumTwoSmallest([18, 5, 23, 5]));
-      				})      				
+      				it("This number should return Even", function(){
+         	 			assert.equal("Even", evenOrOdd(4));
+      				}) 
+      				it("This number should return Odd", function(){
+         	 			assert.equal("Odd", evenOrOdd(3));
+      				})  
+      				it("This number should return Odd", function(){
+         	 			assert.equal("Odd", evenOrOdd(5));
+      				})     				
     			})`
 	},
+	// {
+	// 	name: "Sum of Two Smallest Numbers",
+	// 	questionText: `Write a function named sumTwoSmallest that takes in an array and returns the sum of the two smallest numbers in that array. \n
+	// 	For example, \n
+	// 	sumTwoSmallest([19, 5, 42, 2, 77]) would return 7. \n
+	// 	`,
+	// 	tests: `describe("sumTwoSmallest", function(){
+ //        			it("This array should return 7", function(){
+ //         	 			assert.equal("7", sumTwoSmallest([19, 5, 42, 2, 77]));
+ //      				}) 
+ //      				it("This array should return -5", function(){
+ //         	 			assert.equal("-5", sumTwoSmallest([-3, -2, 6, 8, 20]));
+ //      				})
+ //      				it("This array should return 10", function(){
+ //         	 			assert.equal("10", sumTwoSmallest([18, 5, 23, 5]));
+ //      				})      				
+ //    			})`
+	// },
 	// {
 	// 	name: "Shortest Word(s)",
 	// 	questionText: `Write a function findShort that takes in a string of different words and returns the length of the shortest word(s).\n
