@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './GameFinishedPage.scss';
+import CodeMirror from 'react-codemirror';
 
 class GameFinishedPage extends Component {
   constructor() {
