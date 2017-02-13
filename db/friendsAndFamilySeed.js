@@ -68,107 +68,130 @@ const seedUsers = () => db.Promise.map(
 const seedQuestions = () => db.Promise.map(
 	[
 	{
-		name: "A Needle in a Haystack",
-		questionText: `Can you find the needle in the haystack?\n
+		name: "Get the Middle Character(s)",
+		questionText: `Write a function named getMiddle that takes in a string and returns the middle character if the length is odd or the middle two characters if the length is even.\n
 		Write a function findNeedle() that takes an array full of junk but containing one "needle"\n
-		and returns the index of where it found the needle.\n
-		So findNeedle(['hay', 'junk', 'hay', 'hay', 'moreJunk', 'needle', 'randomJunk'])\n
-		should return 5.
-		`,
-		tests: `describe("findNeedle", function(){
-        			it("This array should return 5", function(){
-         	 			assert.equal(5, findNeedle(["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"]));
-      				})
-      				it("This array should return 0", function(){
-         	 			assert.equal(0, findNeedle(["needle"]));
-      				})
-    			})`
-	},
-	{
-		name: "Sum of Positive",
-		questionText: `You get an array of numbers, return the sum of all of the positives ones.\n
-		Example [1,-4,7,12] => 1 + 7 + 12 = 20\n
-		Write a function named positveSum that returns the sum of all the positive elements.\n
-		`,
-		tests: `describe("positiveSum", function(){
-        			it("This array should return 20", function(){
-         	 			assert.equal(20, positiveSum([1, -4, 7, 12]));
-      				})
-      				it("This array should return 5", function(){
-         	 			assert.equal(5, positiveSum([5, -1, -10, 0]));
-      				})
-    			})`
-	},
-	{
-		name: "Remove the First and Last",
-		questionText: `You receive an array with at least two elements.\n
-		Return a new array with first and last elements removed.
-		Example [1,-4,7,12] => [-4, 7]\n
-		Write a function named removeFirstAndLast that does this.\n
-		`,
-		tests: `describe("removeFirstAndLast", function(){
-        			it("This array should return [-4, 7]", function(){
-         	 			assert.equal(-4, removeFirstAndLast([1, -4, 7, 12])[0]);
-         	 			assert.equal(7, removeFirstAndLast([1, -4, 7, 12])[1]);
-      				})
-    			})`
-	},
-	{
-		name: "Find Maximum and Minimum Values of an Array",
-		questionText: `Your task is to make two functions named max and min that take in an array and return the maximum and minimum values of that array, respectively.\n
 		For example, \n
-		max([4,6,2,1,9,63,-134,566]) returns 566\n
-		min([-52, 56, 30, 29, -54, 0, -110]) returns -110\n
+		getMiddle("test") should return "es" \n
+		getMiddle("testing") should return "t" \n
 		`,
-		tests: `
-				describe("max", function(){
-        			it("This array should return 566", function(){
-         	 			assert.equal(566, max([4,6,2,1,9,63,-134,566]));
+		tests: `describe("getMiddle", function(){
+        			it("This string should return "es" ", function(){
+         	 			assert.equal("es", getMiddle("test"));
       				})
-      				it("This array should return 5", function(){
-         	 			assert.equal(5, max([5]));
+      				it("This string should return "t" ", function(){
+         	 			assert.equal("t", getMiddle("testing"));
       				})
-    			})
-    			describe("min", function(){
-        			it("This array should return -110", function(){
-         	 			assert.equal(-110, min([-52, 56, 30, 29, -54, 0, -110]));
+      				it("This string should return "dd" ", function(){
+         	 			assert.equal("dd", getMiddle("middle"));
       				})
-      				it("This array should return 0", function(){
-         	 			assert.equal(0, min([42, 54, 65, 87, 0]));
-      				})
-    			})
-    			`
-	},
-	{
-		name: "Fibonacci Series",
-		questionText: `Make a function named fib that takes in a non-negative integer n and returns the nth Fibonacci number.\n
-		The Fibonacci sequence is the series of numbers in which each number is the sum of the two preceding numbers.\n
-		1, 1, 2, 3, 5, 8, etc.
-		`,
-		tests: `describe("fib", function(){
-        			it("1st element should return 1", function(){
-         	 			assert.equal(1, fib(0));
-      				})
-      				it("2nd element should return 1", function(){
-         	 			assert.equal(1, fib(1));
-      				})
-      				it("3rd element should return 2", function(){
-         	 			assert.equal(2, fib(2));
-      				})
-      				it("4th element should return 3", function(){
-         	 			assert.equal(3, fib(3));
-      				})
-      				it("5th element should return 5", function(){
-         	 			assert.equal(5, fib(4));
-      				})
-      				it("6th element should return 8", function(){
-         	 			assert.equal(8, fib(5));
-      				})
-      				it("7th element should return 13", function(){
-         	 			assert.equal(13, fib(6));
+      				it("This string should return "A" ", function(){
+         	 			assert.equal("A", getMiddle("A"));
       				})
     			})`
 	},
+	// {
+	// 	name: "A Needle in a Haystack",
+	// 	questionText: `Can you find the needle in the haystack?\n
+	// 	Write a function findNeedle() that takes an array full of junk but containing one "needle"\n
+	// 	and returns the index of where it found the needle.\n
+	// 	So findNeedle(['hay', 'junk', 'hay', 'hay', 'moreJunk', 'needle', 'randomJunk'])\n
+	// 	should return 5.
+	// 	`,
+	// 	tests: `describe("findNeedle", function(){
+ //        			it("This array should return 5", function(){
+ //         	 			assert.equal(5, findNeedle(["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"]));
+ //      				})
+ //      				it("This array should return 0", function(){
+ //         	 			assert.equal(0, findNeedle(["needle"]));
+ //      				})
+ //    			})`
+	// },
+	// {
+	// 	name: "Sum of Positive",
+	// 	questionText: `You get an array of numbers, return the sum of all of the positives ones.\n
+	// 	Example [1,-4,7,12] => 1 + 7 + 12 = 20\n
+	// 	Write a function named positiveSum that returns the sum of all the positive elements.\n
+	// 	`,
+	// 	tests: `describe("positiveSum", function(){
+ //        			it("This array should return 20", function(){
+ //         	 			assert.equal(20, positiveSum([1, -4, 7, 12]));
+ //      				})
+ //      				it("This array should return 5", function(){
+ //         	 			assert.equal(5, positiveSum([5, -1, -10, 0]));
+ //      				})
+ //    			})`
+	// },
+	// {
+	// 	name: "Remove the First and Last",
+	// 	questionText: `You receive an array with at least two elements.\n
+	// 	Return a new array with first and last elements removed.
+	// 	Example [1,-4,7,12] => [-4, 7]\n
+	// 	Write a function named removeFirstAndLast that does this.\n
+	// 	`,
+	// 	tests: `describe("removeFirstAndLast", function(){
+ //        			it("This array should return [-4, 7]", function(){
+ //         	 			assert.equal(-4, removeFirstAndLast([1, -4, 7, 12])[0]);
+ //         	 			assert.equal(7, removeFirstAndLast([1, -4, 7, 12])[1]);
+ //      				})
+ //    			})`
+	// },
+	// {
+	// 	name: "Find Maximum and Minimum Values of an Array",
+	// 	questionText: `Your task is to make two functions named max and min that take in an array and return the maximum and minimum values of that array, respectively.\n
+	// 	For example, \n
+	// 	max([4,6,2,1,9,63,-134,566]) returns 566\n
+	// 	min([-52, 56, 30, 29, -54, 0, -110]) returns -110\n
+	// 	`,
+	// 	tests: `
+	// 			describe("max", function(){
+ //        			it("This array should return 566", function(){
+ //         	 			assert.equal(566, max([4,6,2,1,9,63,-134,566]));
+ //      				})
+ //      				it("This array should return 5", function(){
+ //         	 			assert.equal(5, max([5]));
+ //      				})
+ //    			})
+ //    			describe("min", function(){
+ //        			it("This array should return -110", function(){
+ //         	 			assert.equal(-110, min([-52, 56, 30, 29, -54, 0, -110]));
+ //      				})
+ //      				it("This array should return 0", function(){
+ //         	 			assert.equal(0, min([42, 54, 65, 87, 0]));
+ //      				})
+ //    			})
+ //    			`
+	// },
+	// {
+	// 	name: "Fibonacci Series",
+	// 	questionText: `Make a function named fib that takes in a non-negative integer n and returns the nth Fibonacci number.\n
+	// 	The Fibonacci sequence is the series of numbers in which each number is the sum of the two preceding numbers.\n
+	// 	1, 1, 2, 3, 5, 8, etc.
+	// 	`,
+	// 	tests: `describe("fib", function(){
+ //        			it("1st element should return 1", function(){
+ //         	 			assert.equal(1, fib(0));
+ //      				})
+ //      				it("2nd element should return 1", function(){
+ //         	 			assert.equal(1, fib(1));
+ //      				})
+ //      				it("3rd element should return 2", function(){
+ //         	 			assert.equal(2, fib(2));
+ //      				})
+ //      				it("4th element should return 3", function(){
+ //         	 			assert.equal(3, fib(3));
+ //      				})
+ //      				it("5th element should return 5", function(){
+ //         	 			assert.equal(5, fib(4));
+ //      				})
+ //      				it("6th element should return 8", function(){
+ //         	 			assert.equal(8, fib(5));
+ //      				})
+ //      				it("7th element should return 13", function(){
+ //         	 			assert.equal(13, fib(6));
+ //      				})
+ //    			})`
+	// },
 	// {
 	// 	name: "Hey! Diddle, diddle...",
 	// 	questionText: `In the nursery rhyme "Hey! Diddle, diddle..." write a function called motherGoose that fills in the blank. \n
