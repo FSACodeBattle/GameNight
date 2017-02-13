@@ -71,18 +71,18 @@ const seedQuestions = () => db.Promise.map(
 		name: "Shortest Word(s)",
 		questionText: `Write a function findShort that takes in a string of different words and returns the length of the shortest word(s).\n
 		For example, \n
-		findShort("This is an example sentence.") would return 2. \n
-		findShort("Symphonies are composed.") would return 3. \n
+		findShort("This is an example sentence") would return 2. \n
+		findShort("Symphonies are composed") would return 3. \n
 		`,
 		tests: `describe("findShort", function(){
         			it("This string should return 2", function(){
-         	 			assert.equal("2", getMiddle("This is an example sentence."));
+         	 			assert.equal("2", findShort("This is an example sentence"));
       				})
       				it("This string should return 3", function(){
-         	 			assert.equal("3", getMiddle("Symphonies are composed."));
+         	 			assert.equal("3", findShort("Symphonies are composed"));
       				})
       				it("This string should return 6", function(){
-         	 			assert.equal("6", getMiddle("Praesent libero."));
+         	 			assert.equal("6", findShort("Praesent libero"));
       				})     				
     			})`
 	},
