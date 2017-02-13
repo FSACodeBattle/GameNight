@@ -50,8 +50,8 @@
   margin-right: 0px;
 }
 
-.cm-invalidchar .cm-s-default .cm-error {
-    color: rgba(0, 0, 0, 0);
+.cm-invalidchar, .cm-s-default .cm-error {
+    color: #151515 !important;
 }
 
 .CodeMirror-gutter-wrapper {
