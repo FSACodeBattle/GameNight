@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './GameWonPage.scss';
+import CodeMirror from 'react-codemirror';
 
 class GameWonPage extends Component {
   constructor(){
     super()
   }
   render(){
-    const { ownAnswers, opponentAnswers } = this.props
+    const { ownAnswers, opponentAnswers } = this.props;
+    var optionsForAnswers = {
+      mode: 'javascript',
+      lineNumbers: true,
+      theme: 'base16-dark',
+      tabSize: 2,
+      lineWrapping: true,
+      showCursorWhenSelecting: true,
+      readOnly: true
+    };
     return (
       <div className="container" id="gameCompletePage">
         <div className="row" id="headRow">
           <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div className="heady">
               <img src="http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif" className="fireworks" />
-              <span className="slogan">Congrautions You Won!</span>
+              <span className="slogan">Congratulations You Won!</span>
             </div>
           </div>
         </div>
@@ -30,7 +40,12 @@ class GameWonPage extends Component {
                       <div key={answer.id + i} style={{fontSize: '20px', color: 'black'}}>
                         Question {++i}:
                       </div>
-                      <div key={answer.id}>{answer}</div>
+                      <div key={answer.id} >
+                        <CodeMirror 
+                          value={answer} 
+                          options={optionsForAnswers}
+                        />
+                      </div>
                     </div>
                   )
                }
@@ -45,7 +60,12 @@ class GameWonPage extends Component {
                       <div key={answer.id + i} style={{fontSize: '20px', color: 'black'}}>
                         Question {++i}:
                       </div>
-                      <div key={answer.id}>{answer}</div>
+                      <div key={answer.id} >
+                        <CodeMirror 
+                          value={answer} 
+                          options={optionsForAnswers}
+                        />
+                      </div>
                     </div>
                   )
                 }

@@ -7,7 +7,16 @@ class GameFinishedPage extends Component {
     super()
   }
   render(){
-    const { ownAnswers, opponentAnswers } = this.props
+    const { ownAnswers, opponentAnswers } = this.props;
+    var optionsForAnswers = {
+      mode: 'javascript',
+      lineNumbers: true,
+      theme: 'base16-dark',
+      tabSize: 2,
+      lineWrapping: true,
+      showCursorWhenSelecting: true,
+      readOnly: true
+    };
     return (
       <div className="container" id="gameCompletePage">
         <div className="row" id="headRow">
@@ -34,7 +43,12 @@ class GameFinishedPage extends Component {
                         <div key={answer.id + i} style={{fontSize: '20px', color: 'black'}}>
                           Question {++i}:
                         </div>
-                        <div key={answer.id}>{answer}</div>
+                        <div key={answer.id} >
+                          <CodeMirror 
+                            value={answer} 
+                            options={optionsForAnswers}
+                          />
+                        </div>
                       </div>
                     )
                  }
@@ -49,7 +63,12 @@ class GameFinishedPage extends Component {
                       <div key={answer.id + i} style={{fontSize: '20px', color: 'black'}}>
                         Question {++i}:
                       </div>
-                      <div key={answer.id}>{answer}</div>
+                      <div key={answer.id} >
+                        <CodeMirror 
+                          value={answer} 
+                          options={optionsForAnswers}
+                        />
+                      </div>
                     </div>
                   )
                 }
