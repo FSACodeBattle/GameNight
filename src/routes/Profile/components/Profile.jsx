@@ -30,7 +30,9 @@ class Profile extends React.Component {
                 <div>
                   Points: {user.points}
                 </div>
-                <MatchHistory userMatches={this.props.userMatches} />
+                <div className="profilePageMatchHistory">
+                  <MatchHistory userMatches={this.props.userMatches} />
+                </div>
               </div>
           )
           : ( <h2 className="profilePage"> Nonexistent User </h2> )

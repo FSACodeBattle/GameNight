@@ -40,11 +40,11 @@ class HomeView extends Component {
           </div>
         */}
           <div className="row" id="matchAndLeaders">
-{/*            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-              <MatchHistory />
-            </div>*/}
-            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div className="homepageleaderboard"/*className="col-xs-12 col-sm-6 col-md-6 col-lg-6"*/>
               <Leaderboard leaderboard={this.state.leaderboard}/>
+            </div>
+            <div className="homepageleaderboard"/*className="col-xs-12 col-sm-6 col-md-6 col-lg-6"*/>
+              <MatchHistory />
             </div>
             {/*<Achievements />*/}
           </div>
@@ -58,5 +58,3 @@ class HomeView extends Component {
 }
 
 export default HomeView;
-
-

@@ -1,4 +1,13 @@
 .profilePage {
-  margin: 0 auto;
+  margin: 20px auto;
   color: white;
+  font-size: 20px;
+}
+
+.profilePageMatchHistory {
+  width: 80%;
+  margin: 50px auto;
+  div {
+    color: white;
+  }
 }
