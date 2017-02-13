@@ -16,18 +16,21 @@
   }
 }
 
-#myanswer {
-  background-color: rgba(0,0,0,.2);
-  color: white;
-  padding-right: 0px;
-  padding-left: 0px;
-  word-wrap: break-word;
-  font-size: 16px;
-  #answersheader {
-    margin-bottom: 5px;
-    background-color: #191919;
-  }
-}
+// #myanswer {
+//   background-color: rgba(0,0,0,.2);
+//   color: black;
+//   padding-right: 0px;
+//   padding-left: 0px;
+//   word-wrap: break-word;
+//   font-size: 12px;
+//   max-height: 350px;
+//   overflow-y: scroll;
+//   border-radius: 10px 10px 0px 10px;
+//   #answersheader {
+//     margin-bottom: 5px;
+//     background-color: #191919;
+//   }
+// }
 
 #userAnswers {
   background-color: rgba(0,0,0,.2);
@@ -36,8 +39,84 @@
   padding-left: 0px;
   word-wrap: break-word;
   font-size: 16px;
+  max-height: 350px;
+  overflow-y: scroll;
+  border-radius: 10px 10px 10px 0px;
   #answersheader {
     margin-bottom: 5px;
     background-color: #191919;
+  }
+}
+
+#headRow {
+  height: 100%;
+  width: 100%;
+}
+.heady {
+  width: 740px;
+  height: 130px;
+  margin: 20px auto 10px auto;
+  background: #777;
+  // background: linear gradient(red, blue)!important;
+  border-radius: 50px 50px 10px 10px;
+  box-shadow: 5px 8px 8px black;
+  line-height: 130px;
+  .fireworks {
+    width: 75px;
+    height: 75px;
+    border-radius: 30px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+  }
+  .slogan {
+    font-size: 40px;
+    float: right;
+    font-family: 'Caveat Brush', cursive;
+    margin-right: 25%;
+  }
+}
+
+.boxy {
+  margin: 20px auto;
+  padding: 20px;
+  width: 714px;
+  height: 416px;
+  background: #777;
+  border-radius: 10px 10px 10px 50px;
+  box-shadow: 5px 8px 8px black;
+  #myanswer {
+    background-color: rgba(0,0,0,.2);
+    color: black;
+    padding-right: 0px;
+    padding-left: 0px;
+    word-wrap: break-word;
+    font-size: 12px;
+    max-height: 350px;
+    overflow-y: scroll;
+    border-radius: 10px 10px 0px 10px;
+    #answersheader {
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: white;
+      background-color: #191919;
+    }
+  }
+  #userAnswers {
+    background-color: rgba(0,0,0,.2);
+    color: black;
+    padding-right: 0px;
+    padding-left: 0px;
+    word-wrap: break-word;
+    font-size: 12px;
+    max-height: 350px;
+    overflow-y: scroll;
+    border-radius: 10px 10px 10px 0px;
+    #answersheader {
+      margin-bottom: 5px;
+      color: white;
+      font-size: 14px;
+      background-color: #191919;
+    }
   }
 }
