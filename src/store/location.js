@@ -23,14 +23,13 @@ export const updateLocation = ({ dispatch }) => {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = {};
+const initialState = null;
 export default function locationReducer (state = initialState, action) {
-  const newState = Object.assign({}, state);
-  
+
   switch(action.type) {
     case LOCATION_CHANGE:
-      newState.location = action.location;
+      return {pathname: action.payload};
       break;
   }
-  return newState;
+  return state;
 }
