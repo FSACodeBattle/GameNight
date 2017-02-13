@@ -11,7 +11,7 @@ class GameWonPage extends Component {
     return (
       <div className="container" id="gameCompletePage">
         <div className="row" id="headRow">
-          <div className="col col-xs-12 col-md-6 col-lg-12">
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div className="heady">
               <img src="http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif" className="fireworks" />
               <span className="slogan">Congrautions You Won!</span>

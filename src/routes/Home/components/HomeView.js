@@ -40,9 +40,9 @@ class HomeView extends Component {
           </div>
         */}
           <div className="row" id="matchAndLeaders">
-            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+{/*            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
               <MatchHistory />
-            </div>
+            </div>*/}
             <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
               <Leaderboard leaderboard={this.state.leaderboard}/>
             </div>
