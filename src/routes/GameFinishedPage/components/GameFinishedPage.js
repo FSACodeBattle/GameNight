@@ -29,7 +29,7 @@ class GameFinishedPage extends Component {
               {
                 ownAnswers && ownAnswers.map((answer, i = 1) =>
                   <div>
-                    <div key={answer.id + i}>Question {++i}</div>
+                    <div key={answer.id + i} style={{fontSize: '20px'}}>Question {++i}: </div>
                     <div key={answer.id}>{answer}</div>
                   </div>
                 )
@@ -42,7 +42,7 @@ class GameFinishedPage extends Component {
               {
                 opponentAnswers && opponentAnswers.map((answer, i = 1) =>
                   <div>
-                    <div key={answer.id + i}>Question {++i}</div>
+                    <div key={answer.id + i} style={{fontSize: '20px'}}>Question {++i}: </div>
                     <div key={answer.id}>{answer}</div>
                   </div>
                 )
