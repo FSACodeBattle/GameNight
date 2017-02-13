@@ -68,7 +68,7 @@ const seedUsers = () => db.Promise.map(
 const seedQuestions = () => db.Promise.map(
 	[
 	{
-		name: "Even or Odd",
+		name: "Double Characters",
 		questionText: `Write a function called evenOrOdd that takes in a number and returns the string "even" for even numbers and the string "odd" for odd numbers.
 		For example, \n
 		evenOrOdd(2) would return "Even"\n
@@ -89,6 +89,28 @@ const seedQuestions = () => db.Promise.map(
       				})     				
     			})`
 	},
+	// {
+	// 	name: "Even or Odd",
+	// 	questionText: `Write a function called evenOrOdd that takes in a number and returns the string "even" for even numbers and the string "odd" for odd numbers.
+	// 	For example, \n
+	// 	evenOrOdd(2) would return "Even"\n
+	// 	evenOrOdd(3) would return "Odd"\n
+	// 	`,
+	// 	tests: `describe("evenOrOdd", function(){
+ //        			it("This number should return Even", function(){
+ //         	 			assert.equal("Even", evenOrOdd(2));
+ //      				})
+ //      				it("This number should return Even", function(){
+ //         	 			assert.equal("Even", evenOrOdd(4));
+ //      				}) 
+ //      				it("This number should return Odd", function(){
+ //         	 			assert.equal("Odd", evenOrOdd(3));
+ //      				})  
+ //      				it("This number should return Odd", function(){
+ //         	 			assert.equal("Odd", evenOrOdd(5));
+ //      				})     				
+ //    			})`
+	// },
 	// {
 	// 	name: "Sum of Two Smallest Numbers",
 	// 	questionText: `Write a function named sumTwoSmallest that takes in an array and returns the sum of the two smallest numbers in that array. \n
