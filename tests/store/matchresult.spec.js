@@ -43,4 +43,34 @@ describe('(Internal Module) Match Result', () => {
       expect(state).to.deep.equal({opponentAnswers, ownAnswers});
     })
   })
+
+  describe('(Action Creator) setOpponentAnswers', () => {
+    it('Should be exported as a function.', () => {
+      expect(setOpponentAnswers).to.be.a('function');
+    })
+
+    it('Should return an action with type "SET_OPPONENT_ANSWERS".', () => {
+      expect(setOpponentAnswers()).to.have.property('type', SET_OPPONENT_ANSWERS);
+    })
+
+    it('Should assign the first argument to the "answers" property.', () => {
+      const answers = ['a'];
+      expect(setOpponentAnswers(answers)).to.have.property('answers', answers);
+    })
+  })
+
+  describe('(Action Creator) setOwnAnswers', () => {
+    it('Should be exported as a function.', () => {
+      expect(setOwnAnswers).to.be.a('function');
+    })
+
+    it('Should return an action with type "SET_OWN_ANSWERS".', () => {
+      expect(setOwnAnswers()).to.have.property('type', SET_OWN_ANSWERS);
+    })
+
+    it('Should assign the first argument to the "answers" property.', () => {
+      const answers = ['b'];
+      expect(setOwnAnswers(answers)).to.have.property('answers', answers);
+    })
+  })
 })
