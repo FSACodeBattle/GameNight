@@ -18,6 +18,7 @@
 
 #gameCompletePage {
   padding-top: 5px;
+  background-color: rgba(0,0,0,.2);
 }
 
 #userAnswers {
@@ -31,6 +32,7 @@
   overflow-y: scroll;
   border-radius: 10px 10px 10px 0px;
   #answersheader {
+    width: 100%;
     margin-bottom: 5px;
     background-color: #191919;
   }
@@ -122,23 +124,3 @@
     }
   }
 }
-
-
-// .boxy #myanswer .ReactCodeMirror {
-//     border: 2px solid #000;
-//     text-align: left;
-//     height: 130px;
-//     overflow-y: hidden;
-//     margin-bottom: 10px;
-// }
-
-
-// function evenOrOdd(num){
-//   console.log("hello")
-//   console.log("Hello")
-//   console.log("Hello")
-//   console.log("Hello")
-//   return num%2===0 ? "Even" : "Odd"
-// }
-
-// const findNeedle = (arr) => (arr.indexOf("needle"));
