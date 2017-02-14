@@ -351,7 +351,7 @@ class BattlePage extends Component {
           </div>
         </div>
         <ExampleModal modalIsOpen={this.state.modalIsOpen}/>
-        <button onClick={this.sendAttack}>Send Attack</button>
+        <button className="btn btn-primary btn-small" id="submit-btn-attack" onClick={this.sendAttack}>Send Attack</button>
       </div>
     );
   }
