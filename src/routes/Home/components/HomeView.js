@@ -27,31 +27,28 @@ class HomeView extends Component {
     return (
       <div>
         <Jumbotron>
-          <div className="container">
-            <div className="row">
+          <div className="container container-jumbotron">
+            <div className="row row-homeview">
               <img src="CodeBattle.png" rel="codebattleimage" />
             </div>
           </div>
         </Jumbotron>
         <HomePage />
-
-          {/*<div className="row" id="introaboutcode">
-            <h4 style={{color:"#777"}}>Welcome!</h4>
+        <div className="row matchleader">
+          <div className="col-xs-12 col-sm-6 col-md-6" id="matchhistoryboard"/*className="col-xs-12 col-sm-6 col-md-6 col-lg-6"*/>
+            <div style={{background: "rgba(0,0,0,.2)", fontSize: "22px", color: "white"}}>Leader Board</div>
+            <Leaderboard leaderboard={this.state.leaderboard}/>
           </div>
-        */}
-          <div className="row" id="matchAndLeaders">
-            <div className="homepageleaderboard"/*className="col-xs-12 col-sm-6 col-md-6 col-lg-6"*/>
-              <Leaderboard leaderboard={this.state.leaderboard}/>
-            </div>
-            <div className="homepageleaderboard"/*className="col-xs-12 col-sm-6 col-md-6 col-lg-6"*/>
-              <MatchHistory />
-            </div>
-            {/*<Achievements />*/}
+          <div className="col-xs-12 col-sm-6 col-md-6" id="leader"/*className="col-xs-12 col-sm-6 col-md-6 col-lg-6"*/>
+          <div style={{background: "rgba(0,0,0,.2)", fontSize: "22px", color: "white"}}>Match History</div>
+            <MatchHistory />
           </div>
-            {/* <div style={{paddingTop: "10px"}}>
-              <MainLobbyContainer />
-            </div> */}
+          {/*<Achievements />*/}
         </div>
+          {/* <div style={{paddingTop: "10px"}}>
+            <MainLobbyContainer />
+          </div> */}
+      </div>
 
     );
   }

@@ -60,7 +60,7 @@ class CodeEditor extends Component {
     };
     return (
       <div id="code-editor-text" className="container">
-        <div className="row">
+        <div className="row row-codeeditorpage">
           <div className="col-xs-12">
             <div id="enterCodeText"style={{color:"#777"}}>Enter Code
             </div>
@@ -73,7 +73,7 @@ class CodeEditor extends Component {
 
           </div>
         </div>
-        <div className="row">
+        <div className="row row-codeeditorpage">
           <div className="col-xs-12">
             <div id="enterCodeText"style={{color:"#777"}}>
               Answer

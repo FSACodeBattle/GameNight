@@ -22,7 +22,6 @@ export const Leaderboard = (props) => {
 		return (
   		<div id="leaderboardComponent">
   			<div className="table-responsive">
-  			<h2 style={{color:'#777'}}> Leaderboard </h2>
 				  <table className="table">
 				    <thead>
 				      <tr>
