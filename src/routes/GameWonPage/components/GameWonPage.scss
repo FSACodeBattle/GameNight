@@ -88,13 +88,13 @@
       font-size: 14px;
       color: white;
       background-color: #191919;
-      // .ReactCodeMirror {
-      //   border: 2px solid black;
-      //   text-align: left;
-      //   height: 20px;
-      //   overflow-y: hidden;
-      //   margin-bottom: 10px;
-      // }
+    }
+    .ReactCodeMirror {
+      border: 2px solid black;
+      text-align: left;
+      height: 150px;
+      overflow-y: hidden;
+      margin-bottom: 10px;
     }
   }
   #userAnswers {
@@ -113,5 +113,32 @@
       font-size: 14px;
       background-color: #191919;
     }
+    .ReactCodeMirror {
+      border: 2px solid black;
+      text-align: left;
+      height: 150px;
+      overflow-y: hidden;
+      margin-bottom: 10px;
+    }
   }
 }
+
+
+// .boxy #myanswer .ReactCodeMirror {
+//     border: 2px solid #000;
+//     text-align: left;
+//     height: 130px;
+//     overflow-y: hidden;
+//     margin-bottom: 10px;
+// }
+
+
+// function evenOrOdd(num){
+//   console.log("hello")
+//   console.log("Hello")
+//   console.log("Hello")
+//   console.log("Hello")
+//   return num%2===0 ? "Even" : "Odd"
+// }
+
+// const findNeedle = (arr) => (arr.indexOf("needle"));

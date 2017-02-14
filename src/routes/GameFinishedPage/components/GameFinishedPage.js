@@ -41,12 +41,12 @@ class GameFinishedPage extends Component {
                  {
                     ownAnswers && ownAnswers.map((answer, i = 1) =>
                       <div>
-                        <div key={answer.id + i} style={{fontSize: '20px', color: 'black'}}>
+                        <div key={answer.id + i} style={{fontSize: '18px', color: 'black'}}>
                           Question {++i}:
                         </div>
                         <div key={answer.id} >
-                          <CodeMirror 
-                            value={answer} 
+                          <CodeMirror
+                            value={answer}
                             options={optionsForAnswers}
                           />
                         </div>
@@ -61,12 +61,12 @@ class GameFinishedPage extends Component {
                 {
                  opponentAnswers && opponentAnswers.map((answer, i = 1) =>
                     <div>
-                      <div key={answer.id + i} style={{fontSize: '20px', color: 'black'}}>
+                      <div key={answer.id + i} style={{fontSize: '18px', color: 'black'}}>
                         Question {++i}:
                       </div>
                       <div key={answer.id} >
-                        <CodeMirror 
-                          value={answer} 
+                        <CodeMirror
+                          value={answer}
                           options={optionsForAnswers}
                         />
                       </div>
