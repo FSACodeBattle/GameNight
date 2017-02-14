@@ -79,31 +79,31 @@ const seedQuestions = () => db.Promise.map(
  //      				})
  //      				it("This should double characters", function(){
  //         	 			assert.equal("HHeelllloo  WWoorrlldd", doubleChar("Hello World"));
- //      				}) 				
- //    			})`
-	// },
-	// {
-	// 	name: "Even or Odd",
-	// 	questionText: `Write a function called evenOrOdd that takes in a number and returns the string "even" for even numbers and the string "odd" for odd numbers.
-	// 	For example, \n
-	// 	evenOrOdd(2) would return "Even"\n
-	// 	evenOrOdd(3) would return "Odd"\n
-	// 	`,
-	// 	tests: `describe("evenOrOdd", function(){
- //        			it("This number should return Even", function(){
- //         	 			assert.equal("Even", evenOrOdd(2));
  //      				})
- //      				it("This number should return Even", function(){
- //         	 			assert.equal("Even", evenOrOdd(4));
- //      				}) 
- //      				it("This number should return Odd", function(){
- //         	 			assert.equal("Odd", evenOrOdd(3));
- //      				})  
- //      				it("This number should return Odd", function(){
- //         	 			assert.equal("Odd", evenOrOdd(5));
- //      				})     				
  //    			})`
 	// },
+	{
+		name: "Even or Odd",
+		questionText: `Write a function called evenOrOdd that takes in a number and returns the string "even" for even numbers and the string "odd" for odd numbers.
+		For example, \n
+		evenOrOdd(2) would return "Even"\n
+		evenOrOdd(3) would return "Odd"\n
+		`,
+		tests: `describe("evenOrOdd", function(){
+        			it("This number should return Even", function(){
+         	 			assert.equal("Even", evenOrOdd(2));
+      				})
+      				it("This number should return Even", function(){
+         	 			assert.equal("Even", evenOrOdd(4));
+      				})
+      				it("This number should return Odd", function(){
+         	 			assert.equal("Odd", evenOrOdd(3));
+      				})
+      				it("This number should return Odd", function(){
+         	 			assert.equal("Odd", evenOrOdd(5));
+      				})
+    			})`
+	},
 	// {
 	// 	name: "Sum of Two Smallest Numbers",
 	// 	questionText: `Write a function named sumTwoSmallest that takes in an array and returns the sum of the two smallest numbers in that array. \n
@@ -113,13 +113,13 @@ const seedQuestions = () => db.Promise.map(
 	// 	tests: `describe("sumTwoSmallest", function(){
  //        			it("This array should return 7", function(){
  //         	 			assert.equal("7", sumTwoSmallest([19, 5, 42, 2, 77]));
- //      				}) 
+ //      				})
  //      				it("This array should return -5", function(){
  //         	 			assert.equal("-5", sumTwoSmallest([-3, -2, 6, 8, 20]));
  //      				})
  //      				it("This array should return 10", function(){
  //         	 			assert.equal("10", sumTwoSmallest([18, 5, 23, 5]));
- //      				})      				
+ //      				})
  //    			})`
 	// },
 	// {
@@ -138,7 +138,7 @@ const seedQuestions = () => db.Promise.map(
  //      				})
  //      				it("This string should return 6", function(){
  //         	 			assert.equal("6", findShort("Praesent libero"));
- //      				})     				
+ //      				})
  //    			})`
 	// },
 	// {
@@ -162,23 +162,23 @@ const seedQuestions = () => db.Promise.map(
  //      				})
  //    			})`
 	// },
-	// {
-	// 	name: "A Needle in a Haystack",
-	// 	questionText: `Can you find the needle in the haystack?\n
-	// 	Write a function findNeedle() that takes an array full of junk but containing one "needle"\n
-	// 	and returns the index of where it found the needle.\n
-	// 	So findNeedle(['hay', 'junk', 'hay', 'hay', 'moreJunk', 'needle', 'randomJunk'])\n
-	// 	should return 5.
-	// 	`,
-	// 	tests: `describe("findNeedle", function(){
- //        			it("This array should return 5", function(){
- //         	 			assert.equal(5, findNeedle(["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"]));
- //      				})
- //      				it("This array should return 0", function(){
- //         	 			assert.equal(0, findNeedle(["needle"]));
- //      				})
- //    			})`
-	// },
+	{
+		name: "A Needle in a Haystack",
+		questionText: `Can you find the needle in the haystack?\n
+		Write a function findNeedle() that takes an array full of junk but containing one "needle"\n
+		and returns the index of where it found the needle.\n
+		So findNeedle(['hay', 'junk', 'hay', 'hay', 'moreJunk', 'needle', 'randomJunk'])\n
+		should return 5.
+		`,
+		tests: `describe("findNeedle", function(){
+        			it("This array should return 5", function(){
+         	 			assert.equal(5, findNeedle(["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"]));
+      				})
+      				it("This array should return 0", function(){
+         	 			assert.equal(0, findNeedle(["needle"]));
+      				})
+    			})`
+	},
 	// {
 	// 	name: "Sum of Positive",
 	// 	questionText: `You get an array of numbers, return the sum of all of the positives ones.\n
@@ -270,8 +270,8 @@ const seedQuestions = () => db.Promise.map(
 	// 	Hey! diddle, diddle, \n
 	// 	The cat and the fiddle, \n
 	// 	The cow jumped over the moon; \n
-	// 	The little dog laughed \n 
-	// 	To see such sport, \n 
+	// 	The little dog laughed \n
+	// 	To see such sport, \n
 	// 	And the dish ran away with the _____. \n
 	// 	`,
 	// 	tests: `describe("motherGoose", function(){
@@ -289,26 +289,26 @@ const seedQuestions = () => db.Promise.map(
  //      				})
  //    			})`
 	// }
-	{
-		name: "Question 1",
-		questionText: `Make a function called returnOne that returns 1\n
-		function returnOne() {return 1} \n
-		This is filler text for a second line.\n
-		This is filler text for a third line.\n`,
-		tests: `describe("returnOne", function(){
-        			it("should return 1", function(){
-         	 			assert.equal(1, returnOne());
-      				})
-    			})`
-	}, {
-		name: "Question 2",
-		questionText: "Make a function called returnTwo that returns 2 	\nfunction returnTwo() {return 2} \n",
-		tests: `describe("returnTwo", function(){
-        			it("should return 2", function(){
-         	 			assert.equal(2, returnTwo());
-      				})
-    			})`
-	}, 
+	// {
+	// 	name: "Question 1",
+	// 	questionText: `Make a function called returnOne that returns 1\n
+	// 	function returnOne() {return 1} \n
+	// 	This is filler text for a second line.\n
+	// 	This is filler text for a third line.\n`,
+	// 	tests: `describe("returnOne", function(){
+ //        			it("should return 1", function(){
+ //         	 			assert.equal(1, returnOne());
+ //      				})
+ //    			})`
+	// }, {
+	// 	name: "Question 2",
+	// 	questionText: "Make a function called returnTwo that returns 2 	\nfunction returnTwo() {return 2} \n",
+	// 	tests: `describe("returnTwo", function(){
+ //        			it("should return 2", function(){
+ //         	 			assert.equal(2, returnTwo());
+ //      				})
+ //    			})`
+	// },
 	// {
 	// 	name: "Question 3",
 	// 	questionText: "Make a function called returnThree that returns 3 	\nfunction returnThree() {return 3} \n",

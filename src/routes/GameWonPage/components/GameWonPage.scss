@@ -18,6 +18,7 @@
 
 #gameCompletePage {
   padding-top: 5px;
+  background-color: rgba(0,0,0,.2);
 }
 
 #userAnswers {
@@ -31,6 +32,7 @@
   overflow-y: scroll;
   border-radius: 10px 10px 10px 0px;
   #answersheader {
+    width: 100%;
     margin-bottom: 5px;
     background-color: #191919;
   }
@@ -45,7 +47,6 @@
   height: 130px;
   margin: 20px auto 10px auto;
   background: #777;
-  // background: linear gradient(red, blue)!important;
   border-radius: 50px 50px 10px 10px;
   box-shadow: 5px 8px 8px black;
   line-height: 130px;
@@ -89,6 +90,13 @@
       color: white;
       background-color: #191919;
     }
+    .ReactCodeMirror {
+      border: 2px solid black;
+      text-align: left;
+      height: 150px;
+      overflow-y: hidden;
+      margin-bottom: 10px;
+    }
   }
   #userAnswers {
     background-color: rgba(0,0,0,.2);
@@ -105,6 +113,13 @@
       color: white;
       font-size: 14px;
       background-color: #191919;
+    }
+    .ReactCodeMirror {
+      border: 2px solid black;
+      text-align: left;
+      height: 150px;
+      overflow-y: hidden;
+      margin-bottom: 10px;
     }
   }
 }

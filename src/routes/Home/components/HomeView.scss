@@ -14,14 +14,14 @@ h2 {
   margin-right: auto;
 }
 
-.container {
+.container.container-jumbotron {
   height: 100%;
   margin-top: auto;
   margin-bottom: auto;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-right: 15px;
-  padding-left: 15px;
+  // padding-top: 15px;
+  // padding-bottom: 15px;
+  // padding-right: 15px;
+  // padding-left: 15px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -36,7 +36,7 @@ h2 {
   background-image: url("../../../../public/background.jpg");
   background-repeat: no-repeat;
   background-size:100% 100%;
-  .row {
+  .row.row-homeview {
     img {
       width: 45%;
       margin: 0 auto;
@@ -56,10 +56,22 @@ h2 {
   }
 }
 
-.homepageleaderboard {
-  width: 80%;
-  margin: 50px auto;
-  div {
-    color: white;
+// .homepageleaderboard {
+//   width: 80%;
+//   margin: 50px auto;
+//   div {
+//     color: white;
+//   }
+// }
+
+.row.matchleader {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 15px;
+  #matchhistoryboard {
+    margin-top: 20px;
+  }
+  #leader {
+    margin-top: 20px;
   }
 }

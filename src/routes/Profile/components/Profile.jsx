@@ -31,6 +31,7 @@ class Profile extends React.Component {
                   Points: {user.points}
                 </div>
                 <div className="profilePageMatchHistory">
+                  <h2><span>Match History</span></h2>
                   <MatchHistory userMatches={this.props.userMatches} />
                 </div>
               </div>

@@ -21,7 +21,7 @@ class GameWonPage extends Component {
     return (
       <div className="container" id="gameCompletePage">
         <div className="row" id="headRow">
-          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div className="col col-xs-12 col-md-12 col-lg-12">
             <div className="heady">
               <img src="http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif" className="fireworks" />
               <span className="slogan">Congratulations You Won!</span>
@@ -37,13 +37,15 @@ class GameWonPage extends Component {
                {
                   ownAnswers && ownAnswers.map((answer, i = 1) =>
                     <div>
-                      <div key={answer.id + i} style={{fontSize: '20px', color: 'black'}}>
+                      <div key={answer.id + i} style={{fontSize: '16px', color: 'black'}}>
                         Question {++i}:
                       </div>
                       <div key={answer.id} >
-                        <CodeMirror 
-                          value={answer} 
+                        <CodeMirror
+                          className="gamefinishcode"
+                          value={answer}
                           options={optionsForAnswers}
+                         /* setStyle={} */
                         />
                       </div>
                     </div>
@@ -51,30 +53,31 @@ class GameWonPage extends Component {
                }
           </div>
           <div className="col-md-5 col-md-offset-2"  id="userAnswers">
-              <div id="answersheader">
-                Opponent's Answers:
-              </div>
-                {
-                 opponentAnswers && opponentAnswers.map((answer, i = 1) =>
-                    <div>
-                      <div key={answer.id + i} style={{fontSize: '20px', color: 'black'}}>
-                        Question {++i}:
-                      </div>
-                      <div key={answer.id} >
-                        <CodeMirror 
-                          value={answer} 
-                          options={optionsForAnswers}
-                        />
-                      </div>
+            <div id="answersheader">
+              Opponent's Answers:
+            </div>
+              {
+               opponentAnswers && opponentAnswers.map((answer, i = 1) =>
+                  <div>
+                    <div key={answer.id + i} style={{fontSize: '16px', color: 'black'}}>
+                      Question {++i}:
                     </div>
-                  )
-                }
+                    <div key={answer.id} >
+                      <CodeMirror
+                        value={answer}
+                        id="gameCodeEditor"
+                        options={optionsForAnswers}
+                      />
+                    </div>
+                  </div>
+                )
+              }
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
 }
 
 function mapStateToProps(state) {

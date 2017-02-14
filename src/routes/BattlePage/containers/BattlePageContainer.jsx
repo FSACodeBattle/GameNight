@@ -333,7 +333,7 @@ class BattlePage extends Component {
     return (
       <div className="container" id="battlePageWrapper">
         <Notifications />
-        <div className="row">
+        <div className="row row-battlepage">
           <div className="col col-xs-12 col-md-6">
             <label id="playerProgressLabel">{`${this.state.player1.username}`}</label>
             <ProgressBar Progress={this.state.player1.progress} QuestionsArr={this.state.questionsArr} />
@@ -343,7 +343,7 @@ class BattlePage extends Component {
             <ProgressBar Progress={this.state.player2.progress} QuestionsArr={this.state.questionsArr} />
           </div>
         </div>
-        <div className="row">
+        <div className="row row-battlepage">
           <div className="col col-xs-12 col-sm-6 col-md-4 col-lg-4" id="problemsContainers">
             <Problem CurrentQuestion={this.state.questionsArr[this.state.currentQuestion]}/>
            </div>
@@ -352,7 +352,7 @@ class BattlePage extends Component {
           </div>
         </div>
         <ExampleModal modalIsOpen={this.state.modalIsOpen}/>
-        <button onClick={this.sendAttack}>Send Attack</button>
+        <button className="btn btn-primary btn-small" id="submit-btn-attack" onClick={this.sendAttack}>Send Attack</button>
       </div>
     );
   }
