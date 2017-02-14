@@ -21,7 +21,7 @@ class GameFinishedPage extends Component {
     return (
       <div className="container" id="gameCompletePage">
         <div className="row" id="headRow">
-          <div className="col col-xs-12 col-md-6 col-lg-12">
+          <div className="col col-xs-12 col-md-12 col-lg-12">
             <div className="heady">
               <img
                 alt="At least you tried"
@@ -41,7 +41,7 @@ class GameFinishedPage extends Component {
                  {
                     ownAnswers && ownAnswers.map((answer, i = 1) =>
                       <div>
-                        <div key={answer.id + i} style={{fontSize: '18px', color: 'black'}}>
+                        <div key={answer.id + i} style={{fontSize: '16px', color: 'black'}}>
                           Question {++i}:
                         </div>
                         <div key={answer.id} >
@@ -61,7 +61,7 @@ class GameFinishedPage extends Component {
                 {
                  opponentAnswers && opponentAnswers.map((answer, i = 1) =>
                     <div>
-                      <div key={answer.id + i} style={{fontSize: '18px', color: 'black'}}>
+                      <div key={answer.id + i} style={{fontSize: '16px', color: 'black'}}>
                         Question {++i}:
                       </div>
                       <div key={answer.id} >

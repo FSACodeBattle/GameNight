@@ -21,7 +21,7 @@ class GameWonPage extends Component {
     return (
       <div className="container" id="gameCompletePage">
         <div className="row" id="headRow">
-          <div className="col col-xs-12 col-md-6 col-lg-12">
+          <div className="col col-xs-12 col-md-12 col-lg-12">
             <div className="heady">
               <img src="http://bestanimations.com/Holidays/Fireworks/fireworks/ba-large-white-firework-gif-pic.gif" className="fireworks" />
               <span className="slogan">Congratulations You Won!</span>
@@ -37,7 +37,7 @@ class GameWonPage extends Component {
                {
                   ownAnswers && ownAnswers.map((answer, i = 1) =>
                     <div>
-                      <div key={answer.id + i} style={{fontSize: '18px', color: 'black'}}>
+                      <div key={answer.id + i} style={{fontSize: '16px', color: 'black'}}>
                         Question {++i}:
                       </div>
                       <div key={answer.id} >
@@ -59,7 +59,7 @@ class GameWonPage extends Component {
               {
                opponentAnswers && opponentAnswers.map((answer, i = 1) =>
                   <div>
-                    <div key={answer.id + i} style={{fontSize: '18px', color: 'black'}}>
+                    <div key={answer.id + i} style={{fontSize: '16px', color: 'black'}}>
                       Question {++i}:
                     </div>
                     <div key={answer.id} >
