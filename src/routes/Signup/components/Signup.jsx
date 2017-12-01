@@ -11,8 +11,8 @@ class Signup extends React.Component {
     super(props);
 
     this.state = {
-      username: '',
-      password: '',
+      signupUsername: '',
+      signupPassword: '',
       confirmPassword: '',
       name: '',
       email: '',
@@ -26,12 +26,12 @@ class Signup extends React.Component {
 
   onSubmitHandler(event) {
     event.preventDefault();
-    if(!this.state.username || !this.state.password || !this.state.confirmPassword
+    if(!this.state.signupUsername || !this.state.signupPassword || !this.state.confirmPassword
         || !this.state.name || !this.state.email)
     {
       this.setState({error: true, errorText: "One or more invalid fields!"});
     }
-    else if(this.state.password !== this.state.confirmPassword) {
+    else if(this.state.signupPassword !== this.state.confirmPassword) {
       this.setState({error: true, errorText: "Passwords do not match!"});
     }
     else {
@@ -58,8 +58,8 @@ class Signup extends React.Component {
           : null
         }
         <form onChange={this.onChangeHandler} onSubmit={this.onSubmitHandler}>
-          <input type="text" id="signup-username" placeholder="username" className="loginForm"></input>
-          <input type="password" id="signup-password" placeholder="password" className="loginForm"></input>
+          <input type="text" id="signupUsername" placeholder="username" className="loginForm"></input>
+          <input type="password" id="signupPassword" placeholder="password" className="loginForm"></input>
           <input type="password" id="confirmPassword" placeholder="confirm password" className="loginForm"></input>
           <input type="text" id="name" placeholder="name" className="loginForm"></input>
           <input type="text" id="email" placeholder="email" className="loginForm"></input>
