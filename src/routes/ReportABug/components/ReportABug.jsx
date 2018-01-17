@@ -58,9 +58,12 @@ class ReportABug extends React.Component {
             : null
           }
           <form onChange={this.onChangeHandler} onSubmit={this.onSubmitHandler}>
-            <input type="text" id="bugName" placeholder="bug name" className="bugForm"></input>
-            <textarea id="bugDescription" placeholder="bug description" className="bugForm"></textarea>
-            <input type="text" id="name" placeholder="your name" className="bugForm"></input>
+            <h3>Bug Name</h3>
+            <input type="text" id="bugName" className="bugForm"></input>
+            <h3>Bug Description</h3>
+            <textarea id="bugDescription" className="bugForm"></textarea>
+            <h3>Your Name</h3>
+            <input type="text" id="name" className="bugForm"></input>
             <button type="submit" id="bugSubmit" className="btn btn-primary btn-small">Submit</button>
           </form>
         </div>
