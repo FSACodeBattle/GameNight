@@ -4,3 +4,4 @@ npm-debug.log.*
 src/routes/.DS_Store
 bower_components
 coverage/*
+dist
