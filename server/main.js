@@ -151,4 +151,6 @@ if (project.env === 'development') {
   app.use(express.static(project.paths.dist()))
 }
 
+app.get('*', (req, res, next) => res.sendFile('/dist/index.html'));
+
 module.exports = app

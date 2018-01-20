@@ -1,0 +1,1 @@
+web: npm run deploy:prod && node server/main.js
