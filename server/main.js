@@ -81,7 +81,8 @@ app.post("/report-a-bug", function(req, res, next){
 })
 
 app.get('/signout', (req, res, next) => {
-  req.session.destroy();
+  //req.session.destroy();
+  console.log(req.logout);
   res.sendStatus(200);
 })
 
