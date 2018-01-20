@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 app.use(require('cookie-parser')());
-app.use(require('express-session')({ secret: 'battlecode', resave: false, saveUninitialized: false }));
+app.use(require('cookie-session')({ secret: 'battlecode', resave: false, saveUninitialized: false }));
 
 
 passport.use(new LocalStrategy(function(username, pass, cb){
@@ -146,8 +146,13 @@ if (project.env === 'development') {
   // the web server and not the app server, but this helps to demo the
   // server in production.
   app.use(express.static(project.paths.dist()))
+} else {
+  app.use(express.static('dist'));
+  app.use(express.static('public'));
 }
 
-app.get('*', (req, res, next) => res.sendFile('/dist/index.html'));
+const io = require('socket.io')(app.listen(process.env.PORT || 3000, console.log("I'm listening on port 3000")));
+
+app.get('*', (req, res, next) => res.sendFile(path.resolve(__dirname + '/../dist/index.html')));
 
 module.exports = app
