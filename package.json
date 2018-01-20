@@ -21,7 +21,7 @@
     "codecov": "cat coverage/*/lcov.info | codecov",
     "seed": "node db/seed.js",
     "simple": "node db/simpleseed",
-    "start": "npm run deploy:prod && node server/main.js"
+    "start": "npm run seed && npm run deploy:prod && node server/main.js"
   },
   "betterScripts": {
     "compile": {
