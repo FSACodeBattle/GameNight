@@ -20,9 +20,6 @@ const { User, Bug } = require('../db/database');
 // Apply gzip compression
 app.use(compress())
 
-//Logging Middleware
-app.use(require('volleyball'));
-
 // Use BodyParser
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
