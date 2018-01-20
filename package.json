@@ -12,7 +12,6 @@
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src tests",
     "lint:fix": "npm run lint -- --fix",
-    "start": "better-npm-run start",
     "dev": "better-npm-run dev",
     "test": "better-npm-run test",
     "test:dev": "npm run test -- --watch",
@@ -21,7 +20,8 @@
     "deploy:prod": "better-npm-run deploy:prod",
     "codecov": "cat coverage/*/lcov.info | codecov",
     "seed": "node db/seed.js",
-    "simple": "node db/simpleseed"
+    "simple": "node db/simpleseed",
+    "start": "npm run deploy:prod && node server/main.js"
   },
   "betterScripts": {
     "compile": {
