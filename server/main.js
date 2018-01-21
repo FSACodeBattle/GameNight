@@ -57,7 +57,6 @@ passport.deserializeUser(function(id, cb) {
 app.post("/signin", passport.authenticate('local', {failureRedirect: '/failure', successRedirect: '/user'}));
 
 app.post("/signup", function(req, res, next){
-  console.log(req.body);
   User.findOne({ where: { username: req.body.username } })
     .then(function(user){
       if(!user){
@@ -72,7 +71,6 @@ app.post("/signup", function(req, res, next){
 })
 
 app.post("/report-a-bug", function(req, res, next){
-  console.log(req.body);
   Bug.create({
     bugName: req.body.bugName,
     bugDescription: req.body.bugDescription,
@@ -81,8 +79,7 @@ app.post("/report-a-bug", function(req, res, next){
 })
 
 app.get('/signout', (req, res, next) => {
-  //req.session.destroy();
-  console.log(req.logout);
+  req.logout();
   res.sendStatus(200);
 })
 
