@@ -35,7 +35,7 @@ class Signup extends React.Component {
       this.setState({error: true, errorText: "Passwords do not match!"});
     }
     else {
-      axios.post('signup', this.state)
+      axios.post('/signup', this.state)
       .then(result => {
         if(result.data === "user exists") this.setState({error: true, errorText: "User already exists!"});
         else {
