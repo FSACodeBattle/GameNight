@@ -57,12 +57,12 @@ passport.deserializeUser(function(id, cb) {
 app.post("/signin", passport.authenticate('local', {failureRedirect: '/failure', successRedirect: '/user'}));
 
 app.post("/signup", function(req, res, next){
-  User.findOne({ where: { username: req.body.username } })
+  User.findOne({ where: { username: req.body.signupUsername } })
     .then(function(user){
       if(!user){
         User.create({
-          username: req.body.username,
-          password: bcrypt.hashSync(req.body.password, 10),
+          username: req.body.signupUsername,
+          password: bcrypt.hashSync(req.body.signupPassword, 10),
           name: req.body.name,
           email: req.body.email
         }).then(() => passport.authenticate("local", {failureRedirect:"/failure", successRedirect: "/user"})(req, res, next));
