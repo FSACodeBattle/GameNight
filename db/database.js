@@ -1,7 +1,12 @@
 var Sequelize = require('sequelize');
+require('dotenv').config();
 
-const db = new Sequelize(process.env["DATABASE_URL"] || 'postgres://localhost:5432/code_battle', {
-  logging: false
+const db = new Sequelize(process.env["DATABASE_URL"], {
+  logging: false,
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: true
+  }
 });
 
 const Bug = db.define('bugs', {
