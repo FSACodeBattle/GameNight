@@ -76,7 +76,8 @@ class Header extends React.Component {
         textAlign: 'center'
       }
     }
-    const user = this.props.user;
+    const { user } = this.props;
+    console.log(user);
     return (
       <div>
         <Navbar inverse collapseOnSelect fluid={true}>

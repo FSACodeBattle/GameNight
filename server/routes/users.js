@@ -34,7 +34,6 @@ module.exports = require('express').Router()
 		.catch(next)
 	})
 	.get('/user/:username', (req, res, next) => {
-		console.log('adfjalfa', req.params.username);
 		User.findOne({where: {username: req.params.username}})
 		.then(user => res.send(user))
 		.catch(next)

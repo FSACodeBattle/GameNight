@@ -37,12 +37,16 @@ class Signup extends React.Component {
     else {
       axios.post('/signup', this.state)
       .then(result => {
-        if(result.data === "user exists") this.setState({error: true, errorText: "User already exists!"});
-        else {
-          this.props.setLoggedInUser(result.data);
-          browserHistory.push('/');
+        const { data } = result;
+        console.log('adjaksdfa', data);
+        switch(data) {
+          case 'user exists': this.setState({error: true, errorText: "User already exists"}); break;
+          case 'Validation isEmail failed': this.setState({error: true, errorText: "Invalid email address"}); break;
+          default:
+            browserHistory.push('/');
+            break;
         }
-      })
+      });
     }
   }
 

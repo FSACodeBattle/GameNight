@@ -53,8 +53,7 @@ passport.deserializeUser(function(id, cb) {
   });
 });
 
-
-app.post("/signin", passport.authenticate('local', {failureRedirect: '/failure', successRedirect: '/user'}));
+app.post("/signin", passport.authenticate('local'), (req, res) => res.send(req.user));
 
 app.post("/signup", function(req, res, next){
   User
@@ -67,11 +66,8 @@ app.post("/signup", function(req, res, next){
         name: req.body.name,
         email: req.body.email
       })
-      .then(() => passport.authenticate("local", {failureRedirect:"/failure", successRedirect: "/user"})(req, res, next))
-      .catch(error => {
-        console.log(error);
-        res.send(error.message);
-      });
+      .then(() => res.sendStatus(200))
+      .catch(error => res.send(error.message.split(': ')[1]));
     } else res.send("user exists");
   })
 })
@@ -89,7 +85,10 @@ app.get('/signout', (req, res, next) => {
   res.sendStatus(200);
 })
 
-app.get('/user', (req, res, next) => res.send(req.user));
+app.get('/user', (req, res, next) => {
+  console.log('req', req.user);
+  res.send(req.user)
+});
 app.get('/failure', (req, res, next) => res.send(null));
 
 app.use('/api', require('./routes/'));
