@@ -6,6 +6,7 @@ const webpackConfig = require('../config/webpack.config')
 const project = require('../config/project.config')
 const compress = require('compression')
 const bodyParser = require('body-parser');
+const publicIp = require('public-ip');
 
 const history = require('connect-history-api-fallback');
 
@@ -53,6 +54,10 @@ passport.deserializeUser(function(id, cb) {
   });
 });
 
+app.get('/server/ip', (req, res, next) => {
+  publicIp.v4().then(ip => res.send(ip));
+});
+
 app.post("/signin", passport.authenticate('local'), (req, res) => res.send(req.user));
 
 app.post("/signup", function(req, res, next){
@@ -86,7 +91,6 @@ app.get('/signout', (req, res, next) => {
 })
 
 app.get('/user', (req, res, next) => {
-  console.log('req', req.user);
   res.send(req.user)
 });
 app.get('/failure', (req, res, next) => res.send(null));

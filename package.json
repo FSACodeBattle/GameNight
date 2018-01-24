@@ -21,7 +21,7 @@
     "codecov": "cat coverage/*/lcov.info | codecov",
     "seed": "node db/seed.js",
     "simple": "node db/simpleseed",
-    "start": "npm run seed && npm run deploy:prod && node server/main.js"
+    "start": "npm run seed && npm run deploy:prod && nodemon server/main.js"
   },
   "betterScripts": {
     "compile": {
@@ -114,6 +114,7 @@
     "passport-local": "^1.0.0",
     "pg": "^6.1.2",
     "postcss-loader": "^1.1.0",
+    "public-ip": "^2.4.0",
     "react": "^15.0.0",
     "react-bootstrap": "^0.30.7",
     "react-codemirror": "^0.3.0",

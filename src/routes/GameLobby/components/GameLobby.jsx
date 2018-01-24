@@ -1,14 +1,16 @@
 import React from 'react';
 import './GameLobby.scss';
+import axios from 'axios';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
 
 class GameLobby extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      copied: false
+      copied: false,
+      serverIp: ''
     }
   }
 
@@ -17,6 +19,15 @@ class GameLobby extends React.Component {
     socket.on('startGame', data => {
       browserHistory.push('/battlePage');
     })
+  }
+
+  componentWillMount() {
+    axios.get('/server/ip')
+      .then(res => res.data)
+      .then(ip => {
+        console.log('asdfajldfjasd', ip);
+        this.setState({serverIp: ip});
+      });
   }
 
   render() {
@@ -31,12 +42,12 @@ class GameLobby extends React.Component {
               <input
                 type="text"
                 className="form-control"
-                value={`localhost:3000/lobby/${this.props.roomid}`}
+                value={`${this.state.serverIp}/lobby/${this.props.roomid}`}
                 onChange={() => this.setState({ copied: false})}
               />
 
               <CopyToClipboard
-                text={`http://138.197.51.247/lobby/${this.props.roomid}`}
+                text={`${this.state.serverIp}/lobby/${this.props.roomid}`}
                 onCopy={() => this.setState({copied: true})}
                 >
                   <button className="btn btn-primary btn-join">Copy To Clipboard</button>
@@ -50,16 +61,3 @@ class GameLobby extends React.Component {
   }
 }
 export default GameLobby;
-
-//   render() {
-//     return (
-//       <div style={{color:"white"}}>
-//         Lobby
-//         <div>
-//           <textarea value={`localhost/lobby/${this.props.roomid}`} style={{resize: "none", textAlign: "center", color: "black"}} rows="1" readOnly>
-//           </textarea>
-//         </div>
-//       </div>
-//     )
-//   }
-// }
