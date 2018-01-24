@@ -28,11 +28,11 @@ class JoinLobby extends React.Component {
     render() {
         return (
             <div>
-                <input type="text" value={this.state.roomId} onChange={handleChange}/>
-                <button onClick={handleJoin}>Join</button>
+                <input type="text" value={this.state.roomId} onChange={this.handleChange}/>
+                <button onClick={this.handleJoin}>Join</button>
             </div>
         )
     }
 }
 
-export default connect()(JoinLobby);
+export default connect(null, null)(JoinLobby);
