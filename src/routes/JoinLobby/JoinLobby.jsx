@@ -13,6 +13,7 @@ class JoinLobby extends React.Component {
 
     componentDidMount() {
         socket.on('startGame', data => {
+            console.log("I got this");
             browserHistory.push('/battlePage');
         })
     }
@@ -22,6 +23,7 @@ class JoinLobby extends React.Component {
     }
 
     handleJoin() {
+        console.log(this.state.roomId);
         socket.emit('joinGameLobby', this.state.roomId);
     }
 
