@@ -55,7 +55,7 @@ passport.deserializeUser(function(id, cb) {
 });
 
 app.get('/server/ip', (req, res, next) => {
-  res.send(req.connection.remoteAddress);
+  res.send(req.ip);
 });
 
 app.post("/signin", passport.authenticate('local'), (req, res) => res.send(req.user));
