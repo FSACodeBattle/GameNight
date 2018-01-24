@@ -156,7 +156,7 @@ if (project.env === 'development') {
   app.use(express.static('public'));
 }
 
-const io = require('socket.io')(app.listen(process.env.PORT || 3000, console.log("I'm listening on port 3000")));
+const io = require('../bin/io.js')(app.listen(process.env.PORT || 3000, console.log("I'm listening on port 3000")));
 
 app.get('*', (req, res, next) => res.sendFile(path.resolve(__dirname + '/../dist/index.html')));
 

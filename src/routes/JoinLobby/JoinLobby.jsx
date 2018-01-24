@@ -11,7 +11,7 @@ class JoinLobby extends React.Component {
         this.handleJoin = this.handleJoin.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         socket.on('startGame', data => {
             console.log("I got this");
             browserHistory.push('/battlePage');
