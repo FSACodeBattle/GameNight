@@ -10,28 +10,22 @@ class GameLobby extends React.Component {
     super(props);
     this.state = {
       copied: false,
-      serverIp: ''
+      roomId: ''
     }
   }
 
   componentDidMount() {
-    console.log(this.props);
     socket.on('startGame', data => {
       browserHistory.push('/battlePage');
     })
-  }
-
-  componentWillMount() {
-    axios.get('/server/ip')
-      .then(res => res.data)
-      .then(ip => {
-        console.log('asdfajldfjasd', ip);
-        this.setState({serverIp: ip});
-      });
+    const roomId = makeid();
+    socket.emit('joinGameLobby', roomId);
+    this.setState({roomId});
   }
 
   render() {
-    const user = this.props.user;
+    const { user } = this.props;
+    const { roomId } = this.state;
     return (
       <div className="row" id="gameInvite">
         <label style={{color:"#777"}}>Invite To Game!</label>
@@ -42,12 +36,12 @@ class GameLobby extends React.Component {
               <input
                 type="text"
                 className="form-control"
-                value={`${this.state.serverIp}/lobby/${this.props.roomid}`}
+                value={`${roomId}`}
                 onChange={() => this.setState({ copied: false})}
               />
 
               <CopyToClipboard
-                text={`${this.state.serverIp}/lobby/${this.props.roomid}`}
+                text={`${roomId}`}
                 onCopy={() => this.setState({copied: true})}
                 >
                   <button className="btn btn-primary btn-join">Copy To Clipboard</button>
@@ -60,4 +54,13 @@ class GameLobby extends React.Component {
     )
   }
 }
+
+const makeid = () => {
+  let text = "";
+  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for(let i = 0; i < 6; i++ )
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  return text;
+}
+
 export default GameLobby;

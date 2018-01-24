@@ -56,10 +56,6 @@ passport.deserializeUser(function(id, cb) {
   });
 });
 
-app.get('/server/ip', (req, res, next) => {
-  res.send(req.headers['x-forwarded-for'] || req.ip);
-});
-
 app.post("/signin", passport.authenticate('local'), (req, res) => res.send(req.user));
 
 app.post("/signup", function(req, res, next){

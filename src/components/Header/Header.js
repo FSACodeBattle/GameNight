@@ -77,7 +77,6 @@ class Header extends React.Component {
       }
     }
     const { user } = this.props;
-    console.log(user);
     return (
       <div>
         <Navbar inverse collapseOnSelect fluid={true}>
@@ -95,12 +94,17 @@ class Header extends React.Component {
             <LinkContainer to="/report-a-bug" >
               <NavItem eventKey={2}>Report a Bug</NavItem>
             </LinkContainer>
-            <LinkContainer to={`/lobby/${makeid()}`} >
+            <LinkContainer to={`/lobby/create`} >
               <NavItem eventKey={4}>
-                <button id="create-lobby" className="btn btn-primary btn-small" >Create Lobby</button>
+                <button id="create-lobby" className="btn btn-primary btn-small">Create Lobby</button>
               </NavItem>
             </LinkContainer>
-            <NavItem eventKey={5}>
+            <LinkContainer to={`/lobby/join`}>
+              <NavItem eventKey={5}>
+                <button id="join-lobby" className="btn btn-primary btn-small">Join Lobby</button>
+              </NavItem>
+            </LinkContainer>
+            <NavItem eventKey={6}>
               <button id="quick-play" className="btn btn-primary btn-small" onClick={this.handleOpenModal}>Quick Play!</button>
             </NavItem>
           </Nav>
@@ -143,7 +147,8 @@ class Header extends React.Component {
 
 function makeid() {
     let text = "";
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; for(let i = 0; i < 6; i++ )
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for(let i = 0; i < 6; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     return text;
 }
