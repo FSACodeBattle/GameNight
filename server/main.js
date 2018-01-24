@@ -18,6 +18,8 @@ const app = express();
 
 const { User, Bug } = require('../db/database');
 
+app.enable('trust proxy');
+
 // Apply gzip compression
 app.use(compress())
 
@@ -55,7 +57,7 @@ passport.deserializeUser(function(id, cb) {
 });
 
 app.get('/server/ip', (req, res, next) => {
-  res.send(req.ip);
+  res.send(req.headers['x-forwarded-for'] || req.ip);
 });
 
 app.post("/signin", passport.authenticate('local'), (req, res) => res.send(req.user));
