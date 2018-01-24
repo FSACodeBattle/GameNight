@@ -2,7 +2,6 @@ import React from 'react';
 import './GameLobby.scss';
 import axios from 'axios';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { browserHistory } from 'react-router';
 
 class GameLobby extends React.Component {
 
