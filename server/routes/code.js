@@ -25,7 +25,7 @@ router.post('/', (req, res, next) => {
       //grab the tests associated with the selected question
       const tests = question.tests
       //create a new docker container and run the users code through the tests
-      axios.post("http://code.myrandomcode.com/code", { code: codeToRun, tests })
+      axios.post("http://code.myrandomcode.com:3000/", { code: codeToRun, tests })
         .then(res => res.data)
         .then(results => {
           //turns the results into a usable string
