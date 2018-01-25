@@ -3,6 +3,7 @@ const router = require('express').Router();
 const Sequelize = require('sequelize');
 const Question = require('../../db/database').Question;
 const io = require('../../bin/io');
+const axios = require('axios');
 
 router.post('/', (req, res, next) => {
   const ioObj = io();
@@ -24,7 +25,8 @@ router.post('/', (req, res, next) => {
       //grab the tests associated with the selected question
       const tests = question.tests
       //create a new docker container and run the users code through the tests
-      docker.runCommand(codeToRun, tests)
+      axios.post("http://code.myrandomcode.com/code", { code: codeToRun, tests })
+        .then(res => res.data)
         .then(results => {
           //turns the results into a usable string
           let resultString = JSON.stringify(results);
