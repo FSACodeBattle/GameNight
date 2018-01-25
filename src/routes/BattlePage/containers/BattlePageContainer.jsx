@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import './BattlePageContainer.scss';
 import Problem from '../components/Problem'
 import CodeEditor from '../../CodeEditor/components/CodeEditor'
