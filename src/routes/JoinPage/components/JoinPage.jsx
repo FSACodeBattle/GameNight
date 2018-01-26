@@ -18,8 +18,6 @@ class CodeEditor extends Component {
   }
 
   componentDidMount(){
-  		
-    })
   }
 
   updateCode(newCode) {

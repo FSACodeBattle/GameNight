@@ -8,8 +8,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(GameLobby);
+export default connect(mapStateToProps)(GameLobby);

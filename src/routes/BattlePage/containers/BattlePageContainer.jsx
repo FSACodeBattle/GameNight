@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import './BattlePageContainer.scss';
 import Problem from '../components/Problem'
 import CodeEditor from '../../CodeEditor/components/CodeEditor'
 import ProgressBar from '../components/ProgressBar.js'
 import axios from 'axios';
 import Notifications, {notify} from 'react-notify-toast';
-import { browserHistory } from 'react-router';
 import ExampleModal from '../components/Modal';
 import GameWonPage from '../../GameWonPage/components/GameWonPage';
 import { setOpponentAnswers, setOwnAnswers } from '../../../store/matchresult';

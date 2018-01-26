@@ -35,14 +35,18 @@ class Signup extends React.Component {
       this.setState({error: true, errorText: "Passwords do not match!"});
     }
     else {
-      axios.post('signup', this.state)
+      axios.post('/signup', this.state)
       .then(result => {
-        if(result.data === "user exists") this.setState({error: true, errorText: "User already exists!"});
-        else {
-          this.props.setLoggedInUser(result.data);
-          browserHistory.push('/');
+        const { data } = result;
+        console.log('adjaksdfa', data);
+        switch(data) {
+          case 'user exists': this.setState({error: true, errorText: "User already exists"}); break;
+          case 'Validation isEmail failed': this.setState({error: true, errorText: "Invalid email address"}); break;
+          default:
+            browserHistory.push('/');
+            break;
         }
-      })
+      });
     }
   }
 
@@ -63,7 +67,7 @@ class Signup extends React.Component {
           <input type="password" id="confirmPassword" placeholder="confirm password" className="loginForm"></input>
           <input type="text" id="name" placeholder="name" className="loginForm"></input>
           <input type="text" id="email" placeholder="email" className="loginForm"></input>
-          <button type="submit" id="signupSubmit" className="btn btn-primary btn-small">Submit</button>
+          <button type="submit" id="signupSubmit" className="btn btn-primary btn-small" onClick={this.onSubmitHandler}>Submit</button>
         </form>
       </div>
     )

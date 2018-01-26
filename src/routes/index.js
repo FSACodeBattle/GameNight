@@ -9,6 +9,7 @@ import CodeEditor from './CodeEditor/components/CodeEditor';
 import BattlePage from './BattlePage/containers/BattlePageContainer';
 import InvitePage from './InvitePage/components/InvitePage';
 import About from './About/About.js';
+import JoinLobby from './JoinLobby/JoinLobby.jsx';
 import GameLobbyContainer from './GameLobby/containers/GameLobbyContainer';
 import GameWonPage from './GameWonPage/components/GameWonPage'
 import GameFinishedPage from './GameFinishedPage/components/GameFinishedPage'
@@ -40,17 +41,12 @@ function onPageEnter(store) {
   })
 }
 
-function onGameLobbyEnter(nextRouterState, store) {
-  const roomid = nextRouterState.params.roomid;
+function onGameLobbyEnter(store) {
   store.dispatch(fetchClients());
   axios.get('/user')
   .then(user => {
     store.dispatch(setUser(user.data))
-    if(user.data) {
-      socket.emit('joinGameLobby', roomid);
-      store.dispatch(setRoomId(roomid));
-    }
-  })
+  });
 }
 
 function onProfileEnter(nextRouterState, store) {
@@ -62,7 +58,8 @@ export const createRoutes = (store) => (
   <Route path="/" component={CoreLayout} onEnter={() => onPageEnter(store)}>
     <Route path="login" component={Login} />
     <Route path="signup" component={Signup} />
-    <Route path="lobby/:roomid" component={GameLobbyContainer} onEnter={(nextRouterState) => onGameLobbyEnter(nextRouterState, store)} />
+    <Route path="lobby/create" component={GameLobbyContainer}/>
+    <Route path="lobby/join" component={JoinLobby} onEnter={() => onGameLobbyEnter(store)}/>
     <Route path="profile/:username" component={Profile} onEnter={(nextRouterState) => onProfileEnter(nextRouterState, store)}/>
     <Route path="invite" component={InvitePage} />
     <Route path="about" component={About} />

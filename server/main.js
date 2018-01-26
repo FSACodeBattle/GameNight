@@ -6,6 +6,7 @@ const webpackConfig = require('../config/webpack.config')
 const project = require('../config/project.config')
 const compress = require('compression')
 const bodyParser = require('body-parser');
+const publicIp = require('public-ip');
 
 const history = require('connect-history-api-fallback');
 
@@ -17,18 +18,17 @@ const app = express();
 
 const { User, Bug } = require('../db/database');
 
+app.enable('trust proxy');
+
 // Apply gzip compression
 app.use(compress())
-
-//Logging Middleware
-app.use(require('volleyball'));
 
 // Use BodyParser
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 app.use(require('cookie-parser')());
-app.use(require('express-session')({ secret: 'battlecode', resave: false, saveUninitialized: false }));
+app.use(require('cookie-session')({ secret: 'battlecode', resave: false, saveUninitialized: false }));
 
 
 passport.use(new LocalStrategy(function(username, pass, cb){
@@ -56,26 +56,26 @@ passport.deserializeUser(function(id, cb) {
   });
 });
 
-
-app.post("/signin", passport.authenticate('local', {failureRedirect: '/failure', successRedirect: '/user'}));
+app.post("/signin", passport.authenticate('local'), (req, res) => res.send(req.user));
 
 app.post("/signup", function(req, res, next){
-  console.log(req.body);
-  User.findOne({ where: { username: req.body.username } })
-    .then(function(user){
-      if(!user){
-        User.create({
-          username: req.body.username,
-          password: bcrypt.hashSync(req.body.password, 10),
-          name: req.body.name,
-          email: req.body.email
-        }).then(() => passport.authenticate("local", {failureRedirect:"/failure", successRedirect: "/user"})(req, res, next));
-      } else res.send("user exists");
-    })
+  User
+  .findOne({ where: { username: req.body.signupUsername } })
+  .then(function(user){
+    if(!user){
+      User.create({
+        username: req.body.signupUsername,
+        password: bcrypt.hashSync(req.body.signupPassword, 10),
+        name: req.body.name,
+        email: req.body.email
+      })
+      .then(() => res.sendStatus(200))
+      .catch(error => res.send(error.message.split(': ')[1]));
+    } else res.send("user exists");
+  })
 })
 
 app.post("/report-a-bug", function(req, res, next){
-  console.log(req.body);
   Bug.create({
     bugName: req.body.bugName,
     bugDescription: req.body.bugDescription,
@@ -84,11 +84,13 @@ app.post("/report-a-bug", function(req, res, next){
 })
 
 app.get('/signout', (req, res, next) => {
-  req.session.destroy();
+  req.logout();
   res.sendStatus(200);
 })
 
-app.get('/user', (req, res, next) => res.send(req.user));
+app.get('/user', (req, res, next) => {
+  res.send(req.user)
+});
 app.get('/failure', (req, res, next) => res.send(null));
 
 app.use('/api', require('./routes/'));
@@ -149,6 +151,13 @@ if (project.env === 'development') {
   // the web server and not the app server, but this helps to demo the
   // server in production.
   app.use(express.static(project.paths.dist()))
+} else {
+  app.use(express.static('dist'));
+  app.use(express.static('public'));
 }
+
+const io = require('../bin/io.js')(app.listen(process.env.PORT || 3000, console.log("I'm listening on port 3000")));
+
+app.get('*', (req, res, next) => res.sendFile(path.resolve(__dirname + '/../dist/index.html')));
 
 module.exports = app

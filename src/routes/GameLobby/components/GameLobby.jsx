@@ -1,26 +1,30 @@
 import React from 'react';
 import './GameLobby.scss';
+import axios from 'axios';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { browserHistory } from 'react-router'
 
 class GameLobby extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      copied: false
+      copied: false,
+      roomId: ''
     }
   }
 
   componentDidMount() {
-    console.log(this.props);
     socket.on('startGame', data => {
       browserHistory.push('/battlePage');
     })
+    const roomId = makeid();
+    socket.emit('joinGameLobby', roomId);
+    this.setState({roomId});
   }
 
   render() {
-    const user = this.props.user;
+    const { user } = this.props;
+    const { roomId } = this.state;
     return (
       <div className="row" id="gameInvite">
         <label style={{color:"#777"}}>Invite To Game!</label>
@@ -31,12 +35,12 @@ class GameLobby extends React.Component {
               <input
                 type="text"
                 className="form-control"
-                value={`localhost:3000/lobby/${this.props.roomid}`}
+                value={`${roomId}`}
                 onChange={() => this.setState({ copied: false})}
               />
 
               <CopyToClipboard
-                text={`http://138.197.51.247/lobby/${this.props.roomid}`}
+                text={`${roomId}`}
                 onCopy={() => this.setState({copied: true})}
                 >
                   <button className="btn btn-primary btn-join">Copy To Clipboard</button>
@@ -49,17 +53,13 @@ class GameLobby extends React.Component {
     )
   }
 }
-export default GameLobby;
 
-//   render() {
-//     return (
-//       <div style={{color:"white"}}>
-//         Lobby
-//         <div>
-//           <textarea value={`localhost/lobby/${this.props.roomid}`} style={{resize: "none", textAlign: "center", color: "black"}} rows="1" readOnly>
-//           </textarea>
-//         </div>
-//       </div>
-//     )
-//   }
-// }
+const makeid = () => {
+  let text = "";
+  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for(let i = 0; i < 6; i++ )
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  return text;
+}
+
+export default GameLobby;

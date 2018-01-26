@@ -12,7 +12,6 @@
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src tests",
     "lint:fix": "npm run lint -- --fix",
-    "start": "better-npm-run start",
     "dev": "better-npm-run dev",
     "test": "better-npm-run test",
     "test:dev": "npm run test -- --watch",
@@ -21,7 +20,8 @@
     "deploy:prod": "better-npm-run deploy:prod",
     "codecov": "cat coverage/*/lcov.info | codecov",
     "seed": "node db/seed.js",
-    "simple": "node db/simpleseed"
+    "simple": "node db/simpleseed",
+    "start": "npm run seed && npm run deploy:prod && nodemon server/main.js"
   },
   "betterScripts": {
     "compile": {
@@ -38,7 +38,7 @@
       }
     },
     "deploy": {
-      "command": "npm run lint && npm run test && npm run clean && npm run compile",
+      "command": "npm run clean && npm run compile",
       "env": {
         "DEBUG": "app:*"
       }
@@ -94,10 +94,12 @@
     "compression": "^1.6.2",
     "connect-history-api-fallback": "^1.3.0",
     "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
     "css-loader": "^0.26.0",
     "cssnano": "^3.7.4",
     "debug": "^2.2.0",
     "dockerode": "^2.3.1",
+    "dotenv": "^4.0.0",
     "express-session": "^1.15.0",
     "extract-text-webpack-plugin": "^1.0.0",
     "file-loader": "^0.9.0",
@@ -112,6 +114,7 @@
     "passport-local": "^1.0.0",
     "pg": "^6.1.2",
     "postcss-loader": "^1.1.0",
+    "public-ip": "^2.4.0",
     "react": "^15.0.0",
     "react-bootstrap": "^0.30.7",
     "react-codemirror": "^0.3.0",
