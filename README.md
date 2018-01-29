@@ -8,7 +8,7 @@ Some changes include:
 * Some UI changes
 * Some refactoring of back end
 
-We are attempting to have the domain point to the Heroku version. As of right now you can always find the latest version of the app at the Heroku link. If there are any updates regarding the URL, it will be posted here. Sorry for the inconvenience and thank you for your understanding.
+We are attempting to have the domain point to the Heroku version. As of right now you can always find the latest version of the app at the Heroku link. If there are any updates regarding the URL, it will be posted here. If the page does not load the first time, please wait one moment while the dyno spins up. Sorry for the inconvenience and thank you for your understanding.
 
 ___
 
@@ -20,4 +20,4 @@ Want to learn to code while having fun? Challenge your friends to a Code Battle!
 CodeBattle uses the NERP stack as well as Docker on the back-end and Sockets.io to deliver a seamless experience to its users.
 
 
-Deployed at ~~www.codebattle.win~~
+Deployed at ~~www.codebattle.win~~ Refer to the above link or just click [here](http://codebattles.herokuapp.com).
