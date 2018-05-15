@@ -26,13 +26,34 @@ class JoinLobby extends React.Component {
     }
 
     render() {
+
+        const { user } = this.props;
+
         return (
             <div>
-                <input type="text" value={this.state.roomId} onChange={this.handleChange}/>
-                <button onClick={this.handleJoin}>Join</button>
+                <label style={{color: "#777"}}>Please Enter the Room ID</label>
+                {
+                    Object.keys(user).length
+                    ?
+                        <div className="input-group" style={{margin: "0 auto"}}>
+                            <input
+                                type="text" 
+                                className="form-control"
+                                value={this.state.roomId}
+                                onChange={this.handleChange}
+                                autoFocus
+                            />
+                            <button className="btn btn-primary btn-join" onClick={this.handleJoin}>Join</button>
+                        </div>
+                    : <div style={{color: "white"}}>Please log in</div>
+                }
             </div>
         )
     }
 }
 
-export default connect(null, null)(JoinLobby);
+const mapStateToProps = (state) => {
+    return { user: state.user.user };
+}
+
+export default connect(mapStateToProps, null)(JoinLobby);
