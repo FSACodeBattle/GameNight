@@ -3,8 +3,8 @@ import Header from '../../components/Header'
 import './CoreLayout.scss'
 
 export const CoreLayout = ({ children }) => (
-  <div className="container-fluid text-center corelay">
-    <div className="row">
+  <div className="container-fluid text-center corelay" >
+    <div className="row" style={{margin: 0, width: '100%', padding: 0}}>
       <Header />
     </div>
     <div className="core-layout__viewport" id="children">
